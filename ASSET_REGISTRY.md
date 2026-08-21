@@ -17,7 +17,7 @@ This registry tracks production/reference visual assets.
 
 ### Home background
 
-**Recommended filename:** `home/background/home-probability-field-frame-a-v1.png`
+**Canonical repository path:** `public/assets/home/background/home-probability-field-frame-a-v1.png`
 
 Status: **APPROVED FOUNDATION / REFERENCE**
 
@@ -39,7 +39,7 @@ Future:
 
 ### Home living cat master
 
-**Recommended filename:** `home/schrodinger/cat-living-master-v1.png`
+**Canonical repository path:** `public/assets/home/schrodinger/cat-living-master-v1.png`
 
 Status: **APPROVED REFERENCE**
 
@@ -53,7 +53,7 @@ Style:
 
 ### Home skeletal cat working master
 
-**Recommended filename:** `home/schrodinger/cat-skeleton-master-v1.png`
+**Canonical repository path:** `public/assets/home/schrodinger/cat-skeleton-master-v1.png`
 
 Status: **APPROVED WORKING REFERENCE**
 
@@ -66,7 +66,7 @@ Notes:
 
 ### Home adjusted split cat
 
-**Recommended filename:** `home/schrodinger/cat-split-adjusted-v1.png`
+**Canonical repository path:** `public/assets/home/schrodinger/cat-split-adjusted-v1.png`
 
 Status: **APPROVED / AUTHORITATIVE CAT REFERENCE**
 
@@ -82,7 +82,7 @@ Do not use the unadjusted split-cat variant in production.
 
 ### Schrödinger's Box — opaque state
 
-**Recommended filename:** `home/schrodinger/box-closed-v1.png`
+**Canonical repository path:** `public/assets/home/schrodinger/box-closed-v1.png`
 
 Status: **APPROVED DIRECTION / REFERENCE**
 
@@ -98,7 +98,7 @@ Characteristics:
 
 ### Schrödinger's Box — reveal state
 
-**Recommended filename:** `home/schrodinger/box-reveal-v1.png`
+**Canonical repository path:** `public/assets/home/schrodinger/box-reveal-v1.png`
 
 Status: **APPROVED / AUTHORITATIVE REVEAL REFERENCE**
 

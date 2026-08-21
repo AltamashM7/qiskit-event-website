@@ -63,6 +63,13 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Only approved assets/results return to the main development/orchestrator context.
 - Preserve durable project documentation in the repository.
 
+### Phase 0A1 technical scaffold
+
+- Phase 0A1 establishes Astro with static output, TypeScript, and npm.
+- The initial implementation has no React, Vue, Svelte, Tailwind, GSAP, or UI component framework.
+- Canonical source directories live under `src/` and reserved visual assets live under `public/assets/`.
+- These choices govern the scaffold phase; deployment and the final production architecture remain open for later bounded review.
+
 ## PROVISIONAL / STRONG PREFERENCE
 
 - Astro is the current strongest framework preference because the site is static-first and performance-sensitive, with selective interactive islands.
