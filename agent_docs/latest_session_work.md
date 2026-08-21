@@ -13,6 +13,12 @@ A separate Art Assets conversation/workstream will handle iterative image genera
 
 Repository bootstrap is now complete. GitHub is the authoritative shared implementation state for the project.
 
+## Phase 0A1 scaffold state
+
+The Astro static-output project scaffold is now established with TypeScript, npm, no frontend UI framework, and the canonical `src/` and `public/assets/` directory structure. The only page is a neutral temporary `src/pages/index.astro` proof page; no Home visual composition or approved binary asset has been added.
+
+The user must manually place the approved Home binaries into the reserved canonical asset directories before visual implementation begins.
+
 ## Latest approved visual state
 
 ### Home background
@@ -63,12 +69,9 @@ If both adjusted and unadjusted variants exist in the repository, the unadjusted
 
 Do **not** generate more unrelated assets yet.
 
-The next Web Orchestrator step is the technical architecture gate:
-- evaluate/confirm Astro as the likely static-first framework,
-- choose the minimal client-island strategy for interactions,
-- decide deployment/workflow.
+The next bounded step is asset preparation: the user manually places the approved Home binaries into the reserved canonical asset paths. After that, the next implementation gate is Phase 0A2 — Technical Foundation, in its own bounded task. It precedes Home Composition V1 and may establish reusable Stage/navigation/layout foundations, Astro/TypeScript checking, Playwright/browser QA, GitHub Actions verification, applicable accessibility/reduced-motion/testing foundations, and deployment/preview only as separately specified.
 
-Astro remains a strong provisional preference, not a formally locked stack. No frontend implementation should begin until the Web Orchestrator issues the next bounded task.
+Phase 0A2 is not authorized by this documentation correction. Do not begin technical-foundation work, visual implementation, navigation, interaction, animation, responsive design, CI, deployment, or additional pages during this scaffold phase.
 
 The first in-browser visual gate should validate:
 - desktop composition,
