@@ -8,7 +8,7 @@ No production frontend implementation has been created yet; only the neutral sca
 
 The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it.
 
-Phase 0A1 has established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The project has completed enough Home-page visual discovery to proceed toward manual asset import and a first real Home Composition V1.
+Phase 0A1 has established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The project has completed enough Home-page visual discovery to proceed toward manual asset import, then the Phase 0A2 technical foundation, and only afterward a first real Home Composition V1.
 
 ## Completed / accepted
 
@@ -64,6 +64,7 @@ Phase 0A1 has established the Astro, static-output, TypeScript, npm, no-UI-frame
 ## Not yet done
 
 - Final production architecture lock beyond the Phase 0A1 scaffold.
+- Phase 0A2 technical foundation.
 - Actual frontend implementation.
 - CI.
 - Preview deployment.
@@ -82,6 +83,9 @@ Phase 0A1 has established the Astro, static-output, TypeScript, npm, no-UI-frame
 Before visual implementation:
 1. User manually places the approved Home binary assets into their canonical `public/assets/` paths.
 2. Verify asset identities and repository paths without substituting or generating artwork.
-3. Build only Home Composition V1.
-4. Review desktop + mobile + interaction + performance.
-5. Approve visual language in-browser before expanding the rest of the site.
+3. Establish Phase 0A2 technical foundation in its own bounded task, including checking, browser QA, GitHub Actions verification, and applicable accessibility/reduced-motion/testing foundations.
+4. Build only Home Composition V1 after Phase 0A2 is complete.
+5. Review desktop + mobile + interaction + performance.
+6. Approve visual language in-browser before expanding the rest of the site.
+
+Phase 0A2 is not authorized by the Phase 0A1 scaffold correction.

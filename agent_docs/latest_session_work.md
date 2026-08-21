@@ -69,9 +69,9 @@ If both adjusted and unadjusted variants exist in the repository, the unadjusted
 
 Do **not** generate more unrelated assets yet.
 
-The next bounded step is asset preparation: the user manually places the approved Home binaries into the reserved canonical asset paths. After that, the Web Orchestrator may issue the next bounded Home Composition V1 task.
+The next bounded step is asset preparation: the user manually places the approved Home binaries into the reserved canonical asset paths. After that, the next implementation gate is Phase 0A2 — Technical Foundation, in its own bounded task. It precedes Home Composition V1 and may establish reusable Stage/navigation/layout foundations, Astro/TypeScript checking, Playwright/browser QA, GitHub Actions verification, applicable accessibility/reduced-motion/testing foundations, and deployment/preview only as separately specified.
 
-Do not begin visual implementation, navigation, interaction, animation, responsive design, CI, deployment, or additional pages during this scaffold phase.
+Phase 0A2 is not authorized by this documentation correction. Do not begin technical-foundation work, visual implementation, navigation, interaction, animation, responsive design, CI, deployment, or additional pages during this scaffold phase.
 
 The first in-browser visual gate should validate:
 - desktop composition,
