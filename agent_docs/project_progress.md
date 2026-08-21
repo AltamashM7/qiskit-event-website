@@ -2,13 +2,13 @@
 
 ## Current overall status
 
-**Phase: Phase 0A1 — Astro project scaffold / pre-visual implementation**
+**Phase: Phase 0A1 scaffold complete / approved assets imported / pre-Phase 0A2**
 
 No production frontend implementation has been created yet; only the neutral scaffold proof page exists.
 
-The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it.
+The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
 
-Phase 0A1 has established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The project has completed enough Home-page visual discovery to proceed toward manual asset import, then the Phase 0A2 technical foundation, and only afterward a first real Home Composition V1.
+Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The six approved Home binaries have now been manually supplied and imported into their canonical paths. The next implementation gate remains Phase 0A2 — Technical Foundation; Home Composition V1 has not started.
 
 ## Completed / accepted
 
@@ -59,7 +59,7 @@ Phase 0A1 has established the Astro, static-output, TypeScript, npm, no-UI-frame
 - No React, Vue, Svelte, Tailwind, GSAP, or UI component framework added.
 - Canonical `src/` and `public/assets/` directory structure established.
 - Only a neutral temporary `src/pages/index.astro` proof page exists.
-- Approved binary assets have not been imported or committed.
+- The six approved Home binary assets are imported and committed at their canonical paths.
 
 ## Not yet done
 
@@ -72,7 +72,6 @@ Phase 0A1 has established the Astro, static-output, TypeScript, npm, no-UI-frame
 - Accessibility testing.
 - Mobile composition implementation.
 - Home background 2–3-frame production animation set.
-- Manual import of the approved Home binary assets.
 - Final branding assets/treatment.
 - About Event implementation/assets.
 - About Quantum Mechanics implementation/assets.
@@ -81,11 +80,10 @@ Phase 0A1 has established the Astro, static-output, TypeScript, npm, no-UI-frame
 ## Current recommended gate
 
 Before visual implementation:
-1. User manually places the approved Home binary assets into their canonical `public/assets/` paths.
-2. Verify asset identities and repository paths without substituting or generating artwork.
-3. Establish Phase 0A2 technical foundation in its own bounded task, including checking, browser QA, GitHub Actions verification, and applicable accessibility/reduced-motion/testing foundations.
-4. Build only Home Composition V1 after Phase 0A2 is complete.
-5. Review desktop + mobile + interaction + performance.
-6. Approve visual language in-browser before expanding the rest of the site.
+1. Verify the six approved Home binaries remain at their canonical `public/assets/` paths without substitution or modification.
+2. Establish Phase 0A2 technical foundation in its own bounded task, including checking, browser QA, GitHub Actions verification, and applicable accessibility/reduced-motion/testing foundations.
+3. Build only Home Composition V1 after Phase 0A2 is complete.
+4. Review desktop + mobile + interaction + performance.
+5. Approve visual language in-browser before expanding the rest of the site.
 
-Phase 0A2 is not authorized by the Phase 0A1 scaffold correction.
+Phase 0A2 has not started. Home Composition V1 has not started.

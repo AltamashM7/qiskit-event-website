@@ -13,13 +13,13 @@ This registry tracks production/reference visual assets.
 
 ## Current approved/reference assets
 
-> Binary assets are not yet guaranteed to be committed. The filenames below are recommended stable repository names when importing them.
+> The six approved Home binary assets listed below are committed at their canonical repository paths. They are approved references, not yet integrated into the frontend.
 
 ### Home background
 
 **Canonical repository path:** `public/assets/home/background/home-probability-field-frame-a-v1.png`
 
-Status: **APPROVED FOUNDATION / REFERENCE**
+Status: **APPROVED FOUNDATION / REFERENCE / COMMITTED**
 
 Purpose:
 - Home Stage base/background reference.
@@ -41,7 +41,7 @@ Future:
 
 **Canonical repository path:** `public/assets/home/schrodinger/cat-living-master-v1.png`
 
-Status: **APPROVED REFERENCE**
+Status: **APPROVED REFERENCE / COMMITTED**
 
 Purpose:
 - Geometry/style source for living side of Schrödinger cat.
@@ -55,7 +55,7 @@ Style:
 
 **Canonical repository path:** `public/assets/home/schrodinger/cat-skeleton-master-v1.png`
 
-Status: **APPROVED WORKING REFERENCE**
+Status: **APPROVED WORKING REFERENCE / COMMITTED**
 
 Purpose:
 - Skeletal source used for adjusted composite.
@@ -68,7 +68,7 @@ Notes:
 
 **Canonical repository path:** `public/assets/home/schrodinger/cat-split-adjusted-v1.png`
 
-Status: **APPROVED / AUTHORITATIVE CAT REFERENCE**
+Status: **APPROVED / AUTHORITATIVE CAT REFERENCE / COMMITTED**
 
 Purpose:
 - Reveal-state cat.
@@ -84,7 +84,7 @@ Do not use the unadjusted split-cat variant in production.
 
 **Canonical repository path:** `public/assets/home/schrodinger/box-closed-v1.png`
 
-Status: **APPROVED DIRECTION / REFERENCE**
+Status: **APPROVED DIRECTION / REFERENCE / COMMITTED**
 
 Purpose:
 - Default Home hero state.
@@ -100,7 +100,7 @@ Characteristics:
 
 **Canonical repository path:** `public/assets/home/schrodinger/box-reveal-v1.png`
 
-Status: **APPROVED / AUTHORITATIVE REVEAL REFERENCE**
+Status: **APPROVED / AUTHORITATIVE REVEAL REFERENCE / COMMITTED**
 
 Purpose:
 - Hover/focus/tap reveal state.

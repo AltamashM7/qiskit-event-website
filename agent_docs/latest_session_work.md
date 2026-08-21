@@ -15,9 +15,9 @@ Repository bootstrap is now complete. GitHub is the authoritative shared impleme
 
 ## Phase 0A1 scaffold state
 
-The Astro static-output project scaffold is now established with TypeScript, npm, no frontend UI framework, and the canonical `src/` and `public/assets/` directory structure. The only page is a neutral temporary `src/pages/index.astro` proof page; no Home visual composition or approved binary asset has been added.
+The Astro static-output project scaffold is now established with TypeScript, npm, no frontend UI framework, and the canonical `src/` and `public/assets/` directory structure. The six approved Home binaries have now been manually supplied and imported into their canonical paths. They are committed on the asset-import branch but are not yet integrated into the frontend; the only page remains the neutral temporary `src/pages/index.astro` proof page.
 
-The user must manually place the approved Home binaries into the reserved canonical asset directories before visual implementation begins.
+No visual implementation has begun.
 
 ## Latest approved visual state
 
@@ -69,9 +69,9 @@ If both adjusted and unadjusted variants exist in the repository, the unadjusted
 
 Do **not** generate more unrelated assets yet.
 
-The next bounded step is asset preparation: the user manually places the approved Home binaries into the reserved canonical asset paths. After that, the next implementation gate is Phase 0A2 — Technical Foundation, in its own bounded task. It precedes Home Composition V1 and may establish reusable Stage/navigation/layout foundations, Astro/TypeScript checking, Playwright/browser QA, GitHub Actions verification, applicable accessibility/reduced-motion/testing foundations, and deployment/preview only as separately specified.
+The approved Home binaries are now present at the reserved canonical asset paths. The next implementation gate remains Phase 0A2 — Technical Foundation, in its own bounded task. It precedes Home Composition V1 and may establish reusable Stage/navigation/layout foundations, Astro/TypeScript checking, Playwright/browser QA, GitHub Actions verification, applicable accessibility/reduced-motion/testing foundations, and deployment/preview only as separately specified.
 
-Phase 0A2 is not authorized by this documentation correction. Do not begin technical-foundation work, visual implementation, navigation, interaction, animation, responsive design, CI, deployment, or additional pages during this scaffold phase.
+Phase 0A2 has not started. Do not begin technical-foundation work, visual implementation, navigation, interaction, animation, responsive design, CI, deployment, or additional pages during this asset-import phase.
 
 The first in-browser visual gate should validate:
 - desktop composition,
