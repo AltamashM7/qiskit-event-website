@@ -1,0 +1,104 @@
+# Decisions Register
+
+This file distinguishes durable decisions from provisional ideas and superseded directions.
+
+## LOCKED
+
+### Product / information architecture
+
+- The project is a new Qiskit event website.
+- Initial prototype pages:
+  - Home
+  - About Event
+  - About Quantum Mechanics
+- Final page count/content is intentionally not finalized.
+- Major pages begin with a large visual Stage.
+- Detailed content appears below the Stage.
+- Every Stage contains a shared reusable Master Navigator.
+- Master Navigator V1 uses stylized horizontal buttons/links.
+- Filler content may be used during development if it reads like plausible student-academic event copy and is not presented as confirmed event fact.
+
+### Visual language
+
+- Main subjects use a flat 2D graphic, halftone/dither/pixel-print style.
+- Subjects should not be realistic 3D renders.
+- Backgrounds should remain relatively simple and low-noise.
+- Subject/background integration matters; subjects may participate in the division between neutral and accent fields.
+- Different pages may use different accent families.
+- Home accent: bright electric yellow.
+- Desktop and mobile are separate art-directed compositions.
+
+### Home Stage
+
+- Desktop event typography lives on the left.
+- Schrödinger's Box lives on the right.
+- Master Navigator sits top-center in the Stage.
+- No explicit “Find Out” or equivalent instructional prompt.
+- Closed box includes `SCHRÖDINGER'S BOX` as the discovery cue.
+- Box receives subtle smooth floating/tilt idle animation.
+- Desktop hover/focus temporarily reveals the cat.
+- Click can lock/unlock reveal.
+- Mobile tap toggles reveal.
+- Reveal does not change box orientation.
+- Reveal-state image contains no large text over the cat.
+- Bottom face of reveal box remains opaque.
+- Interior is plain/minimal rather than detailed.
+- Reveal uses directional gradient translucency rather than a hard glass-window boundary.
+- Home background foundation: neutral/off-white side + bright yellow superposition/probability field.
+
+### Animation / performance
+
+- Environmental animation primarily uses 2–3-frame limited loops.
+- Main subjects may use subtle smooth idle motion.
+- Performance on weak college machines is a primary requirement.
+- Avoid full-screen looping video, huge GIFs, heavy canvas/WebGL, and unnecessary continuous JS animation.
+- Reduced-motion support is required.
+
+### Workflow
+
+- GitHub becomes authoritative once a repository exists.
+- Builder claims are not proof; Orchestrator independently verifies repository state, CI, preview, and relevant visual behavior.
+- Use visual gates before propagating a visual system across all pages.
+- Use a separate Art Assets workflow/chat for iterative image generation.
+- Only approved assets/results return to the main development/orchestrator context.
+- Preserve durable project documentation in the repository.
+
+## PROVISIONAL / STRONG PREFERENCE
+
+- Astro is the current strongest framework preference because the site is static-first and performance-sensitive, with selective interactive islands.
+- Cloudflare Pages is a likely deployment target.
+- Codex Luna is a strong candidate for repository-native Builder work.
+- A single primary implementation owner should handle the first representative visual composition; specialist agents may review architecture, responsiveness, accessibility, testing, or performance.
+- About Event may use a stylized qubit as its primary Stage subject.
+- About Quantum Mechanics may use a Schrödinger's-cat wanted poster plus a lower qubit/measurement feature scene.
+- Page-specific accents other than Home remain to be chosen.
+
+## OPEN
+
+- Repository/project name.
+- Final framework lock.
+- Deployment hostname.
+- Final page count.
+- Final event content, dates, venue, registration details.
+- Exact college/IBM/Qiskit/sponsor branding requirements.
+- Final typography.
+- Final accent families for non-Home pages.
+- Final transition language.
+- Exact performance budgets.
+- Analytics.
+- Production release process.
+- Exact Builder route/workflow.
+
+## SUPERSEDED / DO NOT REVIVE WITHOUT DISCUSSION
+
+- Explicit “Find Out” text/CTA for the Schrödinger interaction.
+- Hover-only interaction with no tap/click/focus fallback.
+- Uniformly transparent reveal box.
+- Hard rectangular transparent window/panel.
+- Detailed sci-fi box interior.
+- Large generic quantum-HUD icon clutter in the Home background.
+- Dark magenta Home accent.
+- Realistic/3D/volumetric background treatment.
+- Treating the cat as a separate kawaii mascot style unrelated to the main site art language.
+- Generating every website asset before building the first real page composition.
+- Building the entire site before approving one representative Stage.
