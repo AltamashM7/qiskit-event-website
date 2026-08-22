@@ -2,13 +2,13 @@
 
 ## Current overall status
 
-**Phase: Phase 0A1 scaffold complete / approved assets imported / pre-Phase 0A2**
+**Phase: Phase 0A2 technical foundation implemented / pending Web Orchestrator acceptance**
 
-No production frontend implementation has been created yet; only the neutral scaffold proof page exists.
+No production frontend visual implementation has been created yet; Phase 0A2 adds only reusable technical foundations and neutral route shells.
 
 The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
 
-Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The six approved Home binaries have now been manually supplied and imported into their canonical paths. The next implementation gate remains Phase 0A2 — Technical Foundation; Home Composition V1 has not started.
+Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The six approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 now establishes the reusable technical foundation on the current feature branch; it remains pending independent Web Orchestrator verification and acceptance. Home Composition V1 has not started.
 
 ## Completed / accepted
 
@@ -58,18 +58,24 @@ Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework
 - TypeScript and npm configured.
 - No React, Vue, Svelte, Tailwind, GSAP, or UI component framework added.
 - Canonical `src/` and `public/assets/` directory structure established.
-- Only a neutral temporary `src/pages/index.astro` proof page exists.
+- Neutral technical route shells and reusable Stage/navigation/layout boundaries now exist; no visual Home Composition V1 has been implemented.
 - The six approved Home binary assets are imported and committed at their canonical paths.
+
+### Phase 0A2 technical foundation (implemented / pending Web Orchestrator acceptance)
+- Astro static output, TypeScript, npm, and Node.js 24 LTS baseline established.
+- Reusable `SiteLayout`, `StageShell`, `MasterNavigator`, and data-driven route/navigation boundaries established.
+- Neutral shells are present for Home, About Event, and About Quantum Mechanics without visual composition or asset integration.
+- `astro check`, static build, Playwright Chromium browser QA, and serious/critical Axe baseline coverage established.
+- GitHub Actions verification established for pull requests to and pushes to `main`.
+- Reduced-motion tokens and baseline behavior established.
+- The approved binaries remain unchanged and are served only as canonical assets; Home Composition V1 has not started.
 
 ## Not yet done
 
-- Final production architecture lock beyond the Phase 0A1 scaffold.
-- Phase 0A2 technical foundation.
 - Actual frontend implementation.
-- CI.
+- Web Orchestrator acceptance of the Phase 0A2 technical foundation.
 - Preview deployment.
 - Performance budgets.
-- Accessibility testing.
 - Mobile composition implementation.
 - Home background 2–3-frame production animation set.
 - Final branding assets/treatment.
@@ -81,9 +87,9 @@ Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework
 
 Before visual implementation:
 1. Verify the six approved Home binaries remain at their canonical `public/assets/` paths without substitution or modification.
-2. Establish Phase 0A2 technical foundation in its own bounded task, including checking, browser QA, GitHub Actions verification, and applicable accessibility/reduced-motion/testing foundations.
-3. Build only Home Composition V1 after Phase 0A2 is complete.
+2. Obtain independent Web Orchestrator acceptance of the Phase 0A2 technical foundation.
+3. Build only Home Composition V1 after Phase 0A2 acceptance.
 4. Review desktop + mobile + interaction + performance.
-5. Approve visual language in-browser before expanding the rest of the site.
+5. Obtain user visual approval in-browser before expanding the rest of the site.
 
-Phase 0A2 has not started. Home Composition V1 has not started.
+Phase 0A2 is implemented and pending Web Orchestrator acceptance. Home Composition V1 has not started.

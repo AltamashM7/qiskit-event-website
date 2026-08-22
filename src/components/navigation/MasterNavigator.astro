@@ -1,0 +1,32 @@
+---
+import { primaryNavigation } from '../../data/navigation';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const normalizePath = (path: string) => {
+  const normalized = path.replace(/\/+$/, '');
+  return normalized || '/';
+};
+
+const isCurrent = (href: string) => normalizePath(href) === normalizePath(currentPath);
+---
+
+<nav class="master-navigator" aria-label="Primary">
+  <ul class="master-navigator__list">
+    {primaryNavigation.map((item) => (
+      <li class="master-navigator__item">
+        <a
+          class="master-navigator__link"
+          href={item.href}
+          aria-current={isCurrent(item.href) ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

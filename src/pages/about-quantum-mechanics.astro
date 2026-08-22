@@ -1,0 +1,18 @@
+---
+import MasterNavigator from '../components/navigation/MasterNavigator.astro';
+import StageShell from '../components/stage/StageShell.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="About Quantum Mechanics | Qiskit Event Website"
+  description="Neutral technical route shell for the future About Quantum Mechanics page."
+>
+  <StageShell id="about-quantum-mechanics-stage" headingId="about-quantum-mechanics-heading">
+    <MasterNavigator slot="navigation" currentPath={Astro.url.pathname} />
+    <div slot="identity">
+      <h1 id="about-quantum-mechanics-heading">About Quantum Mechanics</h1>
+      <p>Neutral route shell only; educational content and visual design are not implemented.</p>
+    </div>
+  </StageShell>
+</SiteLayout>
