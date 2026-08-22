@@ -25,6 +25,10 @@ The Phase 0A2 feature branch establishes the reusable technical foundation only.
 
 Phase 0A2 was independently accepted and squash-merged into `main`. Its reusable technical foundation, checking, browser QA, reduced-motion tokens, and GitHub Actions verification remain the basis for Home V1.
 
+## PR preview / visual QA infrastructure state
+
+Cloudflare Pages Direct Upload PR-preview infrastructure is now established on the Home V1 branch through GitHub Actions and `cloudflare/wrangler-action@v4`. The preview job runs only for same-repository pull requests, waits for the authoritative Technical verification job, deploys the built `dist/` output under a pull-request alias, and verifies the live Home/About routes plus four generated reduced-motion Chromium screenshots. Localhost production preview remains the rapid development loop. Production deployment and Cloudflare Git integration are not established.
+
 ## Home Composition V1 state
 
 Home V1 is implemented locally on the bounded `phase-1/home-composition-v1` branch and is pending independent Web Orchestrator verification and user visual acceptance. The implementation is limited to the Home Stage:
@@ -35,7 +39,7 @@ Home V1 is implemented locally on the bounded `phase-1/home-composition-v1` bran
 - generic event identity/copy is used without inventing dates, venue, sponsors, speakers, or other unconfirmed facts;
 - hover/focus reveal, click lock/unlock, coarse-pointer tap toggle, restrained CSS idle motion, and reduced-motion behavior are covered;
 - the individual cat masters remain reference assets; the visible reveal uses `box-reveal-v1.png` and does not reconstruct the cat;
-- visual review is local-first. Cloudflare, deployment, and About-page visual implementation remain intentionally deferred.
+- visual review remains unaccepted; the PR-only Cloudflare preview and four screenshot artifacts now provide an independent QA surface. Production deployment and About-page visual implementation remain intentionally deferred.
 
 ## Latest approved visual state
 
@@ -87,9 +91,9 @@ If both adjusted and unadjusted variants exist in the repository, the unadjusted
 
 Do **not** generate more unrelated assets yet.
 
-Review the Home V1 local production preview at desktop and mobile sizes, including background crop, navigator placement, typography, subject integration, hover/focus/click/tap behavior, idle motion, reduced motion, and weak-device performance. The next Orchestrator step is independent verification of this bounded Home V1 branch and its final GitHub Actions result.
+Review the Home V1 local production preview and the current PR-only Cloudflare preview at desktop and mobile sizes, including background crop, navigator placement, typography, subject integration, hover/focus/click/tap behavior, idle motion, reduced motion, and weak-device performance. The next Orchestrator step is independent verification of this bounded Home V1 branch, its final GitHub Actions result, the preview HTTP checks, and the four screenshot artifacts.
 
-Do not begin deployment, Cloudflare work, About-page visual implementation, background animation frames B/C, or additional page work before Home V1 receives the next acceptance decision. Preview deployment is not established, and user visual approval remains a required gate.
+Do not begin production deployment, Cloudflare Git integration, About-page visual implementation, background animation frames B/C, or additional page work before Home V1 receives the next acceptance decision. PR preview infrastructure is established for QA only, and user visual approval remains a required gate.
 
 The first in-browser visual gate should validate:
 - desktop composition,

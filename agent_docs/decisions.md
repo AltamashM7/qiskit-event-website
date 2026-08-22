@@ -81,6 +81,13 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - GitHub Actions verifies dependency installation, Astro checking, the static build, and the Chromium browser suite on pull requests to and pushes to `main`.
 - Reduced-motion support is part of the reusable motion-token foundation.
 
+### PR preview and visual QA infrastructure
+
+- Cloudflare Pages Direct Upload through GitHub Actions and `cloudflare/wrangler-action@v4` is the chosen mechanism for same-repository pull-request previews.
+- Preview deployment is gated by the existing authoritative Technical verification job and uses a pull-request branch alias rather than the production branch.
+- The preview deploy includes four reduced-motion Chromium screenshots of the built Home composition for independent Web Orchestrator visual QA.
+- Localhost production preview remains the rapid development loop; production deployment and Cloudflare Git integration are not established by this decision.
+
 ## PROVISIONAL / STRONG PREFERENCE
 
 - Cloudflare Pages is a likely deployment target.

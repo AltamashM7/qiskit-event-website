@@ -35,3 +35,79 @@ jobs:
 
       - name: Run project verification
         run: npm run verify
+
+  preview:
+    name: Cloudflare preview and visual QA
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build production preview
+        run: npm run build
+
+      - name: Capture Home visual QA screenshots
+        run: npx playwright test tests/e2e/home-visual-preview.spec.ts --project=desktop-chromium --project=mobile-chromium
+
+      - name: Check Home visual QA artifacts
+        run: |
+          test "$(find dist/__qa -maxdepth 1 -type f -name '*.png' | wc -l)" -eq 4
+          test -f dist/__qa/home-desktop-closed.png
+          test -f dist/__qa/home-desktop-reveal.png
+          test -f dist/__qa/home-mobile-closed.png
+          test -f dist/__qa/home-mobile-reveal.png
+
+      - name: Deploy Cloudflare Pages preview
+        id: cloudflare-preview
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: >-
+            pages deploy dist
+            --project-name=qiskit-event-website
+            --branch=pr-${{ github.event.pull_request.number }}
+            --commit-hash=${{ github.event.pull_request.head.sha }}
+
+      - name: Publish preview URLs
+        env:
+          DEPLOYMENT_URL: ${{ steps.cloudflare-preview.outputs.deployment-url }}
+          PREVIEW_ALIAS_URL: ${{ steps.cloudflare-preview.outputs.pages-deployment-alias-url }}
+        run: |
+          test -n "$DEPLOYMENT_URL"
+          test -n "$PREVIEW_ALIAS_URL"
+          echo "Cloudflare preview alias: $PREVIEW_ALIAS_URL"
+          echo "Immutable deployment: $DEPLOYMENT_URL"
+          {
+            echo "### Cloudflare Pages preview"
+            echo ""
+            echo "- Cloudflare preview alias: $PREVIEW_ALIAS_URL"
+            echo "- Immutable deployment: $DEPLOYMENT_URL"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify deployed preview
+        env:
+          PREVIEW_ALIAS_URL: ${{ steps.cloudflare-preview.outputs.pages-deployment-alias-url }}
+        run: node scripts/verify-preview.mjs "$PREVIEW_ALIAS_URL"

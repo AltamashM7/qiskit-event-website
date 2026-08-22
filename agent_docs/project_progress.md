@@ -2,13 +2,15 @@
 
 ## Current overall status
 
-**Phase: Home Composition V1 implemented / pending Web Orchestrator + user visual acceptance**
+**Phase: Home Composition V1 implemented / pending Web Orchestrator + user visual acceptance; PR preview QA infrastructure established**
 
 Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 is implemented on the current feature branch using the approved Home binaries and remains pending independent Web Orchestrator verification and user visual acceptance.
 
 The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
 
 Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The six approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage.
+
+Cloudflare Pages Direct Upload PR-preview infrastructure is now established on this branch through GitHub Actions and `cloudflare/wrangler-action@v4`, gated after Technical verification. The preview publishes the built site and four reduced-motion Chromium screenshots for independent Web Orchestrator visual QA. Production deployment and Cloudflare Git integration are not established.
 
 ## Completed / accepted
 
@@ -74,12 +76,22 @@ Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework
 - Home Stage composition is implemented for desktop and mobile using the existing `StageShell` and `MasterNavigator` boundaries.
 - The approved static background and approved opaque/reveal box states are integrated without modifying the six source PNGs.
 - Hover/focus reveal, click lock/unlock, coarse-pointer tap toggle, restrained idle motion, and reduced-motion behavior are implemented.
-- Home-specific visual review is local-first; no deployment preview has been established.
+- Home-specific visual review remains local-first; the PR-only preview and generated screenshots are QA surfaces, not visual acceptance.
+
+### PR preview / visual QA infrastructure (established)
+- Same-repository pull requests now receive a Cloudflare Pages Direct Upload preview after the authoritative Technical verification job succeeds.
+- The preview uses a `pr-<number>` branch alias and includes these generated, uncommitted QA screenshots:
+  - `dist/__qa/home-desktop-closed.png`
+  - `dist/__qa/home-desktop-reveal.png`
+  - `dist/__qa/home-mobile-closed.png`
+  - `dist/__qa/home-mobile-reveal.png`
+- Preview HTTP checks cover the Home route, both Home screenshots states at both target viewports, About Event, and About Quantum Mechanics.
+- Localhost production preview remains the rapid development loop. Production deployment and Cloudflare Git integration remain unestablished.
 
 ## Not yet done
 
 - Web Orchestrator and user visual acceptance of Home Composition V1.
-- Preview deployment.
+- Production deployment.
 - Performance budgets.
 - Home background 2–3-frame production animation set.
 - Final branding assets/treatment.
@@ -90,9 +102,9 @@ Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework
 ## Current recommended gate
 
 For the current Home visual gate:
-1. Review the local production preview at desktop and mobile sizes, including the background crop, navigator, box states, interaction, and reduced motion.
-2. Obtain independent Web Orchestrator verification of the Home V1 branch and final GitHub Actions result.
+1. Review the local production preview and the current PR-only Cloudflare preview at desktop and mobile sizes, including the background crop, navigator, box states, interaction, and reduced motion.
+2. Obtain independent Web Orchestrator verification of the Home V1 branch, final GitHub Actions result, preview HTTP checks, and generated screenshots.
 3. Obtain user visual approval in-browser before expanding the rest of the site.
 4. Keep About Event and About Quantum Mechanics as neutral shells until that approval.
 
-Cloudflare/deployment remains intentionally deferred. Home Composition V1 is implemented and pending Web Orchestrator + user visual acceptance; it is not approved yet.
+Cloudflare production deployment remains intentionally deferred. Home Composition V1 is implemented and pending Web Orchestrator + user visual acceptance; it is not approved yet.
