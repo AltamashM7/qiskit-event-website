@@ -78,6 +78,18 @@ jobs:
           test -f dist/__qa/home-mobile-closed.png
           test -f dist/__qa/home-mobile-reveal.png
 
+      - name: Upload Home visual QA screenshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: home-visual-qa-pr-${{ github.event.pull_request.number }}
+          path: |
+            dist/__qa/home-desktop-closed.png
+            dist/__qa/home-desktop-reveal.png
+            dist/__qa/home-mobile-closed.png
+            dist/__qa/home-mobile-reveal.png
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Deploy Cloudflare Pages preview
         id: cloudflare-preview
         uses: cloudflare/wrangler-action@v4
