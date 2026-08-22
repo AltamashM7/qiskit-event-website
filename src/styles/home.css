@@ -300,8 +300,8 @@
 
   #home-stage .stage-shell__subject {
     top: auto;
-    bottom: clamp(2rem, 5vh, 3rem);
-    right: 50%;
+    bottom: clamp(3rem, 8.5vh, 4.5rem);
+    right: calc(50% - 1.5rem);
     width: min(68vw, 18rem);
     max-width: none;
     transform: translateX(50%);
