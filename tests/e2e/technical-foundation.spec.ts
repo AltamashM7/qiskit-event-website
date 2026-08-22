@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 const routes = [
-  { label: 'Home', path: '/', heading: 'Home' },
+  { label: 'Home', path: '/', heading: 'Qiskit Event' },
   { label: 'About Event', path: '/about-event/', heading: 'About Event' },
   {
     label: 'About Quantum Mechanics',

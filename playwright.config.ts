@@ -29,6 +29,8 @@ export default defineConfig({
       name: 'mobile-chromium',
       use: {
         ...devices['Desktop Chrome'],
+        isMobile: true,
+        hasTouch: true,
         viewport: { width: 390, height: 844 },
       },
     },

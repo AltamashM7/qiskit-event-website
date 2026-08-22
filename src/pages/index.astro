@@ -1,18 +1,11 @@
 ---
-import MasterNavigator from '../components/navigation/MasterNavigator.astro';
-import StageShell from '../components/stage/StageShell.astro';
+import HomeStage from '../components/home/HomeStage.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 ---
 
 <SiteLayout
-  title="Home | Qiskit Event Website"
-  description="Neutral technical route shell for the Qiskit event website."
+  title="Qiskit Event | Home"
+  description="Explore quantum computing through the Qiskit event experience."
 >
-  <StageShell id="home-stage" headingId="home-heading">
-    <MasterNavigator slot="navigation" currentPath={Astro.url.pathname} />
-    <div slot="identity">
-      <h1 id="home-heading">Home</h1>
-      <p>Neutral technical shell only; the Home visual composition is not implemented.</p>
-    </div>
-  </StageShell>
+  <HomeStage />
 </SiteLayout>
