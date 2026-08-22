@@ -68,11 +68,21 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Phase 0A1 establishes Astro with static output, TypeScript, and npm.
 - The initial implementation has no React, Vue, Svelte, Tailwind, GSAP, or UI component framework.
 - Canonical source directories live under `src/` and reserved visual assets live under `public/assets/`.
-- These choices govern the scaffold phase; deployment and the final production architecture remain open for later bounded review.
+- These choices govern the scaffold and technical-foundation phases; deployment and the final visual/application composition remain open for later bounded review.
+
+### Phase 0A2 technical foundation
+
+- The technical foundation uses Astro with static output, TypeScript, npm, and Node.js 24 LTS.
+- No frontend UI framework is used; the foundation remains semantic HTML, CSS, and minimal browser-native JavaScript where later bounded work requires it.
+- Reusable boundaries are established through `SiteLayout`, `StageShell`, `MasterNavigator`, and data-driven navigation/routes.
+- Navigation is implemented as real links and routes beneath the stylized presentation layer.
+- Browser QA uses Playwright with Chromium at the defined desktop and mobile viewports.
+- Accessibility QA includes an Axe baseline that fails serious and critical violations.
+- GitHub Actions verifies dependency installation, Astro checking, the static build, and the Chromium browser suite on pull requests to and pushes to `main`.
+- Reduced-motion support is part of the reusable motion-token foundation.
 
 ## PROVISIONAL / STRONG PREFERENCE
 
-- Astro is the current strongest framework preference because the site is static-first and performance-sensitive, with selective interactive islands.
 - Cloudflare Pages is a likely deployment target.
 - Codex Luna is a strong candidate for repository-native Builder work.
 - A single primary implementation owner should handle the first representative visual composition; specialist agents may review architecture, responsiveness, accessibility, testing, or performance.
@@ -82,8 +92,6 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 
 ## OPEN
 
-- Repository/project name.
-- Final framework lock.
 - Deployment hostname.
 - Final page count.
 - Final event content, dates, venue, registration details.

@@ -1,4 +1,16 @@
 :root {
   --color-page-background: #f7f7f5;
   --color-page-foreground: #171717;
+  --color-border: #c7c7c2;
+  --color-focus-ring: #0b57d0;
+  --motion-duration-short: 160ms;
+  --motion-duration-medium: 240ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-short: 0ms;
+    --motion-duration-medium: 0ms;
+  }
 }

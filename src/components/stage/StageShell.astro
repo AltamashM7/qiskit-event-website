@@ -1,0 +1,28 @@
+---
+interface Props {
+  id?: string;
+  headingId?: string;
+}
+
+const { id = 'stage', headingId } = Astro.props;
+---
+
+<section class="stage-shell" id={id} aria-labelledby={headingId}>
+  <div class="stage-shell__navigation">
+    <slot name="navigation" />
+  </div>
+
+  <div class="stage-shell__identity">
+    <slot name="identity" />
+  </div>
+
+  <div class="stage-shell__scene">
+    <div class="stage-shell__background"><slot name="background" /></div>
+    <div class="stage-shell__subject"><slot name="subject" /></div>
+    <div class="stage-shell__decorative"><slot name="decorative" /></div>
+  </div>
+
+  <div class="stage-shell__content">
+    <slot />
+  </div>
+</section>
