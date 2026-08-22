@@ -1,10 +1,17 @@
 import { defineConfig, devices } from '@playwright/test';
 
+declare const process: {
+  env: {
+    CI?: string;
+  };
+};
+
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
+  forbidOnly: !!process.env.CI,
   workers: 1,
-  retries: 1,
+  retries: process.env.CI ? 1 : 0,
   reporter: [['html', { open: 'never' }]],
   use: {
     baseURL: 'http://127.0.0.1:4321',
@@ -27,9 +34,12 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'node ./tests/e2e/preview-server.mjs',
+    command: 'npm run preview -- --host 127.0.0.1 --port 4321',
     url: 'http://127.0.0.1:4321/',
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    env: {
+      ASTRO_PREVIEW_BACKGROUND: '0',
+    },
   },
 });
