@@ -5,13 +5,14 @@
 }
 
 #home-stage {
+  --home-stage-gutter: clamp(1rem, 2.75vw, 2.5rem);
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas: 'navigation' 'identity';
   grid-template-rows: auto 1fr;
   min-height: 100svh;
-  padding: clamp(1rem, 2.75vw, 2.5rem);
+  padding: var(--home-stage-gutter);
   overflow: hidden;
   isolation: isolate;
   border: 0;
@@ -92,7 +93,7 @@
   margin: 0;
   font-size: clamp(4.25rem, 9.5vw, 8.75rem);
   font-weight: 900;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.01em;
   line-height: 0.86;
   text-transform: uppercase;
 }
@@ -130,6 +131,12 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+
+#home-stage .stage-shell__background {
+  left: calc(-1 * var(--home-stage-gutter));
+  right: calc(-1 * var(--home-stage-gutter));
+  width: auto;
 }
 
 #home-stage .home-stage__background-art {
@@ -171,6 +178,7 @@
   color: inherit;
   cursor: pointer;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transform-origin: 50% 55%;
   animation: home-box-float 6.5s ease-in-out infinite;
 }
@@ -195,12 +203,15 @@
 
 .schrodinger-box__image--closed {
   opacity: 1;
+  transform-origin: 0 0;
   transform: scale(1);
 }
 
 .schrodinger-box__image--reveal {
   opacity: 0;
-  transform: scale(0.96);
+  /* Calibrated to visible PNG content (alpha > 1): closed 974x1055, reveal 1022x1109. */
+  transform-origin: 0 0;
+  transform: translate(0.993070%, 1.680001%) scale(0.953033, 0.951307);
 }
 
 .schrodinger-box[data-revealed='true'] .schrodinger-box__image--closed {
@@ -224,6 +235,7 @@
 
 @media (max-width: 47.99rem) {
   #home-stage {
+    --home-stage-gutter: 1rem;
     grid-template-rows: auto 1fr;
     min-height: 100svh;
     padding: 1rem;
@@ -276,15 +288,21 @@
   }
 
   #home-stage .home-stage__background-art img {
-    object-position: 54% center;
+    object-position: 39% center;
     transform: scale(1.1);
+  }
+
+  #home-stage .stage-shell__background {
+    left: 0;
+    right: 0;
+    width: 100%;
   }
 
   #home-stage .stage-shell__subject {
     top: auto;
-    bottom: clamp(0.75rem, 2vh, 1.25rem);
+    bottom: clamp(2rem, 5vh, 3rem);
     right: 50%;
-    width: min(60vw, 16rem);
+    width: min(68vw, 18rem);
     max-width: none;
     transform: translateX(50%);
   }

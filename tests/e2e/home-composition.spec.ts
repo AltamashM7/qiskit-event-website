@@ -102,6 +102,11 @@ test('Mobile tap toggles the reveal state', async ({ page }, testInfo) => {
   await page.goto('/');
   const box = page.getByRole('button', { name: boxName });
 
+  const tapHighlight = await box.evaluate((element) =>
+    getComputedStyle(element).getPropertyValue('-webkit-tap-highlight-color'),
+  );
+  expect(tapHighlight).toBe('rgba(0, 0, 0, 0)');
+
   await box.tap({ force: true });
   await expect(box).toHaveAttribute('aria-pressed', 'true');
   await expect(box).toHaveAttribute('data-revealed', 'true');
@@ -145,4 +150,28 @@ test('Home composition stays within the viewport at its target size', async ({ p
     expect(identityBounds).not.toBeNull();
     expect(boxBounds!.y).toBeGreaterThan(identityBounds!.y + identityBounds!.height);
   }
+});
+
+test('Home background reaches the target viewport edges without horizontal overflow', async ({ page }) => {
+  await page.goto('/');
+
+  const geometry = await page.locator('.home-stage__background-art').evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return {
+      left: rect.left,
+      top: rect.top,
+      right: rect.right,
+      bottom: rect.bottom,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+    };
+  });
+
+  expect(geometry.left).toBeLessThanOrEqual(0.5);
+  expect(geometry.top).toBeLessThanOrEqual(0.5);
+  expect(geometry.right).toBeGreaterThanOrEqual(geometry.viewportWidth - 0.5);
+  expect(geometry.bottom).toBeGreaterThanOrEqual(geometry.viewportHeight - 0.5);
+  expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth);
 });

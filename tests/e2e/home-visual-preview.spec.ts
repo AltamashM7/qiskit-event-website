@@ -14,6 +14,17 @@ const requiredImageSelectors = [
 
 type CaptureInteraction = 'click' | 'tap';
 
+async function waitForAnimationFrames(page: Page) {
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => resolve());
+        });
+      }),
+  );
+}
+
 async function waitForHomeAssets(page: Page) {
   await page.waitForFunction(
     (selectors: string[]) =>
@@ -32,14 +43,7 @@ async function waitForHomeAssets(page: Page) {
     await Promise.all(images.map((image) => image.decode()));
   }, requiredImageSelectors);
 
-  await page.evaluate(
-    () =>
-      new Promise<void>((resolve) => {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => resolve());
-        });
-      }),
-  );
+  await waitForAnimationFrames(page);
 }
 
 async function captureHomeState(
@@ -73,6 +77,17 @@ async function captureHomeState(
     'opacity',
     isRevealed ? '1' : '0',
   );
+
+  if (interaction === 'tap') {
+    await page.evaluate(() => {
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    });
+  }
+  await waitForAnimationFrames(page);
+  await expect(box).toHaveAttribute('aria-pressed', String(isRevealed));
+  await expect(box).toHaveAttribute('data-revealed', String(isRevealed));
 
   await page.screenshot({
     path: path.join(qaDirectory, fileName),
