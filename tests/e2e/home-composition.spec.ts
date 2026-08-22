@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 const boxName = "Schrödinger's box";
 
 test('Home starts closed with the approved shared-composition layers', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
 
   const box = page.getByRole('button', { name: boxName });
@@ -14,12 +15,24 @@ test('Home starts closed with the approved shared-composition layers', async ({ 
 
   const layerGeometry = await box.locator('img').evaluateAll((images) =>
     images.map((image) => {
-      const rect = image.getBoundingClientRect();
-      return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+      const element = image as HTMLImageElement;
+      return { width: element.offsetWidth, height: element.offsetHeight };
     }),
   );
 
   expect(layerGeometry[0]).toEqual(layerGeometry[1]);
+
+  const closedWrapper = await box.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+  });
+  await box.focus();
+  const revealedWrapper = await box.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+  });
+
+  expect(revealedWrapper).toEqual(closedWrapper);
 });
 
 test('Desktop hover and focus reveal the box temporarily', async ({ page }, testInfo) => {
@@ -110,7 +123,7 @@ test('Reduced motion keeps the interaction intentional without idle animation', 
   await expect(box).toHaveAttribute('data-revealed', 'true');
 });
 
-test('Home composition stays within the viewport at its target size', async ({ page }) => {
+test('Home composition stays within the viewport at its target size', async ({ page }, testInfo) => {
   await page.goto('/');
 
   const dimensions = await page.evaluate(() => ({
@@ -126,4 +139,10 @@ test('Home composition stays within the viewport at its target size', async ({ p
   expect(boxBounds!.y).toBeGreaterThanOrEqual(0);
   expect(boxBounds!.x + boxBounds!.width).toBeLessThanOrEqual(dimensions.clientWidth);
   expect(boxBounds!.y + boxBounds!.height).toBeLessThanOrEqual(dimensions.clientHeight);
+
+  if (testInfo.project.name === 'mobile-chromium') {
+    const identityBounds = await page.locator('.home-stage__identity-content').boundingBox();
+    expect(identityBounds).not.toBeNull();
+    expect(boxBounds!.y).toBeGreaterThan(identityBounds!.y + identityBounds!.height);
+  }
 });
