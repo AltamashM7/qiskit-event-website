@@ -122,6 +122,10 @@
   line-height: 1.35;
 }
 
+#home-stage .home-stage__lede-line {
+  display: inline;
+}
+
 #home-stage .stage-shell__scene {
   position: absolute;
   z-index: 0;
@@ -301,8 +305,22 @@
     text-wrap: balance;
   }
 
+  #home-stage .home-stage__lede-line {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.14rem 0.4rem 0.1rem;
+    border-inline-start: 0.2rem solid var(--home-yellow);
+    background: rgba(247, 247, 245, 0.88);
+    box-shadow: 0.2rem 0.14rem 0 rgba(17, 24, 32, 0.12);
+  }
+
+  #home-stage .home-stage__lede-line + .home-stage__lede-line {
+    margin-top: 0.18rem;
+  }
+
   #home-stage .home-stage__background-art img {
-    object-position: 45% center;
+    object-position: 55% center;
     transform: scale(1.1);
   }
 

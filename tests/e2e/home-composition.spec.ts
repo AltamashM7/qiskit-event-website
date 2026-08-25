@@ -171,6 +171,11 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
       title: rect('.home-stage__title'),
       lede: rect('.home-stage__lede'),
       subject: rect('#home-stage .stage-shell__subject'),
+      ledeLines: Array.from(document.querySelectorAll('.home-stage__lede-line')).map((line) => ({
+        text: line.textContent?.trim() ?? '',
+        display: getComputedStyle(line).display,
+        background: getComputedStyle(line).backgroundColor,
+      })),
       backgroundPosition: getComputedStyle(
         document.querySelector('.home-stage__background-art img') as HTMLImageElement,
       ).objectPosition,
@@ -191,7 +196,24 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
   expect(geometry.subject!.left).toBeGreaterThanOrEqual(0);
   expect(geometry.subject!.right).toBeLessThanOrEqual(geometry.clientWidth);
   expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth);
-  expect(geometry.backgroundPosition).toBe('45% 50%');
+  expect(geometry.backgroundPosition).toBe('55% 50%');
+  expect(geometry.ledeLines).toEqual([
+    {
+      text: 'Explore quantum computing',
+      display: 'block',
+      background: 'rgba(247, 247, 245, 0.88)',
+    },
+    {
+      text: 'through ideas, interaction,',
+      display: 'block',
+      background: 'rgba(247, 247, 245, 0.88)',
+    },
+    {
+      text: 'and experimentation.',
+      display: 'block',
+      background: 'rgba(247, 247, 245, 0.88)',
+    },
+  ]);
 });
 
 test('Home title uses the vendored display font', async ({ page }) => {
