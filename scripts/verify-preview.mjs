@@ -15,6 +15,8 @@ const checks = [
   { path: '/__qa/home-desktop-reveal.png', kind: 'image' },
   { path: '/__qa/home-mobile-closed.png', kind: 'image' },
   { path: '/__qa/home-mobile-reveal.png', kind: 'image' },
+  { path: '/__qa/home-mobile-compact-closed.png', kind: 'image' },
+  { path: '/__qa/home-mobile-compact-reveal.png', kind: 'image' },
   { path: '/about-event/', kind: 'page' },
   { path: '/about-quantum-mechanics/', kind: 'page' },
 ];

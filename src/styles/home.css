@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Archivo Black';
+  src: url('/fonts/archivo-black/archivo-black-latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --home-paper: #f7f7f5;
   --home-ink: #111820;
@@ -91,17 +99,18 @@
   max-width: 9ch;
   row-gap: 0.04em;
   margin: 0;
-  font-size: clamp(4.25rem, 9.5vw, 8.75rem);
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  line-height: 0.86;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(4rem, 8.2vw, 7.5rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.98;
   text-transform: uppercase;
 }
 
 #home-stage .home-stage__title span:last-child {
   color: var(--home-yellow);
-  -webkit-text-stroke: 0.035em var(--home-ink);
-  text-shadow: 0.04em 0.04em 0 var(--home-ink);
+  -webkit-text-stroke: 0.03em var(--home-ink);
+  text-shadow: 0.035em 0.035em 0 var(--home-ink);
 }
 
 #home-stage .home-stage__lede {
@@ -236,8 +245,11 @@
 @media (max-width: 47.99rem) {
   #home-stage {
     --home-stage-gutter: 1rem;
-    grid-template-rows: auto 1fr;
+    grid-template-areas: 'navigation' 'identity' 'scene';
+    grid-template-rows: auto auto auto;
+    align-content: start;
     min-height: 100svh;
+    overflow: visible;
     padding: 1rem;
   }
 
@@ -277,19 +289,27 @@
 
   #home-stage .home-stage__title {
     max-width: 8ch;
-    font-size: clamp(3.5rem, 17vw, 6.5rem);
+    font-size: clamp(3.4rem, 16.5vw, 6.5rem);
+    line-height: 0.88;
   }
 
   #home-stage .home-stage__lede {
-    max-width: 19rem;
+    max-width: 18rem;
     margin-top: 1.1rem;
     font-size: 1rem;
     line-height: 1.3;
+    text-wrap: balance;
   }
 
   #home-stage .home-stage__background-art img {
-    object-position: 39% center;
+    object-position: 45% center;
     transform: scale(1.1);
+  }
+
+  #home-stage .stage-shell__scene {
+    position: static;
+    grid-area: scene;
+    min-height: 0;
   }
 
   #home-stage .stage-shell__background {
@@ -299,12 +319,14 @@
   }
 
   #home-stage .stage-shell__subject {
+    position: relative;
     top: auto;
-    bottom: clamp(3rem, 8.5vh, 4.5rem);
-    right: calc(50% - 1.5rem);
-    width: min(68vw, 18rem);
+    right: auto;
+    bottom: auto;
+    width: min(66vw, 18rem);
     max-width: none;
-    transform: translateX(50%);
+    margin: clamp(1.25rem, 4vw, 2rem) clamp(0.5rem, 3vw, 1rem) 1.5rem auto;
+    transform: none;
   }
 }
 

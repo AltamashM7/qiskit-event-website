@@ -26,6 +26,17 @@ async function waitForAnimationFrames(page: Page) {
 }
 
 async function waitForHomeAssets(page: Page) {
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
+
+  const titleFont = await page.locator('.home-stage__title').evaluate((element) => ({
+    family: getComputedStyle(element).fontFamily,
+    loaded: document.fonts.check('400 1em "Archivo Black"'),
+  }));
+  expect(titleFont.family).toContain('Archivo Black');
+  expect(titleFont.loaded).toBe(true);
+
   await page.waitForFunction(
     (selectors: string[]) =>
       selectors.every((selector) => {
@@ -113,4 +124,14 @@ test('captures mobile Home closed preview', async ({ page }, testInfo) => {
 test('captures mobile Home reveal preview', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile-chromium', 'Mobile-only visual capture.');
   await captureHomeState(page, 'home-mobile-reveal.png', 'tap');
+});
+
+test('captures compact mobile Home closed preview', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile-compact-chromium', 'Compact mobile-only visual capture.');
+  await captureHomeState(page, 'home-mobile-compact-closed.png');
+});
+
+test('captures compact mobile Home reveal preview', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile-compact-chromium', 'Compact mobile-only visual capture.');
+  await captureHomeState(page, 'home-mobile-compact-reveal.png', 'tap');
 });

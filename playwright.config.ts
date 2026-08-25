@@ -28,10 +28,29 @@ export default defineConfig({
     {
       name: 'mobile-chromium',
       use: {
-        ...devices['Desktop Chrome'],
-        isMobile: true,
-        hasTouch: true,
+        ...devices['Pixel 5'],
         viewport: { width: 390, height: 844 },
+      },
+    },
+    {
+      name: 'mobile-compact-chromium',
+      use: {
+        ...devices['Pixel 5'],
+        viewport: { width: 360, height: 720 },
+      },
+    },
+    {
+      name: 'mobile-short-chromium',
+      use: {
+        ...devices['Pixel 5'],
+        viewport: { width: 360, height: 700 },
+      },
+    },
+    {
+      name: 'mobile-tall-chromium',
+      use: {
+        ...devices['Pixel 5'],
+        viewport: { width: 412, height: 915 },
       },
     },
   ],
