@@ -132,6 +132,19 @@ When imported into the repository, rename/copy it to the stable recommended file
   - yellow Home-background leakage,
   - text obscuring the cat.
 
+## Local typography asset
+
+**Canonical repository path:** `public/fonts/archivo-black/archivo-black-latin.woff2`
+
+Status: **LOCAL IMPLEMENTATION ASSET / LICENSED / COMMITTED**
+
+Purpose:
+- Deterministic Home event-title typography across supported browsers and devices.
+
+Provenance and license:
+- Sourced from the Archivo Black family in Google Fonts: https://github.com/google/fonts/tree/main/ofl/archivoblack
+- Licensed under the SIL Open Font License 1.1; the license text and retrieval details are recorded beside the font in `public/fonts/archivo-black/`.
+
 ## Future assets
 
 Not yet production-approved:

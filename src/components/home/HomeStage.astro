@@ -1,0 +1,43 @@
+---
+import MasterNavigator from '../navigation/MasterNavigator.astro';
+import StageShell from '../stage/StageShell.astro';
+import SchrodingerBox from './SchrodingerBox.astro';
+import '../../styles/home.css';
+---
+
+<StageShell id="home-stage" headingId="home-heading">
+  <MasterNavigator slot="navigation" currentPath={Astro.url.pathname} />
+
+  <div slot="identity" class="home-stage__identity-content">
+    <p class="home-stage__kicker">Quantum / Event</p>
+    <h1 id="home-heading" class="home-stage__title">
+      <span>Qiskit</span>
+      {' '}
+      <span>Event</span>
+    </h1>
+    <p class="home-stage__lede">
+      <span class="home-stage__lede-line">Explore quantum computing</span>{' '}
+      <span class="home-stage__lede-line">through ideas, interaction,</span>{' '}
+      <span class="home-stage__lede-line">and experimentation.</span>
+    </p>
+  </div>
+
+  <div slot="background" class="home-stage__background-art">
+    <img
+      src="/assets/home/background/home-probability-field-frame-a-v1.png"
+      alt=""
+      aria-hidden="true"
+      width="1672"
+      height="941"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </div>
+
+  <SchrodingerBox slot="subject" />
+
+  <script>
+    import '../../scripts/schrodinger-box';
+  </script>
+</StageShell>
