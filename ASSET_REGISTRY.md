@@ -13,7 +13,7 @@ This registry tracks production/reference visual assets.
 
 ## Current approved/reference assets
 
-> The six approved Home binary assets listed below are committed at their canonical repository paths. They are approved references, not yet integrated into the frontend.
+> The approved Home binary assets listed below are committed at their canonical repository paths. They are approved references or bounded implementation assets as noted below.
 
 ### Home background
 
@@ -33,9 +33,64 @@ Important characteristics:
 - no generic HUD clutter,
 - no 3D/realistic environment.
 
-Future:
-- derive frame B/C from the same composition for 2–3-frame stepped animation.
-- do not independently regenerate all frames from scratch.
+Immutable metadata:
+- Dimensions: `1672 × 941`.
+- Color: 8-bit truecolor RGB; no alpha channel.
+- SHA-256: `4DF70974F98A031BFCB420CCC11B5B900088423FDE81CD88FC9E5E8092A75789`.
+
+Approved stepped set:
+- Frame A is the original approved Home background foundation.
+- The canonical future sequence is `A → B → C → A`.
+- Frames B and C are approved continuation frames registered below.
+- The frontend currently renders Frame A only; animation integration is not implemented.
+
+### Home background — continuation frame B
+
+**Canonical repository path:** `public/assets/home/background/home-probability-field-frame-b-v1.png`
+
+Status: **APPROVED CONTINUATION FRAME / USER-SUPPLIED / COMMITTED**
+
+Purpose:
+- Home stepped-background animation continuation frame.
+- Intended to follow Frame A in the future `A → B → C → A` sequence.
+
+Approval and source:
+- Approved by the Web Orchestrator and USER for the future restrained stepped loop.
+- Generated externally through the USER's asset-generation workflow and manually supplied to the repository.
+- Repository bytes were preserved without resizing, compression, optimization, recoloring, cropping, or re-export.
+
+Immutable metadata:
+- Dimensions: `1672 × 941`.
+- Color: 8-bit truecolor RGB; no alpha channel.
+- SHA-256: `FEF52C7EE68C844EB0C56B0B881D8FAA6085027CCCB9D7C57DF8C9574AAE513C`.
+
+Integration:
+- Registered for future use only.
+- Not wired into the frontend; current Home rendering remains Frame A only.
+
+### Home background — continuation frame C
+
+**Canonical repository path:** `public/assets/home/background/home-probability-field-frame-c-v1.png`
+
+Status: **APPROVED CONTINUATION FRAME / USER-SUPPLIED / COMMITTED**
+
+Purpose:
+- Home stepped-background animation continuation frame.
+- Intended to follow Frame B in the future `A → B → C → A` sequence.
+
+Approval and source:
+- Approved by the Web Orchestrator and USER for the future restrained stepped loop.
+- Generated externally through the USER's asset-generation workflow and manually supplied to the repository.
+- Repository bytes were preserved without resizing, compression, optimization, recoloring, cropping, or re-export.
+
+Immutable metadata:
+- Dimensions: `1672 × 941`.
+- Color: 8-bit truecolor RGB; no alpha channel.
+- SHA-256: `A8CDFA7B17FDAFB495CA3D20E56015A477AF758F8C6385373C912F17ABD32B4B`.
+
+Integration:
+- Registered for future use only.
+- Not wired into the frontend; current Home rendering remains Frame A only.
 
 ### Home living cat master
 
@@ -148,8 +203,6 @@ Provenance and license:
 ## Future assets
 
 Not yet production-approved:
-- Home background frame B,
-- Home background frame C,
 - mobile-specific Home background if needed,
 - final official branding assets,
 - About Event Stage subject,
