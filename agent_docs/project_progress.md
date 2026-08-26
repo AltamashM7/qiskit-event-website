@@ -2,15 +2,15 @@
 
 ## Current overall status
 
-**Phase: Home Composition V1 implemented / pending Web Orchestrator + user visual acceptance; PR preview QA infrastructure established**
+**Phase: Home Composition V1 accepted and merged; Home background animation assets imported; animation integration next; PR preview QA infrastructure established**
 
-Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 is implemented on the current feature branch using the approved Home binaries and remains pending independent Web Orchestrator verification and user visual acceptance.
+Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C are now imported on the dedicated asset-import branch; background animation integration remains the next bounded implementation task.
 
 The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
 
-Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The six approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage.
+Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The original approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage. The canonical approved Home background animation set is now A/B/C; no animation behavior has been added in this asset-import phase.
 
-Cloudflare Pages Direct Upload PR-preview infrastructure is now established on this branch through GitHub Actions and `cloudflare/wrangler-action@v4`, gated after Technical verification. The preview publishes the built site and four reduced-motion Chromium screenshots for independent Web Orchestrator visual QA. Production deployment and Cloudflare Git integration are not established.
+Cloudflare Pages Direct Upload PR-preview infrastructure is now established on this branch through GitHub Actions and `cloudflare/wrangler-action@v4`, gated after Technical verification. The preview publishes the built site and six reduced-motion Chromium screenshots for independent Web Orchestrator visual QA: desktop, normal-mobile, and compact-mobile closed/reveal pairs. Production deployment and Cloudflare Git integration are not established.
 
 ## Completed / accepted
 
@@ -61,7 +61,7 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 - No React, Vue, Svelte, Tailwind, GSAP, or UI component framework added.
 - Canonical `src/` and `public/assets/` directory structure established.
 - Neutral About route shells and reusable Stage/navigation/layout boundaries now exist; Home Composition V1 is implemented within those boundaries.
-- The six approved Home binary assets are imported and committed at their canonical paths.
+- The approved Home binary assets are imported and committed at their canonical paths, including the A/B/C background frame set.
 
 ### Phase 0A2 technical foundation (accepted / merged)
 - Astro static output, TypeScript, npm, and Node.js 24 LTS baseline established.
@@ -72,11 +72,13 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 - Reduced-motion tokens and baseline behavior established.
 - The approved binaries remain unchanged and are served from their canonical paths; Home V1 uses only the approved background and closed/reveal box states.
 
-### Home Composition V1 (implemented / pending Web Orchestrator + user visual acceptance)
+### Home Composition V1 (accepted / merged)
 - Home Stage composition is implemented for desktop and mobile using the existing `StageShell` and `MasterNavigator` boundaries.
 - The approved static background and approved opaque/reveal box states are integrated without modifying the six source PNGs.
 - Hover/focus reveal, click lock/unlock, coarse-pointer tap toggle, restrained idle motion, and reduced-motion behavior are implemented.
-- Home-specific visual review remains local-first; the PR-only preview and generated screenshots are QA surfaces, not visual acceptance.
+- Home Composition V1 was independently accepted and squash-merged into `main`.
+- Home currently renders background Frame A only; no B/C animation behavior was added during the asset-import phase.
+- Home-specific visual review was completed for V1; the PR-only preview and generated screenshots remain QA surfaces for future bounded changes.
 
 ### PR preview / visual QA infrastructure (established)
 - Same-repository pull requests now receive a Cloudflare Pages Direct Upload preview after the authoritative Technical verification job succeeds.
@@ -85,15 +87,17 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
   - `dist/__qa/home-desktop-reveal.png`
   - `dist/__qa/home-mobile-closed.png`
   - `dist/__qa/home-mobile-reveal.png`
-- Preview HTTP checks cover the Home route, both Home screenshots states at both target viewports, About Event, and About Quantum Mechanics.
+  - `dist/__qa/home-mobile-compact-closed.png`
+  - `dist/__qa/home-mobile-compact-reveal.png`
+- Preview HTTP checks cover the Home route, all six generated Home screenshots across desktop, normal-mobile, and compact-mobile closed/reveal pairs, About Event, and About Quantum Mechanics.
 - Localhost production preview remains the rapid development loop. Production deployment and Cloudflare Git integration remain unestablished.
 
 ## Not yet done
 
-- Web Orchestrator and user visual acceptance of Home Composition V1.
+- Independent Web Orchestrator verification and approval of this Home background asset-import phase.
 - Production deployment.
 - Performance budgets.
-- Home background 2–3-frame production animation set.
+- Home background A/B/C stepped-animation integration.
 - Final branding assets/treatment.
 - About Event implementation/assets.
 - About Quantum Mechanics implementation/assets.
@@ -101,10 +105,10 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 
 ## Current recommended gate
 
-For the current Home visual gate:
-1. Review the local production preview and the current PR-only Cloudflare preview at desktop and mobile sizes, including the background crop, navigator, box states, interaction, and reduced motion.
-2. Obtain independent Web Orchestrator verification of the Home V1 branch, final GitHub Actions result, preview HTTP checks, and generated screenshots.
-3. Obtain user visual approval in-browser before expanding the rest of the site.
-4. Keep About Event and About Quantum Mechanics as neutral shells until that approval.
+For the current Home background asset-import gate:
+1. Verify the committed A/B/C paths, dimensions, hashes, and registry metadata.
+2. Obtain independent Web Orchestrator verification of this asset-import branch and its final GitHub Actions result.
+3. Keep A/B/C animation integration as a separate bounded phase after this asset-import approval.
+4. Keep About Event and About Quantum Mechanics as neutral shells during that phase.
 
-Cloudflare production deployment remains intentionally deferred. Home Composition V1 is implemented and pending Web Orchestrator + user visual acceptance; it is not approved yet.
+Cloudflare production deployment remains intentionally deferred. Home Composition V1 is accepted and merged. The next bounded implementation task is restrained Home background A/B/C stepped-animation integration, after independent verification of this asset-import phase.
