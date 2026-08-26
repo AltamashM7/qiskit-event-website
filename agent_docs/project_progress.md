@@ -6,7 +6,7 @@
 
 Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C are now imported on the dedicated asset-import branch; background animation integration is implemented on the current bounded branch and remains pending visual acceptance.
 
-The current bounded branch implements the approved A/B/C background set as a restrained CSS-driven stepped loop with an initial 3.6-second cycle and approximately 1.2 seconds per frame state. Reduced motion freezes Frame A. Visual acceptance remains pending independent Web Orchestrator and USER review.
+The current bounded branch implements the approved A/B/C background set as a restrained CSS-driven stepped loop with a 1.2-second cycle and approximately 0.4 seconds per frame state. Reduced motion freezes Frame A. On mobile, the approved landscape artwork is now contained and scaled over a simple two-tone neutral/yellow underlay rather than tightly cover-cropped. Visual acceptance remains pending independent Web Orchestrator and USER review.
 
 The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
 

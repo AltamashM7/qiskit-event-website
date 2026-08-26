@@ -153,7 +153,7 @@
 }
 
 #home-stage .home-stage__background-art {
-  --home-background-cycle-duration: 3.6s;
+  --home-background-cycle-duration: 1.2s;
   overflow: hidden;
   background: var(--home-paper);
 }
@@ -394,9 +394,20 @@
     margin-top: 0.18rem;
   }
 
+  #home-stage .home-stage__background-art {
+    background: linear-gradient(
+      90deg,
+      var(--home-paper) 0%,
+      var(--home-paper) 52%,
+      var(--home-yellow) 52%,
+      var(--home-yellow) 100%
+    );
+  }
+
   #home-stage .home-stage__background-art img {
-    object-position: 55% center;
-    transform: scale(1.1);
+    object-fit: contain;
+    object-position: center;
+    transform: scale(1.4);
   }
 
   #home-stage .stage-shell__scene {

@@ -81,7 +81,7 @@ test('Home background provides the three approved frame layers with shared geome
   expect(new Set(frames.map((frame) => JSON.stringify(frame.geometry))).size).toBe(1);
 });
 
-test('Normal motion enables a discrete 3.6 second Home background loop', async ({ page }) => {
+test('Normal motion enables a discrete 1.2 second Home background loop', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/');
 
@@ -105,7 +105,7 @@ test('Normal motion enables a discrete 3.6 second Home background loop', async (
     'home-background-frame-b',
     'home-background-frame-c',
   ]);
-  expect(animationState.map((frame) => frame.duration)).toEqual(['3.6s', '3.6s', '3.6s']);
+  expect(animationState.map((frame) => frame.duration)).toEqual(['1.2s', '1.2s', '1.2s']);
   expect(
     animationState.every((frame) => /(?:steps\(1(?:,\s*end)?\)|step-end)/.test(frame.timingFunction)),
   ).toBe(true);
@@ -268,14 +268,20 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
         display: getComputedStyle(line).display,
         background: getComputedStyle(line).backgroundColor,
       })),
+      backgroundFit: getComputedStyle(
+        document.querySelector('.home-stage__background-art img') as HTMLImageElement,
+      ).objectFit,
       backgroundPosition: getComputedStyle(
         document.querySelector('.home-stage__background-art img') as HTMLImageElement,
       ).objectPosition,
+      backgroundUnderlay: getComputedStyle(
+        document.querySelector('.home-stage__background-art') as HTMLElement,
+      ).backgroundImage,
       backgroundStyles: Array.from(
         document.querySelectorAll('.home-stage__background-art .home-stage__background-frame'),
       ).map((image) => {
         const styles = getComputedStyle(image);
-        return { objectPosition: styles.objectPosition, transform: styles.transform };
+        return { objectFit: styles.objectFit, objectPosition: styles.objectPosition, transform: styles.transform };
       }),
       clientWidth: document.documentElement.clientWidth,
       scrollWidth: document.documentElement.scrollWidth,
@@ -294,16 +300,23 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
   expect(geometry.subject!.left).toBeGreaterThanOrEqual(0);
   expect(geometry.subject!.right).toBeLessThanOrEqual(geometry.clientWidth);
   expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth);
-  expect(geometry.backgroundPosition).toBe('55% 50%');
+  expect(geometry.backgroundFit).toBe('contain');
+  expect(geometry.backgroundPosition).toBe('50% 50%');
+  expect(geometry.backgroundUnderlay).toMatch(/linear-gradient\(90deg.*52%/);
+  expect(geometry.backgroundStyles.map((style) => style.objectFit)).toEqual([
+    'contain',
+    'contain',
+    'contain',
+  ]);
   expect(geometry.backgroundStyles.map((style) => style.objectPosition)).toEqual([
-    '55% 50%',
-    '55% 50%',
-    '55% 50%',
+    '50% 50%',
+    '50% 50%',
+    '50% 50%',
   ]);
   expect(geometry.backgroundStyles.map((style) => readTransformScale(style.transform))).toEqual([
-    1.1,
-    1.1,
-    1.1,
+    1.4,
+    1.4,
+    1.4,
   ]);
   expect(geometry.ledeLines).toEqual([
     {
