@@ -40,9 +40,9 @@ Immutable metadata:
 
 Approved stepped set:
 - Frame A is the original approved Home background foundation.
-- The canonical future sequence is `A → B → C → A`.
+- The canonical stepped sequence is `A → B → C → A`.
 - Frames B and C are approved continuation frames registered below.
-- The frontend currently renders Frame A only; animation integration is not implemented.
+- The frontend integrates the three frames as a restrained stepped Home loop on the current bounded branch.
 
 ### Home background — continuation frame B
 
@@ -52,10 +52,10 @@ Status: **APPROVED CONTINUATION FRAME / USER-SUPPLIED / COMMITTED**
 
 Purpose:
 - Home stepped-background animation continuation frame.
-- Intended to follow Frame A in the future `A → B → C → A` sequence.
+- Follows Frame A in the canonical `A → B → C → A` sequence.
 
 Approval and source:
-- Approved by the Web Orchestrator and USER for the future restrained stepped loop.
+- Approved by the Web Orchestrator and USER for the restrained stepped loop.
 - Generated externally through the USER's asset-generation workflow and manually supplied to the repository.
 - Repository bytes were preserved without resizing, compression, optimization, recoloring, cropping, or re-export.
 
@@ -65,8 +65,8 @@ Immutable metadata:
 - SHA-256: `FEF52C7EE68C844EB0C56B0B881D8FAA6085027CCCB9D7C57DF8C9574AAE513C`.
 
 Integration:
-- Registered for future use only.
-- Not wired into the frontend; current Home rendering remains Frame A only.
+- Registered and wired into the bounded Home background stepped-animation branch as the second state after Frame A.
+- Visual acceptance of the stepped loop remains pending.
 
 ### Home background — continuation frame C
 
@@ -76,10 +76,10 @@ Status: **APPROVED CONTINUATION FRAME / USER-SUPPLIED / COMMITTED**
 
 Purpose:
 - Home stepped-background animation continuation frame.
-- Intended to follow Frame B in the future `A → B → C → A` sequence.
+- Follows Frame B in the canonical `A → B → C → A` sequence.
 
 Approval and source:
-- Approved by the Web Orchestrator and USER for the future restrained stepped loop.
+- Approved by the Web Orchestrator and USER for the restrained stepped loop.
 - Generated externally through the USER's asset-generation workflow and manually supplied to the repository.
 - Repository bytes were preserved without resizing, compression, optimization, recoloring, cropping, or re-export.
 
@@ -89,8 +89,8 @@ Immutable metadata:
 - SHA-256: `A8CDFA7B17FDAFB495CA3D20E56015A477AF758F8C6385373C912F17ABD32B4B`.
 
 Integration:
-- Registered for future use only.
-- Not wired into the frontend; current Home rendering remains Frame A only.
+- Registered and wired into the bounded Home background stepped-animation branch as the third state before returning to Frame A.
+- Visual acceptance of the stepped loop remains pending.
 
 ### Home living cat master
 

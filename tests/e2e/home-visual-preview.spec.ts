@@ -7,7 +7,9 @@ import { expect, test, type Page } from '@playwright/test';
 const boxName = "Schrödinger's box";
 const qaDirectory = path.resolve('dist', '__qa');
 const requiredImageSelectors = [
-  '.home-stage__background-art img',
+  '.home-stage__background-art .home-stage__background-frame--a',
+  '.home-stage__background-art .home-stage__background-frame--b',
+  '.home-stage__background-art .home-stage__background-frame--c',
   '.schrodinger-box__image--closed',
   '.schrodinger-box__image--reveal',
 ];
@@ -53,6 +55,11 @@ async function waitForHomeAssets(page: Page) {
 
     await Promise.all(images.map((image) => image.decode()));
   }, requiredImageSelectors);
+
+  await expect(page.locator('.home-stage__background-art')).toHaveAttribute(
+    'data-background-ready',
+    'true',
+  );
 
   await waitForAnimationFrames(page);
 }

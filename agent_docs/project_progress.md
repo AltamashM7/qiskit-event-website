@@ -2,13 +2,15 @@
 
 ## Current overall status
 
-**Phase: Home Composition V1 accepted and merged; Home background animation assets imported; animation integration next; PR preview QA infrastructure established**
+**Phase: Home Composition V1 accepted and merged; Home background stepped animation implemented on bounded branch; visual acceptance pending; PR preview QA infrastructure established**
 
-Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C are now imported on the dedicated asset-import branch; background animation integration remains the next bounded implementation task.
+Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C are now imported on the dedicated asset-import branch; background animation integration is implemented on the current bounded branch and remains pending visual acceptance.
+
+The current bounded branch implements the approved A/B/C background set as a restrained CSS-driven stepped loop with an initial 3.6-second cycle and approximately 1.2 seconds per frame state. Reduced motion freezes Frame A. Visual acceptance remains pending independent Web Orchestrator and USER review.
 
 The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
 
-Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The original approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage. The canonical approved Home background animation set is now A/B/C; no animation behavior has been added in this asset-import phase.
+Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The original approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage. The canonical approved Home background animation set is now A/B/C; this bounded branch adds only its restrained stepped animation integration without changing the approved PNG bytes.
 
 Cloudflare Pages Direct Upload PR-preview infrastructure is now established on this branch through GitHub Actions and `cloudflare/wrangler-action@v4`, gated after Technical verification. The preview publishes the built site and six reduced-motion Chromium screenshots for independent Web Orchestrator visual QA: desktop, normal-mobile, and compact-mobile closed/reveal pairs. Production deployment and Cloudflare Git integration are not established.
 
@@ -77,7 +79,7 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 - The approved static background and approved opaque/reveal box states are integrated without modifying the six source PNGs.
 - Hover/focus reveal, click lock/unlock, coarse-pointer tap toggle, restrained idle motion, and reduced-motion behavior are implemented.
 - Home Composition V1 was independently accepted and squash-merged into `main`.
-- Home currently renders background Frame A only; no B/C animation behavior was added during the asset-import phase.
+- Home V1 was accepted with background Frame A static; this bounded branch adds the separate A/B/C stepped animation integration without changing the accepted composition.
 - Home-specific visual review was completed for V1; the PR-only preview and generated screenshots remain QA surfaces for future bounded changes.
 
 ### PR preview / visual QA infrastructure (established)
@@ -94,10 +96,9 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 
 ## Not yet done
 
-- Independent Web Orchestrator verification and approval of this Home background asset-import phase.
+- Independent Web Orchestrator and USER visual acceptance of this Home background stepped-animation phase.
 - Production deployment.
 - Performance budgets.
-- Home background A/B/C stepped-animation integration.
 - Final branding assets/treatment.
 - About Event implementation/assets.
 - About Quantum Mechanics implementation/assets.
@@ -105,10 +106,10 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 
 ## Current recommended gate
 
-For the current Home background asset-import gate:
+For the current Home background stepped-animation gate:
 1. Verify the committed A/B/C paths, dimensions, hashes, and registry metadata.
-2. Obtain independent Web Orchestrator verification of this asset-import branch and its final GitHub Actions result.
-3. Keep A/B/C animation integration as a separate bounded phase after this asset-import approval.
-4. Keep About Event and About Quantum Mechanics as neutral shells during that phase.
+2. Obtain independent Web Orchestrator verification of this stepped-animation branch and its final GitHub Actions result.
+3. Review the A → B → C → A stepping, initial timing candidate, blank-flash safety, desktop/mobile geometry, and reduced-motion behavior.
+4. Keep About Event and About Quantum Mechanics as neutral shells during this gate.
 
-Cloudflare production deployment remains intentionally deferred. Home Composition V1 is accepted and merged. The next bounded implementation task is restrained Home background A/B/C stepped-animation integration, after independent verification of this asset-import phase.
+Cloudflare production deployment remains intentionally deferred. Home Composition V1 is accepted and merged. The current bounded implementation is the restrained Home background A/B/C stepped loop; visual acceptance remains pending, and no further page or production work should begin until the Web Orchestrator and USER complete this gate.

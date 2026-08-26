@@ -22,8 +22,14 @@ import '../../styles/home.css';
     </p>
   </div>
 
-  <div slot="background" class="home-stage__background-art">
+  <div
+    slot="background"
+    class="home-stage__background-art"
+    data-home-background
+    data-background-ready="false"
+  >
     <img
+      class="home-stage__background-frame home-stage__background-frame--a"
       src="/assets/home/background/home-probability-field-frame-a-v1.png"
       alt=""
       aria-hidden="true"
@@ -33,11 +39,32 @@ import '../../styles/home.css';
       decoding="async"
       fetchpriority="high"
     />
+    <img
+      class="home-stage__background-frame home-stage__background-frame--b"
+      src="/assets/home/background/home-probability-field-frame-b-v1.png"
+      alt=""
+      aria-hidden="true"
+      width="1672"
+      height="941"
+      loading="eager"
+      decoding="async"
+    />
+    <img
+      class="home-stage__background-frame home-stage__background-frame--c"
+      src="/assets/home/background/home-probability-field-frame-c-v1.png"
+      alt=""
+      aria-hidden="true"
+      width="1672"
+      height="941"
+      loading="eager"
+      decoding="async"
+    />
   </div>
 
   <SchrodingerBox slot="subject" />
 
   <script>
     import '../../scripts/schrodinger-box';
+    import '../../scripts/home-background';
   </script>
 </StageShell>

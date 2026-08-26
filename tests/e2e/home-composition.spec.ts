@@ -1,6 +1,17 @@
 import { test, expect } from '@playwright/test';
 
 const boxName = "Schrödinger's box";
+const backgroundFrameSelector = '.home-stage__background-frame';
+const backgroundFrameSources = [
+  '/assets/home/background/home-probability-field-frame-a-v1.png',
+  '/assets/home/background/home-probability-field-frame-b-v1.png',
+  '/assets/home/background/home-probability-field-frame-c-v1.png',
+];
+
+function readTransformScale(transform: string) {
+  const match = transform.match(/^matrix\(([-\d.]+)/);
+  return Number(match?.[1]);
+}
 
 test('Home starts closed with the approved shared-composition layers', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -33,6 +44,72 @@ test('Home starts closed with the approved shared-composition layers', async ({ 
   });
 
   expect(revealedWrapper).toEqual(closedWrapper);
+});
+
+test('Home background provides the three approved frame layers with shared geometry', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+
+  const background = page.locator('.home-stage__background-art');
+  await expect(background).toHaveAttribute('data-background-ready', 'true');
+
+  const frames = await background.locator(backgroundFrameSelector).evaluateAll((images) =>
+    images.map((image) => {
+      const element = image as HTMLImageElement;
+      const bounds = element.getBoundingClientRect();
+      return {
+        source: element.getAttribute('src'),
+        width: element.getAttribute('width'),
+        height: element.getAttribute('height'),
+        geometry: {
+          x: Number(bounds.x.toFixed(3)),
+          y: Number(bounds.y.toFixed(3)),
+          width: Number(bounds.width.toFixed(3)),
+          height: Number(bounds.height.toFixed(3)),
+        },
+      };
+    }),
+  );
+
+  expect(frames).toHaveLength(3);
+  expect(frames.map((frame) => frame.source)).toEqual(backgroundFrameSources);
+  expect(frames.map((frame) => [frame.width, frame.height])).toEqual([
+    ['1672', '941'],
+    ['1672', '941'],
+    ['1672', '941'],
+  ]);
+  expect(new Set(frames.map((frame) => JSON.stringify(frame.geometry))).size).toBe(1);
+});
+
+test('Normal motion enables a discrete 3.6 second Home background loop', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+
+  const background = page.locator('.home-stage__background-art');
+  await expect(background).toHaveAttribute('data-background-ready', 'true');
+
+  const animationState = await background.locator(backgroundFrameSelector).evaluateAll((images) =>
+    images.map((image) => {
+      const styles = getComputedStyle(image);
+      return {
+        name: styles.animationName,
+        duration: styles.animationDuration,
+        timingFunction: styles.animationTimingFunction,
+        iterationCount: styles.animationIterationCount,
+      };
+    }),
+  );
+
+  expect(animationState.map((frame) => frame.name)).toEqual([
+    'home-background-frame-a',
+    'home-background-frame-b',
+    'home-background-frame-c',
+  ]);
+  expect(animationState.map((frame) => frame.duration)).toEqual(['3.6s', '3.6s', '3.6s']);
+  expect(
+    animationState.every((frame) => /(?:steps\(1(?:,\s*end)?\)|step-end)/.test(frame.timingFunction)),
+  ).toBe(true);
+  expect(animationState.map((frame) => frame.iterationCount)).toEqual(['infinite', 'infinite', 'infinite']);
 });
 
 test('Desktop hover and focus reveal the box temporarily', async ({ page }, testInfo) => {
@@ -120,6 +197,21 @@ test('Reduced motion keeps the interaction intentional without idle animation', 
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
 
+  const background = page.locator('.home-stage__background-art');
+  await expect(background).toHaveAttribute('data-background-ready', 'true');
+  const backgroundState = await background.locator(backgroundFrameSelector).evaluateAll((images) =>
+    images.map((image) => {
+      const styles = getComputedStyle(image);
+      return { animationName: styles.animationName, opacity: styles.opacity };
+    }),
+  );
+
+  expect(backgroundState).toEqual([
+    { animationName: 'none', opacity: '1' },
+    { animationName: 'none', opacity: '0' },
+    { animationName: 'none', opacity: '0' },
+  ]);
+
   const box = page.getByRole('button', { name: boxName });
   const animationName = await box.evaluate((element) => getComputedStyle(element).animationName);
 
@@ -179,6 +271,12 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
       backgroundPosition: getComputedStyle(
         document.querySelector('.home-stage__background-art img') as HTMLImageElement,
       ).objectPosition,
+      backgroundStyles: Array.from(
+        document.querySelectorAll('.home-stage__background-art .home-stage__background-frame'),
+      ).map((image) => {
+        const styles = getComputedStyle(image);
+        return { objectPosition: styles.objectPosition, transform: styles.transform };
+      }),
       clientWidth: document.documentElement.clientWidth,
       scrollWidth: document.documentElement.scrollWidth,
     };
@@ -197,6 +295,16 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
   expect(geometry.subject!.right).toBeLessThanOrEqual(geometry.clientWidth);
   expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth);
   expect(geometry.backgroundPosition).toBe('55% 50%');
+  expect(geometry.backgroundStyles.map((style) => style.objectPosition)).toEqual([
+    '55% 50%',
+    '55% 50%',
+    '55% 50%',
+  ]);
+  expect(geometry.backgroundStyles.map((style) => readTransformScale(style.transform))).toEqual([
+    1.1,
+    1.1,
+    1.1,
+  ]);
   expect(geometry.ledeLines).toEqual([
     {
       text: 'Explore quantum computing',
@@ -256,4 +364,26 @@ test('Home background reaches the target viewport edges without horizontal overf
   expect(geometry.right).toBeGreaterThanOrEqual(geometry.viewportWidth - 0.5);
   expect(geometry.bottom).toBeGreaterThanOrEqual(geometry.viewportHeight - 0.5);
   expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth);
+});
+
+test('Desktop background preserves the accepted full-bleed crop and scale', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop-chromium', 'Desktop-only background geometry coverage.');
+
+  await page.goto('/');
+
+  const styles = await page.locator(backgroundFrameSelector).evaluateAll((images) =>
+    images.map((image) => {
+      const computed = getComputedStyle(image);
+      return {
+        objectFit: computed.objectFit,
+        objectPosition: computed.objectPosition,
+        transform: computed.transform,
+      };
+    }),
+  );
+
+  expect(new Set(styles.map((style) => JSON.stringify(style))).size).toBe(1);
+  expect(styles[0].objectFit).toBe('cover');
+  expect(styles[0].objectPosition).toBe('50% 50%');
+  expect(readTransformScale(styles[0].transform)).toBeCloseTo(1.04);
 });
