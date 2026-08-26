@@ -10,7 +10,7 @@ The GitHub repository now exists, and the durable project-context documentation 
 
 Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The original approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage. The canonical approved Home background animation set is now A/B/C; no animation behavior has been added in this asset-import phase.
 
-Cloudflare Pages Direct Upload PR-preview infrastructure is now established on this branch through GitHub Actions and `cloudflare/wrangler-action@v4`, gated after Technical verification. The preview publishes the built site and four reduced-motion Chromium screenshots for independent Web Orchestrator visual QA. Production deployment and Cloudflare Git integration are not established.
+Cloudflare Pages Direct Upload PR-preview infrastructure is now established on this branch through GitHub Actions and `cloudflare/wrangler-action@v4`, gated after Technical verification. The preview publishes the built site and six reduced-motion Chromium screenshots for independent Web Orchestrator visual QA: desktop, normal-mobile, and compact-mobile closed/reveal pairs. Production deployment and Cloudflare Git integration are not established.
 
 ## Completed / accepted
 
@@ -87,7 +87,9 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
   - `dist/__qa/home-desktop-reveal.png`
   - `dist/__qa/home-mobile-closed.png`
   - `dist/__qa/home-mobile-reveal.png`
-- Preview HTTP checks cover the Home route, both Home screenshots states at both target viewports, About Event, and About Quantum Mechanics.
+  - `dist/__qa/home-mobile-compact-closed.png`
+  - `dist/__qa/home-mobile-compact-reveal.png`
+- Preview HTTP checks cover the Home route, all six generated Home screenshots across desktop, normal-mobile, and compact-mobile closed/reveal pairs, About Event, and About Quantum Mechanics.
 - Localhost production preview remains the rapid development loop. Production deployment and Cloudflare Git integration remain unestablished.
 
 ## Not yet done
