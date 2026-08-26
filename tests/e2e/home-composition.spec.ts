@@ -81,7 +81,7 @@ test('Home background provides the three approved frame layers with shared geome
   expect(new Set(frames.map((frame) => JSON.stringify(frame.geometry))).size).toBe(1);
 });
 
-test('Normal motion enables a discrete 0.3 second Home background loop', async ({ page }) => {
+test('Normal motion enables a discrete 0.75 second Home background loop', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/');
 
@@ -105,7 +105,7 @@ test('Normal motion enables a discrete 0.3 second Home background loop', async (
     'home-background-frame-b',
     'home-background-frame-c',
   ]);
-  expect(animationState.map((frame) => frame.duration)).toEqual(['0.3s', '0.3s', '0.3s']);
+  expect(animationState.map((frame) => frame.duration)).toEqual(['0.75s', '0.75s', '0.75s']);
   expect(
     animationState.every((frame) => /(?:steps\(1(?:,\s*end)?\)|step-end)/.test(frame.timingFunction)),
   ).toBe(true);
