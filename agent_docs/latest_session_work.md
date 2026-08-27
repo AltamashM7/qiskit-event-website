@@ -15,7 +15,7 @@ Repository bootstrap is now complete. GitHub is the authoritative shared impleme
 
 ## Phase 0A1 scaffold state
 
-The Astro static-output project scaffold is now established with TypeScript, npm, no frontend UI framework, and the canonical `src/` and `public/assets/` directory structure. The original approved Home binaries have been manually supplied, imported, and merged into `main` at their canonical paths. Approved background continuation frames B/C are now imported on the dedicated asset-import branch; the About route shells remain neutral.
+The Astro static-output project scaffold is now established with TypeScript, npm, no frontend UI framework, and the canonical `src/` and `public/assets/` directory structure. The original approved Home binaries have been manually supplied, imported, and merged into `main` at their canonical paths. Approved background continuation frames B/C remain committed as the earlier full-frame exploration; the About route shells remain neutral.
 
 Home Composition V1 was independently accepted and squash-merged into `main`. The canonical approved background set is now A/B/C, while the frontend still renders Frame A only.
 
@@ -27,7 +27,7 @@ Phase 0A2 was independently accepted and squash-merged into `main`. Its reusable
 
 ## PR preview / visual QA infrastructure state
 
-Cloudflare Pages Direct Upload PR-preview infrastructure is now established on the Home V1 branch through GitHub Actions and `cloudflare/wrangler-action@v4`. The preview job runs only for same-repository pull requests, waits for the authoritative Technical verification job, deploys the built `dist/` output under a pull-request alias, and verifies the live Home/About routes plus four generated reduced-motion Chromium screenshots. Localhost production preview remains the rapid development loop. Production deployment and Cloudflare Git integration are not established.
+Cloudflare Pages Direct Upload PR-preview infrastructure is now established on the Home V1 branch through GitHub Actions and `cloudflare/wrangler-action@v4`. The preview job runs only for same-repository pull requests, waits for the authoritative Technical verification job, deploys the built `dist/` output under a pull-request alias, and verifies the live Home/About routes plus six generated reduced-motion Chromium screenshots covering desktop, normal-mobile, and compact-mobile closed/reveal pairs. Localhost production preview remains the rapid development loop. Production deployment and Cloudflare Git integration are not established.
 
 ## Home Composition V1 state
 
@@ -41,6 +41,14 @@ Home V1 was independently accepted and squash-merged into `main`. The implementa
 - the individual cat masters remain reference assets; the visible reveal uses `box-reveal-v1.png` and does not reconstruct the cat;
 - the PR-only Cloudflare preview and generated screenshot artifacts remain QA surfaces; production deployment and About-page visual implementation remain intentionally deferred.
 
+## Home layered background asset foundation (Phase A)
+
+The old Draft PR #6 full-frame A/B/C frame-swap exploration remains unmerged and is superseded as the chosen direction by the desktop layered-wave architecture. The user-supplied desktop base, overlay, and eight wave masters have been imported under the canonical layered master directories, and optimized native-dimension WebP delivery derivatives have been generated with the committed `scripts/generate-layered-background-deliveries.mjs` helper. The overlay master has real alpha transparency, and the source masters remain unchanged.
+
+This phase is asset foundation only: no Home integration, wave animation, replacement of the current Frame A rendering, or mobile-specific layered base/overlay assets were added. The current Home implementation and PR #6 are unchanged.
+
+The chosen production architecture is one static no-wave base background, eight independent transparent wave layers, and a foreground neutral/boundary overlay above the waves. The wave layers are intended for lightweight independent continuous transform-based movement in a later bounded phase; Phase A does not implement animation.
+
 ## Latest approved visual state
 
 ### Home background
@@ -51,7 +59,10 @@ Approved foundational direction:
 - selective small pixel breakup,
 - low noise,
 - no generic HUD clutter,
-- suitable for 2–3-frame stepped animation.
+- one static no-wave base background,
+- eight independent transparent wave layers,
+- foreground neutral/boundary overlay above the waves,
+- lightweight independent continuous transform-based wave movement planned for a later phase; not implemented in Phase A.
 
 ### Schrödinger's Box
 Closed state:
@@ -89,8 +100,4 @@ If both adjusted and unadjusted variants exist in the repository, the unadjusted
 
 ## Immediate next step
 
-The approved Home background frames B/C have now been imported and registered on the dedicated asset-import branch. No animation behavior was added in this phase; Home continues to render Frame A only.
-
-The next bounded implementation task is **Home Background Stepped Animation Integration**, using the canonical `A → B → C → A` set with restrained stepping and appropriate reduced-motion behavior. Do not begin that integration, production deployment, Cloudflare Git integration, About-page visual implementation, or additional page work as part of this asset-import phase.
-
-The asset-import PR must receive independent Web Orchestrator verification before animation integration begins. Keep About Event and About Quantum Mechanics as neutral shells.
+This Phase A asset-foundation branch must receive independent Web Orchestrator verification of the desktop layered master and delivery assets, registry metadata, alpha integrity, and final GitHub Actions result. The old Draft PR #6 frame-swap exploration remains unmerged and superseded; do not begin layered Home integration or wave animation yet. Mobile-specific layered assets, production deployment, Cloudflare Git integration, About-page visual implementation, and additional page work remain separate future phases. Keep About Event and About Quantum Mechanics as neutral shells.

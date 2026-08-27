@@ -2,13 +2,13 @@
 
 ## Current overall status
 
-**Phase: Home Composition V1 accepted and merged; Home background animation assets imported; animation integration next; PR preview QA infrastructure established**
+**Phase: Home Composition V1 accepted and merged; layered Home background asset foundation imported; animation/integration pending; PR preview QA infrastructure established**
 
-Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C are now imported on the dedicated asset-import branch; background animation integration remains the next bounded implementation task.
+Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C remain committed as the earlier full-frame exploration; the old Draft PR #6 frame-swap exploration remains unmerged and is superseded as the chosen direction by the desktop layered-wave architecture. This Phase A branch imports the user-supplied layered masters and generates optimized desktop delivery assets; Home background animation/integration remains pending.
 
 The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
 
-Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The original approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage. The canonical approved Home background animation set is now A/B/C; no animation behavior has been added in this asset-import phase.
+Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The original approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage. The canonical approved full-frame Home set remains A/B/C for provenance, while the layered-wave architecture is now the chosen direction; no layered animation or Home integration has been added in this asset-foundation phase.
 
 Cloudflare Pages Direct Upload PR-preview infrastructure is now established on this branch through GitHub Actions and `cloudflare/wrangler-action@v4`, gated after Technical verification. The preview publishes the built site and six reduced-motion Chromium screenshots for independent Web Orchestrator visual QA: desktop, normal-mobile, and compact-mobile closed/reveal pairs. Production deployment and Cloudflare Git integration are not established.
 
@@ -32,7 +32,10 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
   - calm monochrome/off-white area,
   - yellow probability/interference field,
   - simple large 2D wave forms,
-  - future 2–3-frame animation suitability.
+  - one static no-wave base background,
+  - eight independent transparent wave layers,
+  - foreground neutral/boundary overlay above the waves,
+  - lightweight independent continuous transform-based wave movement planned for a later phase; not implemented in Phase A.
 
 ### Schrödinger interaction
 - Closed-box discovery model approved.
@@ -80,6 +83,16 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 - Home currently renders background Frame A only; no B/C animation behavior was added during the asset-import phase.
 - Home-specific visual review was completed for V1; the PR-only preview and generated screenshots remain QA surfaces for future bounded changes.
 
+### Home layered background asset foundation (Phase A)
+- The earlier full-frame A/B/C frame-swap exploration on Draft PR #6 remains unmerged and is superseded by the layered-wave direction.
+- User-supplied desktop layered masters were imported under `public/assets/home/background/layered/masters/desktop/`.
+- The chosen production architecture is one static no-wave base background, eight independent transparent wave layers, and a foreground neutral/boundary overlay above the waves.
+- Optimized desktop WebP delivery derivatives were generated under `public/assets/home/background/layered/web/desktop/` with the committed `scripts/generate-layered-background-deliveries.mjs` helper.
+- The overlay master was verified to contain real alpha transparency; the masters remain immutable and were not resized, cropped, recolored, or rewritten.
+- Later bounded integration may give the wave layers lightweight independent continuous transform-based movement; no layered animation or Home integration was implemented in this phase.
+- No replacement of the current Frame A rendering was implemented in this phase.
+- Mobile-specific layered base/overlay assets are not part of this phase.
+
 ### PR preview / visual QA infrastructure (established)
 - Same-repository pull requests now receive a Cloudflare Pages Direct Upload preview after the authoritative Technical verification job succeeds.
 - The preview uses a `pr-<number>` branch alias and includes these generated, uncommitted QA screenshots:
@@ -94,10 +107,11 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 
 ## Not yet done
 
-- Independent Web Orchestrator verification and approval of this Home background asset-import phase.
+- Independent Web Orchestrator verification and approval of this Home layered background asset-foundation phase.
 - Production deployment.
 - Performance budgets.
-- Home background A/B/C stepped-animation integration.
+- Layered Home background integration and wave animation.
+- Mobile-specific layered Home background assets.
 - Final branding assets/treatment.
 - About Event implementation/assets.
 - About Quantum Mechanics implementation/assets.
@@ -105,10 +119,10 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 
 ## Current recommended gate
 
-For the current Home background asset-import gate:
-1. Verify the committed A/B/C paths, dimensions, hashes, and registry metadata.
-2. Obtain independent Web Orchestrator verification of this asset-import branch and its final GitHub Actions result.
-3. Keep A/B/C animation integration as a separate bounded phase after this asset-import approval.
-4. Keep About Event and About Quantum Mechanics as neutral shells during that phase.
+For the current Home layered background asset-foundation gate:
+1. Verify the committed desktop master and delivery paths, dimensions, alpha status, hashes, and registry metadata.
+2. Obtain independent Web Orchestrator verification of this Phase A branch and its final GitHub Actions result.
+3. Keep layered Home integration and wave animation as a separate bounded phase after this asset-foundation approval.
+4. Keep mobile-specific layered assets, About Event, and About Quantum Mechanics as separate future work.
 
-Cloudflare production deployment remains intentionally deferred. Home Composition V1 is accepted and merged. The next bounded implementation task is restrained Home background A/B/C stepped-animation integration, after independent verification of this asset-import phase.
+Cloudflare production deployment remains intentionally deferred. Home Composition V1 is accepted and merged. The old Draft PR #6 full-frame frame-swap exploration remains unmerged and superseded; do not begin layered Home integration or wave animation until this asset-foundation phase is independently verified.
