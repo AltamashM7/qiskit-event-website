@@ -38,12 +38,12 @@ Immutable metadata:
 - Color: 8-bit truecolor RGB; no alpha channel.
 - SHA-256: `4DF70974F98A031BFCB420CCC11B5B900088423FDE81CD88FC9E5E8092A75789`.
 
-Approved stepped set:
+Historical full-frame experiment (retained for provenance):
 - Frame A is the original approved Home background foundation.
-- The canonical future sequence is `A → B → C → A`.
-- Frames B and C are approved continuation frames registered below.
+- The previous full-frame experiment used the sequence `A → B → C → A`.
+- Frames B and C remain registered below as historical/provenance assets.
 - The frontend currently renders Frame A only; animation integration is not implemented.
-- This earlier full-frame direction remains committed for provenance but is superseded as the chosen implementation direction by the desktop layered-wave foundation below.
+- This earlier full-frame direction remains committed for provenance only and is superseded as the chosen production implementation direction by the desktop layered-wave foundation below.
 
 ### Home background — continuation frame B
 
@@ -52,11 +52,11 @@ Approved stepped set:
 Status: **APPROVED CONTINUATION FRAME / USER-SUPPLIED / COMMITTED**
 
 Purpose:
-- Home stepped-background animation continuation frame.
-- Intended to follow Frame A in the future `A → B → C → A` sequence.
+- Historical Home full-frame stepped-animation experiment continuation frame.
+- Used after Frame A in the previous `A → B → C → A` full-frame experiment.
 
 Approval and source:
-- Approved by the Web Orchestrator and USER for the future restrained stepped loop.
+- Approved by the Web Orchestrator and USER for the earlier restrained stepped-loop experiment; retained as historical/provenance material and not chosen as the production background architecture.
 - Generated externally through the USER's asset-generation workflow and manually supplied to the repository.
 - Repository bytes were preserved without resizing, compression, optimization, recoloring, cropping, or re-export.
 
@@ -66,7 +66,7 @@ Immutable metadata:
 - SHA-256: `FEF52C7EE68C844EB0C56B0B881D8FAA6085027CCCB9D7C57DF8C9574AAE513C`.
 
 Integration:
-- Registered for future use only.
+- Retained for historical/provenance registration only.
 - Not wired into the frontend; current Home rendering remains Frame A only.
 
 ### Home background — layered-wave foundation (Phase A)
@@ -82,6 +82,8 @@ Purpose:
 - Preserve the source artwork as immutable masters while providing optimized web-serving derivatives.
 
 Architecture context:
+- Chosen production architecture: one static no-wave base background, eight independent transparent wave layers above it, and a foreground neutral/boundary overlay above the waves.
+- The waves are intended to receive lightweight independent continuous transform-based movement in a later bounded integration phase; no layered animation is implemented in Phase A.
 - The earlier full-frame A/B/C animation exploration remains committed and unmerged on Draft PR #6; it is superseded as the chosen implementation direction by this layered-wave architecture.
 - This Phase A branch imports and optimizes the layered assets only. No Home integration, wave animation, or replacement of the current Frame A rendering is implemented.
 - The overlay was inspected at the pixel level: its RGBA alpha channel has real transparency, including `615,141` fully transparent pixels on the right side. The apparent black area is not baked black fill.
@@ -89,7 +91,7 @@ Architecture context:
 
 Delivery generation:
 - Reproducible helper: `scripts/generate-layered-background-deliveries.mjs`.
-- Uses the repository's existing `sharp` installation (`0.35.3`, transitively provided by Astro); no new dependency was added.
+- Uses the direct dev-only `sharp` dependency pinned to `0.35.3`; it is used only for asset generation and is not a runtime dependency.
 - Base WebP settings: quality `95`, effort `6`, smart chroma subsampling.
 - Overlay and wave WebP settings: quality `95`, alpha quality `100`, effort `6`, smart chroma subsampling.
 - All delivery files retain their masters' native dimensions; no resize, crop, recolor, or artwork simplification was performed.
@@ -131,11 +133,11 @@ Delivery generation:
 Status: **APPROVED CONTINUATION FRAME / USER-SUPPLIED / COMMITTED**
 
 Purpose:
-- Home stepped-background animation continuation frame.
-- Intended to follow Frame B in the future `A → B → C → A` sequence.
+- Historical Home full-frame stepped-animation experiment continuation frame.
+- Used after Frame B in the previous `A → B → C → A` full-frame experiment.
 
 Approval and source:
-- Approved by the Web Orchestrator and USER for the future restrained stepped loop.
+- Approved by the Web Orchestrator and USER for the earlier restrained stepped-loop experiment; retained as historical/provenance material and not chosen as the production background architecture.
 - Generated externally through the USER's asset-generation workflow and manually supplied to the repository.
 - Repository bytes were preserved without resizing, compression, optimization, recoloring, cropping, or re-export.
 
@@ -145,7 +147,7 @@ Immutable metadata:
 - SHA-256: `A8CDFA7B17FDAFB495CA3D20E56015A477AF758F8C6385373C912F17ABD32B4B`.
 
 Integration:
-- Registered for future use only.
+- Retained for historical/provenance registration only.
 - Not wired into the frontend; current Home rendering remains Frame A only.
 
 ### Home living cat master

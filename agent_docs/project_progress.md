@@ -32,7 +32,10 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
   - calm monochrome/off-white area,
   - yellow probability/interference field,
   - simple large 2D wave forms,
-  - future 2–3-frame animation suitability.
+  - one static no-wave base background,
+  - eight independent transparent wave layers,
+  - foreground neutral/boundary overlay above the waves,
+  - lightweight independent continuous transform-based wave movement planned for a later phase; not implemented in Phase A.
 
 ### Schrödinger interaction
 - Closed-box discovery model approved.
@@ -83,9 +86,11 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 ### Home layered background asset foundation (Phase A)
 - The earlier full-frame A/B/C frame-swap exploration on Draft PR #6 remains unmerged and is superseded by the layered-wave direction.
 - User-supplied desktop layered masters were imported under `public/assets/home/background/layered/masters/desktop/`.
+- The chosen production architecture is one static no-wave base background, eight independent transparent wave layers, and a foreground neutral/boundary overlay above the waves.
 - Optimized desktop WebP delivery derivatives were generated under `public/assets/home/background/layered/web/desktop/` with the committed `scripts/generate-layered-background-deliveries.mjs` helper.
 - The overlay master was verified to contain real alpha transparency; the masters remain immutable and were not resized, cropped, recolored, or rewritten.
-- No Home integration, wave animation, or replacement of the current Frame A rendering was implemented in this phase.
+- Later bounded integration may give the wave layers lightweight independent continuous transform-based movement; no layered animation or Home integration was implemented in this phase.
+- No replacement of the current Frame A rendering was implemented in this phase.
 - Mobile-specific layered base/overlay assets are not part of this phase.
 
 ### PR preview / visual QA infrastructure (established)

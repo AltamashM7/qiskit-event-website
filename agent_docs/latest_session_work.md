@@ -47,6 +47,8 @@ The old Draft PR #6 full-frame A/B/C frame-swap exploration remains unmerged and
 
 This phase is asset foundation only: no Home integration, wave animation, replacement of the current Frame A rendering, or mobile-specific layered base/overlay assets were added. The current Home implementation and PR #6 are unchanged.
 
+The chosen production architecture is one static no-wave base background, eight independent transparent wave layers, and a foreground neutral/boundary overlay above the waves. The wave layers are intended for lightweight independent continuous transform-based movement in a later bounded phase; Phase A does not implement animation.
+
 ## Latest approved visual state
 
 ### Home background
@@ -57,7 +59,10 @@ Approved foundational direction:
 - selective small pixel breakup,
 - low noise,
 - no generic HUD clutter,
-- suitable for 2–3-frame stepped animation.
+- one static no-wave base background,
+- eight independent transparent wave layers,
+- foreground neutral/boundary overlay above the waves,
+- lightweight independent continuous transform-based wave movement planned for a later phase; not implemented in Phase A.
 
 ### Schrödinger's Box
 Closed state:
