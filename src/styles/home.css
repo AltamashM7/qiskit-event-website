@@ -198,6 +198,16 @@
 }
 
 @media (min-width: 48rem) {
+  #home-stage .home-layered-background {
+    /*
+     * The overlay's neutral/yellow seam sits near the middle of the desktop
+     * composition. Container-relative units keep the spawn relationship
+     * stable as that composition changes width.
+     */
+    container-type: inline-size;
+    --home-wave-boundary-anchor: 54cqw;
+  }
+
   #home-stage .home-layered-background__waves,
   #home-stage .home-layered-background__overlay {
     display: block;
@@ -243,12 +253,19 @@
     animation-fill-mode: both;
   }
 
+  /*
+   * --wave-x-start is a transform offset, not the painted leading edge. Each
+   * offset below accounts for the layer's width and its small transparent
+   * alpha lead-in, placing the reset just beneath the overlay seam. The
+   * overlay conceals the reset; the painted wave then emerges shortly after
+   * crossing the irregular boundary.
+   */
   #home-stage .home-layered-background__wave--01 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-01-thick-cream-upper.webp');
     --wave-width: 156%;
-    --wave-height: 68%;
-    --wave-top: -13%;
-    --wave-x-start: -124vw;
+    --wave-height: 76%;
+    --wave-top: -17%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 16cqw);
     --wave-x-end: 124vw;
     --wave-duration: 12s;
     --wave-delay: -5.28s;
@@ -259,9 +276,9 @@
   #home-stage .home-layered-background__wave--02 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-02-thick-cream-lower.webp');
     --wave-width: 164%;
-    --wave-height: 72%;
-    --wave-top: 39%;
-    --wave-x-start: -126vw;
+    --wave-height: 80%;
+    --wave-top: 35%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
     --wave-x-end: 126vw;
     --wave-duration: 14s;
     --wave-delay: -8.96s;
@@ -272,9 +289,9 @@
   #home-stage .home-layered-background__wave--03 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
     --wave-width: 145%;
-    --wave-height: 40%;
-    --wave-top: -4%;
-    --wave-x-start: -116vw;
+    --wave-height: 48%;
+    --wave-top: -8%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
     --wave-x-end: 116vw;
     --wave-duration: 11s;
     --wave-delay: -2.42s;
@@ -283,16 +300,18 @@
   }
 
   #home-stage .home-layered-background__wave--03-b {
-    --wave-height: 42%;
-    --wave-top: 27%;
+    --wave-height: 52%;
+    --wave-top: 22%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 10cqw);
     --wave-duration: 15s;
     --wave-delay: -8.1s;
     --wave-opacity: 0.68;
   }
 
   #home-stage .home-layered-background__wave--03-c {
-    --wave-height: 44%;
-    --wave-top: 63%;
+    --wave-height: 54%;
+    --wave-top: 58%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
     --wave-duration: 18s;
     --wave-delay: -14.76s;
     --wave-opacity: 0.62;
@@ -301,9 +320,9 @@
   #home-stage .home-layered-background__wave--04 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp');
     --wave-width: 148%;
-    --wave-height: 44%;
-    --wave-top: 9%;
-    --wave-x-start: -118vw;
+    --wave-height: 52%;
+    --wave-top: 5%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 14cqw);
     --wave-x-end: 118vw;
     --wave-duration: 13s;
     --wave-delay: -4.42s;
@@ -312,16 +331,18 @@
   }
 
   #home-stage .home-layered-background__wave--04-b {
-    --wave-height: 46%;
-    --wave-top: 36%;
+    --wave-height: 54%;
+    --wave-top: 32%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 11cqw);
     --wave-duration: 16s;
     --wave-delay: -9.92s;
     --wave-opacity: 0.64;
   }
 
   #home-stage .home-layered-background__wave--04-c {
-    --wave-height: 42%;
-    --wave-top: 70%;
+    --wave-height: 50%;
+    --wave-top: 66%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
     --wave-duration: 19s;
     --wave-delay: -16.72s;
     --wave-opacity: 0.58;
@@ -330,9 +351,9 @@
   #home-stage .home-layered-background__wave--05 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp');
     --wave-width: 138%;
-    --wave-height: 34%;
-    --wave-top: -2%;
-    --wave-x-start: -114vw;
+    --wave-height: 42%;
+    --wave-top: -6%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 18cqw);
     --wave-x-end: 114vw;
     --wave-duration: 12.5s;
     --wave-delay: -2.25s;
@@ -341,8 +362,9 @@
   }
 
   #home-stage .home-layered-background__wave--05-b {
-    --wave-height: 36%;
-    --wave-top: 24%;
+    --wave-height: 45%;
+    --wave-top: 20%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 8cqw);
     --wave-duration: 17s;
     --wave-delay: -8.5s;
     --wave-opacity: 0.62;
@@ -350,8 +372,9 @@
   }
 
   #home-stage .home-layered-background__wave--05-c {
-    --wave-height: 36%;
-    --wave-top: 65%;
+    --wave-height: 44%;
+    --wave-top: 61%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 18cqw);
     --wave-duration: 20s;
     --wave-delay: -15.8s;
     --wave-opacity: 0.54;
@@ -361,9 +384,9 @@
   #home-stage .home-layered-background__wave--06 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp');
     --wave-width: 142%;
-    --wave-height: 36%;
-    --wave-top: 17%;
-    --wave-x-start: -116vw;
+    --wave-height: 44%;
+    --wave-top: 13%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 14cqw);
     --wave-x-end: 116vw;
     --wave-duration: 14.5s;
     --wave-delay: -4.06s;
@@ -372,8 +395,9 @@
   }
 
   #home-stage .home-layered-background__wave--06-b {
-    --wave-height: 38%;
-    --wave-top: 44%;
+    --wave-height: 47%;
+    --wave-top: 39.5%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 12cqw);
     --wave-duration: 18.5s;
     --wave-delay: -10.36s;
     --wave-opacity: 0.6;
@@ -381,8 +405,9 @@
   }
 
   #home-stage .home-layered-background__wave--06-c {
-    --wave-height: 34%;
-    --wave-top: 72%;
+    --wave-height: 42%;
+    --wave-top: 68%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
     --wave-duration: 21.5s;
     --wave-delay: -18.06s;
     --wave-opacity: 0.52;
@@ -392,9 +417,9 @@
   #home-stage .home-layered-background__wave--07 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp');
     --wave-width: 176%;
-    --wave-height: 92%;
-    --wave-top: -8%;
-    --wave-x-start: -130vw;
+    --wave-height: 100%;
+    --wave-top: -12%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 27cqw);
     --wave-x-end: 130vw;
     --wave-duration: 21s;
     --wave-delay: -5.04s;
@@ -403,16 +428,18 @@
   }
 
   #home-stage .home-layered-background__wave--07-b {
-    --wave-height: 90%;
-    --wave-top: 22%;
+    --wave-height: 96%;
+    --wave-top: 19%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 23cqw);
     --wave-duration: 22s;
     --wave-delay: -11.88s;
     --wave-opacity: 0.4;
   }
 
   #home-stage .home-layered-background__wave--07-c {
-    --wave-height: 88%;
-    --wave-top: 58%;
+    --wave-height: 94%;
+    --wave-top: 55%;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 25cqw);
     --wave-duration: 23s;
     --wave-delay: -18.86s;
     --wave-opacity: 0.3;
@@ -423,7 +450,7 @@
     --wave-width: 220%;
     --wave-height: 500%;
     --wave-top: -205%;
-    --wave-x-start: -155vw;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 40cqw);
     --wave-x-end: 155vw;
     --wave-duration: 22.5s;
     --wave-delay: -9.45s;
@@ -435,7 +462,7 @@
     --wave-width: 200%;
     --wave-height: 190%;
     --wave-top: -25%;
-    --wave-x-start: -150vw;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 35cqw);
     --wave-x-end: 150vw;
     --wave-duration: 24s;
     --wave-delay: -4.32s;
@@ -447,7 +474,7 @@
     --wave-width: 200%;
     --wave-height: 190%;
     --wave-top: 54%;
-    --wave-x-start: -150vw;
+    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 40cqw);
     --wave-x-end: 150vw;
     --wave-duration: 26s;
     --wave-delay: -19.24s;

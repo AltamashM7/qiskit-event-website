@@ -55,11 +55,42 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
       waveDurations: waves.map((wave) => getComputedStyle(wave).animationDuration),
       waveDelays: waves.map((wave) => getComputedStyle(wave).animationDelay),
       waveTransforms: waves.map((wave) => getComputedStyle(wave).transform),
-      waveXStarts: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-x-start').trim()),
-      waveXEnds: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-x-end').trim()),
+      waveStartTokens: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-x-start').trim()),
+      waveEndTokens: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-x-end').trim()),
       waveWidths: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-width').trim()),
       waveHeights: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-height').trim()),
       waveOpacities: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-opacity').trim()),
+      waveStartTranslations: waves.map((wave) => {
+        const animation = wave.getAnimations()[0];
+        if (!(animation?.effect instanceof KeyframeEffect)) return null;
+        const transform = animation.effect.getKeyframes()[0]?.transform;
+        const match = typeof transform === 'string' ? transform.match(/calc\(-50% \+ ([\d.]+)px\)/) : null;
+        return match ? Number(match[1]) : null;
+      }),
+      waveEndTranslations: waves.map((wave) => {
+        const animation = wave.getAnimations()[0];
+        if (!(animation?.effect instanceof KeyframeEffect)) return null;
+        const keyframes = animation.effect.getKeyframes();
+        const transform = keyframes[keyframes.length - 1]?.transform;
+        const match = typeof transform === 'string' ? transform.match(/calc\(-50% \+ ([\d.]+)px\)/) : null;
+        return match ? Number(match[1]) : null;
+      }),
+      waveStartLeadingEdgeRatios: waves.map((wave) => {
+        const animation = wave.getAnimations()[0];
+        const keyframes = animation?.effect instanceof KeyframeEffect ? animation.effect.getKeyframes() : [];
+        const transform = keyframes[0]?.transform;
+        const match = typeof transform === 'string' ? transform.match(/calc\(-50% \+ ([\d.]+)px\)/) : null;
+        const startTranslation = match ? Number(match[1]) : Number.NaN;
+        const waveWidth = wave.getBoundingClientRect().width;
+        const parentLeft = wave.parentElement?.getBoundingClientRect().left ?? 0;
+        const layoutLeft = parentLeft + (wave instanceof HTMLElement ? wave.offsetLeft : 0);
+        const paintedLeadingEdge = layoutLeft - waveWidth / 2 + startTranslation + waveWidth * 0.055;
+        return paintedLeadingEdge / element.getBoundingClientRect().width;
+      }),
+      desktopBoundaryAnchor: getComputedStyle(element)
+        .getPropertyValue('--home-wave-boundary-anchor')
+        .trim(),
+      stageWidth: element.getBoundingClientRect().width,
       baseZIndex: base instanceof HTMLElement ? getComputedStyle(base.parentElement!).zIndex : null,
       waveZIndexes: waves.map((wave) => getComputedStyle(wave).zIndex),
       overlayZIndex: overlay instanceof HTMLElement ? getComputedStyle(overlay).zIndex : null,
@@ -111,10 +142,22 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   const durationSeconds = scene.waveDurations.map((duration) => Number.parseFloat(duration));
   expect(Math.min(...durationSeconds)).toBe(11);
   expect(Math.max(...durationSeconds)).toBe(26);
-  const waveStartVw = scene.waveXStarts.map((start) => Number.parseFloat(start));
-  const waveEndVw = scene.waveXEnds.map((end) => Number.parseFloat(end));
-  expect(waveStartVw.every((start) => start <= -113)).toBe(true);
-  expect(waveEndVw.every((end) => end >= 113)).toBe(true);
+  expect(scene.desktopBoundaryAnchor).toBe('54cqw');
+  expect(scene.waveStartTokens.every((start) => start.includes('cqw'))).toBe(true);
+  expect(scene.waveEndTokens.every((end) => end.endsWith('vw'))).toBe(true);
+  const waveStartTranslations = scene.waveStartTranslations as number[];
+  const waveEndTranslations = scene.waveEndTranslations as number[];
+  expect(waveStartTranslations.every(Number.isFinite)).toBe(true);
+  expect(waveEndTranslations.every(Number.isFinite)).toBe(true);
+  expect(
+    waveStartTranslations.every(
+      (start) => start >= scene.stageWidth * 0.6 && start <= scene.stageWidth * 0.96,
+    ),
+  ).toBe(true);
+  expect(waveEndTranslations.every((end) => end >= scene.stageWidth * 1.13)).toBe(true);
+  expect(
+    scene.waveStartLeadingEdgeRatios.every((leadingEdge) => leadingEdge > 0.4 && leadingEdge < 0.64),
+  ).toBe(true);
   expect(scene.waveTransforms.every((transform) => transform !== 'none')).toBe(true);
   expect(scene.waveWidths.filter((width) => Number.parseFloat(width) > 165).length).toBe(6);
   expect(scene.waveHeights.filter((height) => Number.parseFloat(height) > 80).length).toBe(6);
@@ -122,8 +165,8 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   expect(Number.parseFloat(scene.waveOpacities[1])).toBe(1);
   const dominantRibbonIndex = scene.waveIds.indexOf('wave-08-translucent-cream-ribbon');
   expect(dominantRibbonIndex).toBeGreaterThanOrEqual(0);
-  expect(scene.waveXStarts[dominantRibbonIndex]).toBe('-155vw');
-  expect(scene.waveXEnds[dominantRibbonIndex]).toBe('155vw');
+  expect(scene.waveStartTokens[dominantRibbonIndex]).toBe('calc(54cqw + 40cqw)');
+  expect(scene.waveEndTokens[dominantRibbonIndex]).toBe('155vw');
   expect(scene.waveWidths[dominantRibbonIndex]).toBe('220%');
   expect(scene.waveHeights[dominantRibbonIndex]).toBe('500%');
   expect(Number.parseFloat(scene.waveOpacities[dominantRibbonIndex])).toBe(0.5);
@@ -178,6 +221,87 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
       (transform) => typeof transform === 'string' && transform.includes('translate3d'),
     ),
   ).toBe(true);
+});
+
+test('Desktop wave spawning stays near the overlay seam across desktop widths', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop-chromium', 'Desktop-only layered background coverage.');
+
+  const desktopWidths = [1024, 1440, 1920];
+  const reports = [];
+
+  for (const width of desktopWidths) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/', { waitUntil: 'networkidle' });
+
+    reports.push(
+      await page.locator('[data-home-layered-background]').evaluate((element) => {
+        const waves = Array.from(element.querySelectorAll('[data-wave-id]'));
+        const parseTranslation = (transform: unknown) => {
+          if (typeof transform !== 'string') return null;
+          const match = transform.match(/calc\(-50% \+ ([\d.]+)px\)/);
+          return match ? Number(match[1]) : null;
+        };
+
+        return {
+          stageWidth: element.getBoundingClientRect().width,
+          boundaryAnchor: getComputedStyle(element)
+            .getPropertyValue('--home-wave-boundary-anchor')
+            .trim(),
+          waves: waves.map((wave) => {
+            const animation = wave.getAnimations()[0];
+            const keyframes = animation?.effect instanceof KeyframeEffect ? animation.effect.getKeyframes() : [];
+            const startTranslation = parseTranslation(keyframes[0]?.transform);
+            const endTranslation = parseTranslation(keyframes[keyframes.length - 1]?.transform);
+            const waveWidth = wave.getBoundingClientRect().width;
+            const parentLeft = wave.parentElement?.getBoundingClientRect().left ?? 0;
+            const layoutLeft = parentLeft + (wave instanceof HTMLElement ? wave.offsetLeft : 0);
+            const paintedLeadingEdge =
+              layoutLeft - waveWidth / 2 + (startTranslation ?? Number.NaN) + waveWidth * 0.055;
+
+            return {
+              startToken: getComputedStyle(wave).getPropertyValue('--wave-x-start').trim(),
+              startTranslation,
+              endTranslation,
+              paintedLeadingEdgeRatio: paintedLeadingEdge / element.getBoundingClientRect().width,
+            };
+          }),
+        };
+      }),
+    );
+  }
+
+  expect(reports.map((report) => report.boundaryAnchor)).toEqual(['54cqw', '54cqw', '54cqw']);
+  reports.forEach((report) => {
+    expect(report.waves).toHaveLength(renderedWaveCount);
+    expect(report.waves.every((wave) => wave.startToken.includes('cqw'))).toBe(true);
+    expect(
+      report.waves.every(
+        (wave) =>
+          typeof wave.startTranslation === 'number' &&
+          wave.startTranslation / report.stageWidth >= 0.6 &&
+          wave.startTranslation / report.stageWidth <= 0.96,
+      ),
+    ).toBe(true);
+    expect(
+      report.waves.every(
+        (wave) =>
+          typeof wave.endTranslation === 'number' &&
+          wave.endTranslation / report.stageWidth >= 1.13,
+      ),
+    ).toBe(true);
+    expect(
+      report.waves.every(
+        (wave) => wave.paintedLeadingEdgeRatio > 0.4 && wave.paintedLeadingEdgeRatio < 0.64,
+      ),
+    ).toBe(true);
+  });
+
+  for (let index = 0; index < renderedWaveCount; index += 1) {
+    const startRatios = reports.map(
+      (report) => report.waves[index].startTranslation! / report.stageWidth,
+    );
+    expect(Math.max(...startRatios) - Math.min(...startRatios)).toBeLessThan(0.01);
+  }
 });
 
 test('Desktop reduced motion keeps the dense layered composition static', async ({ page }, testInfo) => {
