@@ -2,13 +2,13 @@
 
 ## Current gate
 
-Implementation work requested before PR #8 acceptance is now complete.
+The previous box-motion implementation was technically green, but USER normal-motion review found two issues: the sparse eased float read as move/pause/direction-change phases, and the phase split felt too aggressive.
 
-Application head:
+Previous application head before this correction:
 
 `007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-Technical verification passed.
+This same-PR correction replaces both behaviors. Final-head verification and renewed USER normal-motion visual QA remain pending.
 
 The current gate is USER normal-motion visual QA of:
 1. strengthened Schrödinger-box idle float;
@@ -41,10 +41,11 @@ Check:
 - moving waves no longer visually hide the float.
 
 Current implementation:
-- 5.9s ease-in-out;
-- vertical high point -0.95rem;
-- horizontal excursions +0.12rem / -0.14rem;
-- rotation -0.55deg → +0.70deg.
+- 6.2s linear infinite;
+- 12-point interior path plus the 0/100% loop closure;
+- approximately 0.96rem vertical travel and ±0.15rem horizontal travel;
+- rotation approximately -0.48deg → +0.74deg;
+- nearby asymmetric keyframes avoid explicit hold frames.
 
 ### Phase split
 Check:
@@ -56,10 +57,10 @@ Check:
 - reverse transition also feels coherent.
 
 Current implementation:
-- 360ms;
-- cubic-bezier(0.22, 0.8, 0.26, 1);
-- closed leaves toward -1.25% x / +1.25% y with scale 0.99;
-- reveal starts +1.25% x / -1.25% y at scale 1.012;
+- 640ms;
+- cubic-bezier(0.22, 0.61, 0.36, 1);
+- closed leaves toward -0.65% x / +0.65% y with scale 0.995;
+- reveal starts +0.65% x / -0.65% y at scale 1.006;
 - transform + opacity only.
 
 ### Alignment / interaction
@@ -120,7 +121,7 @@ Only then:
 - update durable docs from “pending visual QA” to accepted/merged;
 - begin next roadmap phase in a NEW bounded branch/PR.
 
-## Current authoritative technical evidence
+## Previous authoritative technical evidence
 
 Actions run:
 

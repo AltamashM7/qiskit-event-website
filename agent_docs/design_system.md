@@ -171,12 +171,12 @@ Environmental:
 Subjects:
 - smooth transform-based idle motion;
 - movement should be perceptible against the scene but physically restrained;
-- the current PR #8 implementation strengthens the Schrödinger float to a 5.9s transform-only asymmetric path reaching about -0.95rem vertically and ±~0.14rem horizontally; USER visual acceptance of that tuning is pending.
+- the current PR #8 correction uses a 6.2s linear transform-only asymmetric path with nearby keyframes, about 0.96rem vertical travel, ±0.15rem horizontal travel, and roughly -0.48deg to +0.74deg rotation; USER visual acceptance of that tuning is pending.
 
 Interaction transitions:
 - may be smoother and slightly richer because they occur on user input;
 - prefer transform + opacity;
-- PR #8 implements a restrained Schrödinger closed↔reveal “phase split”: inner state wrappers animate transform + opacity for 360ms, the outer box independently owns idle motion, and the reveal image retains its fixed calibration. USER visual acceptance is pending.
+- PR #8 implements a calmer Schrödinger closed↔reveal “phase split”: inner state wrappers animate transform + opacity for 640ms with restrained opposing displacement/scale, the outer box independently owns idle motion, and the reveal image retains its fixed calibration. USER visual acceptance is pending.
 
 Reduced motion:
 - preserve composition;

@@ -81,8 +81,8 @@ Superseded:
 Current:
 - PR #8 integrates and tunes the desktop layered Home probability field.
 - The USER has already passed all desktop layered-background visual checks.
-- The stronger Schrödinger-box idle float and transform+opacity phase-split reveal are now IMPLEMENTED and technically verified.
-- The ONLY remaining PR #8 uncertainty is USER visual judgment of those two box-motion refinements in normal motion.
+- A subsequent USER normal-motion review found two bounded issues: the prior sparse eased float read as move/pause/direction-change phases, and the phase split felt too aggressive.
+- This same-PR correction replaces those behaviors with a continuous idle path and calmer phase split; final-head CI and renewed USER visual acceptance remain pending.
 
 ## Product intent
 
@@ -215,35 +215,44 @@ Responsibilities:
 
 This separation is intentional and prevents idle/reveal transforms from fighting.
 
-### Stronger idle float — IMPLEMENTED, visual acceptance pending
+### Continuous idle float correction — IMPLEMENTED, visual acceptance pending
 
 Current animation:
 
-`home-box-float 5.9s ease-in-out infinite`
+`home-box-float 6.2s linear infinite`
 
 Keyframes:
-- 0/100%: `translate3d(0, 0, 0) rotate(-0.55deg)`
-- 22%: `translate3d(0.12rem, -0.65rem, 0) rotate(-0.05deg)`
-- 50%: `translate3d(-0.14rem, -0.95rem, 0) rotate(0.7deg)`
-- 78%: `translate3d(-0.08rem, -0.3rem, 0) rotate(0.12deg)`
+- 0/100%: `translate3d(0.03rem, -0.45rem, 0) rotate(-0.18deg)`
+- 8%: `translate3d(0.08rem, -0.62rem, 0) rotate(0.02deg)`
+- 16%: `translate3d(0.13rem, -0.8rem, 0) rotate(0.28deg)`
+- 24%: `translate3d(0.15rem, -0.93rem, 0) rotate(0.5deg)`
+- 32%: `translate3d(0.12rem, -0.99rem, 0) rotate(0.68deg)`
+- 40%: `translate3d(0.04rem, -0.95rem, 0) rotate(0.74deg)`
+- 48%: `translate3d(-0.05rem, -0.82rem, 0) rotate(0.6deg)`
+- 56%: `translate3d(-0.12rem, -0.62rem, 0) rotate(0.38deg)`
+- 64%: `translate3d(-0.15rem, -0.38rem, 0) rotate(0.1deg)`
+- 72%: `translate3d(-0.11rem, -0.15rem, 0) rotate(-0.16deg)`
+- 80%: `translate3d(-0.04rem, -0.03rem, 0) rotate(-0.38deg)`
+- 88%: `translate3d(0.02rem, -0.08rem, 0) rotate(-0.48deg)`
+- 96%: `translate3d(0.01rem, -0.25rem, 0) rotate(-0.4deg)`
 
 Only transform is animated.
 
-### Quantum phase-split reveal — IMPLEMENTED, visual acceptance pending
+### Calmer quantum phase-split reveal correction — IMPLEMENTED, visual acceptance pending
 
 State transition:
-- duration: `360ms`;
-- easing: `cubic-bezier(0.22, 0.8, 0.26, 1)`;
+- duration: `640ms`;
+- easing: `cubic-bezier(0.22, 0.61, 0.36, 1)`;
 - properties: transform + opacity only.
 
 Closed resting wrapper:
 `translate3d(0, 0, 0) scale(1)`, opacity 1.
 
 Closed leaving:
-`translate3d(-1.25%, 1.25%, 0) scale(0.99)`, opacity 0.
+`translate3d(-0.65%, 0.65%, 0) scale(0.995)`, opacity 0.
 
 Reveal hidden/start:
-`translate3d(1.25%, -1.25%, 0) scale(1.012)`, opacity 0.
+`translate3d(0.65%, -0.65%, 0) scale(1.006)`, opacity 0.
 
 Reveal settled:
 `translate3d(0, 0, 0) scale(1)`, opacity 1.
@@ -280,7 +289,7 @@ Under `prefers-reduced-motion: reduce`:
 - state wrappers use only `opacity 120ms linear`;
 - final state remains controlled by the same interaction state machine.
 
-## Independent Orchestrator verification of box-motion head
+## Independent Orchestrator verification of the previous box-motion head
 
 Application head:
 
@@ -297,8 +306,7 @@ The commit patch confirms the wave CSS was not retuned.
 Tests verify:
 - wrapper geometry unchanged between closed/revealed states;
 - stronger idle keyframes are transform-only;
-- 5.9s idle duration;
-- 360ms transform+opacity state transitions;
+- transform-only continuous idle path and 640ms transform+opacity state transitions are the values under current correction;
 - reveal calibration preserved;
 - hover/focus behavior;
 - click lock/unlock;
@@ -355,19 +363,17 @@ Therefore deterministic screenshots can prove final closed/revealed composition 
 
 That remains USER live-preview QA.
 
-## Immediate next action for a new Orchestrator
+## Immediate next action after this correction
 
-Do NOT ask Luna to make another box change immediately.
+First re-read the live PR #8 head, final-head CI, and immutable normal-motion preview, then have the USER inspect the corrected motion:
 
-First have the USER inspect the immutable normal-motion preview:
-
-`https://0a1bd3fa.qiskit-event-website.pages.dev`
+The final preview URL must be taken from the new exact-head Actions run.
 
 USER should judge:
-1. is the float now noticeable enough?
+1. is the continuous float noticeable without visible stops?
 2. does it still feel natural/heavy rather than bouncy?
-3. is the phase-split cooler than the old crossfade?
-4. does the reveal feel restrained rather than glitchy?
+3. is the calmer phase split legible without feeling aggressive?
+4. does the reveal remain restrained rather than glitchy?
 5. is there any visible jump/misalignment?
 6. do hover/focus/click/tap still feel correct?
 7. does performance still feel good?

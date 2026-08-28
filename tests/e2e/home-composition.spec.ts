@@ -35,7 +35,7 @@ test('Home starts closed with the approved shared-composition layers', async ({ 
   expect(revealedWrapper).toEqual(closedWrapper);
 });
 
-test('Box uses stronger transform-only idle motion and a phase-split state transition', async ({ page }) => {
+test('Box uses continuous transform-only idle motion and a calmer phase-split transition', async ({ page }) => {
   await page.goto('/');
 
   const motion = await page.getByRole('button', { name: boxName }).evaluate((element) => {
@@ -63,6 +63,7 @@ test('Box uses stronger transform-only idle motion and a phase-split state trans
       return Array.from(rule.cssRules)
         .filter((keyframe): keyframe is CSSKeyframeRule => keyframe instanceof CSSKeyframeRule)
         .map((keyframe) => ({
+          offset: keyframe.keyText,
           properties: Array.from(keyframe.style).sort(),
           transform: keyframe.style
             .getPropertyValue('transform')
@@ -72,40 +73,110 @@ test('Box uses stronger transform-only idle motion and a phase-split state trans
     });
 
     const styles = getComputedStyle(element);
+    const rules = Array.from(document.styleSheets).flatMap((sheet) => {
+      try {
+        return Array.from(sheet.cssRules);
+      } catch {
+        return [];
+      }
+    });
+    const authoredTransform = (matches: (selector: string) => boolean) => {
+      const matchingRule = rules.find((rule) =>
+        rule instanceof CSSStyleRule && matches(rule.selectorText),
+      );
+      return matchingRule instanceof CSSStyleRule
+        ? matchingRule.style.getPropertyValue('transform')
+            .replace(/^translate3d\(([^,]+),\s*([^,]+),\s*0\)/, 'translate($1, $2)')
+            .replaceAll('0px', '0')
+        : null;
+    };
+
     return {
       animationName: styles.animationName,
       animationDuration: styles.animationDuration,
+      animationTimingFunction: styles.animationTimingFunction,
       animationIterationCount: styles.animationIterationCount,
       closed: state('.schrodinger-box__state--closed'),
       reveal: state('.schrodinger-box__state--reveal'),
       keyframes,
+      stateTransforms: {
+        closedResting: authoredTransform((selector) => selector === '.schrodinger-box__state--closed'),
+        revealStarting: authoredTransform((selector) => selector === '.schrodinger-box__state--reveal'),
+        closedLeaving: authoredTransform((selector) =>
+          selector.includes('[data-revealed') && selector.includes('__state--closed'),
+        ),
+        revealSettled: authoredTransform((selector) =>
+          selector.includes('[data-revealed') && selector.includes('__state--reveal'),
+        ),
+      },
     };
   });
 
   expect(motion.animationName).toBe('home-box-float');
-  expect(motion.animationDuration).toBe('5.9s');
+  expect(motion.animationDuration).toBe('6.2s');
+  expect(motion.animationTimingFunction).toBe('linear');
   expect(motion.animationIterationCount).toBe('infinite');
   expect(motion.closed).not.toBeNull();
   expect(motion.reveal).not.toBeNull();
   expect(motion.closed!.transitionProperty).toBe('transform, opacity');
-  expect(motion.closed!.transitionDuration).toBe('0.36s, 0.36s');
+  expect(motion.closed!.transitionDuration).toBe('0.64s, 0.64s');
   expect(motion.closed!.transitionTimingFunction).toBe(
-    'cubic-bezier(0.22, 0.8, 0.26, 1), cubic-bezier(0.22, 0.8, 0.26, 1)',
+    'cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1)',
   );
   expect(motion.reveal!.transform).not.toBe('none');
-  expect(motion.keyframes).toHaveLength(4);
+  expect(motion.keyframes).toHaveLength(13);
   expect(motion.keyframes.map((keyframe) => keyframe.properties)).toEqual([
     ['transform'],
     ['transform'],
     ['transform'],
     ['transform'],
+    ['transform'],
+    ['transform'],
+    ['transform'],
+    ['transform'],
+    ['transform'],
+    ['transform'],
+    ['transform'],
+    ['transform'],
+    ['transform'],
+  ]);
+  expect(motion.keyframes.map((keyframe) => keyframe.offset)).toEqual([
+    '0%, 100%',
+    '8%',
+    '16%',
+    '24%',
+    '32%',
+    '40%',
+    '48%',
+    '56%',
+    '64%',
+    '72%',
+    '80%',
+    '88%',
+    '96%',
   ]);
   expect(motion.keyframes.map((keyframe) => keyframe.transform)).toEqual([
-    'translate(0, 0) rotate(-0.55deg)',
-    'translate(0.12rem, -0.65rem) rotate(-0.05deg)',
-    'translate(-0.14rem, -0.95rem) rotate(0.7deg)',
-    'translate(-0.08rem, -0.3rem) rotate(0.12deg)',
+    'translate(0.03rem, -0.45rem) rotate(-0.18deg)',
+    'translate(0.08rem, -0.62rem) rotate(0.02deg)',
+    'translate(0.13rem, -0.8rem) rotate(0.28deg)',
+    'translate(0.15rem, -0.93rem) rotate(0.5deg)',
+    'translate(0.12rem, -0.99rem) rotate(0.68deg)',
+    'translate(0.04rem, -0.95rem) rotate(0.74deg)',
+    'translate(-0.05rem, -0.82rem) rotate(0.6deg)',
+    'translate(-0.12rem, -0.62rem) rotate(0.38deg)',
+    'translate(-0.15rem, -0.38rem) rotate(0.1deg)',
+    'translate(-0.11rem, -0.15rem) rotate(-0.16deg)',
+    'translate(-0.04rem, -0.03rem) rotate(-0.38deg)',
+    'translate(0.02rem, -0.08rem) rotate(-0.48deg)',
+    'translate(0.01rem, -0.25rem) rotate(-0.4deg)',
   ]);
+  expect(new Set(motion.keyframes.map((keyframe) => keyframe.transform)).size).toBe(13);
+  expect(motion.stateTransforms).toEqual({
+    closedResting: 'translate(0, 0) scale(1)',
+    revealStarting: 'translate(0.65%, -0.65%) scale(1.006)',
+    closedLeaving: 'translate(-0.65%, 0.65%) scale(0.995)',
+    revealSettled: 'translate(0, 0) scale(1)',
+  });
 
   const revealImageTransform = await page
     .getByRole('button', { name: boxName })
@@ -243,14 +314,15 @@ test('Reduced motion keeps the interaction intentional without idle animation', 
       return {
         transform: styles.transform,
         transitionProperty: styles.transitionProperty,
+        transitionDuration: styles.transitionDuration,
       };
     }),
   );
 
   expect(animationName).toBe('none');
   expect(stateMotion).toEqual([
-    { transform: 'none', transitionProperty: 'opacity' },
-    { transform: 'none', transitionProperty: 'opacity' },
+    { transform: 'none', transitionProperty: 'opacity', transitionDuration: '0.12s' },
+    { transform: 'none', transitionProperty: 'opacity', transitionDuration: '0.12s' },
   ]);
   await box.focus();
   await expect(box).toHaveAttribute('data-revealed', 'true');

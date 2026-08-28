@@ -6,11 +6,11 @@ This file records the current Home Stage scene on PR #8.
 
 Desktop layered-background visuals are USER accepted.
 
-Schrödinger-box stronger idle motion and phase-split reveal are implemented and technically verified at application head:
+The prior Schrödinger-box stronger idle motion and phase-split reveal were implemented and technically verified at the previous application head:
 
 `007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-Those two box-motion refinements still require USER live normal-motion visual acceptance.
+The prior normal-motion review found two bounded issues: the float read as move/pause/direction-change phases, and the phase split felt too aggressive. The correction below addresses both; renewed USER live normal-motion visual acceptance remains pending.
 
 ## Desktop Home composition
 
@@ -283,17 +283,26 @@ Actual images:
 - own fixed artwork geometry;
 - reveal image retains fixed calibration.
 
-## Stronger idle float — IMPLEMENTED / USER QA PENDING
+## Continuous idle float correction — IMPLEMENTED / USER QA PENDING
 
 Animation:
 
-`home-box-float 5.9s ease-in-out infinite`
+`home-box-float 6.2s linear infinite`
 
 Keyframes:
-- 0/100%: `translate3d(0, 0, 0) rotate(-0.55deg)`
-- 22%: `translate3d(0.12rem, -0.65rem, 0) rotate(-0.05deg)`
-- 50%: `translate3d(-0.14rem, -0.95rem, 0) rotate(0.7deg)`
-- 78%: `translate3d(-0.08rem, -0.3rem, 0) rotate(0.12deg)`
+- 0/100%: `translate3d(0.03rem, -0.45rem, 0) rotate(-0.18deg)`
+- 8%: `translate3d(0.08rem, -0.62rem, 0) rotate(0.02deg)`
+- 16%: `translate3d(0.13rem, -0.8rem, 0) rotate(0.28deg)`
+- 24%: `translate3d(0.15rem, -0.93rem, 0) rotate(0.5deg)`
+- 32%: `translate3d(0.12rem, -0.99rem, 0) rotate(0.68deg)`
+- 40%: `translate3d(0.04rem, -0.95rem, 0) rotate(0.74deg)`
+- 48%: `translate3d(-0.05rem, -0.82rem, 0) rotate(0.6deg)`
+- 56%: `translate3d(-0.12rem, -0.62rem, 0) rotate(0.38deg)`
+- 64%: `translate3d(-0.15rem, -0.38rem, 0) rotate(0.1deg)`
+- 72%: `translate3d(-0.11rem, -0.15rem, 0) rotate(-0.16deg)`
+- 80%: `translate3d(-0.04rem, -0.03rem, 0) rotate(-0.38deg)`
+- 88%: `translate3d(0.02rem, -0.08rem, 0) rotate(-0.48deg)`
+- 96%: `translate3d(0.01rem, -0.25rem, 0) rotate(-0.4deg)`
 
 Only transform is animated.
 
@@ -302,13 +311,13 @@ Intent:
 - still restrained/heavy;
 - slightly asymmetric so it does not read as a mechanical bob.
 
-## Phase-split reveal — IMPLEMENTED / USER QA PENDING
+## Calmer phase-split reveal correction — IMPLEMENTED / USER QA PENDING
 
 State wrappers transition:
 
-`transform 360ms cubic-bezier(0.22, 0.8, 0.26, 1)`
+`transform 640ms cubic-bezier(0.22, 0.61, 0.36, 1)`
 
-`opacity 360ms cubic-bezier(0.22, 0.8, 0.26, 1)`
+`opacity 640ms cubic-bezier(0.22, 0.61, 0.36, 1)`
 
 Closed normal:
 - opacity 1;
@@ -316,11 +325,11 @@ Closed normal:
 
 Closed revealed/leaving:
 - opacity 0;
-- `translate3d(-1.25%, 1.25%, 0) scale(0.99)`.
+- `translate3d(-0.65%, 0.65%, 0) scale(0.995)`.
 
 Reveal hidden/start:
 - opacity 0;
-- `translate3d(1.25%, -1.25%, 0) scale(1.012)`.
+- `translate3d(0.65%, -0.65%, 0) scale(1.006)`.
 
 Reveal final:
 - opacity 1;
@@ -384,13 +393,11 @@ USER accepted desktop background:
 - vertical occupancy;
 - performance.
 
-Technically verified but still awaiting USER visual acceptance:
-- stronger 5.9s box float;
-- phase-split transition;
+Implemented and awaiting final-head verification plus USER visual acceptance:
+- continuous 6.2s box float;
+- calmer 640ms phase-split transition;
 - subjective naturalness;
 - subjective transition quality;
 - perceived performance during normal motion.
 
-Immutable preview to inspect:
-
-`https://0a1bd3fa.qiskit-event-website.pages.dev`
+The exact-head preview for this correction must be re-read from the final GitHub Actions run before USER review.

@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase: Draft PR #8 technically complete; final USER visual QA of box motion pending**
+**Phase: Draft PR #8 box-motion correction implemented; final-head verification and USER visual QA pending**
 
 Repository:
 
@@ -20,7 +20,7 @@ PR:
 
 `https://github.com/AltamashM7/qiskit-event-website/pull/8`
 
-Current application head before this documentation refresh:
+Previous application head before this correction:
 
 `007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
@@ -90,38 +90,41 @@ Current structure:
 
 Wave system locked.
 
-## PR #8 box-motion refinement
+## PR #8 box-motion correction
 
-Commit:
+Previous application commit:
 
 `007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
 `fix: strengthen box motion and phase reveal`
 
-Changed exactly four files relative to the documentation head:
+The previous application commit changed exactly four files relative to the documentation head:
 - `src/components/home/SchrodingerBox.astro`
 - `src/styles/home.css`
 - `tests/e2e/home-composition.spec.ts`
 - `tests/e2e/home-visual-preview.spec.ts`
 
-No wave asset/component retuning.
+No wave asset/component retuning occurred.
 
-### Idle
+The subsequent USER normal-motion review found that the prior sparse eased float read as move/pause/direction-change phases and that its phase split felt too aggressive. This correction addresses only those two issues.
+
+### Continuous idle
 - outer wrapper owns transform;
-- 5.9s ease-in-out;
-- high point -0.95rem;
-- horizontal drift ±~0.14rem;
-- rotation -0.55deg to +0.70deg;
+- 6.2s linear infinite;
+- 12-point irregular path plus 0/100% closure;
+- approximately 0.96rem vertical travel;
+- horizontal travel ±0.15rem;
+- rotation -0.48deg to +0.74deg;
 - transform-only.
 
-### Phase split
+### Calmer phase split
 - inner state wrappers added;
-- 360ms;
-- cubic-bezier(0.22, 0.8, 0.26, 1);
+- 640ms;
+- cubic-bezier(0.22, 0.61, 0.36, 1);
 - transform + opacity only;
-- small opposing ±1.25% displacement;
-- closed leaving scale .99;
-- reveal start scale 1.012;
+- opposing ±0.65% displacement;
+- closed leaving scale .995;
+- reveal start scale 1.006;
 - final reveal wrapper scale 1.
 
 Reveal image calibration unchanged:
@@ -140,7 +143,7 @@ Unchanged:
 - mobile tap;
 - ARIA.
 
-## Final-head verification
+## Previous final-head verification
 
 Actions:
 

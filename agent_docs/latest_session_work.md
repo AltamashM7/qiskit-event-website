@@ -22,7 +22,7 @@ Branch:
 
 `phase-2/home-layered-background-integration`
 
-Application head before current docs refresh:
+Application head before current correction:
 
 `007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
@@ -56,7 +56,7 @@ Technical regression guards retain:
 - four representative desktop aspect ratios;
 - mobile non-download assertions.
 
-## Box refinement completed while docs were being prepared
+## Previous box refinement completed while docs were being prepared
 
 Luna implemented the requested box polish after the first documentation-only handoff commits landed.
 
@@ -90,26 +90,9 @@ Outer button owns idle.
 State wrappers own transform/opacity transition.
 Images own fixed geometry/calibration.
 
-### Idle
-`5.9s ease-in-out infinite`
+### Prior motion behavior
 
-Keyframes:
-- 0/100: (0,0), -0.55deg
-- 22: +0.12rem x, -0.65rem y, -0.05deg
-- 50: -0.14rem x, -0.95rem y, +0.70deg
-- 78: -0.08rem x, -0.30rem y, +0.12deg
-
-Transform-only.
-
-### Phase split
-360ms cubic-bezier(0.22,0.8,0.26,1).
-
-Closed:
-rest → -1.25% x / +1.25% y, scale .99, fade out.
-
-Reveal:
-+1.25% x / -1.25% y, scale 1.012, opacity 0
-→ neutral state wrapper, opacity 1.
+The prior sparse eased idle path and fast/high-intensity phase split are now superseded by the correction below. The state-wrapper architecture, fixed image geometry, and interaction state machine are retained.
 
 Reveal image calibration remains:
 `translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
@@ -123,7 +106,7 @@ Reveal image calibration remains:
 State script unchanged.
 Hover/focus/click/keyboard/mobile tap behavior preserved.
 
-## CI
+## Previous CI evidence
 
 Actions run:
 
@@ -162,15 +145,27 @@ Luna reported:
 
 Authoritative GitHub final-head verification did complete successfully, so there is no known test failure associated with this caveat.
 
+## USER normal-motion feedback and current correction
+
+The USER found that the prior idle path visibly moved, paused, and changed direction, while the phase split felt too aggressive. The same-PR correction now uses:
+
+- a 6.2s linear transform-only loop with nearby asymmetric keyframes, approximately 0.96rem vertical travel, ±0.15rem horizontal travel, and -0.48deg to +0.74deg rotation;
+- a 640ms `cubic-bezier(0.22,0.61,0.36,1)` transform+opacity phase split;
+- closed leaving at `translate3d(-0.65%, 0.65%, 0) scale(0.995)`;
+- reveal starting at `translate3d(0.65%, -0.65%, 0) scale(1.006)`;
+- the existing reveal-image calibration and interaction state machine unchanged.
+
+The desktop layered wave system remains USER accepted and locked. The correction requires final-head CI verification and renewed USER normal-motion visual acceptance; PR #8 remains Draft and unmerged.
+
 ## Immediate continuation
 
-A fresh Orchestrator should NOT start by issuing another Builder correction.
+A fresh Orchestrator should first re-read the live PR head and final-head CI for this correction.
 
 First:
 1. inspect live PR #8;
 2. inspect exact current head;
-3. ask USER to review the immutable normal-motion preview;
-4. judge stronger idle + phase split;
+3. ask USER to review the new immutable normal-motion preview;
+4. judge continuous idle + calmer phase split;
 5. if USER finds an issue, one bounded same-PR correction;
 6. if USER passes all visual checks, re-check head/CI and require explicit merge approval;
 7. squash merge only after approval;
