@@ -187,33 +187,13 @@
   pointer-events: none;
 }
 
-@keyframes home-layered-wave-motion {
-  0% {
-    transform:
-      translate3d(calc(-50% + var(--wave-x-start)), var(--wave-y-start), 0)
-      rotate(var(--wave-rotation-start))
-      scale(var(--wave-scale-start));
+@keyframes home-layered-wave-travel {
+  from {
+    transform: translate3d(calc(-50% + var(--wave-x-start)), 0, 0);
   }
 
-  35% {
-    transform:
-      translate3d(calc(-50% + var(--wave-x-mid-left)), var(--wave-y-mid-left), 0)
-      rotate(var(--wave-rotation-mid-left))
-      scale(var(--wave-scale-mid-left));
-  }
-
-  65% {
-    transform:
-      translate3d(calc(-50% + var(--wave-x-mid-right)), var(--wave-y-mid-right), 0)
-      rotate(var(--wave-rotation-mid-right))
-      scale(var(--wave-scale-mid-right));
-  }
-
-  100% {
-    transform:
-      translate3d(calc(-50% + var(--wave-x-end)), var(--wave-y-end), 0)
-      rotate(var(--wave-rotation-end))
-      scale(var(--wave-scale-end));
+  to {
+    transform: translate3d(calc(-50% + var(--wave-x-end)), 0, 0);
   }
 }
 
@@ -238,28 +218,10 @@
     --wave-width: 132%;
     --wave-height: 78%;
     --wave-top: 0%;
-    --wave-static-y: 0%;
-    --wave-static-scale: 1;
-    --wave-static-rotation: 0deg;
-    --wave-x-start: -150%;
-    --wave-x-mid-left: -16%;
-    --wave-x-mid-right: 16%;
-    --wave-x-end: 150%;
-    --wave-y-start: 0%;
-    --wave-y-mid-left: -1%;
-    --wave-y-mid-right: 1%;
-    --wave-y-end: 0%;
-    --wave-scale-start: 1;
-    --wave-scale-mid-left: 1;
-    --wave-scale-mid-right: 1;
-    --wave-scale-end: 1;
-    --wave-rotation-start: 0deg;
-    --wave-rotation-mid-left: 0deg;
-    --wave-rotation-mid-right: 0deg;
-    --wave-rotation-end: 0deg;
+    --wave-x-start: -150vw;
+    --wave-x-end: 150vw;
     --wave-duration: 24s;
     --wave-delay: -10s;
-    --wave-easing: cubic-bezier(0.45, 0.05, 0.55, 0.95);
     --wave-opacity: 1;
     position: absolute;
     top: var(--wave-top);
@@ -271,243 +233,181 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     opacity: var(--wave-opacity);
-    transform:
-      translate3d(-50%, var(--wave-static-y), 0)
-      rotate(var(--wave-static-rotation))
-      scale(var(--wave-static-scale));
+    transform: translate3d(-50%, 0, 0);
     transform-origin: center;
-    animation: home-layered-wave-motion var(--wave-duration) var(--wave-easing) var(--wave-delay) infinite both;
+    animation-name: home-layered-wave-travel;
+    animation-duration: var(--wave-duration);
+    animation-timing-function: linear;
+    animation-delay: var(--wave-delay);
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
   }
 
   #home-stage .home-layered-background__wave--01 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-01-thick-cream-upper.webp');
-    --wave-width: 132%;
-    --wave-height: 76%;
-    --wave-top: -11%;
-    --wave-static-y: 1%;
-    --wave-static-scale: 1.02;
-    --wave-x-start: -150%;
-    --wave-x-mid-left: -16%;
-    --wave-x-mid-right: 18%;
-    --wave-x-end: 150%;
-    --wave-y-start: 1%;
-    --wave-y-mid-left: -1%;
-    --wave-y-mid-right: -2%;
-    --wave-y-end: -1%;
-    --wave-scale-start: 0.99;
-    --wave-scale-mid-left: 1.01;
-    --wave-scale-mid-right: 1.02;
-    --wave-scale-end: 0.99;
-    --wave-rotation-start: -0.2deg;
-    --wave-rotation-mid-left: 0.15deg;
-    --wave-rotation-mid-right: 0.2deg;
-    --wave-rotation-end: -0.2deg;
-    --wave-duration: 23s;
-    --wave-delay: -7s;
-    --wave-opacity: 0.96;
+    --wave-width: 156%;
+    --wave-height: 68%;
+    --wave-top: -13%;
+    --wave-duration: 21s;
+    --wave-delay: -3s;
+    --wave-opacity: 0.9;
     z-index: 4;
   }
 
   #home-stage .home-layered-background__wave--02 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-02-thick-cream-lower.webp');
-    --wave-width: 136%;
-    --wave-height: 80%;
+    --wave-width: 164%;
+    --wave-height: 72%;
     --wave-top: 34%;
-    --wave-static-y: -1%;
-    --wave-static-scale: 1.03;
-    --wave-x-start: -145%;
-    --wave-x-mid-left: -15%;
-    --wave-x-mid-right: 17%;
-    --wave-x-end: 145%;
-    --wave-y-start: 0%;
-    --wave-y-mid-left: 1%;
-    --wave-y-mid-right: -1%;
-    --wave-y-end: 0%;
-    --wave-scale-start: 1;
-    --wave-scale-mid-left: 1.02;
-    --wave-scale-mid-right: 1.03;
-    --wave-scale-end: 1;
-    --wave-rotation-start: 0.2deg;
-    --wave-rotation-mid-left: -0.15deg;
-    --wave-rotation-mid-right: 0.2deg;
-    --wave-rotation-end: 0.2deg;
-    --wave-duration: 26s;
-    --wave-delay: -15s;
-    --wave-opacity: 0.95;
-    z-index: 4;
+    --wave-duration: 24s;
+    --wave-delay: -14s;
+    --wave-opacity: 0.88;
+    z-index: 3;
   }
 
   #home-stage .home-layered-background__wave--03 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
-    --wave-width: 126%;
-    --wave-height: 72%;
-    --wave-top: 6%;
-    --wave-static-y: 2%;
-    --wave-static-scale: 0.98;
-    --wave-x-start: -140%;
-    --wave-x-mid-left: -12%;
-    --wave-x-mid-right: 16%;
-    --wave-x-end: 140%;
-    --wave-y-start: -1%;
-    --wave-y-mid-left: 0%;
-    --wave-y-mid-right: 1%;
-    --wave-y-end: -1%;
-    --wave-scale-start: 0.99;
-    --wave-scale-mid-left: 1;
-    --wave-scale-mid-right: 1.01;
-    --wave-scale-end: 0.99;
-    --wave-rotation-start: -0.1deg;
-    --wave-rotation-mid-left: 0.1deg;
-    --wave-rotation-mid-right: 0.15deg;
-    --wave-rotation-end: -0.1deg;
-    --wave-duration: 17s;
-    --wave-delay: -5s;
-    --wave-opacity: 0.92;
-    z-index: 3;
+    --wave-width: 145%;
+    --wave-height: 48%;
+    --wave-top: 16%;
+    --wave-duration: 18s;
+    --wave-delay: -9s;
+    --wave-opacity: 0.78;
+    z-index: 5;
   }
 
   #home-stage .home-layered-background__wave--04 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp');
-    --wave-width: 134%;
-    --wave-height: 75%;
-    --wave-top: 39%;
-    --wave-static-y: -2%;
-    --wave-static-scale: 1.01;
-    --wave-x-start: -148%;
-    --wave-x-mid-left: -18%;
-    --wave-x-mid-right: 14%;
-    --wave-x-end: 148%;
-    --wave-y-start: 1%;
-    --wave-y-mid-left: -1%;
-    --wave-y-mid-right: 0%;
-    --wave-y-end: 1%;
-    --wave-scale-start: 1;
-    --wave-scale-mid-left: 1.02;
-    --wave-scale-mid-right: 1;
-    --wave-scale-end: 1;
-    --wave-rotation-start: 0.1deg;
-    --wave-rotation-mid-left: -0.1deg;
-    --wave-rotation-mid-right: 0.1deg;
-    --wave-rotation-end: 0.1deg;
-    --wave-duration: 21s;
-    --wave-delay: -13s;
-    --wave-opacity: 0.82;
+    --wave-width: 148%;
+    --wave-height: 52%;
+    --wave-top: 42%;
+    --wave-duration: 22s;
+    --wave-delay: -17s;
+    --wave-opacity: 0.72;
     z-index: 5;
   }
 
   #home-stage .home-layered-background__wave--05 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp');
-    --wave-width: 126%;
-    --wave-height: 73%;
-    --wave-top: -4%;
-    --wave-static-y: 0%;
-    --wave-static-scale: 1;
-    --wave-x-start: -155%;
-    --wave-x-mid-left: -20%;
-    --wave-x-mid-right: 12%;
-    --wave-x-end: 155%;
-    --wave-y-start: 0%;
-    --wave-y-mid-left: 0%;
-    --wave-y-mid-right: -1%;
-    --wave-y-end: 0%;
-    --wave-scale-start: 1;
-    --wave-scale-mid-left: 1.01;
-    --wave-scale-mid-right: 0.99;
-    --wave-scale-end: 1;
-    --wave-rotation-start: -0.15deg;
-    --wave-rotation-mid-left: 0.1deg;
-    --wave-rotation-mid-right: 0.15deg;
-    --wave-rotation-end: -0.15deg;
-    --wave-duration: 14s;
-    --wave-delay: -4s;
-    --wave-opacity: 0.88;
+    --wave-width: 138%;
+    --wave-height: 42%;
+    --wave-top: 2%;
+    --wave-duration: 16s;
+    --wave-delay: -5s;
+    --wave-opacity: 0.72;
     z-index: 6;
   }
 
   #home-stage .home-layered-background__wave--06 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp');
-    --wave-width: 130%;
-    --wave-height: 74%;
-    --wave-top: 38%;
-    --wave-static-y: 1%;
-    --wave-static-scale: 1.02;
-    --wave-x-start: -142%;
-    --wave-x-mid-left: -14%;
-    --wave-x-mid-right: 18%;
-    --wave-x-end: 142%;
-    --wave-y-start: -1%;
-    --wave-y-mid-left: 0%;
-    --wave-y-mid-right: 1%;
-    --wave-y-end: -1%;
-    --wave-scale-start: 1;
-    --wave-scale-mid-left: 0.99;
-    --wave-scale-mid-right: 1.01;
-    --wave-scale-end: 1;
-    --wave-rotation-start: 0.15deg;
-    --wave-rotation-mid-left: -0.1deg;
-    --wave-rotation-mid-right: 0.15deg;
-    --wave-rotation-end: 0.15deg;
-    --wave-duration: 19s;
-    --wave-delay: -9s;
-    --wave-opacity: 0.84;
+    --wave-width: 142%;
+    --wave-height: 45%;
+    --wave-top: 47%;
+    --wave-duration: 20s;
+    --wave-delay: -11s;
+    --wave-opacity: 0.68;
     z-index: 6;
   }
 
   #home-stage .home-layered-background__wave--07 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp');
-    --wave-width: 138%;
-    --wave-height: 82%;
-    --wave-top: 10%;
-    --wave-static-y: -1%;
-    --wave-static-scale: 1;
-    --wave-x-start: -150%;
-    --wave-x-mid-left: -12%;
-    --wave-x-mid-right: 20%;
-    --wave-x-end: 150%;
-    --wave-y-start: 1%;
-    --wave-y-mid-left: -1%;
-    --wave-y-mid-right: 1%;
-    --wave-y-end: 1%;
-    --wave-scale-start: 0.99;
-    --wave-scale-mid-left: 1.01;
-    --wave-scale-mid-right: 1.02;
-    --wave-scale-end: 0.99;
-    --wave-rotation-start: -0.1deg;
-    --wave-rotation-mid-left: 0.1deg;
-    --wave-rotation-mid-right: 0.1deg;
-    --wave-rotation-end: -0.1deg;
-    --wave-duration: 29s;
-    --wave-delay: -18s;
-    --wave-opacity: 0.78;
+    --wave-width: 176%;
+    --wave-height: 94%;
+    --wave-top: 4%;
+    --wave-duration: 31s;
+    --wave-delay: -8s;
+    --wave-opacity: 0.64;
     z-index: 1;
   }
 
   #home-stage .home-layered-background__wave--08 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp');
-    --wave-width: 142%;
-    --wave-height: 84%;
-    --wave-top: 31%;
-    --wave-static-y: 2%;
-    --wave-static-scale: 0.98;
-    --wave-x-start: -148%;
-    --wave-x-mid-left: -18%;
-    --wave-x-mid-right: 14%;
-    --wave-x-end: 148%;
-    --wave-y-start: -1%;
-    --wave-y-mid-left: 1%;
-    --wave-y-mid-right: -1%;
-    --wave-y-end: -1%;
-    --wave-scale-start: 1;
-    --wave-scale-mid-left: 1.02;
-    --wave-scale-mid-right: 0.99;
-    --wave-scale-end: 1;
-    --wave-rotation-start: 0.1deg;
-    --wave-rotation-mid-left: -0.1deg;
-    --wave-rotation-mid-right: 0.1deg;
-    --wave-rotation-end: 0.1deg;
-    --wave-duration: 34s;
-    --wave-delay: -12s;
+    --wave-width: 188%;
+    --wave-height: 108%;
+    --wave-top: -2%;
+    --wave-duration: 35s;
+    --wave-delay: -21s;
+    --wave-opacity: 0.56;
+    z-index: 2;
+  }
+
+  #home-stage .home-layered-background__wave--01-b {
+    --wave-width: 148%;
+    --wave-height: 62%;
+    --wave-top: 9%;
+    --wave-duration: 27s;
+    --wave-delay: -19s;
     --wave-opacity: 0.72;
+    z-index: 4;
+  }
+
+  #home-stage .home-layered-background__wave--02-b {
+    --wave-width: 158%;
+    --wave-height: 66%;
+    --wave-top: 47%;
+    --wave-duration: 29s;
+    --wave-delay: -7s;
+    --wave-opacity: 0.76;
+    z-index: 3;
+  }
+
+  #home-stage .home-layered-background__wave--03-b {
+    --wave-width: 152%;
+    --wave-height: 44%;
+    --wave-top: 34%;
+    --wave-duration: 25s;
+    --wave-delay: -16s;
+    --wave-opacity: 0.68;
+    z-index: 5;
+  }
+
+  #home-stage .home-layered-background__wave--04-b {
+    --wave-width: 154%;
+    --wave-height: 50%;
+    --wave-top: 8%;
+    --wave-duration: 28s;
+    --wave-delay: -23s;
+    --wave-opacity: 0.64;
+    z-index: 5;
+  }
+
+  #home-stage .home-layered-background__wave--05-b {
+    --wave-width: 146%;
+    --wave-height: 38%;
+    --wave-top: 28%;
+    --wave-duration: 19s;
+    --wave-delay: -12s;
+    --wave-opacity: 0.62;
+    z-index: 7;
+  }
+
+  #home-stage .home-layered-background__wave--06-b {
+    --wave-width: 150%;
+    --wave-height: 40%;
+    --wave-top: 16%;
+    --wave-duration: 23s;
+    --wave-delay: -20s;
+    --wave-opacity: 0.6;
+    z-index: 7;
+  }
+
+  #home-stage .home-layered-background__wave--07-b {
+    --wave-width: 166%;
+    --wave-height: 88%;
+    --wave-top: 22%;
+    --wave-duration: 33s;
+    --wave-delay: -26s;
+    --wave-opacity: 0.45;
+    z-index: 1;
+  }
+
+  #home-stage .home-layered-background__wave--08-b {
+    --wave-width: 178%;
+    --wave-height: 96%;
+    --wave-top: 38%;
+    --wave-duration: 37s;
+    --wave-delay: -29s;
+    --wave-opacity: 0.42;
     z-index: 2;
   }
 }
