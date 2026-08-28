@@ -75,7 +75,7 @@ Integration:
 - Masters: `public/assets/home/background/layered/masters/desktop/`
 - Web delivery: `public/assets/home/background/layered/web/desktop/`
 
-Status: **USER-SUPPLIED DESKTOP ASSET FOUNDATION / INTEGRATED ON PHASE-2 BRANCH / VISUAL ACCEPTANCE PENDING**
+Status: **USER-SUPPLIED DESKTOP ASSET FOUNDATION / INTEGRATED ON PR #8 / DESKTOP LAYERED VISUAL SYSTEM USER-ACCEPTED; PR ACCEPTANCE PENDING BOX-MOTION POLISH**
 
 Purpose:
 - Desktop base, overlay, and independent wave layers for the next Home background architecture.
@@ -83,8 +83,8 @@ Purpose:
 
 Architecture context:
 - Chosen production architecture: one static no-wave base background, the eight accepted transparent wave assets reused as a richer desktop instance composition above it, and a foreground neutral/boundary overlay above the waves.
-- Phase A imported and optimized the assets; the current Phase B integration renders 20 desktop instances with lightweight independent linear horizontal transform movement.
-- The earlier full-frame A/B/C animation exploration remains committed and unmerged on Draft PR #6; it is superseded as the chosen implementation direction by this layered-wave architecture.
+- Phase A imported and optimized the assets; the current Phase B integration renders 20 desktop instances with lightweight independent linear horizontal transform movement. The USER has visually accepted the desktop layered background at application head `25cf7117e0f44da99534d9372a85f25291325034`; remaining PR #8 work is limited to Schrödinger-box motion/reveal polish.
+- The earlier full-frame A/B/C animation exploration PR #6 is closed/unmerged and superseded as the chosen implementation direction by this layered-wave architecture.
 - The current Phase B branch integrates the desktop base, 20 wave instances reusing the eight wave deliveries, and foreground overlay into Home. Broad ribbon/halftone instances form underlayers, while thick, thin, and dashed instances overlap above them. Mobile continues to use Frame A and does not request the desktop layer URLs.
 - No source or delivery asset bytes were changed during integration.
 - The overlay was inspected at the pixel level: its RGBA alpha channel has real transparency, including `615,141` fully transparent pixels on the right side. The apparent black area is not baked black fill.

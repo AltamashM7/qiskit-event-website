@@ -60,8 +60,9 @@ Once the repository exists:
 9. Orchestrator independently checks GitHub source of truth.
 10. User performs visual/manual QA at visual gates.
 11. Correct issues.
-12. Explicit approval before merge.
-13. Merge only when authorized.
+12. Explicit USER approval/authorization before merge.
+13. Re-read the exact final PR head and required CI immediately before merge.
+14. Merge only when authorized; never infer merge permission from “looks good” unless the USER clearly approves the PR/merge.
 
 ## Visual gates
 
@@ -83,11 +84,23 @@ Recommended order:
 
 Durable project state belongs in the repository, not only in conversation history.
 
+For a fresh Web Orchestrator restart, read:
+- `AGENTS.md`
+- `agent_docs/orchestrator_handoff.md`
+- `agent_docs/current_scene.md`
+- `agent_docs/next_steps.md`
+- `agent_docs/roadmap.md`
+- then the remaining durable docs and live GitHub state.
+
 After major milestones update:
+- `agent_docs/orchestrator_handoff.md` if the current gate/branch/critical architecture changed
+- `agent_docs/current_scene.md` if the accepted visual scene changed
+- `agent_docs/next_steps.md` when the immediate gate changes
+- `agent_docs/roadmap.md` when sequencing changes
 - `agent_docs/project_progress.md`
 - `agent_docs/latest_session_work.md`
 - `agent_docs/decisions.md` if decisions changed
-- `ASSET_REGISTRY.md` if assets changed
+- `ASSET_REGISTRY.md` if assets/status changed
 
 Keep documentation concise and current.
 

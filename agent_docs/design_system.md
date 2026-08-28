@@ -66,9 +66,19 @@ Visual characteristics:
 - no 3D environment,
 - no generic tech-HUD decorations.
 
-The background is suitable for 2–3-frame stepped animation by shifting/reconfiguring the large probability-wave forms slightly between frames.
+The old 2–3-frame full-frame A/B/C experiment is retained only as provenance and is superseded for desktop production direction.
 
-The background proof-of-concept/foundation is approved. Minor refinements may happen during later polish.
+The accepted desktop architecture is:
+- one static no-wave base;
+- eight approved transparent wave assets reused as 20 independently positioned instances;
+- a foreground neutral/boundary overlay above the waves;
+- CSS-only constant-speed linear horizontal transform motion;
+- broad ribbon/halftone underlayers behind thick, thin, and dashed crossing waves;
+- actual painted-edge reset positions hidden beneath the irregular overlay boundary.
+
+The USER has visually accepted the current desktop boundary illusion, speed, population, overlap, amplitude, vertical occupancy, broad ribbon, and performance. Do not casually retune this system during unrelated Home polish.
+
+Mobile remains separately art-directed on Frame A until a distinct mobile layered phase is approved.
 
 ## Home Stage composition
 
@@ -153,23 +163,26 @@ Minor seam/halftone cleanup is deferred to final site polish.
 ## Motion system
 
 Environmental:
-- 2–3-frame loops,
-- intentionally stepped,
-- asynchronous timing,
-- low frequency where appropriate.
+- choose the cheapest technique that serves the art direction;
+- Home desktop uses independently phased CSS transform wave motion over a static layered scene;
+- limited stepped 2–3-frame loops remain valid for future page-specific environmental effects when appropriate;
+- no heavy continuous JS animation.
 
 Subjects:
-- subtle smooth transform-based idle motion,
-- e.g. tiny vertical float and slight rotation.
+- smooth transform-based idle motion;
+- movement should be perceptible against the scene but physically restrained;
+- the current Schrödinger float is pending a modest strength increase because the accepted moving wave field visually masks the old subtle bob.
 
 Interaction transitions:
-- may be smoother and slightly richer because they occur on user input,
-- must remain lightweight.
+- may be smoother and slightly richer because they occur on user input;
+- prefer transform + opacity;
+- the pending Schrödinger closed↔reveal direction is a restrained “phase split” using inner state wrappers, while the outer box owns idle motion and the reveal image retains its fixed calibration.
 
 Reduced motion:
-- preserve composition,
-- remove or greatly reduce unnecessary movement,
-- keep interactions understandable.
+- preserve composition;
+- remove ambient motion;
+- remove phase displacement/scale;
+- keep interactions understandable and final states deterministic.
 
 ## Branding
 
