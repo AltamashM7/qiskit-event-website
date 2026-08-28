@@ -1,4 +1,9 @@
+import sharp from 'sharp';
 import { expect, test } from '@playwright/test';
+
+declare const process: {
+  cwd(): string;
+};
 
 const frameAPath = '/assets/home/background/home-probability-field-frame-a-v1.png';
 const basePath =
@@ -20,6 +25,214 @@ const renderedWaveCount = 20;
 const expectedWaveFamilyCounts = new Map(
   wavePaths.map((path, index) => [path, index < 2 ? 1 : 3]),
 );
+const alphaThreshold = 16;
+const opaqueAlphaThreshold = 250;
+const spawnSafetyFraction = 0.02;
+
+type AlphaRow = {
+  y: number;
+  left: number;
+  right: number;
+};
+
+type AlphaProfile = {
+  width: number;
+  height: number;
+  left: number;
+  right: number;
+  rows: AlphaRow[];
+};
+
+type OverlayProfile = {
+  width: number;
+  height: number;
+  opaqueRightByRow: Array<number | null>;
+};
+
+type WaveMeasurement = {
+  id: string | null;
+  asset: string | null;
+  layoutLeft: number;
+  layoutTop: number;
+  width: number;
+  height: number;
+  startTranslation: number | null;
+  endTranslation: number | null;
+  durationSeconds: number;
+};
+
+type DesktopWaveScene = {
+  stageWidth: number;
+  stageHeight: number;
+  overlayScale: number;
+  waves: WaveMeasurement[];
+};
+
+function assetFilePath(assetPath: string) {
+  return `${process.cwd()}/public/${assetPath.replace(/^\/+/, '')}`;
+}
+
+async function readAlphaProfile(assetPath: string): Promise<AlphaProfile> {
+  const { data, info } = await sharp(assetFilePath(assetPath)).ensureAlpha().raw().toBuffer({
+    resolveWithObject: true,
+  });
+  const alphaChannel = info.channels - 1;
+  const rows: AlphaRow[] = [];
+  let left = info.width;
+  let right = -1;
+
+  for (let y = 0; y < info.height; y += 1) {
+    let rowLeft = info.width;
+    let rowRight = -1;
+
+    for (let x = 0; x < info.width; x += 1) {
+      const alpha = data[(y * info.width + x) * info.channels + alphaChannel];
+      if (alpha >= alphaThreshold) {
+        rowLeft = Math.min(rowLeft, x);
+        rowRight = x;
+      }
+    }
+
+    if (rowRight >= 0) {
+      left = Math.min(left, rowLeft);
+      right = Math.max(right, rowRight);
+      rows.push({ y, left: rowLeft, right: rowRight });
+    }
+  }
+
+  return { width: info.width, height: info.height, left, right, rows };
+}
+
+async function readOverlayProfile(): Promise<OverlayProfile> {
+  const { data, info } = await sharp(assetFilePath(overlayPath)).ensureAlpha().raw().toBuffer({
+    resolveWithObject: true,
+  });
+  const alphaChannel = info.channels - 1;
+  const opaqueRightByRow: Array<number | null> = [];
+
+  for (let y = 0; y < info.height; y += 1) {
+    let longestRunLength = 0;
+    let longestRunEnd: number | null = null;
+    let runStart = -1;
+
+    for (let x = 0; x <= info.width; x += 1) {
+      const opaque =
+        x < info.width && data[(y * info.width + x) * info.channels + alphaChannel] >= opaqueAlphaThreshold;
+
+      if (opaque && runStart < 0) {
+        runStart = x;
+      }
+
+      if ((!opaque || x === info.width) && runStart >= 0) {
+        const runLength = x - runStart;
+        if (runLength > longestRunLength) {
+          longestRunLength = runLength;
+          longestRunEnd = x - 1;
+        }
+        runStart = -1;
+      }
+    }
+
+    opaqueRightByRow.push(longestRunEnd);
+  }
+
+  return { width: info.width, height: info.height, opaqueRightByRow };
+}
+
+let waveProfilesPromise: Promise<Map<string, AlphaProfile>> | undefined;
+let overlayProfilePromise: Promise<OverlayProfile> | undefined;
+
+function getWaveProfiles() {
+  waveProfilesPromise ??= Promise.all(
+    wavePaths.map(async (assetPath) => [assetPath, await readAlphaProfile(assetPath)] as const),
+  ).then((entries) => new Map(entries));
+  return waveProfilesPromise;
+}
+
+function getOverlayProfile() {
+  overlayProfilePromise ??= readOverlayProfile();
+  return overlayProfilePromise;
+}
+
+function overlayBoundaryScreenX(
+  stageWidth: number,
+  stageHeight: number,
+  screenY: number,
+  overlayScale: number,
+  overlay: OverlayProfile,
+) {
+  const coverScale = Math.max(stageWidth / overlay.width, stageHeight / overlay.height);
+  const offsetX = (stageWidth - overlay.width * coverScale) / 2;
+  const offsetY = (stageHeight - overlay.height * coverScale) / 2;
+  const overlayPreTransformY = stageHeight / 2 + (screenY - stageHeight / 2) / overlayScale;
+  const sourceY = Math.max(
+    0,
+    Math.min(
+      overlay.height - 1,
+      Math.round((overlayPreTransformY - offsetY) / coverScale),
+    ),
+  );
+  const sourceBoundaryX = overlay.opaqueRightByRow[sourceY];
+
+  if (sourceBoundaryX === null || sourceBoundaryX === undefined) return null;
+
+  const overlayPreTransformX = offsetX + sourceBoundaryX * coverScale;
+  return stageWidth / 2 + (overlayPreTransformX - stageWidth / 2) * overlayScale;
+}
+
+function hiddenSpawnReport(scene: DesktopWaveScene, profiles: Map<string, AlphaProfile>, overlay: OverlayProfile) {
+  return scene.waves.map((wave) => {
+    const profile = wave.asset ? profiles.get(wave.asset) : undefined;
+    if (!profile || wave.startTranslation === null) {
+      return {
+        id: wave.id,
+        comparedRows: 0,
+        hidden: false,
+        paintedLeadingEdgeRatio: null,
+        worstGapRatio: Number.NEGATIVE_INFINITY,
+      };
+    }
+
+    const paintedLeadingEdgeX =
+      wave.layoutLeft + wave.startTranslation + (profile.right / profile.width) * wave.width;
+    let comparedRows = 0;
+    let worstGapRatio = Number.POSITIVE_INFINITY;
+    let limitingRow: { sourceY: number; screenY: number; boundaryX: number; leadingEdgeX: number } | null = null;
+
+    for (const row of profile.rows) {
+      const screenY = wave.layoutTop + (row.y / (profile.height - 1)) * wave.height;
+      if (screenY < 0 || screenY > scene.stageHeight) continue;
+
+      const boundaryX = overlayBoundaryScreenX(
+        scene.stageWidth,
+        scene.stageHeight,
+        screenY,
+        scene.overlayScale,
+        overlay,
+      );
+      if (boundaryX === null) continue;
+
+      const leadingEdgeX =
+        wave.layoutLeft + wave.startTranslation + (row.right / profile.width) * wave.width;
+      const gapRatio = (boundaryX - leadingEdgeX) / scene.stageWidth;
+      comparedRows += 1;
+
+      if (gapRatio < worstGapRatio) {
+        worstGapRatio = gapRatio;
+        limitingRow = { sourceY: row.y, screenY, boundaryX, leadingEdgeX };
+      }
+    }
+
+    return {
+      id: wave.id,
+      comparedRows,
+      hidden: comparedRows === 0 || worstGapRatio >= spawnSafetyFraction,
+      paintedLeadingEdgeRatio: paintedLeadingEdgeX / scene.stageWidth,
+      worstGapRatio,
+      limitingRow,
+    };
+  });
+}
 
 function requestedPath(url: string) {
   return new URL(url).pathname;
@@ -57,6 +270,19 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
       waveTransforms: waves.map((wave) => getComputedStyle(wave).transform),
       waveStartTokens: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-x-start').trim()),
       waveEndTokens: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-x-end').trim()),
+      waveBoundaryReferences: waves.map((wave) =>
+        getComputedStyle(wave).getPropertyValue('--wave-boundary-reference').trim(),
+      ),
+      waveHiddenSpawnInsets: waves.map((wave) =>
+        getComputedStyle(wave).getPropertyValue('--wave-hidden-spawn-inset').trim(),
+      ),
+      waveAlphaLeadingEdges: waves.map((wave) =>
+        getComputedStyle(wave).getPropertyValue('--wave-alpha-leading-edge').trim(),
+      ),
+      wavePaintedLeadingEdgeStarts: waves.map((wave) =>
+        getComputedStyle(wave).getPropertyValue('--wave-painted-leading-edge-start').trim(),
+      ),
+      stageWidth: element.getBoundingClientRect().width,
       waveWidths: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-width').trim()),
       waveHeights: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-height').trim()),
       waveOpacities: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-opacity').trim()),
@@ -64,33 +290,31 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
         const animation = wave.getAnimations()[0];
         if (!(animation?.effect instanceof KeyframeEffect)) return null;
         const transform = animation.effect.getKeyframes()[0]?.transform;
-        const match = typeof transform === 'string' ? transform.match(/calc\(-50% \+ ([\d.]+)px\)/) : null;
-        return match ? Number(match[1]) : null;
+        const width = wave.getBoundingClientRect().width;
+        if (typeof transform !== 'string') return null;
+        const expression = transform.match(/translate3d\(([^,]+)/)?.[1]?.replace(/\s+/g, '') ?? '';
+        const terms = expression.match(/[+-]?(?:\d+(?:\.\d+)?|\.\d+)(?:%|px)/g) ?? [];
+        return terms.length > 0
+          ? terms.reduce((total, term) =>
+              total + (term.endsWith('%') ? (Number.parseFloat(term) / 100) * width : Number.parseFloat(term)),
+            0)
+          : null;
       }),
       waveEndTranslations: waves.map((wave) => {
         const animation = wave.getAnimations()[0];
         if (!(animation?.effect instanceof KeyframeEffect)) return null;
         const keyframes = animation.effect.getKeyframes();
         const transform = keyframes[keyframes.length - 1]?.transform;
-        const match = typeof transform === 'string' ? transform.match(/calc\(-50% \+ ([\d.]+)px\)/) : null;
-        return match ? Number(match[1]) : null;
+        const width = wave.getBoundingClientRect().width;
+        if (typeof transform !== 'string') return null;
+        const expression = transform.match(/translate3d\(([^,]+)/)?.[1]?.replace(/\s+/g, '') ?? '';
+        const terms = expression.match(/[+-]?(?:\d+(?:\.\d+)?|\.\d+)(?:%|px)/g) ?? [];
+        return terms.length > 0
+          ? terms.reduce((total, term) =>
+              total + (term.endsWith('%') ? (Number.parseFloat(term) / 100) * width : Number.parseFloat(term)),
+            0)
+          : null;
       }),
-      waveStartLeadingEdgeRatios: waves.map((wave) => {
-        const animation = wave.getAnimations()[0];
-        const keyframes = animation?.effect instanceof KeyframeEffect ? animation.effect.getKeyframes() : [];
-        const transform = keyframes[0]?.transform;
-        const match = typeof transform === 'string' ? transform.match(/calc\(-50% \+ ([\d.]+)px\)/) : null;
-        const startTranslation = match ? Number(match[1]) : Number.NaN;
-        const waveWidth = wave.getBoundingClientRect().width;
-        const parentLeft = wave.parentElement?.getBoundingClientRect().left ?? 0;
-        const layoutLeft = parentLeft + (wave instanceof HTMLElement ? wave.offsetLeft : 0);
-        const paintedLeadingEdge = layoutLeft - waveWidth / 2 + startTranslation + waveWidth * 0.055;
-        return paintedLeadingEdge / element.getBoundingClientRect().width;
-      }),
-      desktopBoundaryAnchor: getComputedStyle(element)
-        .getPropertyValue('--home-wave-boundary-anchor')
-        .trim(),
-      stageWidth: element.getBoundingClientRect().width,
       baseZIndex: base instanceof HTMLElement ? getComputedStyle(base.parentElement!).zIndex : null,
       waveZIndexes: waves.map((wave) => getComputedStyle(wave).zIndex),
       overlayZIndex: overlay instanceof HTMLElement ? getComputedStyle(overlay).zIndex : null,
@@ -140,24 +364,61 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   expect(new Set(scene.waveDurations).size).toBe(renderedWaveCount);
   expect(new Set(scene.waveDelays).size).toBe(renderedWaveCount);
   const durationSeconds = scene.waveDurations.map((duration) => Number.parseFloat(duration));
-  expect(Math.min(...durationSeconds)).toBe(11);
-  expect(Math.max(...durationSeconds)).toBe(26);
-  expect(scene.desktopBoundaryAnchor).toBe('54cqw');
-  expect(scene.waveStartTokens.every((start) => start.includes('cqw'))).toBe(true);
+  expect(Math.min(...durationSeconds)).toBeLessThan(9);
+  expect(Math.max(...durationSeconds)).toBeLessThan(17);
+  expect(scene.waveBoundaryReferences.every((reference) => reference.endsWith('cqw'))).toBe(true);
+  expect(scene.waveHiddenSpawnInsets.every((inset) => inset.endsWith('cqw'))).toBe(true);
+  expect(scene.waveAlphaLeadingEdges.every((edge) => edge.endsWith('%'))).toBe(true);
+  expect(scene.wavePaintedLeadingEdgeStarts.every((start) => start.includes('cqw'))).toBe(true);
+  expect(scene.waveStartTokens.every((start) => start.includes('cqw') && start.includes('%'))).toBe(true);
   expect(scene.waveEndTokens.every((end) => end.endsWith('vw'))).toBe(true);
   const waveStartTranslations = scene.waveStartTranslations as number[];
   const waveEndTranslations = scene.waveEndTranslations as number[];
   expect(waveStartTranslations.every(Number.isFinite)).toBe(true);
   expect(waveEndTranslations.every(Number.isFinite)).toBe(true);
-  expect(
-    waveStartTranslations.every(
-      (start) => start >= scene.stageWidth * 0.6 && start <= scene.stageWidth * 0.96,
-    ),
-  ).toBe(true);
-  expect(waveEndTranslations.every((end) => end >= scene.stageWidth * 1.13)).toBe(true);
-  expect(
-    scene.waveStartLeadingEdgeRatios.every((leadingEdge) => leadingEdge > 0.4 && leadingEdge < 0.64),
-  ).toBe(true);
+  expect(waveStartTranslations.every((start) => start < 0)).toBe(true);
+
+  const waveProfiles = await getWaveProfiles();
+  scene.waveAlphaLeadingEdges.forEach((edge, index) => {
+    const asset = scene.waveAssets[index];
+    const profile = asset ? waveProfiles.get(asset) : undefined;
+    expect(profile).toBeDefined();
+    expect(Math.abs(Number.parseFloat(edge) / 100 - profile!.right / profile!.width)).toBeLessThan(0.001);
+  });
+
+  const velocityReports = scene.waveIds.map((id, index) => {
+    const start = waveStartTranslations[index];
+    const end = waveEndTranslations[index];
+    const duration = durationSeconds[index];
+    const velocityVwPerSecond = (Math.abs(end - start) / duration / scene.stageWidth) * 100;
+
+    return {
+      id,
+      duration,
+      travelStageWidths: Math.abs(end - start) / scene.stageWidth,
+      velocityVwPerSecond,
+    };
+  });
+
+  console.log('Home layered wave velocity report', JSON.stringify(velocityReports, null, 2));
+  expect(velocityReports.every((report) => Number.isFinite(report.velocityVwPerSecond))).toBe(true);
+  expect(Math.min(...velocityReports.map((report) => report.velocityVwPerSecond))).toBeGreaterThanOrEqual(14);
+  expect(Math.max(...velocityReports.map((report) => report.velocityVwPerSecond))).toBeLessThanOrEqual(24);
+  expect(new Set(velocityReports.map((report) => report.velocityVwPerSecond)).size).toBe(renderedWaveCount);
+
+  const broadUnderlayerVelocities = velocityReports
+    .filter((report) => report.id?.includes('wave-07') || report.id?.includes('wave-08'))
+    .map((report) => report.velocityVwPerSecond);
+  const crossingWaveVelocities = velocityReports
+    .filter((report) =>
+      ['wave-03', 'wave-04', 'wave-05', 'wave-06'].some((family) => report.id?.includes(family)),
+    )
+    .map((report) => report.velocityVwPerSecond);
+  const thickWaveVelocities = velocityReports
+    .filter((report) => report.id?.includes('wave-01') || report.id?.includes('wave-02'))
+    .map((report) => report.velocityVwPerSecond);
+  expect(Math.max(...broadUnderlayerVelocities)).toBeLessThan(Math.min(...thickWaveVelocities));
+  expect(Math.max(...broadUnderlayerVelocities)).toBeLessThan(Math.min(...crossingWaveVelocities));
   expect(scene.waveTransforms.every((transform) => transform !== 'none')).toBe(true);
   expect(scene.waveWidths.filter((width) => Number.parseFloat(width) > 165).length).toBe(6);
   expect(scene.waveHeights.filter((height) => Number.parseFloat(height) > 80).length).toBe(6);
@@ -165,7 +426,8 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   expect(Number.parseFloat(scene.waveOpacities[1])).toBe(1);
   const dominantRibbonIndex = scene.waveIds.indexOf('wave-08-translucent-cream-ribbon');
   expect(dominantRibbonIndex).toBeGreaterThanOrEqual(0);
-  expect(scene.waveStartTokens[dominantRibbonIndex]).toBe('calc(54cqw + 40cqw)');
+  expect(scene.waveBoundaryReferences[dominantRibbonIndex]).toBe('50cqw');
+  expect(scene.waveHiddenSpawnInsets[dominantRibbonIndex]).toBe('5cqw');
   expect(scene.waveEndTokens[dominantRibbonIndex]).toBe('155vw');
   expect(scene.waveWidths[dominantRibbonIndex]).toBe('220%');
   expect(scene.waveHeights[dominantRibbonIndex]).toBe('500%');
@@ -223,85 +485,115 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   ).toBe(true);
 });
 
-test('Desktop wave spawning stays near the overlay seam across desktop widths', async ({ page }, testInfo) => {
+test('Desktop wave reset is hidden beneath the overlay across representative aspect ratios', async ({
+  page,
+}, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop-chromium', 'Desktop-only layered background coverage.');
 
-  const desktopWidths = [1024, 1440, 1920];
-  const reports = [];
+  const desktopViewports = [
+    { width: 1024, height: 768 },
+    { width: 1280, height: 720 },
+    { width: 1440, height: 900 },
+    { width: 1920, height: 1080 },
+  ];
+  const waveProfiles = await getWaveProfiles();
+  const overlayProfile = await getOverlayProfile();
+  const reports: Array<{
+    viewport: (typeof desktopViewports)[number];
+    scene: DesktopWaveScene;
+    spawn: ReturnType<typeof hiddenSpawnReport>;
+  }> = [];
 
-  for (const width of desktopWidths) {
-    await page.setViewportSize({ width, height: 900 });
+  for (const viewport of desktopViewports) {
+    await page.setViewportSize(viewport);
     await page.goto('/', { waitUntil: 'networkidle' });
 
-    reports.push(
-      await page.locator('[data-home-layered-background]').evaluate((element) => {
-        const waves = Array.from(element.querySelectorAll('[data-wave-id]'));
-        const parseTranslation = (transform: unknown) => {
-          if (typeof transform !== 'string') return null;
-          const match = transform.match(/calc\(-50% \+ ([\d.]+)px\)/);
-          return match ? Number(match[1]) : null;
-        };
+    const scene = await page.locator('[data-home-layered-background]').evaluate((element) => {
+      const elementRect = element.getBoundingClientRect();
+      const overlay = element.querySelector('[data-layered-background-overlay]');
+      const parseTranslation = (transform: unknown, width: number) => {
+        if (typeof transform !== 'string') return null;
+        const expression = transform.match(/translate3d\(([^,]+)/)?.[1]?.replace(/\s+/g, '') ?? '';
+        const terms = expression.match(/[+-]?(?:\d+(?:\.\d+)?|\.\d+)(?:%|px)/g) ?? [];
+        return terms.length > 0
+          ? terms.reduce((total, term) =>
+              total + (term.endsWith('%') ? (Number.parseFloat(term) / 100) * width : Number.parseFloat(term)),
+            0)
+          : null;
+      };
+      const overlayTransform = overlay instanceof HTMLElement ? getComputedStyle(overlay).transform : 'none';
+      const overlayScaleMatch = overlayTransform.match(/^matrix(?:3d)?\(([+-]?[\d.]+)/);
+      const waves = Array.from(element.querySelectorAll('[data-wave-id]'));
 
-        return {
-          stageWidth: element.getBoundingClientRect().width,
-          boundaryAnchor: getComputedStyle(element)
-            .getPropertyValue('--home-wave-boundary-anchor')
-            .trim(),
-          waves: waves.map((wave) => {
-            const animation = wave.getAnimations()[0];
-            const keyframes = animation?.effect instanceof KeyframeEffect ? animation.effect.getKeyframes() : [];
-            const startTranslation = parseTranslation(keyframes[0]?.transform);
-            const endTranslation = parseTranslation(keyframes[keyframes.length - 1]?.transform);
-            const waveWidth = wave.getBoundingClientRect().width;
-            const parentLeft = wave.parentElement?.getBoundingClientRect().left ?? 0;
-            const layoutLeft = parentLeft + (wave instanceof HTMLElement ? wave.offsetLeft : 0);
-            const paintedLeadingEdge =
-              layoutLeft - waveWidth / 2 + (startTranslation ?? Number.NaN) + waveWidth * 0.055;
+      return {
+        stageWidth: elementRect.width,
+        stageHeight: elementRect.height,
+        overlayScale: overlayScaleMatch ? Number(overlayScaleMatch[1]) : 1,
+        waves: waves.map((wave) => {
+          const animation = wave.getAnimations()[0];
+          const keyframes = animation?.effect instanceof KeyframeEffect ? animation.effect.getKeyframes() : [];
+          const parentRect = wave.parentElement?.getBoundingClientRect();
+          const rect = wave.getBoundingClientRect();
 
-            return {
-              startToken: getComputedStyle(wave).getPropertyValue('--wave-x-start').trim(),
-              startTranslation,
-              endTranslation,
-              paintedLeadingEdgeRatio: paintedLeadingEdge / element.getBoundingClientRect().width,
-            };
-          }),
-        };
+          return {
+            id: wave.getAttribute('data-wave-id'),
+            asset: wave.getAttribute('data-wave-asset'),
+            layoutLeft: (parentRect?.left ?? elementRect.left) - elementRect.left + (wave instanceof HTMLElement ? wave.offsetLeft : 0),
+            layoutTop: (parentRect?.top ?? elementRect.top) - elementRect.top + (wave instanceof HTMLElement ? wave.offsetTop : 0),
+            width: rect.width,
+            height: rect.height,
+            startTranslation: parseTranslation(keyframes[0]?.transform, rect.width),
+            endTranslation: parseTranslation(keyframes[keyframes.length - 1]?.transform, rect.width),
+            durationSeconds: Number.parseFloat(getComputedStyle(wave).animationDuration),
+          };
+        }),
+      };
+    });
+
+    const spawn = hiddenSpawnReport(scene, waveProfiles, overlayProfile);
+    console.log(
+      `Home layered wave hidden-spawn report ${viewport.width}x${viewport.height}`,
+      JSON.stringify(
+        spawn.map(({ id, comparedRows, hidden, paintedLeadingEdgeRatio, worstGapRatio, limitingRow }) => ({
+          id,
+          comparedRows,
+          hidden,
+          paintedLeadingEdgeRatio,
+          worstGapRatio,
+          limitingRow,
+        })),
+        null,
+        2,
+      ),
+    );
+    reports.push({ viewport, scene, spawn });
+  }
+
+  reports.forEach(({ viewport, scene, spawn }) => {
+    expect(scene.overlayScale, `${viewport.width}x${viewport.height} overlay scale`).toBeCloseTo(1.04, 2);
+    expect(scene.waves).toHaveLength(renderedWaveCount);
+    expect(scene.waves.every((wave) => wave.startTranslation !== null && wave.startTranslation < 0)).toBe(true);
+    expect(
+      scene.waves.every((wave) => {
+        const profile = wave.asset ? waveProfiles.get(wave.asset) : undefined;
+        if (!profile || wave.endTranslation === null) return false;
+        const endLeadingEdge =
+          wave.layoutLeft + wave.endTranslation + (profile.right / profile.width) * wave.width;
+        return endLeadingEdge / scene.stageWidth > 1;
       }),
-    );
-  }
+    ).toBe(true);
 
-  expect(reports.map((report) => report.boundaryAnchor)).toEqual(['54cqw', '54cqw', '54cqw']);
-  reports.forEach((report) => {
-    expect(report.waves).toHaveLength(renderedWaveCount);
-    expect(report.waves.every((wave) => wave.startToken.includes('cqw'))).toBe(true);
-    expect(
-      report.waves.every(
-        (wave) =>
-          typeof wave.startTranslation === 'number' &&
-          wave.startTranslation / report.stageWidth >= 0.6 &&
-          wave.startTranslation / report.stageWidth <= 0.96,
-      ),
-    ).toBe(true);
-    expect(
-      report.waves.every(
-        (wave) =>
-          typeof wave.endTranslation === 'number' &&
-          wave.endTranslation / report.stageWidth >= 1.13,
-      ),
-    ).toBe(true);
-    expect(
-      report.waves.every(
-        (wave) => wave.paintedLeadingEdgeRatio > 0.4 && wave.paintedLeadingEdgeRatio < 0.64,
-      ),
-    ).toBe(true);
+    spawn.forEach((wave) => {
+      expect(wave.hidden, `${viewport.width}x${viewport.height} ${wave.id} hidden reset`).toBe(true);
+      expect(wave.paintedLeadingEdgeRatio, `${viewport.width}x${viewport.height} ${wave.id} leading edge`).toBeGreaterThan(0.4);
+      expect(wave.paintedLeadingEdgeRatio, `${viewport.width}x${viewport.height} ${wave.id} leading edge`).toBeLessThan(0.6);
+      if (wave.comparedRows > 0) {
+        expect(wave.worstGapRatio, `${viewport.width}x${viewport.height} ${wave.id} safety margin`).toBeGreaterThanOrEqual(
+          spawnSafetyFraction,
+        );
+      }
+    });
   });
-
-  for (let index = 0; index < renderedWaveCount; index += 1) {
-    const startRatios = reports.map(
-      (report) => report.waves[index].startTranslation! / report.stageWidth,
-    );
-    expect(Math.max(...startRatios) - Math.min(...startRatios)).toBeLessThan(0.01);
-  }
 });
 
 test('Desktop reduced motion keeps the dense layered composition static', async ({ page }, testInfo) => {

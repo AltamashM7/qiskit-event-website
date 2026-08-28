@@ -200,12 +200,12 @@
 @media (min-width: 48rem) {
   #home-stage .home-layered-background {
     /*
-     * The overlay's neutral/yellow seam sits near the middle of the desktop
-     * composition. Container-relative units keep the spawn relationship
-     * stable as that composition changes width.
+     * Wave spawn positions are declared against the overlay seam for the
+     * vertical band they occupy. The individual instances below add a small
+     * hidden inset so their painted leading edge starts beneath the opaque
+     * neutral side instead of appearing inside the yellow field.
      */
     container-type: inline-size;
-    --home-wave-boundary-anchor: 54cqw;
   }
 
   #home-stage .home-layered-background__waves,
@@ -228,7 +228,15 @@
     --wave-width: 132%;
     --wave-height: 78%;
     --wave-top: 0%;
-    --wave-x-start: -150vw;
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
+    --wave-alpha-leading-edge: 94.444%;
+    --wave-painted-leading-edge-start: calc(
+      var(--wave-boundary-reference) - var(--wave-hidden-spawn-inset)
+    );
+    --wave-x-start: calc(
+      var(--wave-painted-leading-edge-start) - 50cqw + 50% - var(--wave-alpha-leading-edge)
+    );
     --wave-x-end: 150vw;
     --wave-duration: 24s;
     --wave-delay: -10s;
@@ -254,21 +262,22 @@
   }
 
   /*
-   * --wave-x-start is a transform offset, not the painted leading edge. Each
-   * offset below accounts for the layer's width and its small transparent
-   * alpha lead-in, placing the reset just beneath the overlay seam. The
-   * overlay conceals the reset; the painted wave then emerges shortly after
-   * crossing the irregular boundary.
+   * The rightmost meaningful alpha pixel is the leading edge of a wave moving
+   * rightward. Convert its semantic spawn position into the transform offset
+   * using the rendered layer width and the measured alpha bound for that
+   * delivery. This keeps the reset model separate from the element box.
    */
   #home-stage .home-layered-background__wave--01 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-01-thick-cream-upper.webp');
     --wave-width: 156%;
     --wave-height: 76%;
     --wave-top: -17%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 16cqw);
+    --wave-boundary-reference: 56cqw;
+    --wave-hidden-spawn-inset: 7cqw;
+    --wave-alpha-leading-edge: 94.5%;
     --wave-x-end: 124vw;
-    --wave-duration: 12s;
-    --wave-delay: -5.28s;
+    --wave-duration: 9.5s;
+    --wave-delay: -4.18s;
     --wave-opacity: 1;
     z-index: 4;
   }
@@ -278,10 +287,11 @@
     --wave-width: 164%;
     --wave-height: 80%;
     --wave-top: 35%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
+    --wave-boundary-reference: 56cqw;
+    --wave-hidden-spawn-inset: 7cqw;
     --wave-x-end: 126vw;
-    --wave-duration: 14s;
-    --wave-delay: -8.96s;
+    --wave-duration: 10.5s;
+    --wave-delay: -6.72s;
     --wave-opacity: 1;
     z-index: 3;
   }
@@ -291,10 +301,11 @@
     --wave-width: 145%;
     --wave-height: 48%;
     --wave-top: -8%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
+    --wave-boundary-reference: 62cqw;
+    --wave-hidden-spawn-inset: 7cqw;
     --wave-x-end: 116vw;
-    --wave-duration: 11s;
-    --wave-delay: -2.42s;
+    --wave-duration: 7.8s;
+    --wave-delay: -1.716s;
     --wave-opacity: 0.78;
     z-index: 5;
   }
@@ -302,18 +313,20 @@
   #home-stage .home-layered-background__wave--03-b {
     --wave-height: 52%;
     --wave-top: 22%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 10cqw);
-    --wave-duration: 15s;
-    --wave-delay: -8.1s;
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
+    --wave-duration: 8.8s;
+    --wave-delay: -4.752s;
     --wave-opacity: 0.68;
   }
 
   #home-stage .home-layered-background__wave--03-c {
     --wave-height: 54%;
     --wave-top: 58%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
-    --wave-duration: 18s;
-    --wave-delay: -14.76s;
+    --wave-boundary-reference: 62cqw;
+    --wave-hidden-spawn-inset: 6cqw;
+    --wave-duration: 8s;
+    --wave-delay: -6.56s;
     --wave-opacity: 0.62;
   }
 
@@ -322,10 +335,11 @@
     --wave-width: 148%;
     --wave-height: 52%;
     --wave-top: 5%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 14cqw);
+    --wave-boundary-reference: 56cqw;
+    --wave-hidden-spawn-inset: 7cqw;
     --wave-x-end: 118vw;
-    --wave-duration: 13s;
-    --wave-delay: -4.42s;
+    --wave-duration: 8.4s;
+    --wave-delay: -2.856s;
     --wave-opacity: 0.72;
     z-index: 5;
   }
@@ -333,18 +347,20 @@
   #home-stage .home-layered-background__wave--04-b {
     --wave-height: 54%;
     --wave-top: 32%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 11cqw);
-    --wave-duration: 16s;
-    --wave-delay: -9.92s;
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
+    --wave-duration: 8.9s;
+    --wave-delay: -5.518s;
     --wave-opacity: 0.64;
   }
 
   #home-stage .home-layered-background__wave--04-c {
     --wave-height: 50%;
     --wave-top: 66%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
-    --wave-duration: 19s;
-    --wave-delay: -16.72s;
+    --wave-boundary-reference: 63cqw;
+    --wave-hidden-spawn-inset: 7cqw;
+    --wave-duration: 8.2s;
+    --wave-delay: -7.216s;
     --wave-opacity: 0.58;
   }
 
@@ -353,10 +369,12 @@
     --wave-width: 138%;
     --wave-height: 42%;
     --wave-top: -6%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 18cqw);
+    --wave-boundary-reference: 62cqw;
+    --wave-hidden-spawn-inset: 7cqw;
+    --wave-alpha-leading-edge: 94.278%;
     --wave-x-end: 114vw;
-    --wave-duration: 12.5s;
-    --wave-delay: -2.25s;
+    --wave-duration: 7.2s;
+    --wave-delay: -1.296s;
     --wave-opacity: 0.72;
     z-index: 6;
   }
@@ -364,9 +382,10 @@
   #home-stage .home-layered-background__wave--05-b {
     --wave-height: 45%;
     --wave-top: 20%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 8cqw);
-    --wave-duration: 17s;
-    --wave-delay: -8.5s;
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
+    --wave-duration: 7.9s;
+    --wave-delay: -3.95s;
     --wave-opacity: 0.62;
     z-index: 7;
   }
@@ -374,9 +393,10 @@
   #home-stage .home-layered-background__wave--05-c {
     --wave-height: 44%;
     --wave-top: 61%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 18cqw);
-    --wave-duration: 20s;
-    --wave-delay: -15.8s;
+    --wave-boundary-reference: 62cqw;
+    --wave-hidden-spawn-inset: 6cqw;
+    --wave-duration: 7.3s;
+    --wave-delay: -5.767s;
     --wave-opacity: 0.54;
     z-index: 7;
   }
@@ -386,10 +406,12 @@
     --wave-width: 142%;
     --wave-height: 44%;
     --wave-top: 13%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 14cqw);
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
+    --wave-alpha-leading-edge: 94.222%;
     --wave-x-end: 116vw;
-    --wave-duration: 14.5s;
-    --wave-delay: -4.06s;
+    --wave-duration: 8.1s;
+    --wave-delay: -2.268s;
     --wave-opacity: 0.68;
     z-index: 6;
   }
@@ -397,9 +419,10 @@
   #home-stage .home-layered-background__wave--06-b {
     --wave-height: 47%;
     --wave-top: 39.5%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 12cqw);
-    --wave-duration: 18.5s;
-    --wave-delay: -10.36s;
+    --wave-boundary-reference: 54cqw;
+    --wave-hidden-spawn-inset: 5cqw;
+    --wave-duration: 8.3s;
+    --wave-delay: -4.648s;
     --wave-opacity: 0.6;
     z-index: 7;
   }
@@ -407,9 +430,10 @@
   #home-stage .home-layered-background__wave--06-c {
     --wave-height: 42%;
     --wave-top: 68%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 20cqw);
-    --wave-duration: 21.5s;
-    --wave-delay: -18.06s;
+    --wave-boundary-reference: 63cqw;
+    --wave-hidden-spawn-inset: 6cqw;
+    --wave-duration: 7.6s;
+    --wave-delay: -6.384s;
     --wave-opacity: 0.52;
     z-index: 7;
   }
@@ -419,10 +443,12 @@
     --wave-width: 176%;
     --wave-height: 100%;
     --wave-top: -12%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 27cqw);
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
+    --wave-alpha-leading-edge: 94.167%;
     --wave-x-end: 130vw;
-    --wave-duration: 21s;
-    --wave-delay: -5.04s;
+    --wave-duration: 12.5s;
+    --wave-delay: -3s;
     --wave-opacity: 0.5;
     z-index: 1;
   }
@@ -430,18 +456,20 @@
   #home-stage .home-layered-background__wave--07-b {
     --wave-height: 96%;
     --wave-top: 19%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 23cqw);
-    --wave-duration: 22s;
-    --wave-delay: -11.88s;
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
+    --wave-duration: 13s;
+    --wave-delay: -7.02s;
     --wave-opacity: 0.4;
   }
 
   #home-stage .home-layered-background__wave--07-c {
     --wave-height: 94%;
     --wave-top: 55%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 25cqw);
-    --wave-duration: 23s;
-    --wave-delay: -18.86s;
+    --wave-boundary-reference: 63cqw;
+    --wave-hidden-spawn-inset: 6cqw;
+    --wave-duration: 12s;
+    --wave-delay: -9.84s;
     --wave-opacity: 0.3;
   }
 
@@ -450,10 +478,11 @@
     --wave-width: 220%;
     --wave-height: 500%;
     --wave-top: -205%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 40cqw);
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
     --wave-x-end: 155vw;
-    --wave-duration: 22.5s;
-    --wave-delay: -9.45s;
+    --wave-duration: 16s;
+    --wave-delay: -6.88s;
     --wave-opacity: 0.5;
     z-index: 0;
   }
@@ -462,10 +491,11 @@
     --wave-width: 200%;
     --wave-height: 190%;
     --wave-top: -25%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 35cqw);
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
     --wave-x-end: 150vw;
-    --wave-duration: 24s;
-    --wave-delay: -4.32s;
+    --wave-duration: 16.3s;
+    --wave-delay: -2.934s;
     --wave-opacity: 0.24;
     z-index: 1;
   }
@@ -474,10 +504,11 @@
     --wave-width: 200%;
     --wave-height: 190%;
     --wave-top: 54%;
-    --wave-x-start: calc(var(--home-wave-boundary-anchor) + 40cqw);
+    --wave-boundary-reference: 50cqw;
+    --wave-hidden-spawn-inset: 5cqw;
     --wave-x-end: 150vw;
-    --wave-duration: 26s;
-    --wave-delay: -19.24s;
+    --wave-duration: 16.5s;
+    --wave-delay: -12.21s;
     --wave-opacity: 0.2;
     z-index: 1;
   }
