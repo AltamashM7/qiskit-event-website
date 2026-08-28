@@ -10,8 +10,8 @@ test('Home starts closed with the approved shared-composition layers', async ({ 
   await expect(box).toBeVisible();
   await expect(box).toHaveAttribute('aria-pressed', 'false');
   await expect(box).toHaveAttribute('data-revealed', 'false');
-  await expect(box.locator('.schrodinger-box__image--closed')).toHaveCSS('opacity', '1');
-  await expect(box.locator('.schrodinger-box__image--reveal')).toHaveCSS('opacity', '0');
+  await expect(box.locator('.schrodinger-box__state--closed')).toHaveCSS('opacity', '1');
+  await expect(box.locator('.schrodinger-box__state--reveal')).toHaveCSS('opacity', '0');
 
   const layerGeometry = await box.locator('img').evaluateAll((images) =>
     images.map((image) => {
@@ -33,6 +33,119 @@ test('Home starts closed with the approved shared-composition layers', async ({ 
   });
 
   expect(revealedWrapper).toEqual(closedWrapper);
+});
+
+test('Box uses stronger transform-only idle motion and a phase-split state transition', async ({ page }) => {
+  await page.goto('/');
+
+  const motion = await page.getByRole('button', { name: boxName }).evaluate((element) => {
+    const state = (selector: string) => {
+      const stateElement = element.querySelector<HTMLElement>(selector);
+      if (!stateElement) return null;
+      const styles = getComputedStyle(stateElement);
+      return {
+        opacity: styles.opacity,
+        transform: styles.transform,
+        transitionProperty: styles.transitionProperty,
+        transitionDuration: styles.transitionDuration,
+        transitionTimingFunction: styles.transitionTimingFunction,
+      };
+    };
+
+    const keyframes = Array.from(document.styleSheets).flatMap((sheet) => {
+      try {
+        return Array.from(sheet.cssRules);
+      } catch {
+        return [];
+      }
+    }).flatMap((rule) => {
+      if (!(rule instanceof CSSKeyframesRule) || rule.name !== 'home-box-float') return [];
+      return Array.from(rule.cssRules)
+        .filter((keyframe): keyframe is CSSKeyframeRule => keyframe instanceof CSSKeyframeRule)
+        .map((keyframe) => ({
+          properties: Array.from(keyframe.style).sort(),
+          transform: keyframe.style
+            .getPropertyValue('transform')
+            .replace(/^translate3d\(([^,]+),\s*([^,]+),\s*0\)/, 'translate($1, $2)')
+            .replaceAll('0px', '0'),
+        }));
+    });
+
+    const styles = getComputedStyle(element);
+    return {
+      animationName: styles.animationName,
+      animationDuration: styles.animationDuration,
+      animationIterationCount: styles.animationIterationCount,
+      closed: state('.schrodinger-box__state--closed'),
+      reveal: state('.schrodinger-box__state--reveal'),
+      keyframes,
+    };
+  });
+
+  expect(motion.animationName).toBe('home-box-float');
+  expect(motion.animationDuration).toBe('5.9s');
+  expect(motion.animationIterationCount).toBe('infinite');
+  expect(motion.closed).not.toBeNull();
+  expect(motion.reveal).not.toBeNull();
+  expect(motion.closed!.transitionProperty).toBe('transform, opacity');
+  expect(motion.closed!.transitionDuration).toBe('0.36s, 0.36s');
+  expect(motion.closed!.transitionTimingFunction).toBe(
+    'cubic-bezier(0.22, 0.8, 0.26, 1), cubic-bezier(0.22, 0.8, 0.26, 1)',
+  );
+  expect(motion.reveal!.transform).not.toBe('none');
+  expect(motion.keyframes).toHaveLength(4);
+  expect(motion.keyframes.map((keyframe) => keyframe.properties)).toEqual([
+    ['transform'],
+    ['transform'],
+    ['transform'],
+    ['transform'],
+  ]);
+  expect(motion.keyframes.map((keyframe) => keyframe.transform)).toEqual([
+    'translate(0, 0) rotate(-0.55deg)',
+    'translate(0.12rem, -0.65rem) rotate(-0.05deg)',
+    'translate(-0.14rem, -0.95rem) rotate(0.7deg)',
+    'translate(-0.08rem, -0.3rem) rotate(0.12deg)',
+  ]);
+
+  const revealImageTransform = await page
+    .getByRole('button', { name: boxName })
+    .locator('.schrodinger-box__image--reveal')
+    .evaluate((image) => {
+      const matchingRule = Array.from(document.styleSheets).flatMap((sheet) => {
+        try {
+          return Array.from(sheet.cssRules);
+        } catch {
+          return [];
+        }
+      }).find((rule) =>
+        rule instanceof CSSStyleRule &&
+        rule.selectorText.includes('.schrodinger-box__image--reveal') &&
+        !rule.selectorText.includes('[data-revealed'),
+      );
+
+      return {
+        computed: getComputedStyle(image).transform,
+        authored: matchingRule instanceof CSSStyleRule
+          ? matchingRule.style.getPropertyValue('transform')
+          : null,
+      };
+    });
+
+  expect(revealImageTransform.authored).toBe(
+    'translate(0.99307%, 1.68%) scale(0.953033, 0.951307)',
+  );
+  expect(revealImageTransform.computed).not.toBe('none');
+
+  await page.getByRole('button', { name: boxName }).click({ force: true });
+  await expect(page.getByRole('button', { name: boxName })).toHaveAttribute('data-revealed', 'true');
+  await expect(page.getByRole('button', { name: boxName }).locator('.schrodinger-box__state--closed')).toHaveCSS(
+    'opacity',
+    '0',
+  );
+  await expect(page.getByRole('button', { name: boxName }).locator('.schrodinger-box__state--reveal')).toHaveCSS(
+    'opacity',
+    '1',
+  );
 });
 
 test('Desktop hover and focus reveal the box temporarily', async ({ page }, testInfo) => {
@@ -122,8 +235,23 @@ test('Reduced motion keeps the interaction intentional without idle animation', 
 
   const box = page.getByRole('button', { name: boxName });
   const animationName = await box.evaluate((element) => getComputedStyle(element).animationName);
+  const stateMotion = await box.evaluate((element) =>
+    ['.schrodinger-box__state--closed', '.schrodinger-box__state--reveal'].map((selector) => {
+      const state = element.querySelector<HTMLElement>(selector);
+      if (!state) return null;
+      const styles = getComputedStyle(state);
+      return {
+        transform: styles.transform,
+        transitionProperty: styles.transitionProperty,
+      };
+    }),
+  );
 
   expect(animationName).toBe('none');
+  expect(stateMotion).toEqual([
+    { transform: 'none', transitionProperty: 'opacity' },
+    { transform: 'none', transitionProperty: 'opacity' },
+  ]);
   await box.focus();
   await expect(box).toHaveAttribute('data-revealed', 'true');
 });

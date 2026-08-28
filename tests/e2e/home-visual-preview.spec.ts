@@ -110,11 +110,11 @@ async function captureHomeState(
   const isRevealed = Boolean(interaction);
   await expect(box).toHaveAttribute('aria-pressed', String(isRevealed));
   await expect(box).toHaveAttribute('data-revealed', String(isRevealed));
-  await expect(box.locator('.schrodinger-box__image--closed')).toHaveCSS(
+  await expect(box.locator('.schrodinger-box__state--closed')).toHaveCSS(
     'opacity',
     isRevealed ? '0' : '1',
   );
-  await expect(box.locator('.schrodinger-box__image--reveal')).toHaveCSS(
+  await expect(box.locator('.schrodinger-box__state--reveal')).toHaveCSS(
     'opacity',
     isRevealed ? '1' : '0',
   );
