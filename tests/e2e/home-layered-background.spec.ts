@@ -52,8 +52,11 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
       waveDurations: waves.map((wave) => getComputedStyle(wave).animationDuration),
       waveDelays: waves.map((wave) => getComputedStyle(wave).animationDelay),
       waveTransforms: waves.map((wave) => getComputedStyle(wave).transform),
+      waveXStarts: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-x-start').trim()),
+      waveXEnds: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-x-end').trim()),
       waveWidths: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-width').trim()),
       waveHeights: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-height').trim()),
+      waveOpacities: waves.map((wave) => getComputedStyle(wave).getPropertyValue('--wave-opacity').trim()),
       baseZIndex: base instanceof HTMLElement ? getComputedStyle(base.parentElement!).zIndex : null,
       waveZIndexes: waves.map((wave) => getComputedStyle(wave).zIndex),
       overlayZIndex: overlay instanceof HTMLElement ? getComputedStyle(overlay).zIndex : null,
@@ -95,9 +98,17 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   expect(scene.waveIterationCounts).toEqual(Array(renderedWaveCount).fill('infinite'));
   expect(new Set(scene.waveDurations).size).toBe(renderedWaveCount);
   expect(new Set(scene.waveDelays).size).toBe(renderedWaveCount);
+  const durationSeconds = scene.waveDurations.map((duration) => Number.parseFloat(duration));
+  expect(Math.min(...durationSeconds)).toBe(11);
+  expect(Math.max(...durationSeconds)).toBe(24);
   expect(scene.waveTransforms.every((transform) => transform !== 'none')).toBe(true);
   expect(scene.waveWidths.filter((width) => Number.parseFloat(width) > 165).length).toBe(4);
   expect(scene.waveHeights.filter((height) => Number.parseFloat(height) > 80).length).toBe(4);
+  expect(scene.waveXStarts[7]).toBe('-1.7vw');
+  expect(scene.waveXEnds[7]).toBe('1.7vw');
+  expect(scene.waveWidths[7]).toBe('220%');
+  expect(scene.waveHeights[7]).toBe('150%');
+  expect(Number.parseFloat(scene.waveOpacities[7])).toBe(0.2);
   expect(scene.baseZIndex).toBe('0');
   expect(scene.waveZIndexes).toEqual([
     '4',
@@ -107,7 +118,7 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
     '6',
     '6',
     '1',
-    '2',
+    '0',
     '4',
     '3',
     '5',
@@ -115,7 +126,7 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
     '7',
     '7',
     '1',
-    '2',
+    '1',
   ]);
   expect(scene.overlayZIndex).toBe('20');
   expect(scene.backgroundPlaneZIndex).toBe('0');
