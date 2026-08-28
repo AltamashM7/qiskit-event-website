@@ -101,11 +101,15 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   const durationSeconds = scene.waveDurations.map((duration) => Number.parseFloat(duration));
   expect(Math.min(...durationSeconds)).toBe(11);
   expect(Math.max(...durationSeconds)).toBe(24);
+  const waveStartVw = scene.waveXStarts.map((start) => Number.parseFloat(start));
+  const waveEndVw = scene.waveXEnds.map((end) => Number.parseFloat(end));
+  expect(waveStartVw.every((start) => start <= -127)).toBe(true);
+  expect(waveEndVw.every((end) => end >= 127)).toBe(true);
   expect(scene.waveTransforms.every((transform) => transform !== 'none')).toBe(true);
   expect(scene.waveWidths.filter((width) => Number.parseFloat(width) > 165).length).toBe(4);
   expect(scene.waveHeights.filter((height) => Number.parseFloat(height) > 80).length).toBe(4);
-  expect(scene.waveXStarts[7]).toBe('-1.7vw');
-  expect(scene.waveXEnds[7]).toBe('1.7vw');
+  expect(scene.waveXStarts[7]).toBe('-170vw');
+  expect(scene.waveXEnds[7]).toBe('170vw');
   expect(scene.waveWidths[7]).toBe('220%');
   expect(scene.waveHeights[7]).toBe('150%');
   expect(Number.parseFloat(scene.waveOpacities[7])).toBe(0.2);
