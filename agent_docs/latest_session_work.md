@@ -1,153 +1,181 @@
 # Latest Session Work
 
 ## Purpose
-The long Web Orchestrator conversation is being retired before its context limit. Durable repository docs are now the handoff mechanism.
+
+The long Orchestrator conversation is being retired. Repository docs are the continuation mechanism.
 
 Primary restart:
+
 `agent_docs/orchestrator_handoff.md`
 
-## Source-of-truth snapshot
+## Current source-of-truth snapshot
+
 Repository:
+
 `https://github.com/AltamashM7/qiskit-event-website`
 
 PR:
+
 `https://github.com/AltamashM7/qiskit-event-website/pull/8`
 
 Branch:
+
 `phase-2/home-layered-background-integration`
 
-Last application/visual head before docs:
-`25cf7117e0f44da99534d9372a85f25291325034`
+Application head before current docs refresh:
+
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
 Main baseline:
+
 `67f3094599dbd7af6fd1772e486ff250677d5e22`
 
-PR #8 is Draft/open/unmerged.
+PR #8 remains Draft/open/unmerged.
 
-A fresh orchestrator must re-read actual branch head because docs commits advance it.
+## Desktop layered background result
 
-## Session result — desktop waves
-USER reports:
-**all desktop layered-background visual checks passed.**
+USER has passed all visual checks.
 
-Accepted system:
-- static desktop base;
-- 20 wave instances using 8 assets;
-- foreground neutral/boundary overlay;
-- full-opacity thick cream waves;
-- more numerous thin/dashed/color families;
-- vertically distributed composition;
-- stronger crest/trough amplitude;
-- dominant vertically broad ribbon;
-- constant linear speed;
-- actual effective velocity test;
-- actual alpha-bound boundary-spawn test;
-- responsive hidden reset across four aspect ratios.
-
-Final effective speed:
-`14.78–23.63 vw/s`
-
-Duration:
-`7.2–16.5s`
-
-Representative spawn QA:
-- 1024×768;
-- 1280×720;
-- 1440×900;
-- 1920×1080.
-
-USER passed:
+Accepted:
 - boundary emergence;
 - speed;
 - population;
 - overlap;
-- large-behind-small layering;
+- bigger behind smaller;
 - broad ribbon;
 - vertical occupancy;
-- amplitude;
+- crest/trough amplitude;
 - performance.
 
-Wave system is locked for immediate box correction.
+Wave system is locked.
 
-## Regression history
-### Slow despite fast-looking durations
-Cause: shorter travel distance with similar durations.
-Fix: test actual horizontal velocity.
+Technical regression guards retain:
+- actual effective velocity measurement;
+- alpha-based painted-edge spawn measurement;
+- actual irregular overlay boundary;
+- four representative desktop aspect ratios;
+- mobile non-download assertions.
 
-### Spawn visible inside yellow
-Cause: generic cqw anchor/permissive range did not model irregular boundary.
-Fix: actual wave alpha + overlay row boundary + cover/scale geometry across aspect ratios.
+## Box refinement completed while docs were being prepared
 
-Do not simplify these guards casually.
+Luna implemented the requested box polish after the first documentation-only handoff commits landed.
 
-## Last application CI
-Run:
-`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33178114740`
+Because the remote had advanced from `25cf711...` to documentation head `83c9cc49...`, the Builder preserved those documentation commits and pushed the application commit on top.
+
+Application commit:
+
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Message:
+
+`fix: strengthen box motion and phase reveal`
+
+## Independent Orchestrator review
+
+Compared `83c9cc49...` → `007e1e...`:
+- exactly one commit;
+- exactly four changed files;
+- wave implementation not retuned.
+
+Changed:
+- `src/components/home/SchrodingerBox.astro`
+- `src/styles/home.css`
+- `tests/e2e/home-composition.spec.ts`
+- `tests/e2e/home-visual-preview.spec.ts`
+
+### New markup
+Closed and reveal images now live in separate state wrappers.
+
+Outer button owns idle.
+State wrappers own transform/opacity transition.
+Images own fixed geometry/calibration.
+
+### Idle
+`5.9s ease-in-out infinite`
+
+Keyframes:
+- 0/100: (0,0), -0.55deg
+- 22: +0.12rem x, -0.65rem y, -0.05deg
+- 50: -0.14rem x, -0.95rem y, +0.70deg
+- 78: -0.08rem x, -0.30rem y, +0.12deg
+
+Transform-only.
+
+### Phase split
+360ms cubic-bezier(0.22,0.8,0.26,1).
+
+Closed:
+rest → -1.25% x / +1.25% y, scale .99, fade out.
+
+Reveal:
++1.25% x / -1.25% y, scale 1.012, opacity 0
+→ neutral state wrapper, opacity 1.
+
+Reveal image calibration remains:
+`translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
+
+### Reduced motion
+- idle disabled;
+- phase transform disabled;
+- opacity only 120ms linear.
+
+### Interaction
+State script unchanged.
+Hover/focus/click/keyboard/mobile tap behavior preserved.
+
+## CI
+
+Actions run:
+
+`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33186955589`
 
 Head:
-`25cf7117e0f44da99534d9372a85f25291325034`
 
-Jobs:
-- Technical verification: success.
-- Cloudflare preview and visual QA: success.
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Results:
+- Technical verification success.
+- 92 passed.
+- 53 skipped.
+- 0 failed.
+- Cloudflare preview and visual QA success.
 
 Artifact:
 - `home-visual-qa-pr-8`
-- ID `9688571773`
-- digest `sha256:3296492e2b5e58059fba9353d553633bcf1bf739cae2004017d432f17bd25ae8`
+- ID `9692181025`
+- digest `sha256:35612c1623b6bdda8b2d503edc50643c4b5083c106b585fddbb8d3dd8dc3519b`
 
 Immutable preview:
-`https://277fd989.qiskit-event-website.pages.dev/`
+
+`https://0a1bd3fa.qiskit-event-website.pages.dev`
 
 No production deployment.
 
-## Current box
-Component:
-`src/components/home/SchrodingerBox.astro`
+## Local verification caveat
 
-Script:
-`src/scripts/schrodinger-box.ts`
+Luna reported:
+- npm ci completed;
+- npm run check passed;
+- npm run build passed;
+- equivalent separated Playwright matrix 92 passed / 53 skipped;
+- aggregate npm run verify did not exit cleanly in the Windows shell after starting the full matrix.
 
-Style:
-`src/styles/home.css`
-
-Current idle:
-- 6.5s;
-- approx -0.45rem;
-- approx ±0.35deg.
-
-Current reveal:
-- simple opacity crossfade;
-- calibration:
-  `translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`.
-
-Interaction state machine is accepted.
-
-## USER final requests before PR #8 acceptance
-1. Strengthen float because dynamic waves hide current motion.
-2. Make closed↔reveal cooler while preserving performance.
-
-Recommended:
-- stronger restrained outer float;
-- inner closed/reveal state wrappers;
-- transform+opacity phase split;
-- 280–420ms;
-- tiny opposing displacement;
-- no filters/masks/canvas/dependency;
-- reduced motion removes phase displacement;
-- calibration unchanged.
-
-See `agent_docs/next_steps.md`.
+Authoritative GitHub final-head verification did complete successfully, so there is no known test failure associated with this caveat.
 
 ## Immediate continuation
-A new orchestrator should NOT start another page.
+
+A fresh Orchestrator should NOT start by issuing another Builder correction.
 
 First:
 1. inspect live PR #8;
-2. confirm Builder has not advanced beyond docs;
-3. continue bounded box-motion correction on same PR;
-4. independently verify final head;
-5. USER tests live normal motion;
-6. only after explicit approval, squash merge PR #8.
+2. inspect exact current head;
+3. ask USER to review the immutable normal-motion preview;
+4. judge stronger idle + phase split;
+5. if USER finds an issue, one bounded same-PR correction;
+6. if USER passes all visual checks, re-check head/CI and require explicit merge approval;
+7. squash merge only after approval;
+8. verify main and refresh docs.
 
-Then use `agent_docs/roadmap.md`.
+Preview:
+
+`https://0a1bd3fa.qiskit-event-website.pages.dev`

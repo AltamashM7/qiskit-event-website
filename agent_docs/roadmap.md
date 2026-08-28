@@ -1,97 +1,107 @@
 # Project Roadmap
 
 ## Roadmap philosophy
-Build through bounded visual/technical gates.
 
-Preferred rhythm:
-`one bounded phase → CI/preview → Orchestrator verification → USER visual QA → explicit acceptance → merge → next phase`
+Use bounded gates:
+
+`bounded phase → CI/preview → Orchestrator verification → USER visual QA → explicit acceptance → merge → next phase`
 
 GitHub is authoritative.
 
-## Current phase — finish PR #8
-Current PR:
-`https://github.com/AltamashM7/qiskit-event-website/pull/8`
+## Current gate — PR #8 final visual acceptance
 
-Desktop layered-wave visual QA has passed.
+Implementation is complete and technically green.
 
-Remaining:
-1. strengthen Schrödinger-box idle float;
-2. replace plain crossfade with lightweight transform+opacity phase-split reveal;
-3. verify no state/alignment jump;
-4. preserve accessibility/reduced motion;
-5. preserve locked wave system;
-6. run local verification;
-7. run final-head Actions;
-8. USER tests live normal motion;
-9. Orchestrator independently verifies final head;
-10. USER explicitly approves merge;
-11. squash merge only after authorization.
+Current application head:
+
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Desktop layered background:
+- USER accepted.
+
+Stronger box float:
+- implemented;
+- technically verified;
+- USER visual QA pending.
+
+Phase-split reveal:
+- implemented;
+- technically verified;
+- USER visual QA pending.
+
+If USER passes both:
+- re-check exact PR head/CI;
+- require explicit merge authorization;
+- squash merge PR #8;
+- verify new main;
+- refresh docs.
+
+If USER finds an issue:
+- one narrow correction on same PR;
+- no wave retuning unless objective regression.
 
 ## After PR #8 — Home stabilization/polish
+
 New bounded phase after PR #8 merges.
 
 Candidate work:
 - Master Navigator visual refinement;
-- evaluate Home identity typography/copy polish;
-- establish reusable interaction-transition grammar;
-- inspect below-the-fold Home content needs;
-- keep event facts provisional until supplied;
-- broader desktop/mobile accessibility/performance sweep.
+- Home identity typography/copy polish if needed;
+- decide whether the accepted phase-split transition becomes part of broader site transition grammar;
+- establish below-the-fold Home content requirements;
+- broader accessibility/performance review after visual stabilization.
 
-Do not change accepted layered background merely because a new phase begins.
+Do not reopen accepted layered-wave behavior casually.
 
 ## Mobile layered background — separate optional phase
-Current mobile uses Frame A.
 
-Do not automatically stretch/port desktop layered art to portrait.
+Current mobile uses Frame A and is valid.
 
-If desired:
+Do not stretch desktop layered art into portrait automatically.
+
+If mobile layering is desired:
 1. art-direct separately;
-2. decide whether mobile-specific base/overlay masters are required;
+2. decide if mobile base/overlay masters are needed;
 3. use Art Assets workflow;
-4. set mobile performance budget;
-5. integrate in its own Draft PR;
-6. verify weak-phone smoothness.
-
-Frame A is a valid fallback until a replacement is accepted.
+4. establish mobile performance expectations;
+5. use a new bounded PR;
+6. real-device QA.
 
 ## About Event Stage
+
 Current route is a neutral shell.
 
-Provisional subject:
-- stylized qubit or other event-oriented quantum subject.
+Provisional direction:
+- stylized qubit or another event-oriented quantum subject.
 
 Before implementation:
-- confirm accent family;
-- approve subject/background assets;
-- define desktop/mobile Stage composition;
-- keep reusable navigation/Stage boundaries;
-- do not copy Home geometry mechanically.
+- choose accent;
+- approve art;
+- define desktop/mobile composition;
+- preserve reusable Stage/Nav architecture.
 
 ## About Quantum Mechanics Stage
+
 Current route is a neutral shell.
 
 Provisional ideas:
-- Schrödinger-cat wanted-poster language;
-- lower qubit/measurement feature scene;
-- measurement/superposition interaction.
+- Schrödinger-cat wanted poster;
+- qubit/measurement feature;
+- superposition/measurement interaction.
 
-These are not final.
+Not locked.
 
-Before implementation:
-- choose one main Stage concept;
-- approve art;
-- define interaction/performance model;
-- keep explanations understandable to a general student audience.
+Choose one coherent Stage concept before implementation.
 
 ## Lower-page information architecture
-After representative Stages stabilize, build calmer reusable section primitives.
 
-Potential modules only if actual content requires them:
+After representative Stages stabilize, create calmer reusable information sections as actual content requires.
+
+Possible modules:
 - overview;
 - schedule/program;
 - speakers/mentors;
-- hackathon/competition info;
+- hackathon/competition;
 - organizers;
 - FAQ/resources;
 - venue/travel;
@@ -99,61 +109,65 @@ Potential modules only if actual content requires them:
 - partners/sponsors;
 - contact.
 
-Stage = spectacle; lower content = readability.
+Stage = spectacle.
+Lower content = readability.
 
 ## Branding phase
-Likely future:
+
+Potential future brands:
 - college;
 - Qiskit;
 - IBM;
 - sponsors/partners.
 
 Rules:
-- official logos separate from generated art;
-- never bake official marks into scene backgrounds;
+- keep official logos separate from generated scene art;
 - preserve official proportions/clear space;
-- establish brand-safe zones after real assets are supplied.
+- do not bake marks into background imagery.
 
-## Content-finalization phase
+## Content finalization
+
 Do not invent event facts.
 
 When authoritative content arrives:
-- integrate supplied wording/data;
-- add dates/venue/registration/sponsors/speakers/schedule only when verified;
-- update metadata/SEO/canonical at the same time.
+- integrate only verified dates/venue/registration/sponsors/speakers/schedule;
+- update metadata/SEO/canonical at same time.
 
 ## Performance hardening
-Before production:
-- measure Home transfer/decoded-image cost;
-- measure animation smoothness on representative weak hardware;
-- check Core Web Vitals where practical;
-- verify no accidental eager loading of future-page art;
-- confirm reduced motion;
-- confirm no desktop decorative asset leakage to mobile;
-- establish documented budgets.
 
-## Production/release
-Production is intentionally not established.
+Before production:
+- measure transfer/decoded image costs;
+- test representative weak hardware;
+- inspect Core Web Vitals where practical;
+- verify no eager loading of future-page art;
+- verify reduced motion;
+- verify mobile resource isolation;
+- establish explicit budgets.
+
+## Production / release
+
+Production is not established.
 
 Future:
-- choose/confirm hostname;
-- establish production Cloudflare Pages path;
-- keep Direct Upload unless deliberately changed;
+- choose hostname;
+- establish production Cloudflare Direct Upload path;
 - canonical metadata;
 - robots/sitemap/SEO;
-- final accessibility/cross-device QA;
+- final accessibility;
+- final cross-device QA;
 - deploy only after explicit authorization.
 
-A green PR preview is not production readiness.
+A successful PR preview is not production readiness.
 
 ## Open decisions
+
 - final page count;
-- final event content;
-- final non-Home accents;
-- final About subjects;
-- final lower-page structure;
-- official branding requirements;
-- exact performance budgets;
+- event content;
+- non-Home accents;
+- About-page subjects;
+- lower-page structure;
+- official branding;
+- performance budgets;
 - analytics;
 - production hostname;
 - production release process.

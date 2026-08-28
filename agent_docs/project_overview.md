@@ -87,7 +87,7 @@ Mobile may legitimately change:
 
 The Astro implementation architecture is established and Home Composition V1 is merged.
 
-The current bounded phase is Draft PR #8: desktop layered Home probability-field integration. The layered background itself has passed USER visual QA. Before PR #8 acceptance, the Schrödinger box still needs a stronger but natural idle float and a more expressive transform+opacity reveal transition.
+The current bounded phase is Draft PR #8. The desktop layered Home probability field has passed USER visual QA. The stronger natural box float and transform+opacity phase-split reveal have now been implemented and technically verified; USER live normal-motion review is the remaining acceptance gate.
 
 Mobile intentionally remains on the accepted Frame A composition and does not load desktop layered assets.
 

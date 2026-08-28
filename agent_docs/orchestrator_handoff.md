@@ -1,11 +1,15 @@
 # Web Orchestrator Handoff
 
 ## Purpose
-This is the primary restart document for a fresh Web ChatGPT Orchestrator session. It exists so the project can continue without relying on the long conversation that produced the current implementation.
 
-Always re-read live GitHub state before mutation. This file records the state as of 2026-08-28, but GitHub remains authoritative if the branch has advanced.
+This is the primary restart document for a fresh Web ChatGPT Orchestrator session.
+
+The previous long Orchestrator conversation can be retired. A new Orchestrator should continue from live GitHub state plus these durable documents, not from assumed conversation memory.
+
+Always re-read GitHub before mutation. This file records the project state as of 2026-08-28.
 
 ## Mandatory read order
+
 1. `AGENTS.md`
 2. `agent_docs/orchestrator_handoff.md`
 3. `agent_docs/current_scene.md`
@@ -18,88 +22,119 @@ Always re-read live GitHub state before mutation. This file records the state as
 10. `ASSET_REGISTRY.md`
 11. `agent_docs/workflow/orchestrator_builder.md`
 
-Then inspect the current PR/branch, current source, tests, CI, preview, and changed files before giving implementation instructions.
+Then inspect the live PR, branch head, changed files, tests, Actions run, artifact, and preview before taking action.
 
-## Repository and authority
-Repository: `https://github.com/AltamashM7/qiskit-event-website`
+## Repository / authoritative state
 
-GitHub is the authoritative shared state.
+Repository:
 
-Default branch: `main`
+`https://github.com/AltamashM7/qiskit-event-website`
 
-Main baseline before the current Phase B work:
+Default branch:
+
+`main`
+
+Current main baseline before PR #8:
+
 `67f3094599dbd7af6fd1772e486ff250677d5e22`
 
-Current working branch:
+Current branch:
+
 `phase-2/home-layered-background-integration`
 
-Current pull request:
+Current Draft PR:
+
 `https://github.com/AltamashM7/qiskit-event-website/pull/8`
 
-PR #8 must remain Draft and unmerged until the USER explicitly approves it.
+Current application head before the documentation refresh that contains this handoff:
 
-Last application/visual head before this documentation-only handoff work:
-`25cf7117e0f44da99534d9372a85f25291325034`
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
 Commit:
-`fix: restore wave velocity and boundary emergence`
 
-Documentation commits will advance the branch head without changing application behavior. A new orchestrator must therefore re-read PR #8 and not assume `25cf711...` is still the literal tip.
+`fix: strengthen box motion and phase reveal`
+
+The documentation commit that contains this refreshed handoff will advance the literal branch head again without changing application behavior. Therefore a new Orchestrator must re-read PR #8 instead of assuming `007e1e…` is still the branch tip.
+
+PR #8 remains:
+- open;
+- Draft;
+- mergeable;
+- unmerged.
+
+Never merge without explicit USER authorization.
 
 ## Current milestone state
-Completed and merged into `main`:
+
+Accepted and merged into `main`:
 - Phase 0A1 Astro/static scaffold.
 - Approved Home asset import.
 - Phase 0A2 reusable technical foundation.
 - Home Composition V1.
-- Home background continuation assets B/C for provenance.
-- Phase A layered Home background asset foundation (PR #7), merged as main `67f3094599dbd7af6fd1772e486ff250677d5e22`.
+- Home background B/C continuation assets for provenance.
+- Phase A layered Home background asset foundation (PR #7).
 
 Superseded:
-- PR #6 full-frame A→B→C stepped background experiment.
-- PR #6 is closed/unmerged and must not be revived unless the architecture decision is intentionally reopened.
+- PR #6 full-frame A→B→C stepped background animation.
+- PR #6 is closed/unmerged and must not be revived unless the architecture decision is deliberately reopened.
 
 Current:
-- PR #8 integrates the Phase A desktop layered background.
-- The desktop layered-wave visual system has passed USER visual QA.
-- PR #8 is not yet accepted because two final Schrödinger-box motion refinements remain.
+- PR #8 integrates and tunes the desktop layered Home probability field.
+- The USER has already passed all desktop layered-background visual checks.
+- The stronger Schrödinger-box idle float and transform+opacity phase-split reveal are now IMPLEMENTED and technically verified.
+- The ONLY remaining PR #8 uncertainty is USER visual judgment of those two box-motion refinements in normal motion.
 
 ## Product intent
+
 This is a new Qiskit event website.
 
-It should feel like:
+Target character:
+
 **expressive game-menu energy + artistic scene composition + clear information design + carefully controlled performance**
 
-It must not look like a conventional university event template, generic futuristic HUD, glossy sci-fi UI, or realistic 3D environment.
+Avoid:
+- conventional university-event template styling;
+- generic futuristic HUDs;
+- glossy sci-fi UI;
+- realistic 3D environments;
+- excessive animation technology for its own sake.
 
-The 2025 site at `https://qiskit.cs.uwindsor.ca/` is an information/content-architecture reference only, never a UI clone.
+The 2025 site at `https://qiskit.cs.uwindsor.ca/` is an information/content-architecture reference only.
 
 Initial routes:
 - Home
 - About Event
 - About Quantum Mechanics
 
-Final event facts are not yet confirmed. Do not invent dates, venue, speakers, sponsors, registration facts, or branding requirements.
+Final event facts are not confirmed. Do not invent:
+- dates;
+- venue;
+- speakers;
+- sponsors;
+- registration details;
+- official branding requirements.
 
 ## Technical architecture
-Locked/current stack:
+
+Current stack:
 - Astro static output.
 - TypeScript.
 - npm.
-- Node 24 LTS requirement (`>=24 <25`).
-- Semantic HTML + CSS + minimal native browser JavaScript.
+- Node 24 LTS (`>=24 <25`).
+- Semantic HTML + CSS + minimal native JavaScript.
 - No React/Vue/Svelte.
 - No Tailwind.
-- No GSAP or animation framework.
-- No general UI framework.
-- Playwright Chromium browser QA.
+- No GSAP.
+- No UI framework.
+- Playwright Chromium.
 - Axe serious/critical accessibility baseline.
-- Sharp `0.35.3` as a dev-only asset/test dependency.
-- Cloudflare Pages Direct Upload from GitHub Actions for PR previews.
+- Sharp `0.35.3` dev-only for asset generation/test image analysis.
+- GitHub Actions.
+- Cloudflare Pages Direct Upload for PR previews.
 - No Cloudflare Git integration.
-- Production deployment is not established.
+- No production deployment yet.
 
-Core reusable boundaries:
+Core boundaries:
 - `SiteLayout`
 - `StageShell`
 - `MasterNavigator`
@@ -107,251 +142,275 @@ Core reusable boundaries:
 - `HomeLayeredBackground`
 - `SchrodingerBox`
 
-## Current Home desktop scene — visually accepted background
-The USER explicitly passed all current desktop layered-background visual checks at application head `25cf711...`.
+## Home desktop background — USER accepted / LOCKED
 
-Accepted behavior:
-- boundary illusion works;
-- waves visibly emerge from the irregular neutral/yellow boundary;
-- speed feels correct;
-- wave population/occupancy is satisfactory;
-- overlap works;
-- larger waves sit behind smaller waves;
-- vertical occupancy is satisfactory;
-- crest/trough amplitude is satisfactory;
-- broad translucent ribbon works;
-- overall performance feels good.
+At application head `25cf7117e0f44da99534d9372a85f25291325034`, the USER explicitly passed all desktop layered-background visual checks.
 
-The wave system is LOCKED for the next correction.
+Accepted:
+- boundary illusion;
+- waves emerge through the irregular boundary;
+- wave speed;
+- occupancy/population;
+- overlap;
+- bigger waves behind smaller waves;
+- vertical occupancy;
+- crest/trough amplitude;
+- dominant broad ribbon;
+- performance.
 
-Do not casually retune wave speed, spawn, count, amplitude, opacity, vertical placement, ribbon geometry, or depth while working on the box.
+No later application commit modified the wave implementation. The box-motion commit `007e1e…` changed only:
+- `src/components/home/SchrodingerBox.astro`
+- box-related portions of `src/styles/home.css`
+- `tests/e2e/home-composition.spec.ts`
+- `tests/e2e/home-visual-preview.spec.ts`
 
-See `agent_docs/current_scene.md` for exact details.
+Do not reopen wave tuning during the final PR #8 box review unless an objective regression is observed.
 
-## Current Home mobile scene
-Mobile intentionally does NOT use the desktop layered system yet.
+See `agent_docs/current_scene.md` for exact wave mechanics.
 
-Current mobile:
+## Home mobile
+
+Mobile intentionally remains separately art-directed.
+
+Current behavior:
 - uses Frame A;
-- keeps the accepted separate mobile composition;
-- does not request desktop layered base/overlay/wave files;
-- box is approximately `66vw` with the current stacked layout;
-- normal, compact, short, and tall mobile Playwright variants exist;
-- real Android QA previously passed Home V1.
+- does not request desktop layered base/overlay/wave assets;
+- maintains accepted stacked Home composition;
+- box remains interactive via tap;
+- normal, compact, short, and tall mobile Playwright variants exist.
 
-Mobile layered art/integration is a separate future phase and must not be smuggled into PR #8.
+Mobile layered integration is a separate future phase.
 
-## Schrödinger box — current accepted geometry
+## Schrödinger box — current implementation
+
 Closed asset:
+
 `public/assets/home/schrodinger/box-closed-v1.png`
 
 Reveal asset:
+
 `public/assets/home/schrodinger/box-reveal-v1.png`
 
-The reveal image contains the approved adjusted half-skeletal / half-living cat and is the authoritative visible reveal state.
+Reveal calibration remains exactly authored as:
 
-Critical reveal alignment calibration:
 `translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
 
-Do not alter this calibration without objective evidence of a regression.
+Browser CSS serialization in tests normalizes the percentage literals to:
+`translate(0.99307%, 1.68%) scale(0.953033, 0.951307)`
 
-Current interaction state machine:
+Do not treat that serialization normalization as a calibration change.
+
+### Transform ownership
+
+Current markup now has two inner state wrappers:
+
+`.schrodinger-box__state--closed`
+
+`.schrodinger-box__state--reveal`
+
+Responsibilities:
+- outer `.schrodinger-box` owns idle floating transform;
+- state wrappers own phase-split transform + opacity;
+- actual images own fixed artwork geometry/calibration.
+
+This separation is intentional and prevents idle/reveal transforms from fighting.
+
+### Stronger idle float — IMPLEMENTED, visual acceptance pending
+
+Current animation:
+
+`home-box-float 5.9s ease-in-out infinite`
+
+Keyframes:
+- 0/100%: `translate3d(0, 0, 0) rotate(-0.55deg)`
+- 22%: `translate3d(0.12rem, -0.65rem, 0) rotate(-0.05deg)`
+- 50%: `translate3d(-0.14rem, -0.95rem, 0) rotate(0.7deg)`
+- 78%: `translate3d(-0.08rem, -0.3rem, 0) rotate(0.12deg)`
+
+Only transform is animated.
+
+### Quantum phase-split reveal — IMPLEMENTED, visual acceptance pending
+
+State transition:
+- duration: `360ms`;
+- easing: `cubic-bezier(0.22, 0.8, 0.26, 1)`;
+- properties: transform + opacity only.
+
+Closed resting wrapper:
+`translate3d(0, 0, 0) scale(1)`, opacity 1.
+
+Closed leaving:
+`translate3d(-1.25%, 1.25%, 0) scale(0.99)`, opacity 0.
+
+Reveal hidden/start:
+`translate3d(1.25%, -1.25%, 0) scale(1.012)`, opacity 0.
+
+Reveal settled:
+`translate3d(0, 0, 0) scale(1)`, opacity 1.
+
+No:
+- blur/filter;
+- backdrop-filter;
+- animated masks;
+- clip-path animation;
+- canvas;
+- WebGL;
+- JS animation loop;
+- animation dependency.
+
+### Interaction state machine — unchanged
 
 Desktop fine pointer:
-- hover → temporary reveal;
-- focus → temporary reveal;
-- click → lock/unlock.
+- hover temporary reveal;
+- focus temporary reveal;
+- click lock/unlock.
 
-Mobile/coarse pointer:
-- tap/click → toggle locked reveal.
+Mobile/coarse:
+- tap/click toggle locked reveal.
 
-`aria-pressed` represents lock state.
+`aria-pressed` still represents lock state.
 
-Do not redesign the interaction state machine during visual transition polish.
+`src/scripts/schrodinger-box.ts` was NOT changed by the box-motion commit.
 
-## Immediate work still required before PR #8 acceptance
+### Reduced motion
 
-### 1. Strengthen idle float
-The current float is too subtle against the dynamic waves.
+Under `prefers-reduced-motion: reduce`:
+- box idle animation disabled;
+- phase transforms disabled;
+- state wrappers use only `opacity 120ms linear`;
+- final state remains controlled by the same interaction state machine.
 
-Current approximate idle:
-- duration: `6.5s`;
-- vertical travel: about `0.45rem`;
-- rotation: roughly `-0.35deg ↔ +0.35deg`.
+## Independent Orchestrator verification of box-motion head
 
-Desired:
-- clearly perceptible but still heavy/natural;
-- approximately `0.8–1.0rem` vertical travel;
-- approximately `±0.55–0.75deg` rotation;
-- optional tiny `0.1–0.2rem` horizontal drift;
-- approximately `5.5–6.2s`;
-- no bounce/spring/orbit/scale breathing.
-
-### 2. Replace plain crossfade with a lightweight phase-split reveal
-Recommended direction: a restrained “quantum phase-split” transition.
-
-Architecture:
-outer `.schrodinger-box` → idle float only
-inner state wrappers → reveal-state transform + opacity only
-actual PNG images → fixed artwork geometry/calibration
-
-Desired phase transition:
-- closed state shifts slightly one direction and fades out;
-- revealed state begins slightly displaced in the opposite direction, fades in, and settles;
-- movement around 1–2%;
-- optional scale change only around 1–1.5%;
-- target duration roughly 280–420ms;
-- transform + opacity only;
-- reversible;
-- no positional jump;
-- reduced motion removes phase displacement.
-
-Forbidden:
-- blur/filter/backdrop-filter;
-- SVG filters;
-- animated masks/clip-path;
-- canvas/WebGL;
-- JS animation loops;
-- animation dependencies.
-
-See `agent_docs/next_steps.md` for the exact acceptance checklist.
-
-## Last independently verified application CI/preview
 Application head:
-`25cf7117e0f44da99534d9372a85f25291325034`
 
-Actions run:
-`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33178114740`
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Compared to documentation head `83c9cc49a565ad5832e76c51fc5164d589895583`, exactly four files changed:
+- `src/components/home/SchrodingerBox.astro`
+- `src/styles/home.css`
+- `tests/e2e/home-composition.spec.ts`
+- `tests/e2e/home-visual-preview.spec.ts`
+
+The commit patch confirms the wave CSS was not retuned.
+
+Tests verify:
+- wrapper geometry unchanged between closed/revealed states;
+- stronger idle keyframes are transform-only;
+- 5.9s idle duration;
+- 360ms transform+opacity state transitions;
+- reveal calibration preserved;
+- hover/focus behavior;
+- click lock/unlock;
+- keyboard activation;
+- mobile tap;
+- reduced-motion no-idle/no-phase-transform behavior;
+- viewport/mobile composition still valid.
+
+GitHub Actions run:
+
+`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33186955589`
+
+Exact tested head:
+
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
 Jobs:
 - Technical verification — success.
 - Cloudflare preview and visual QA — success.
 
+CI test result:
+- 92 passed;
+- 53 skipped;
+- 0 failed;
+- Astro check 0 errors / 0 warnings.
+
 Artifact:
 - name: `home-visual-qa-pr-8`
-- ID: `9688571773`
-- digest: `sha256:3296492e2b5e58059fba9353d553633bcf1bf739cae2004017d432f17bd25ae8`
-- exactly six PNG screenshots.
+- ID: `9692181025`
+- digest: `sha256:35612c1623b6bdda8b2d503edc50643c4b5083c106b585fddbb8d3dd8dc3519b`
+- exactly six PNGs.
 
 Preview alias:
-`https://pr-8.qiskit-event-website.pages.dev/`
 
-Immutable preview for `25cf711...`:
-`https://277fd989.qiskit-event-website.pages.dev/`
+`https://pr-8.qiskit-event-website.pages.dev`
 
-No production deployment occurred.
+Immutable preview:
 
-The reduced-motion screenshots do NOT validate normal-motion wave or box animation. Human preview QA remains necessary for motion.
+`https://0a1bd3fa.qiskit-event-website.pages.dev`
 
-## Critical wave implementation facts
-Current desktop wave composition has 20 DOM instances while reusing only eight image assets:
-- wave 01 thick cream upper: 1;
-- wave 02 thick cream lower: 1;
-- waves 03–08: 3 each.
+No production deployment.
 
-Thick cream waves are full opacity.
+Luna reported that the local Windows aggregate `npm run verify` process did not exit cleanly after starting the full matrix. This is not a known application failure: the equivalent separated matrix completed 92 passed / 53 skipped, and authoritative final-head GitHub verification completed successfully.
 
-Dominant translucent ribbon:
-- approx width `220%`;
-- approx height `500%`;
-- opacity `0.5`;
-- `z-index: 0`.
+## Why screenshot sameness does not accept the motion
 
-Effective tested velocity range:
-`14.78–23.63 vw/s`
+The screenshot pipeline deliberately emulates reduced motion.
 
-Broad underlayers are slower. Thin/dashed crossing waves are faster.
+Therefore deterministic screenshots can prove final closed/revealed composition remains stable, but cannot validate:
+- stronger normal-motion float feel;
+- normal-motion phase-split aesthetics;
+- whether transition feels too subtle/too strong;
+- perceived performance during the transition.
 
-Spawn logic is not a simple magic x coordinate. Tests measure:
-- meaningful wave alpha at threshold `>=16`;
-- opaque overlay boundary by row at alpha `>=250`;
-- cover + overlay scale geometry;
-- painted leading edge against the actual irregular boundary.
+That remains USER live-preview QA.
 
-Representative spawn viewports:
-- `1024×768`
-- `1280×720`
-- `1440×900`
-- `1920×1080`
+## Immediate next action for a new Orchestrator
 
-The reset must remain hidden beneath the neutral overlay with a safety margin.
+Do NOT ask Luna to make another box change immediately.
 
-Do not regress this into raw duration-only tests or a single flat boundary assumption.
+First have the USER inspect the immutable normal-motion preview:
 
-## Important lessons from regressions
+`https://0a1bd3fa.qiskit-event-website.pages.dev`
 
-### Speed
-Animation duration alone is NOT a speed guarantee.
+USER should judge:
+1. is the float now noticeable enough?
+2. does it still feel natural/heavy rather than bouncy?
+3. is the phase-split cooler than the old crossfade?
+4. does the reveal feel restrained rather than glitchy?
+5. is there any visible jump/misalignment?
+6. do hover/focus/click/tap still feel correct?
+7. does performance still feel good?
+8. are the accepted waves unchanged?
 
-A previous correction shortened travel distance while keeping old durations, making the waves visibly slower.
+If the USER finds a problem:
+- translate only that problem into one bounded correction on SAME PR #8;
+- preserve the wave lock;
+- verify the new final head again.
 
-Correct metric:
+If all visual checks pass:
+- Orchestrator re-checks exact live PR head and final-head CI;
+- USER must explicitly approve/authorize merge;
+- squash-merge PR #8 only then;
+- verify new `main` SHA;
+- update durable docs for the merged state.
+
+## Important regression lessons
+
+### Wave speed
+Duration alone is not speed.
+
+Regression guard measures:
 `abs(endTranslation - startTranslation) / duration / stageWidth`
 
-The test now enforces actual velocity.
-
 ### Boundary spawn
-A previous correction used a generic `54cqw + offset` model and allowed painted content to start visibly in the yellow field.
+Do not replace actual alpha/overlay geometry with a flat guessed boundary.
 
-Correct model:
-- use actual asset alpha bounds;
-- account for rendered element width;
-- compare painted rows to the actual irregular overlay boundary;
-- verify multiple aspect ratios.
+Tests use:
+- meaningful wave alpha threshold `>=16`;
+- overlay opaque threshold `>=250`;
+- row-by-row boundary;
+- cover/scale geometry;
+- multiple aspect ratios.
 
-### Screenshots
-The six visual QA screenshots intentionally use reduced motion for deterministic comparison.
-
-They cannot prove:
-- normal wave cadence;
-- loop behavior;
-- hover animation quality;
-- box idle float visibility;
-- phase-split transition quality.
-
-The USER must visually review normal motion.
-
-## GitHub/Builder workflow
-Preferred flow:
-1. Orchestrator re-reads repository/PR state.
-2. Produce one bounded Builder prompt.
-3. Builder modifies the existing intended branch/PR.
-4. Builder runs local verification and pushes.
-5. Orchestrator independently verifies exact final head, changed files, tests, CI, artifact, and preview.
-6. USER performs manual/visual QA.
-7. Correct on the same PR when the correction belongs to the same bounded phase.
-8. Merge only after explicit USER authorization.
-
-Builder reports are evidence to inspect, not proof.
-
-Do not create a new PR for the remaining box polish. It belongs on existing Draft PR #8.
+### Motion screenshots
+Reduced-motion screenshots are deterministic QA surfaces, not normal-motion acceptance evidence.
 
 ## Merge rule
-Never merge PR #8 merely because CI is green or because a Builder says it is ready.
 
-Required before merge:
-- final box float visual QA passes;
-- final phase-split reveal visual QA passes;
-- no jump/regression;
-- performance feels good;
-- final-head CI passes;
-- Orchestrator verifies exact final head;
-- USER explicitly approves/authorizes merge.
+Never merge because:
+- Builder says ready;
+- CI is green;
+- screenshots are stable.
 
-Expected merge style: squash merge, consistent with prior accepted phases.
-
-## After PR #8
-The next phases are intentionally separate and are described in `agent_docs/roadmap.md`.
-
-Do not automatically begin them in the same PR.
-
-High-level future areas:
-- Home remaining polish and lower-page content architecture;
-- Master Navigator visual refinement;
-- optional mobile layered-background art/integration as its own art-directed phase;
-- About Event Stage;
-- About Quantum Mechanics Stage;
-- final event content;
-- official branding;
-- performance budgets;
-- production domain/release process.
+Merge requires explicit USER authorization after live visual QA.

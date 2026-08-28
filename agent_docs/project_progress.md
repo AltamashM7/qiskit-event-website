@@ -1,193 +1,199 @@
 # Project Progress
 
-## Current overall status
-**Phase: Draft PR #8 — desktop layered Home background visually accepted; final Schrödinger-box motion polish pending**
+## Current status
 
-Repository: `https://github.com/AltamashM7/qiskit-event-website`
+**Phase: Draft PR #8 technically complete; final USER visual QA of box motion pending**
+
+Repository:
+
+`https://github.com/AltamashM7/qiskit-event-website`
 
 Main baseline before PR #8:
+
 `67f3094599dbd7af6fd1772e486ff250677d5e22`
 
 Branch:
+
 `phase-2/home-layered-background-integration`
 
 PR:
+
 `https://github.com/AltamashM7/qiskit-event-website/pull/8`
 
-Last application/visual head before documentation handoff commits:
-`25cf7117e0f44da99534d9372a85f25291325034`
+Current application head before this documentation refresh:
+
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
 PR #8 remains Draft/open/unmerged.
 
 ## Accepted / merged milestones
-### Phase 0A1
-- Astro static-output scaffold.
-- TypeScript + npm.
-- canonical `src/` and `public/assets/` structure.
-- no frontend UI framework.
 
-### Approved Home asset import
-- canonical Home background and Schrödinger assets committed.
-- A/B/C frame set preserved for provenance.
+### Phase 0A1
+- Astro static output.
+- TypeScript/npm.
+- no UI framework.
+- canonical source/assets.
+
+### Asset import
+- approved Home backgrounds/box/cat assets.
+- A/B/C retained for provenance.
 
 ### Phase 0A2
-- Node 24 baseline.
-- `SiteLayout`, `StageShell`, `MasterNavigator`.
-- data-driven routes/navigation.
-- Playwright Chromium QA.
-- Axe serious/critical accessibility baseline.
-- reduced-motion foundation.
-- GitHub Actions verification.
+- Node 24.
+- `SiteLayout` / `StageShell` / `MasterNavigator`.
+- Playwright.
+- Axe baseline.
+- GitHub Actions.
+- reduced motion.
 
 ### Home Composition V1
-- accepted and squash-merged.
-- desktop/mobile Home Stage composition.
-- generic non-fabricated event identity copy.
-- closed/reveal box states.
-- hover/focus temporary reveal.
-- click lock/unlock.
-- mobile tap toggle.
-- initial low-cost box idle motion.
-- Frame A mobile composition.
+- accepted/merged.
+- desktop/mobile Stage.
+- generic event copy.
+- box interaction.
+- Frame A mobile.
 
-### Home layered background Phase A
-- accepted and merged in PR #7.
-- main advanced to `67f3094599dbd7af6fd1772e486ff250677d5e22`.
-- static desktop base, transparent overlay, eight wave masters/deliveries.
-- deterministic Sharp delivery generator.
-- no asset-byte mutation after approval.
+### Layered background Phase A
+- PR #7 accepted/merged.
+- desktop base/overlay/eight wave masters + WebP deliveries.
+- Sharp generator.
 
 ## Superseded
-PR #6:
-- old full-frame A→B→C stepped-animation experiment.
-- closed/unmerged.
-- superseded by layered desktop architecture.
 
-## PR #8 — accepted background state
-Desktop uses:
-- layered WebP base;
-- 20 wave elements reusing 8 assets;
-- foreground neutral/boundary overlay;
-- CSS-only independent linear horizontal transform motion.
+PR #6 A→B→C full-frame stepped animation:
+- closed;
+- unmerged;
+- superseded.
 
-Family counts:
-- 01 thick cream upper: 1;
-- 02 thick cream lower: 1;
-- 03 thin yellow: 3;
-- 04 thin ivory: 3;
-- 05 dashed white upper: 3;
-- 06 dashed white lower: 3;
-- 07 halftone yellow band: 3;
-- 08 translucent cream ribbon: 3.
+## PR #8 layered desktop background
 
-Accepted rules:
-- thick cream waves full opacity;
-- large/broad layers behind smaller ones;
-- dominant ribbon roughly 220% × 500%, opacity 0.5, z-index 0;
-- upper/middle/lower distribution;
-- stronger crest/trough amplitude.
-
-Accepted motion:
-- constant linear left→right;
-- about 7.2–16.5s duration;
-- tested effective velocity about 14.78–23.63 vw/s;
-- broad underlayers slower, crossing thin/dashed layers faster.
-
-Accepted boundary:
-- reset hidden beneath neutral overlay;
-- meaningful alpha starts on masked side;
-- visible wave emerges through irregular boundary;
-- no pop-in inside yellow.
-
-Regression tests measure real alpha/overlay geometry across:
-- 1024×768;
-- 1280×720;
-- 1440×900;
-- 1920×1080.
-
-USER explicitly passed:
+USER accepted:
 - boundary illusion;
-- speed;
-- occupancy;
+- final wave speed;
+- population;
 - overlap;
 - depth;
+- vertical occupancy;
 - amplitude;
-- vertical filling;
 - broad ribbon;
 - performance.
 
-Wave system is locked for remaining box-only polish.
+Current structure:
+- 20 instances;
+- wave 01/02 one each;
+- wave 03–08 three each;
+- thick cream full opacity;
+- dominant ribbon approx 220%×500%, opacity .5, z0;
+- 7.2–16.5s;
+- 14.78–23.63 vw/s effective velocity;
+- actual alpha/overlay hidden reset tests across four aspect ratios.
 
-## Mobile
-Mobile continues using Frame A.
+Wave system locked.
 
-Tests prove mobile does not request desktop layered base, overlay, or wave deliveries.
+## PR #8 box-motion refinement
 
-Mobile layered integration is not part of PR #8.
+Commit:
 
-## Current box state
-Accepted interaction:
-- desktop hover/focus temporary reveal;
-- click lock/unlock;
-- mobile tap toggle.
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-Locked reveal alignment:
+`fix: strengthen box motion and phase reveal`
+
+Changed exactly four files relative to the documentation head:
+- `src/components/home/SchrodingerBox.astro`
+- `src/styles/home.css`
+- `tests/e2e/home-composition.spec.ts`
+- `tests/e2e/home-visual-preview.spec.ts`
+
+No wave asset/component retuning.
+
+### Idle
+- outer wrapper owns transform;
+- 5.9s ease-in-out;
+- high point -0.95rem;
+- horizontal drift ±~0.14rem;
+- rotation -0.55deg to +0.70deg;
+- transform-only.
+
+### Phase split
+- inner state wrappers added;
+- 360ms;
+- cubic-bezier(0.22, 0.8, 0.26, 1);
+- transform + opacity only;
+- small opposing ±1.25% displacement;
+- closed leaving scale .99;
+- reveal start scale 1.012;
+- final reveal wrapper scale 1.
+
+Reveal image calibration unchanged:
 `translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
 
-Remaining:
-1. idle float too subtle against moving waves;
-2. reveal reads as plain crossfade.
+### Reduced motion
+- idle none;
+- phase transforms none;
+- 120ms linear opacity only.
 
-Planned:
-- stronger natural idle;
-- separate state wrappers;
-- transform+opacity phase split;
-- no heavy effects/dependencies;
-- preserve calibration and interaction state machine.
+### Interaction
+Unchanged:
+- hover/focus temporary reveal;
+- click lock/unlock;
+- keyboard;
+- mobile tap;
+- ARIA.
 
-See `agent_docs/next_steps.md`.
+## Final-head verification
 
-## Last verified application CI
-Run:
-`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33178114740`
+Actions:
 
-Head:
-`25cf7117e0f44da99534d9372a85f25291325034`
+`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33186955589`
 
-Jobs:
-- Technical verification: success.
-- Cloudflare preview and visual QA: success.
+Exact tested head:
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Technical verification:
+- success;
+- 92 passed;
+- 53 skipped;
+- 0 failed;
+- 0 Astro errors/warnings.
+
+Cloudflare preview and visual QA:
+- success.
 
 Artifact:
 - `home-visual-qa-pr-8`
-- ID `9688571773`
-- digest `sha256:3296492e2b5e58059fba9353d553633bcf1bf739cae2004017d432f17bd25ae8`
-- six PNGs.
+- ID `9692181025`
+- digest `sha256:35612c1623b6bdda8b2d503edc50643c4b5083c106b585fddbb8d3dd8dc3519b`
 
 Immutable preview:
-`https://277fd989.qiskit-event-website.pages.dev/`
+`https://0a1bd3fa.qiskit-event-website.pages.dev`
 
 No production deployment.
 
-## Outstanding before PR #8 merge
-- stronger box float;
-- performant reveal phase split;
-- no-jump verification;
-- final normal-motion USER QA;
-- final exact-head Orchestrator verification;
-- final-head CI success;
-- explicit USER merge approval.
+## Remaining before PR #8 merge
+
+Only subjective live normal-motion QA:
+- float visibility/naturalness;
+- phase-split quality;
+- no perceived jump;
+- performance;
+- wave non-regression.
+
+Then:
+- final exact-head Orchestrator recheck;
+- explicit USER merge approval;
+- squash merge;
+- verify main;
+- docs refresh.
 
 ## Not yet done
-- mobile layered background/art direction;
+
+- mobile layered art/integration;
 - final Home lower content;
-- final Master Navigator polish;
-- About Event visual implementation;
-- About Quantum Mechanics visual implementation;
-- final event facts/content;
+- Master Navigator polish;
+- About Event visuals;
+- About Quantum Mechanics visuals;
+- final event content;
 - official branding;
 - formal performance budgets;
-- production hostname/deployment/release;
+- production hostname/release;
 - final SEO/release QA.
-
-See `agent_docs/roadmap.md`.

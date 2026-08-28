@@ -1,153 +1,157 @@
 # Immediate Next Steps
 
 ## Current gate
-PR #8 desktop layered-wave visual QA has passed.
 
-Do not perform further background tuning unless box work causes an objective regression.
+Implementation work requested before PR #8 acceptance is now complete.
 
-Immediate objective: finish Schrödinger-box motion polish on the SAME Draft PR #8.
+Application head:
 
-## Task A — strengthen idle float
-Problem:
-current box moves only about `0.45rem` vertically with roughly `±0.35deg` over `6.5s`. Dynamic waves now mask it.
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-Desired:
-- clearly visible float;
-- heavy/suspended, not bouncy;
-- not springy;
-- not orbiting.
+Technical verification passed.
 
-Suggested envelope:
-- vertical: `0.8–1.0rem`;
-- rotation: `±0.55–0.75deg`;
-- optional horizontal: `0.1–0.2rem`;
-- cycle: `5.5–6.2s`.
+The current gate is USER normal-motion visual QA of:
+1. strengthened Schrödinger-box idle float;
+2. transform+opacity phase-split reveal.
 
-A slightly asymmetric multi-point path is preferred over a mechanical two-point bob if simple.
+Do NOT ask Luna for another correction until the USER actually identifies a visual problem.
 
-Animate transform only. No scale breathing.
+## Preview to review
 
-## Task B — performant quantum phase-split reveal
-Problem:
-closed→reveal currently reads as a simple crossfade.
+Immutable exact-head preview:
 
-Desired:
-- closed fades and moves slightly one direction;
-- reveal starts slightly displaced opposite;
-- reveal settles exactly into accepted geometry.
+`https://0a1bd3fa.qiskit-event-website.pages.dev`
 
-Performance:
-- transform + opacity only;
-- no blur/filter/backdrop-filter;
-- no SVG filters;
-- no animated clip-path/mask;
-- no canvas/WebGL;
-- no JS animation loop;
-- no new dependency.
+PR alias:
 
-Suggested:
-- `280–420ms`;
-- `1–2%` displacement;
-- optional `1–1.5%` scale delta max;
-- restrained ease-out/cubic-bezier;
-- optional 20–50ms micro-stagger only if reversal stays correct.
+`https://pr-8.qiskit-event-website.pages.dev`
 
-## Transform ownership
-Do not let idle/reveal transforms fight.
+Use immutable URL when validating this exact implementation.
 
-Preferred:
-button.schrodinger-box → idle float only
-inner state wrappers → transition transform + opacity
-actual images → fixed geometry
+## USER QA checklist
 
-Reveal image MUST preserve:
-`translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
+### Idle float
+Check:
+- clearly more noticeable than old float;
+- still feels like a heavy suspended box;
+- not bouncy;
+- not orbiting;
+- horizontal drift is subtle;
+- rotation feels natural;
+- moving waves no longer visually hide the float.
 
-## Interaction unchanged
-Desktop:
-- hover temporary reveal;
-- focus temporary reveal;
-- click lock/unlock.
+Current implementation:
+- 5.9s ease-in-out;
+- vertical high point -0.95rem;
+- horizontal excursions +0.12rem / -0.14rem;
+- rotation -0.55deg → +0.70deg.
 
-Mobile:
-- tap toggle.
+### Phase split
+Check:
+- more interesting than plain crossfade;
+- does not feel like a cheap glitch;
+- displacement is small enough;
+- closed/reveal states visually pass through one another cleanly;
+- final revealed geometry settles exactly;
+- reverse transition also feels coherent.
 
-Keep:
-- button semantics;
-- `aria-label`;
-- `aria-pressed`;
-- keyboard;
-- focus visibility.
+Current implementation:
+- 360ms;
+- cubic-bezier(0.22, 0.8, 0.26, 1);
+- closed leaves toward -1.25% x / +1.25% y with scale 0.99;
+- reveal starts +1.25% x / -1.25% y at scale 1.012;
+- transform + opacity only.
 
-Do not rewrite `src/scripts/schrodinger-box.ts` unless an objective bug requires it.
+### Alignment / interaction
+Check:
+- no jump when hover reveals;
+- no jump when focus reveals;
+- click lock/unlock correct;
+- mobile tap correct;
+- box tilt/size appears preserved;
+- cat/reveal calibration remains visually aligned.
 
-## No-jump requirement
-No jump on:
-- hover in/out;
-- focus in/out;
-- click;
-- lock/unlock;
-- mobile tap;
-- transition completion.
+### Performance
+Check:
+- float remains smooth;
+- reveal remains smooth;
+- wave performance feels unchanged;
+- interaction responsiveness remains good.
 
-Idle float should continue independently while internal artwork transitions.
+## If USER finds an issue
 
-## Reduced motion
-Under `prefers-reduced-motion: reduce`:
-- disable idle float;
-- disable phase displacement/scale;
-- immediate state or very short/simple opacity only;
-- final state correct.
+Do one bounded correction on SAME Draft PR #8.
 
-## Wave regression lock
-Do not alter:
-- 20-instance count;
-- family counts;
-- opacity;
-- amplitude;
-- vertical placement;
-- velocity;
-- boundary spawn;
-- ribbon geometry;
-- overlay;
-- mobile resource isolation.
+Do not create another PR.
 
-Existing layered-background tests remain intact/passing.
+Preserve:
+- wave system;
+- reveal image calibration;
+- interaction state machine;
+- mobile background/resource isolation;
+- performance architecture.
 
-## Verification
-Run:
-- `npm ci`
-- `npm run check`
-- `npm run verify`
-- `npm run build`
+Only tune the specific observed box-motion issue.
 
-Then verify final-head:
-- Technical verification success;
-- Cloudflare preview and visual QA success;
-- exact final head;
-- six screenshot artifact;
-- no production deployment.
+Then:
+- run `npm ci`;
+- `npm run check`;
+- `npm run verify`;
+- `npm run build`;
+- wait for final-head Actions;
+- independently verify exact head;
+- USER re-tests immutable preview.
 
-## USER live preview QA
-Test normal motion:
-1. float clearly more noticeable;
-2. float still natural/heavy;
-3. phase-split looks cooler than crossfade;
-4. not glitchy/overdesigned;
-5. no box jump;
-6. closed/reveal orientation/size aligned;
-7. hover/focus/click/tap correct;
-8. performance good;
-9. waves unchanged.
+## If all visual checks pass
 
-## Acceptance/merge gate
-If all pass:
-1. Orchestrator re-reads final PR head.
-2. Independently confirms changed files + CI.
-3. USER explicitly approves/authorizes merge.
-4. Squash merge PR #8.
-5. Verify new main SHA.
-6. Update durable docs if final implementation materially differs.
-7. Start next phase in fresh bounded branch/PR.
+The Orchestrator must still perform a final pre-merge source-of-truth check:
 
-Do not merge before explicit USER authorization.
+1. Re-read PR #8 state/head.
+2. Confirm no newer unexpected commit.
+3. Confirm required final-head Actions are successful.
+4. Confirm PR remains mergeable.
+5. Confirm no production deployment occurred.
+6. Ask/require explicit USER merge approval if not already clearly given.
+
+Only then:
+- squash-merge PR #8;
+- verify resulting `main` SHA;
+- confirm PR merged;
+- update durable docs from “pending visual QA” to accepted/merged;
+- begin next roadmap phase in a NEW bounded branch/PR.
+
+## Current authoritative technical evidence
+
+Actions run:
+
+`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33186955589`
+
+Head:
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Technical verification:
+- success;
+- 92 passed;
+- 53 skipped;
+- 0 failed;
+- 0 Astro errors;
+- 0 Astro warnings.
+
+Cloudflare preview and visual QA:
+- success.
+
+Artifact:
+- `home-visual-qa-pr-8`
+- ID `9692181025`
+- digest `sha256:35612c1623b6bdda8b2d503edc50643c4b5083c106b585fddbb8d3dd8dc3519b`
+- six PNG files.
+
+No production deployment.
+
+## Reduced-motion screenshot caveat
+
+The screenshot captures emulate reduced motion.
+
+They intentionally do not show the strengthened idle float or phase displacement.
+
+Therefore visual acceptance must come from the live normal-motion preview.

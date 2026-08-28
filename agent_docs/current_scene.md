@@ -1,88 +1,112 @@
 # Current Scene Specification
 
-## Scope
-This document records the currently accepted Home Stage scene and exact visual/technical constraints that should survive future changes.
+## Status
 
-The desktop layered background described here passed USER visual QA at application head `25cf7117e0f44da99534d9372a85f25291325034`.
+This file records the current Home Stage scene on PR #8.
 
-Remaining pre-PR-#8 work is box motion/reveal polish, not background redesign.
+Desktop layered-background visuals are USER accepted.
+
+Schrödinger-box stronger idle motion and phase-split reveal are implemented and technically verified at application head:
+
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Those two box-motion refinements still require USER live normal-motion visual acceptance.
 
 ## Desktop Home composition
-- Master Navigator: top-center.
-- Event identity/copy: left.
-- Schrödinger box: right, visually participating in the neutral/yellow boundary.
-- Neutral/off-white field on the left.
-- Electric-yellow probability field on the right.
-- Foreground irregular neutral/boundary overlay conceals wave reset and creates the boundary illusion.
+
+- Master Navigator top-center.
+- Event identity/copy left.
+- Schrödinger box right.
+- Neutral/off-white field left.
+- Electric-yellow probability field right.
+- Irregular foreground neutral/boundary overlay above moving waves.
+- Box visually participates in the split.
 
 ## Mobile Home composition
-Mobile is separately art-directed and intentionally does not use the desktop layered background yet.
 
-Current stack is approximately:
-Master Navigator → event identity/copy → Schrödinger box.
+Mobile remains separately art-directed:
+- Frame A background;
+- stacked navigation → identity/copy → box;
+- no desktop layered resource downloads.
 
-Frame A remains the mobile background source.
+## Current identity copy
 
-## Event identity currently implemented
-Kicker: `QUANTUM / EVENT`
+Kicker:
+`QUANTUM / EVENT`
 
-Title: `QISKIT EVENT`
+Title:
+`QISKIT EVENT`
 
-Lede: `Explore quantum computing through ideas, interaction, and experimentation.`
+Lede:
+`Explore quantum computing through ideas, interaction, and experimentation.`
 
-The lede is explicitly split into three mobile lines with a light backing, yellow edge, and subtle shadow.
-
-This copy is generic/provisional and is not confirmed event information.
+This is generic provisional copy, not confirmed event information.
 
 ## Typography
-Home title uses local Archivo Black:
+
+Local title font:
+
 `public/fonts/archivo-black/archivo-black-latin.woff2`
 
 Desktop:
-- `font-size: clamp(4rem, 8.2vw, 7.5rem)`
-- `line-height: 0.98`
+- `clamp(4rem, 8.2vw, 7.5rem)`
+- line-height `0.98`
 
 Mobile:
-- `font-size: clamp(3.4rem, 16.5vw, 6.5rem)`
-- `line-height: 0.88`
+- `clamp(3.4rem, 16.5vw, 6.5rem)`
+- line-height `0.88`
 
 “EVENT” uses yellow fill with dark stroke/shadow.
 
-## Desktop layered background
+## Desktop layered background — LOCKED
+
 Component:
+
 `src/components/home/HomeLayeredBackground.astro`
 
 Styles:
+
 `src/styles/home.css`
 
 Focused tests:
+
 `tests/e2e/home-layered-background.spec.ts`
 
 ### Base
-Delivery:
+
 `public/assets/home/background/layered/web/desktop/base/home-probability-field-base-desktop.webp`
 
-Native dimensions:
+Dimensions:
 `1672 × 941`
 
-Desktop behavior:
+Behavior:
 - cover;
 - centered;
-- scale approx `1.04`.
+- approximate scale `1.04`.
 
 ### Foreground overlay
-Delivery:
+
 `public/assets/home/background/layered/web/desktop/overlay/home-probability-field-overlay-desktop.webp`
 
-The overlay contains real transparency and restores/conceals the neutral-side foreground and irregular boundary above the moving waves.
+Contains real alpha.
 
-Overlay background-stack z-index:
+Purpose:
+- restore neutral foreground;
+- create irregular boundary;
+- conceal wave resets.
+
+Background-stack z-index:
 `20`
 
-Do not replace it with a flat straight mask.
+Do not replace with a straight flat mask.
 
-## Wave families
-Approved delivery paths:
+## Wave assets
+
+Under:
+
+`public/assets/home/background/layered/web/desktop/waves/`
+
+Families:
 1. `wave-01-thick-cream-upper.webp`
 2. `wave-02-thick-cream-lower.webp`
 3. `wave-03-thin-yellow.webp`
@@ -92,223 +116,281 @@ Approved delivery paths:
 7. `wave-07-halftone-yellow-band.webp`
 8. `wave-08-translucent-cream-ribbon.webp`
 
-All live under:
-`public/assets/home/background/layered/web/desktop/waves/`
+## Wave instance counts
 
-## Rendered instance counts
-Total desktop wave elements:
+Total:
 `20`
 
 Counts:
-- thick cream upper: 1;
-- thick cream lower: 1;
-- thin yellow: 3;
-- thin ivory: 3;
-- dashed white upper: 3;
-- dashed white lower: 3;
-- halftone yellow band: 3;
-- translucent cream ribbon: 3.
+- 01: 1
+- 02: 1
+- 03: 3
+- 04: 3
+- 05: 3
+- 06: 3
+- 07: 3
+- 08: 3
 
-The duplicate instances reuse the same browser image URLs.
-
-## Depth
-Intended hierarchy:
-dominant translucent ribbon → other broad ribbon/halftone underlayers → thick cream waves → thin yellow/ivory → dashed crossing waves → foreground boundary overlay.
-
-Larger/broader waves stay behind smaller/sharper waves.
-
-The two thick cream waves are full opacity:
+Thick cream waves:
 `opacity: 1`
 
-## Dominant broad ribbon
-Primary translucent ribbon:
+## Wave depth
+
+Bottom → top:
+
+dominant translucent ribbon
+→ other broad ribbon/halftone underlayers
+→ thick cream waves
+→ thin yellow/ivory
+→ dashed crossing waves
+→ foreground boundary overlay
+
+Larger/broader waves remain behind smaller/sharper waves.
+
+## Dominant ribbon
+
+Primary wave-08:
 - width approx `220%`;
 - height approx `500%`;
 - top approx `-205%`;
 - opacity `0.5`;
-- `z-index: 0`.
+- z-index `0`.
 
-“Broad” primarily means large vertical presence, not merely horizontal width.
+“Broad” is intentionally vertical.
 
-## Amplitude / vertical occupancy
-The accepted composition deliberately increased wave heights so crests/troughs read strongly.
+## Wave amplitude / occupancy
 
-Instances are distributed across upper, middle, and lower field bands.
+Accepted:
+- stronger crest/trough amplitude;
+- upper/middle/lower distribution;
+- enough simultaneous yellow-field occupancy;
+- intentional overlap.
 
-The USER explicitly passed:
-- crest/trough amplitude;
-- vertical occupancy;
-- overlap;
-- ribbon role.
+Do not collapse the composition back toward the central band.
 
 ## Wave motion
-Primary motion:
-- left → right;
-- CSS only;
-- two-keyframe horizontal `translate3d`;
-- `linear` timing;
-- infinite;
-- independent durations/delays;
-- no animated rotation;
-- no animated scale;
-- no animated vertical drift;
+
+- CSS only.
+- left → right.
+- two-keyframe horizontal `translate3d`.
+- `linear`.
+- infinite.
+- independent durations/delays.
+- no animated rotation.
+- no animated scale.
+- no vertical drift animation.
 - no opacity animation.
 
-Current duration range:
+Duration range:
 `7.2–16.5s`
 
-Actual tested velocity range:
+Tested effective velocity:
 `14.78–23.63 vw/s`
 
-Broad underlayers are slower; thin/dashed crossing waves are faster.
+Broad underlayers slower; thin/dashed crossings faster.
 
-## Boundary emergence and reset concealment
-Visible waves must appear to originate from the irregular neutral/yellow boundary.
+## Boundary emergence
 
-They must NOT:
-- travel visibly across the neutral field;
-- pop into existence inside the yellow field;
-- reset visibly within the yellow field.
+Required lifecycle:
 
-Implementation defines semantic painted-edge spawn positions and converts them into transform offsets.
+reset hidden beneath neutral overlay
+→ painted wave emerges through irregular seam
+→ crosses yellow field
+→ exits right
+→ reset hidden again
 
-Focused tests use Sharp to inspect actual alpha.
+Do not allow visible pop-in inside yellow.
 
-Thresholds:
-- meaningful wave alpha: `>=16`;
-- opaque overlay alpha: `>=250`;
-- hidden-spawn safety fraction: `0.02` of stage width.
+Tests use real alpha geometry:
+- wave threshold `>=16`;
+- overlay opaque threshold `>=250`;
+- safety fraction `0.02`.
 
-Representative desktop aspect ratios:
-- `1024×768`;
-- `1280×720`;
-- `1440×900`;
-- `1920×1080`.
+Representative viewports:
+- `1024×768`
+- `1280×720`
+- `1440×900`
+- `1920×1080`
 
-This logic is a regression guard and should not be casually simplified.
+## Mobile resource isolation
 
-## Mobile background isolation
 Below `48rem`:
-- desktop waves hidden;
-- desktop overlay hidden;
-- desktop CSS background URLs not fetched;
-- `picture` falls back to Frame A.
+- desktop wave layers hidden;
+- overlay hidden;
+- desktop layered CSS URLs not fetched;
+- Frame A selected.
 
 Frame A:
+
 `public/assets/home/background/home-probability-field-frame-a-v1.png`
 
-Mobile base positioning:
-`object-position: 55% center`
+Current mobile object-position:
 
-Desktop layered assets must remain absent from actual mobile network requests until a separate mobile layered phase is approved.
+`55% center`
 
 ## Schrödinger box placement
+
 Desktop:
 - right side;
-- current width `clamp(19rem, 32vw, 31rem)`;
-- max width `43vw`.
+- width `clamp(19rem, 32vw, 31rem)`;
+- max-width `43vw`.
 
 Mobile:
-- relative stacked placement;
-- approx `min(66vw, 18rem)`.
-
-The box must preserve its accepted tilt and apparent dimensions when switching state.
+- stacked relative placement;
+- about `min(66vw, 18rem)`.
 
 ## Box assets
+
 Closed:
+
 `public/assets/home/schrodinger/box-closed-v1.png`
 
 Reveal:
+
 `public/assets/home/schrodinger/box-reveal-v1.png`
 
-The reveal asset contains the approved adjusted split cat.
+Reveal asset contains approved adjusted split cat.
 
-Do not reconstruct the visible cat from separate cat masters in normal rendering.
+## Reveal calibration — LOCKED
 
-## Reveal calibration
-Critical accepted transform:
+Authored CSS:
+
 `translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
 
-Reason: closed and reveal PNGs have slightly different visible-alpha bounds despite matching canvas dimensions.
+Browser test serialization:
 
-This value is locked absent objective regression evidence.
+`translate(0.99307%, 1.68%) scale(0.953033, 0.951307)`
 
-## Current box idle — before final polish
-Current `home-box-float`:
-- duration `6.5s`;
-- high point about `-0.45rem`;
-- rotation about `-0.35deg` to `+0.35deg`.
+These represent the same authored calibration.
 
-The USER says this is too subtle now that the background moves.
+Do not move this calibration to an animated wrapper.
 
-## Current reveal — before final polish
-Current switch is essentially a simple opacity crossfade.
+## Current box markup architecture
 
-Pending direction:
-- separate state wrappers;
-- small opposing transform displacement + opacity;
-- optional very small scale difference;
-- roughly 280–420ms;
-- no filters/masks/canvas/JS animation loop;
-- outer box continues idle transform independently;
-- reveal image retains exact calibration.
+`button.schrodinger-box`
+- owns idle animation.
 
-Not yet visually accepted because it is not yet implemented.
+`span.schrodinger-box__art`
+- fixed art container.
+
+`span.schrodinger-box__state--closed`
+- closed state transition wrapper.
+
+`span.schrodinger-box__state--reveal`
+- reveal state transition wrapper.
+
+Actual images:
+- own fixed artwork geometry;
+- reveal image retains fixed calibration.
+
+## Stronger idle float — IMPLEMENTED / USER QA PENDING
+
+Animation:
+
+`home-box-float 5.9s ease-in-out infinite`
+
+Keyframes:
+- 0/100%: `translate3d(0, 0, 0) rotate(-0.55deg)`
+- 22%: `translate3d(0.12rem, -0.65rem, 0) rotate(-0.05deg)`
+- 50%: `translate3d(-0.14rem, -0.95rem, 0) rotate(0.7deg)`
+- 78%: `translate3d(-0.08rem, -0.3rem, 0) rotate(0.12deg)`
+
+Only transform is animated.
+
+Intent:
+- more perceptible against moving waves;
+- still restrained/heavy;
+- slightly asymmetric so it does not read as a mechanical bob.
+
+## Phase-split reveal — IMPLEMENTED / USER QA PENDING
+
+State wrappers transition:
+
+`transform 360ms cubic-bezier(0.22, 0.8, 0.26, 1)`
+
+`opacity 360ms cubic-bezier(0.22, 0.8, 0.26, 1)`
+
+Closed normal:
+- opacity 1;
+- `translate3d(0, 0, 0) scale(1)`.
+
+Closed revealed/leaving:
+- opacity 0;
+- `translate3d(-1.25%, 1.25%, 0) scale(0.99)`.
+
+Reveal hidden/start:
+- opacity 0;
+- `translate3d(1.25%, -1.25%, 0) scale(1.012)`.
+
+Reveal final:
+- opacity 1;
+- `translate3d(0, 0, 0) scale(1)`.
+
+Animated properties are only:
+- transform;
+- opacity.
+
+No heavy visual effect system exists.
 
 ## Interaction state machine
+
 Script:
+
 `src/scripts/schrodinger-box.ts`
 
-Initial:
-- `data-locked="false"`
-- `data-revealed="false"`
-- `aria-pressed="false"`
+The box-motion commit did not modify this file.
 
 Fine pointer:
-- pointer enter → temporary hover reveal;
-- pointer leave → remove hover reveal unless locked/focused.
+- pointer enter → temporary reveal;
+- pointer leave → remove temporary hover reveal unless locked/focused.
 
 Focus:
-- focus in reveals;
-- focus out removes temporary focus reveal unless another state keeps it revealed.
+- focus in → reveal;
+- focus out → remove temporary focus reveal unless another state keeps it.
 
 Click:
-- toggles `data-locked`;
+- toggles lock.
 - `aria-pressed` mirrors lock state.
 
 Coarse pointer:
-- click/tap toggles locked state;
-- temporary focus is cleared.
+- tap/click toggles locked reveal.
 
-Do not alter this state machine merely to implement a visual transition.
+## No-jump regression guard
+
+`tests/e2e/home-composition.spec.ts` compares the box button bounding geometry before and after focus reveal.
+
+Closed/revealed outer wrapper geometry must remain exactly equal.
+
+The phase motion happens inside fixed wrappers, while the outer idle animation remains independent.
 
 ## Reduced motion
-Current:
-- wave animation disabled;
-- box idle disabled;
-- image transition disabled.
 
-For upcoming phase split:
-- disable displacement/scale;
-- use immediate state switch or very short/simple opacity only;
-- final state must remain unambiguous.
+Under `prefers-reduced-motion: reduce`:
+- wave animation disabled;
+- box idle animation disabled;
+- state transform displacement disabled;
+- state wrappers transition only opacity for `120ms linear`.
 
 ## Visual acceptance ledger
-USER passed:
+
+USER accepted desktop background:
 - boundary illusion;
-- constant-speed motion;
-- final speed;
-- population/occupancy;
+- wave speed;
+- population;
 - overlap;
 - depth;
 - broad ribbon;
+- amplitude;
 - vertical occupancy;
-- crest/trough amplitude;
-- boundary-origin appearance;
 - performance.
 
-Still pending before PR #8 acceptance:
-- stronger box idle float;
-- improved performant closed↔reveal transition;
-- no-jump verification;
-- final live normal-motion visual QA.
+Technically verified but still awaiting USER visual acceptance:
+- stronger 5.9s box float;
+- phase-split transition;
+- subjective naturalness;
+- subjective transition quality;
+- perceived performance during normal motion.
+
+Immutable preview to inspect:
+
+`https://0a1bd3fa.qiskit-event-website.pages.dev`

@@ -101,7 +101,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 
 - Production hosting is likely to remain Cloudflare Pages, but the production release path/hostname is not established.
 - Codex Luna is the current preferred repository-native Builder for bounded implementation work.
-- Before PR #8 acceptance, the Schrödinger reveal should be upgraded from a plain crossfade to a restrained transform+opacity “phase split” if USER live QA accepts it; exact final transition values are not locked yet.
+- PR #8 now implements a restrained transform+opacity Schrödinger “phase split” (360ms, small opposing displacement/scale) and stronger transform-only idle float. These values are technically verified but remain provisional until USER live-motion visual QA accepts them.
 - A single primary implementation owner should handle the first representative visual composition; specialist agents may review architecture, responsiveness, accessibility, testing, or performance.
 - About Event may use a stylized qubit as its primary Stage subject.
 - About Quantum Mechanics may use a Schrödinger's-cat wanted poster plus a lower qubit/measurement feature scene.
@@ -115,7 +115,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Exact college/IBM/Qiskit/sponsor branding requirements.
 - Final typography.
 - Final accent families for non-Home pages.
-- Final site-wide transition language beyond the pending Home box phase-split experiment.
+- Final site-wide transition language beyond the current Home box phase-split experiment.
 - Exact performance budgets.
 - Analytics.
 - Production release process.
