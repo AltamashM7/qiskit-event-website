@@ -75,7 +75,7 @@ Integration:
 - Masters: `public/assets/home/background/layered/masters/desktop/`
 - Web delivery: `public/assets/home/background/layered/web/desktop/`
 
-Status: **USER-SUPPLIED DESKTOP ASSET FOUNDATION / IMPORTED ON PHASE-2 BRANCH / NOT INTEGRATED**
+Status: **USER-SUPPLIED DESKTOP ASSET FOUNDATION / INTEGRATED ON PHASE-2 BRANCH / VISUAL ACCEPTANCE PENDING**
 
 Purpose:
 - Desktop base, overlay, and independent wave layers for the next Home background architecture.
@@ -83,9 +83,10 @@ Purpose:
 
 Architecture context:
 - Chosen production architecture: one static no-wave base background, eight independent transparent wave layers above it, and a foreground neutral/boundary overlay above the waves.
-- The waves are intended to receive lightweight independent continuous transform-based movement in a later bounded integration phase; no layered animation is implemented in Phase A.
+- Phase A imported and optimized the assets; the current Phase B integration uses lightweight independent continuous transform-based movement for the desktop waves.
 - The earlier full-frame A/B/C animation exploration remains committed and unmerged on Draft PR #6; it is superseded as the chosen implementation direction by this layered-wave architecture.
-- This Phase A branch imports and optimizes the layered assets only. No Home integration, wave animation, or replacement of the current Frame A rendering is implemented.
+- The current Phase B branch integrates the desktop base, eight wave deliveries, and foreground overlay into Home. Mobile continues to use Frame A and does not request the desktop layer URLs.
+- No source or delivery asset bytes were changed during integration.
 - The overlay was inspected at the pixel level: its RGBA alpha channel has real transparency, including `615,141` fully transparent pixels on the right side. The apparent black area is not baked black fill.
 - Mobile-specific layered base/overlay assets are not included in this phase.
 

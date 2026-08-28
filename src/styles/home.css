@@ -138,7 +138,11 @@
 
 #home-stage .stage-shell__background,
 #home-stage .home-stage__background-art,
-#home-stage .home-stage__background-art img {
+#home-stage .home-layered-background,
+#home-stage .home-layered-background__base,
+#home-stage .home-layered-background__base img,
+#home-stage .home-layered-background__waves,
+#home-stage .home-layered-background__overlay {
   position: absolute;
   inset: 0;
   display: block;
@@ -150,6 +154,8 @@
   left: calc(-1 * var(--home-stage-gutter));
   right: calc(-1 * var(--home-stage-gutter));
   width: auto;
+  z-index: 0;
+  isolation: isolate;
 }
 
 #home-stage .home-stage__background-art {
@@ -157,11 +163,353 @@
   background: var(--home-paper);
 }
 
-#home-stage .home-stage__background-art img {
+#home-stage .home-layered-background {
+  --home-layered-background-scale: 1.04;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#home-stage .home-layered-background__base {
+  z-index: 0;
+  transform: scale(var(--home-layered-background-scale));
+  transform-origin: center;
+}
+
+#home-stage .home-layered-background__base img {
   object-fit: cover;
   object-position: center;
-  transform: scale(1.04);
-  transform-origin: center;
+}
+
+#home-stage .home-layered-background__waves,
+#home-stage .home-layered-background__overlay,
+#home-stage .home-layered-background__wave {
+  display: none;
+  pointer-events: none;
+}
+
+@keyframes home-layered-wave-motion {
+  0% {
+    transform:
+      translate3d(calc(-50% + var(--wave-x-start)), var(--wave-y-start), 0)
+      rotate(var(--wave-rotation-start))
+      scale(var(--wave-scale-start));
+  }
+
+  35% {
+    transform:
+      translate3d(calc(-50% + var(--wave-x-mid-left)), var(--wave-y-mid-left), 0)
+      rotate(var(--wave-rotation-mid-left))
+      scale(var(--wave-scale-mid-left));
+  }
+
+  65% {
+    transform:
+      translate3d(calc(-50% + var(--wave-x-mid-right)), var(--wave-y-mid-right), 0)
+      rotate(var(--wave-rotation-mid-right))
+      scale(var(--wave-scale-mid-right));
+  }
+
+  100% {
+    transform:
+      translate3d(calc(-50% + var(--wave-x-end)), var(--wave-y-end), 0)
+      rotate(var(--wave-rotation-end))
+      scale(var(--wave-scale-end));
+  }
+}
+
+@media (min-width: 48rem) {
+  #home-stage .home-layered-background__waves,
+  #home-stage .home-layered-background__overlay {
+    display: block;
+  }
+
+  #home-stage .home-layered-background__overlay {
+    z-index: 20;
+    background-image: url('/assets/home/background/layered/web/desktop/overlay/home-probability-field-overlay-desktop.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: scale(var(--home-layered-background-scale));
+    transform-origin: center;
+  }
+
+  #home-stage .home-layered-background__wave {
+    display: block;
+    --wave-width: 132%;
+    --wave-height: 78%;
+    --wave-top: 0%;
+    --wave-static-y: 0%;
+    --wave-static-scale: 1;
+    --wave-static-rotation: 0deg;
+    --wave-x-start: -150%;
+    --wave-x-mid-left: -16%;
+    --wave-x-mid-right: 16%;
+    --wave-x-end: 150%;
+    --wave-y-start: 0%;
+    --wave-y-mid-left: -1%;
+    --wave-y-mid-right: 1%;
+    --wave-y-end: 0%;
+    --wave-scale-start: 1;
+    --wave-scale-mid-left: 1;
+    --wave-scale-mid-right: 1;
+    --wave-scale-end: 1;
+    --wave-rotation-start: 0deg;
+    --wave-rotation-mid-left: 0deg;
+    --wave-rotation-mid-right: 0deg;
+    --wave-rotation-end: 0deg;
+    --wave-duration: 24s;
+    --wave-delay: -10s;
+    --wave-easing: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    --wave-opacity: 1;
+    position: absolute;
+    top: var(--wave-top);
+    left: 50%;
+    width: var(--wave-width);
+    height: var(--wave-height);
+    background-image: var(--wave-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: var(--wave-opacity);
+    transform:
+      translate3d(-50%, var(--wave-static-y), 0)
+      rotate(var(--wave-static-rotation))
+      scale(var(--wave-static-scale));
+    transform-origin: center;
+    animation: home-layered-wave-motion var(--wave-duration) var(--wave-easing) var(--wave-delay) infinite both;
+  }
+
+  #home-stage .home-layered-background__wave--01 {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-01-thick-cream-upper.webp');
+    --wave-width: 132%;
+    --wave-height: 76%;
+    --wave-top: -11%;
+    --wave-static-y: 1%;
+    --wave-static-scale: 1.02;
+    --wave-x-start: -150%;
+    --wave-x-mid-left: -16%;
+    --wave-x-mid-right: 18%;
+    --wave-x-end: 150%;
+    --wave-y-start: 1%;
+    --wave-y-mid-left: -1%;
+    --wave-y-mid-right: -2%;
+    --wave-y-end: -1%;
+    --wave-scale-start: 0.99;
+    --wave-scale-mid-left: 1.01;
+    --wave-scale-mid-right: 1.02;
+    --wave-scale-end: 0.99;
+    --wave-rotation-start: -0.2deg;
+    --wave-rotation-mid-left: 0.15deg;
+    --wave-rotation-mid-right: 0.2deg;
+    --wave-rotation-end: -0.2deg;
+    --wave-duration: 23s;
+    --wave-delay: -7s;
+    --wave-opacity: 0.96;
+    z-index: 4;
+  }
+
+  #home-stage .home-layered-background__wave--02 {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-02-thick-cream-lower.webp');
+    --wave-width: 136%;
+    --wave-height: 80%;
+    --wave-top: 34%;
+    --wave-static-y: -1%;
+    --wave-static-scale: 1.03;
+    --wave-x-start: -145%;
+    --wave-x-mid-left: -15%;
+    --wave-x-mid-right: 17%;
+    --wave-x-end: 145%;
+    --wave-y-start: 0%;
+    --wave-y-mid-left: 1%;
+    --wave-y-mid-right: -1%;
+    --wave-y-end: 0%;
+    --wave-scale-start: 1;
+    --wave-scale-mid-left: 1.02;
+    --wave-scale-mid-right: 1.03;
+    --wave-scale-end: 1;
+    --wave-rotation-start: 0.2deg;
+    --wave-rotation-mid-left: -0.15deg;
+    --wave-rotation-mid-right: 0.2deg;
+    --wave-rotation-end: 0.2deg;
+    --wave-duration: 26s;
+    --wave-delay: -15s;
+    --wave-opacity: 0.95;
+    z-index: 4;
+  }
+
+  #home-stage .home-layered-background__wave--03 {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
+    --wave-width: 126%;
+    --wave-height: 72%;
+    --wave-top: 6%;
+    --wave-static-y: 2%;
+    --wave-static-scale: 0.98;
+    --wave-x-start: -140%;
+    --wave-x-mid-left: -12%;
+    --wave-x-mid-right: 16%;
+    --wave-x-end: 140%;
+    --wave-y-start: -1%;
+    --wave-y-mid-left: 0%;
+    --wave-y-mid-right: 1%;
+    --wave-y-end: -1%;
+    --wave-scale-start: 0.99;
+    --wave-scale-mid-left: 1;
+    --wave-scale-mid-right: 1.01;
+    --wave-scale-end: 0.99;
+    --wave-rotation-start: -0.1deg;
+    --wave-rotation-mid-left: 0.1deg;
+    --wave-rotation-mid-right: 0.15deg;
+    --wave-rotation-end: -0.1deg;
+    --wave-duration: 17s;
+    --wave-delay: -5s;
+    --wave-opacity: 0.92;
+    z-index: 3;
+  }
+
+  #home-stage .home-layered-background__wave--04 {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp');
+    --wave-width: 134%;
+    --wave-height: 75%;
+    --wave-top: 39%;
+    --wave-static-y: -2%;
+    --wave-static-scale: 1.01;
+    --wave-x-start: -148%;
+    --wave-x-mid-left: -18%;
+    --wave-x-mid-right: 14%;
+    --wave-x-end: 148%;
+    --wave-y-start: 1%;
+    --wave-y-mid-left: -1%;
+    --wave-y-mid-right: 0%;
+    --wave-y-end: 1%;
+    --wave-scale-start: 1;
+    --wave-scale-mid-left: 1.02;
+    --wave-scale-mid-right: 1;
+    --wave-scale-end: 1;
+    --wave-rotation-start: 0.1deg;
+    --wave-rotation-mid-left: -0.1deg;
+    --wave-rotation-mid-right: 0.1deg;
+    --wave-rotation-end: 0.1deg;
+    --wave-duration: 21s;
+    --wave-delay: -13s;
+    --wave-opacity: 0.82;
+    z-index: 5;
+  }
+
+  #home-stage .home-layered-background__wave--05 {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp');
+    --wave-width: 126%;
+    --wave-height: 73%;
+    --wave-top: -4%;
+    --wave-static-y: 0%;
+    --wave-static-scale: 1;
+    --wave-x-start: -155%;
+    --wave-x-mid-left: -20%;
+    --wave-x-mid-right: 12%;
+    --wave-x-end: 155%;
+    --wave-y-start: 0%;
+    --wave-y-mid-left: 0%;
+    --wave-y-mid-right: -1%;
+    --wave-y-end: 0%;
+    --wave-scale-start: 1;
+    --wave-scale-mid-left: 1.01;
+    --wave-scale-mid-right: 0.99;
+    --wave-scale-end: 1;
+    --wave-rotation-start: -0.15deg;
+    --wave-rotation-mid-left: 0.1deg;
+    --wave-rotation-mid-right: 0.15deg;
+    --wave-rotation-end: -0.15deg;
+    --wave-duration: 14s;
+    --wave-delay: -4s;
+    --wave-opacity: 0.88;
+    z-index: 6;
+  }
+
+  #home-stage .home-layered-background__wave--06 {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp');
+    --wave-width: 130%;
+    --wave-height: 74%;
+    --wave-top: 38%;
+    --wave-static-y: 1%;
+    --wave-static-scale: 1.02;
+    --wave-x-start: -142%;
+    --wave-x-mid-left: -14%;
+    --wave-x-mid-right: 18%;
+    --wave-x-end: 142%;
+    --wave-y-start: -1%;
+    --wave-y-mid-left: 0%;
+    --wave-y-mid-right: 1%;
+    --wave-y-end: -1%;
+    --wave-scale-start: 1;
+    --wave-scale-mid-left: 0.99;
+    --wave-scale-mid-right: 1.01;
+    --wave-scale-end: 1;
+    --wave-rotation-start: 0.15deg;
+    --wave-rotation-mid-left: -0.1deg;
+    --wave-rotation-mid-right: 0.15deg;
+    --wave-rotation-end: 0.15deg;
+    --wave-duration: 19s;
+    --wave-delay: -9s;
+    --wave-opacity: 0.84;
+    z-index: 6;
+  }
+
+  #home-stage .home-layered-background__wave--07 {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp');
+    --wave-width: 138%;
+    --wave-height: 82%;
+    --wave-top: 10%;
+    --wave-static-y: -1%;
+    --wave-static-scale: 1;
+    --wave-x-start: -150%;
+    --wave-x-mid-left: -12%;
+    --wave-x-mid-right: 20%;
+    --wave-x-end: 150%;
+    --wave-y-start: 1%;
+    --wave-y-mid-left: -1%;
+    --wave-y-mid-right: 1%;
+    --wave-y-end: 1%;
+    --wave-scale-start: 0.99;
+    --wave-scale-mid-left: 1.01;
+    --wave-scale-mid-right: 1.02;
+    --wave-scale-end: 0.99;
+    --wave-rotation-start: -0.1deg;
+    --wave-rotation-mid-left: 0.1deg;
+    --wave-rotation-mid-right: 0.1deg;
+    --wave-rotation-end: -0.1deg;
+    --wave-duration: 29s;
+    --wave-delay: -18s;
+    --wave-opacity: 0.78;
+    z-index: 1;
+  }
+
+  #home-stage .home-layered-background__wave--08 {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp');
+    --wave-width: 142%;
+    --wave-height: 84%;
+    --wave-top: 31%;
+    --wave-static-y: 2%;
+    --wave-static-scale: 0.98;
+    --wave-x-start: -148%;
+    --wave-x-mid-left: -18%;
+    --wave-x-mid-right: 14%;
+    --wave-x-end: 148%;
+    --wave-y-start: -1%;
+    --wave-y-mid-left: 1%;
+    --wave-y-mid-right: -1%;
+    --wave-y-end: -1%;
+    --wave-scale-start: 1;
+    --wave-scale-mid-left: 1.02;
+    --wave-scale-mid-right: 0.99;
+    --wave-scale-end: 1;
+    --wave-rotation-start: 0.1deg;
+    --wave-rotation-mid-left: -0.1deg;
+    --wave-rotation-mid-right: 0.1deg;
+    --wave-rotation-end: 0.1deg;
+    --wave-duration: 34s;
+    --wave-delay: -12s;
+    --wave-opacity: 0.72;
+    z-index: 2;
+  }
 }
 
 #home-stage .stage-shell__subject {
@@ -319,9 +667,17 @@
     margin-top: 0.18rem;
   }
 
-  #home-stage .home-stage__background-art img {
+  #home-stage .home-layered-background {
+    --home-layered-background-scale: 1.1;
+  }
+
+  #home-stage .home-layered-background__base img {
     object-position: 55% center;
-    transform: scale(1.1);
+  }
+
+  #home-stage .home-layered-background__waves,
+  #home-stage .home-layered-background__overlay {
+    display: none;
   }
 
   #home-stage .stage-shell__scene {
@@ -349,6 +705,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  #home-stage .home-layered-background__wave {
+    animation: none;
+  }
+
   .schrodinger-box {
     animation: none;
   }

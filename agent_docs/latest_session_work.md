@@ -49,6 +49,14 @@ This phase is asset foundation only: no Home integration, wave animation, replac
 
 The chosen production architecture is one static no-wave base background, eight independent transparent wave layers, and a foreground neutral/boundary overlay above the waves. The wave layers are intended for lightweight independent continuous transform-based movement in a later bounded phase; Phase A does not implement animation.
 
+## Home layered background integration (Phase B)
+
+The current Phase B branch integrates the Phase A desktop deliveries into Home: one native-dimension WebP base, eight independent transparent wave layers, and the foreground neutral/boundary overlay. The reusable `HomeLayeredBackground.astro` component owns the responsive base selection and decorative layer structure while the existing Home content, navigator, subject, and interaction remain unchanged.
+
+Desktop waves use CSS-only continuous transform motion with independent stable asset IDs, positions, scales, durations, delays, and restrained rotations. Reduced motion keeps the desktop layers visible and static. Mobile continues to use the existing Frame A composition and does not request the desktop layered resources. The six reduced-motion visual-preview captures wait for the desktop layer resources before capture; no source or delivery asset bytes were changed.
+
+Phase B desktop visual acceptance remains pending independent Web Orchestrator/user review.
+
 ## Latest approved visual state
 
 ### Home background
@@ -62,7 +70,7 @@ Approved foundational direction:
 - one static no-wave base background,
 - eight independent transparent wave layers,
 - foreground neutral/boundary overlay above the waves,
-- lightweight independent continuous transform-based wave movement planned for a later phase; not implemented in Phase A.
+- lightweight independent continuous transform-based wave movement in the current Phase B desktop integration; visual acceptance remains pending.
 
 ### Schrödinger's Box
 Closed state:
@@ -100,4 +108,4 @@ If both adjusted and unadjusted variants exist in the repository, the unadjusted
 
 ## Immediate next step
 
-This Phase A asset-foundation branch must receive independent Web Orchestrator verification of the desktop layered master and delivery assets, registry metadata, alpha integrity, and final GitHub Actions result. The old Draft PR #6 frame-swap exploration remains unmerged and superseded; do not begin layered Home integration or wave animation yet. Mobile-specific layered assets, production deployment, Cloudflare Git integration, About-page visual implementation, and additional page work remain separate future phases. Keep About Event and About Quantum Mechanics as neutral shells.
+The current Phase B desktop integration must receive independent Web Orchestrator verification of the layered composition, continuous motion, reduced-motion state, mobile non-request behavior, and final GitHub Actions result. The old Draft PR #6 frame-swap exploration remains unmerged and superseded. Mobile-specific layered assets/integration, production deployment, Cloudflare Git integration, About-page visual implementation, and additional page work remain separate future phases. Keep About Event and About Quantum Mechanics as neutral shells.
