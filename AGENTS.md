@@ -14,8 +14,9 @@ When deciding what is currently implemented or approved, use this order:
 2. `agent_docs/decisions.md` for durable product/design decisions.
 3. `agent_docs/design_system.md` for the approved visual language.
 4. `ASSET_REGISTRY.md` for approved asset identities/status.
-5. `agent_docs/project_progress.md` and `agent_docs/latest_session_work.md` for current progress.
-6. Conversation history only for information not yet captured in the repository.
+5. `agent_docs/orchestrator_handoff.md`, `agent_docs/current_scene.md`, `agent_docs/next_steps.md`, and `agent_docs/roadmap.md` for restart/current-state context.
+6. `agent_docs/project_progress.md` and `agent_docs/latest_session_work.md` for milestone/session state.
+7. Conversation history only for information not yet captured in the repository.
 
 If conversation history conflicts with the repository or durable docs, prefer the repository and current durable docs.
 
@@ -49,10 +50,12 @@ If conversation history conflicts with the repository or durable docs, prefer th
 
 ## Motion rules
 
-- Environmental/background animation should primarily use intentionally limited 2–3-frame loops.
-- Different background elements should not all switch frames simultaneously.
-- Main subjects may use subtle smooth idle motion using inexpensive transforms/opacity.
-- Avoid full-screen video, huge GIFs, large raster frame sequences, continuous expensive JS animation, unnecessary canvas/WebGL, and heavy particle systems.
+- Motion must stay deliberately lightweight and art-directed.
+- The accepted Home desktop background uses a static base + independent transparent wave layers + foreground boundary overlay with CSS-only linear transform motion.
+- Limited 2–3-frame stepped loops remain an available technique for other environmental elements/pages when appropriate, but are no longer the chosen Home desktop probability-field architecture.
+- Main subjects may use smooth idle motion using inexpensive transforms/opacity.
+- Interaction transitions may be richer than ambient motion, but should still prefer transform/opacity and avoid heavy effects.
+- Avoid full-screen video, huge GIFs, large raster frame sequences, expensive JS animation loops, unnecessary canvas/WebGL, animated filters, and heavy particle systems.
 - Respect `prefers-reduced-motion`; reduced-motion mode must remain visually intentional.
 
 ## Home Stage — approved direction
@@ -137,17 +140,23 @@ Exact budgets are still open and must be established before production acceptanc
 
 ## Current technical status
 
-- No production frontend has been implemented yet.
-- No repository architecture has been finalized yet.
-- Astro is the current **strong provisional preference**, not yet a formally locked decision.
-- Cloudflare Pages is a likely deployment choice, also not yet formally locked.
-- Builder strategy is not formally locked; Codex Luna is a strong candidate for repository-native implementation.
+- Astro static output + TypeScript + npm + Node 24 are established.
+- Reusable Stage/layout/navigation boundaries, browser QA, accessibility baseline, and GitHub Actions are established.
+- Home Composition V1 is implemented and merged.
+- The desktop layered Home probability field is implemented on Draft PR #8 and has passed USER visual QA; final box-motion polish remains before PR acceptance.
+- Mobile intentionally remains on Frame A; mobile layered integration is a separate future phase.
+- Cloudflare Pages Direct Upload through GitHub Actions is established for PR previews. Production deployment is not established.
+- Codex Luna is the current repository-native Builder for bounded implementation phases; the Web ChatGPT Orchestrator independently verifies and owns acceptance gates.
 
 ## Workflow
 
 Before implementation:
 1. Read this file.
 2. Read:
+   - `agent_docs/orchestrator_handoff.md`
+   - `agent_docs/current_scene.md`
+   - `agent_docs/next_steps.md`
+   - `agent_docs/roadmap.md`
    - `agent_docs/project_overview.md`
    - `agent_docs/design_system.md`
    - `agent_docs/decisions.md`

@@ -45,13 +45,22 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Interior is plain/minimal rather than detailed.
 - Reveal uses directional gradient translucency rather than a hard glass-window boundary.
 - Home background foundation: neutral/off-white side + bright yellow superposition/probability field.
+- Desktop Home probability-field architecture is locked to a static no-wave base + independent transparent wave instances + foreground neutral/boundary overlay.
+- Current accepted desktop composition renders 20 wave instances while reusing eight approved assets: wave families 01–02 once each and 03–08 three times each.
+- Larger/broader wave families remain behind smaller/thinner/dashed waves.
+- The dominant translucent ribbon is intentionally vertically broad (currently about 220% width, 500% height, 0.5 opacity, z-index 0).
+- Desktop wave reset/spawn must remain hidden beneath the irregular neutral overlay and emerge through the boundary rather than appear inside the yellow region.
+- Mobile remains on Frame A until a separate mobile layered-art/integration decision is made.
 
 ### Animation / performance
 
-- Environmental animation primarily uses 2–3-frame limited loops.
-- Main subjects may use subtle smooth idle motion.
 - Performance on weak college machines is a primary requirement.
-- Avoid full-screen looping video, huge GIFs, heavy canvas/WebGL, and unnecessary continuous JS animation.
+- Home desktop wave motion uses CSS-only two-keyframe linear horizontal transforms; actual effective velocity is tested, not inferred from duration alone.
+- Home wave boundary reset is tested against real image alpha and overlay geometry at representative desktop aspect ratios.
+- Limited 2–3-frame environmental loops remain allowed elsewhere, but the old Home A/B/C full-frame loop is superseded.
+- Main subjects use lightweight transform-based idle motion.
+- User-triggered transitions should prefer transform + opacity and avoid heavy effects.
+- Avoid full-screen looping video, huge GIFs, heavy canvas/WebGL, animated filters, and unnecessary continuous JS animation.
 - Reduced-motion support is required.
 
 ### Workflow
@@ -85,13 +94,14 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 
 - Cloudflare Pages Direct Upload through GitHub Actions and `cloudflare/wrangler-action@v4` is the chosen mechanism for same-repository pull-request previews.
 - Preview deployment is gated by the existing authoritative Technical verification job and uses a pull-request branch alias rather than the production branch.
-- The preview deploy includes four reduced-motion Chromium screenshots of the built Home composition for independent Web Orchestrator visual QA.
+- The preview deploy includes six reduced-motion Chromium screenshots of the built Home composition for independent Web Orchestrator visual QA: desktop, normal-mobile, and compact-mobile closed/reveal pairs.
 - Localhost production preview remains the rapid development loop; production deployment and Cloudflare Git integration are not established by this decision.
 
 ## PROVISIONAL / STRONG PREFERENCE
 
-- Cloudflare Pages is a likely deployment target.
-- Codex Luna is a strong candidate for repository-native Builder work.
+- Production hosting is likely to remain Cloudflare Pages, but the production release path/hostname is not established.
+- Codex Luna is the current preferred repository-native Builder for bounded implementation work.
+- Before PR #8 acceptance, the Schrödinger reveal should be upgraded from a plain crossfade to a restrained transform+opacity “phase split” if USER live QA accepts it; exact final transition values are not locked yet.
 - A single primary implementation owner should handle the first representative visual composition; specialist agents may review architecture, responsiveness, accessibility, testing, or performance.
 - About Event may use a stylized qubit as its primary Stage subject.
 - About Quantum Mechanics may use a Schrödinger's-cat wanted poster plus a lower qubit/measurement feature scene.
@@ -105,7 +115,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Exact college/IBM/Qiskit/sponsor branding requirements.
 - Final typography.
 - Final accent families for non-Home pages.
-- Final transition language.
+- Final site-wide transition language beyond the pending Home box phase-split experiment.
 - Exact performance budgets.
 - Analytics.
 - Production release process.
