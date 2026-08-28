@@ -16,7 +16,10 @@ const wavePaths = [
   '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
 ];
 const desktopLayeredPaths = [basePath, overlayPath, ...wavePaths];
-const renderedWaveCount = wavePaths.length * 2;
+const renderedWaveCount = 20;
+const expectedWaveFamilyCounts = new Map(
+  wavePaths.map((path, index) => [path, index < 2 ? 1 : 3]),
+);
 
 function requestedPath(url: string) {
   return new URL(url).pathname;
@@ -74,24 +77,31 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
     'wave-01-thick-cream-upper',
     'wave-02-thick-cream-lower',
     'wave-03-thin-yellow',
-    'wave-04-thin-ivory',
-    'wave-05-dashed-white-upper',
-    'wave-06-dashed-white-lower',
-    'wave-07-halftone-yellow-band',
-    'wave-08-translucent-cream-ribbon',
-    'wave-01-thick-cream-upper-b',
-    'wave-02-thick-cream-lower-b',
     'wave-03-thin-yellow-b',
+    'wave-03-thin-yellow-c',
+    'wave-04-thin-ivory',
     'wave-04-thin-ivory-b',
+    'wave-04-thin-ivory-c',
+    'wave-05-dashed-white-upper',
     'wave-05-dashed-white-upper-b',
+    'wave-05-dashed-white-upper-c',
+    'wave-06-dashed-white-lower',
     'wave-06-dashed-white-lower-b',
+    'wave-06-dashed-white-lower-c',
+    'wave-07-halftone-yellow-band',
     'wave-07-halftone-yellow-band-b',
+    'wave-07-halftone-yellow-band-c',
+    'wave-08-translucent-cream-ribbon',
     'wave-08-translucent-cream-ribbon-b',
+    'wave-08-translucent-cream-ribbon-c',
   ]);
   expect(new Set(scene.waveAssets)).toEqual(new Set(wavePaths));
   wavePaths.forEach((path) => {
-    expect(scene.waveAssets.filter((asset) => asset === path)).toHaveLength(2);
-    expect(scene.waveBackgrounds.filter((background) => background.includes(path))).toHaveLength(2);
+    const expectedCount = expectedWaveFamilyCounts.get(path)!;
+    expect(scene.waveAssets.filter((asset) => asset === path)).toHaveLength(expectedCount);
+    expect(scene.waveBackgrounds.filter((background) => background.includes(path))).toHaveLength(
+      expectedCount,
+    );
   });
   expect(scene.waveAnimationNames).toEqual(Array(renderedWaveCount).fill('home-layered-wave-travel'));
   expect(scene.waveTimingFunctions).toEqual(Array(renderedWaveCount).fill('linear'));
@@ -100,35 +110,43 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   expect(new Set(scene.waveDelays).size).toBe(renderedWaveCount);
   const durationSeconds = scene.waveDurations.map((duration) => Number.parseFloat(duration));
   expect(Math.min(...durationSeconds)).toBe(11);
-  expect(Math.max(...durationSeconds)).toBe(24);
+  expect(Math.max(...durationSeconds)).toBe(26);
   const waveStartVw = scene.waveXStarts.map((start) => Number.parseFloat(start));
   const waveEndVw = scene.waveXEnds.map((end) => Number.parseFloat(end));
-  expect(waveStartVw.every((start) => start <= -127)).toBe(true);
-  expect(waveEndVw.every((end) => end >= 127)).toBe(true);
+  expect(waveStartVw.every((start) => start <= -113)).toBe(true);
+  expect(waveEndVw.every((end) => end >= 113)).toBe(true);
   expect(scene.waveTransforms.every((transform) => transform !== 'none')).toBe(true);
-  expect(scene.waveWidths.filter((width) => Number.parseFloat(width) > 165).length).toBe(4);
-  expect(scene.waveHeights.filter((height) => Number.parseFloat(height) > 80).length).toBe(4);
-  expect(scene.waveXStarts[7]).toBe('-170vw');
-  expect(scene.waveXEnds[7]).toBe('170vw');
-  expect(scene.waveWidths[7]).toBe('220%');
-  expect(scene.waveHeights[7]).toBe('150%');
-  expect(Number.parseFloat(scene.waveOpacities[7])).toBe(0.2);
+  expect(scene.waveWidths.filter((width) => Number.parseFloat(width) > 165).length).toBe(6);
+  expect(scene.waveHeights.filter((height) => Number.parseFloat(height) > 80).length).toBe(6);
+  expect(Number.parseFloat(scene.waveOpacities[0])).toBe(1);
+  expect(Number.parseFloat(scene.waveOpacities[1])).toBe(1);
+  const dominantRibbonIndex = scene.waveIds.indexOf('wave-08-translucent-cream-ribbon');
+  expect(dominantRibbonIndex).toBeGreaterThanOrEqual(0);
+  expect(scene.waveXStarts[dominantRibbonIndex]).toBe('-155vw');
+  expect(scene.waveXEnds[dominantRibbonIndex]).toBe('155vw');
+  expect(scene.waveWidths[dominantRibbonIndex]).toBe('220%');
+  expect(scene.waveHeights[dominantRibbonIndex]).toBe('500%');
+  expect(Number.parseFloat(scene.waveOpacities[dominantRibbonIndex])).toBe(0.5);
   expect(scene.baseZIndex).toBe('0');
   expect(scene.waveZIndexes).toEqual([
     '4',
     '3',
     '5',
     '5',
+    '5',
+    '5',
+    '5',
+    '5',
     '6',
+    '7',
+    '7',
     '6',
+    '7',
+    '7',
+    '1',
+    '1',
     '1',
     '0',
-    '4',
-    '3',
-    '5',
-    '5',
-    '7',
-    '7',
     '1',
     '1',
   ]);

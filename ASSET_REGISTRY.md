@@ -83,9 +83,9 @@ Purpose:
 
 Architecture context:
 - Chosen production architecture: one static no-wave base background, the eight accepted transparent wave assets reused as a richer desktop instance composition above it, and a foreground neutral/boundary overlay above the waves.
-- Phase A imported and optimized the assets; the current Phase B integration renders 16 desktop instances with lightweight independent linear horizontal transform movement.
+- Phase A imported and optimized the assets; the current Phase B integration renders 20 desktop instances with lightweight independent linear horizontal transform movement.
 - The earlier full-frame A/B/C animation exploration remains committed and unmerged on Draft PR #6; it is superseded as the chosen implementation direction by this layered-wave architecture.
-- The current Phase B branch integrates the desktop base, 16 wave instances reusing the eight wave deliveries, and foreground overlay into Home. Broad ribbon/halftone instances form underlayers, while thick, thin, and dashed instances overlap above them. Mobile continues to use Frame A and does not request the desktop layer URLs.
+- The current Phase B branch integrates the desktop base, 20 wave instances reusing the eight wave deliveries, and foreground overlay into Home. Broad ribbon/halftone instances form underlayers, while thick, thin, and dashed instances overlap above them. Mobile continues to use Frame A and does not request the desktop layer URLs.
 - No source or delivery asset bytes were changed during integration.
 - The overlay was inspected at the pixel level: its RGBA alpha channel has real transparency, including `615,141` fully transparent pixels on the right side. The apparent black area is not baked black fill.
 - Mobile-specific layered base/overlay assets are not included in this phase.

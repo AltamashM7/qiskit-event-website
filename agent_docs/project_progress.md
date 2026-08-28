@@ -4,7 +4,7 @@
 
 **Phase: Home Composition V1 accepted and merged; layered Home background desktop integration in progress; PR preview QA infrastructure established**
 
-Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C remain committed as the earlier full-frame exploration; the old Draft PR #6 frame-swap exploration remains unmerged and is superseded as the chosen direction by the desktop layered-wave architecture. The Phase A layered background asset foundation was accepted and merged into `main`; the current Phase B branch integrates its user-supplied desktop base, overlay, and eight wave deliveries as 16 rendered desktop instances with CSS-only continuous motion. Home visual acceptance remains pending.
+Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C remain committed as the earlier full-frame exploration; the old Draft PR #6 frame-swap exploration remains unmerged and is superseded as the chosen direction by the desktop layered-wave architecture. The Phase A layered background asset foundation was accepted and merged into `main`; the current Phase B branch integrates its user-supplied desktop base, overlay, and eight wave deliveries as 20 rendered desktop instances with CSS-only continuous motion. Home visual acceptance remains pending.
 
 The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
 
@@ -96,7 +96,7 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 ### Home layered background integration (Phase B — in progress)
 - Desktop Home now composes the native-dimension WebP base, eight independent transparent wave deliveries, and the foreground neutral/boundary overlay from the Phase A asset foundation.
 - `HomeLayeredBackground.astro` keeps the responsive base selection and decorative layer structure separate from `HomeStage`; the existing Home identity, navigator, subject, and interaction remain unchanged.
-- The desktop composition renders 16 wave instances while reusing the same eight accepted delivery assets. Each instance has independent CSS custom-property timing, phase, position, breadth, and depth; primary travel uses a two-keyframe linear transform with no animated rotation, scale, or secondary drift.
+- The desktop composition renders 20 wave instances while reusing the same eight accepted delivery assets. Each instance has independent CSS custom-property timing, phase, position, breadth, and depth; primary travel uses a two-keyframe linear transform with no animated rotation, scale, or secondary drift.
 - Broad translucent-ribbon and halftone instances act as underlayers; thick cream waves occupy mid-depth roles, while thin and dashed waves cross above them to increase intentional overlap and reduce sparse moments.
 - Desktop reduced motion keeps the layered composition visible and static. Mobile continues to render Frame A and does not request the desktop base, overlay, or wave deliveries.
 - The visual-preview capture waits for the ten desktop layered resources before taking the reduced-motion desktop screenshots; the six-screenshot QA set remains deterministic.
@@ -129,7 +129,7 @@ Cloudflare Pages Direct Upload PR-preview infrastructure is now established on t
 ## Current recommended gate
 
 For the current Phase B desktop layered background integration gate:
-1. Verify the integrated desktop master and delivery paths, dimensions, alpha status, hashes, registry metadata, 16-instance density, and CSS motion behavior.
+1. Verify the integrated desktop master and delivery paths, dimensions, alpha status, hashes, registry metadata, 20-instance density, and CSS motion behavior.
 2. Obtain independent Web Orchestrator visual verification of the desktop normal/reduced-motion states, constant-speed linear travel, mobile resource selection, and final GitHub Actions result.
 3. Keep mobile-specific layered integration, About Event, and About Quantum Mechanics as separate future work.
 

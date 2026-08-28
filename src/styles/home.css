@@ -248,11 +248,11 @@
     --wave-width: 156%;
     --wave-height: 68%;
     --wave-top: -13%;
-    --wave-x-start: -138vw;
-    --wave-x-end: 138vw;
+    --wave-x-start: -124vw;
+    --wave-x-end: 124vw;
     --wave-duration: 12s;
-    --wave-delay: -6.24s;
-    --wave-opacity: 0.9;
+    --wave-delay: -5.28s;
+    --wave-opacity: 1;
     z-index: 4;
   }
 
@@ -260,186 +260,198 @@
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-02-thick-cream-lower.webp');
     --wave-width: 164%;
     --wave-height: 72%;
-    --wave-top: 34%;
-    --wave-x-start: -140vw;
-    --wave-x-end: 140vw;
+    --wave-top: 39%;
+    --wave-x-start: -126vw;
+    --wave-x-end: 126vw;
     --wave-duration: 14s;
-    --wave-delay: -9.52s;
-    --wave-opacity: 0.88;
+    --wave-delay: -8.96s;
+    --wave-opacity: 1;
     z-index: 3;
   }
 
   #home-stage .home-layered-background__wave--03 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
     --wave-width: 145%;
-    --wave-height: 48%;
-    --wave-top: 16%;
-    --wave-x-start: -131vw;
-    --wave-x-end: 131vw;
+    --wave-height: 40%;
+    --wave-top: -4%;
+    --wave-x-start: -116vw;
+    --wave-x-end: 116vw;
     --wave-duration: 11s;
-    --wave-delay: -8.14s;
+    --wave-delay: -2.42s;
     --wave-opacity: 0.78;
     z-index: 5;
+  }
+
+  #home-stage .home-layered-background__wave--03-b {
+    --wave-height: 42%;
+    --wave-top: 27%;
+    --wave-duration: 15s;
+    --wave-delay: -8.1s;
+    --wave-opacity: 0.68;
+  }
+
+  #home-stage .home-layered-background__wave--03-c {
+    --wave-height: 44%;
+    --wave-top: 63%;
+    --wave-duration: 18s;
+    --wave-delay: -14.76s;
+    --wave-opacity: 0.62;
   }
 
   #home-stage .home-layered-background__wave--04 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp');
     --wave-width: 148%;
-    --wave-height: 52%;
-    --wave-top: 42%;
-    --wave-x-start: -132vw;
-    --wave-x-end: 132vw;
+    --wave-height: 44%;
+    --wave-top: 9%;
+    --wave-x-start: -118vw;
+    --wave-x-end: 118vw;
     --wave-duration: 13s;
-    --wave-delay: -5.46s;
+    --wave-delay: -4.42s;
     --wave-opacity: 0.72;
     z-index: 5;
+  }
+
+  #home-stage .home-layered-background__wave--04-b {
+    --wave-height: 46%;
+    --wave-top: 36%;
+    --wave-duration: 16s;
+    --wave-delay: -9.92s;
+    --wave-opacity: 0.64;
+  }
+
+  #home-stage .home-layered-background__wave--04-c {
+    --wave-height: 42%;
+    --wave-top: 70%;
+    --wave-duration: 19s;
+    --wave-delay: -16.72s;
+    --wave-opacity: 0.58;
   }
 
   #home-stage .home-layered-background__wave--05 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp');
     --wave-width: 138%;
-    --wave-height: 42%;
-    --wave-top: 2%;
-    --wave-x-start: -127vw;
-    --wave-x-end: 127vw;
+    --wave-height: 34%;
+    --wave-top: -2%;
+    --wave-x-start: -114vw;
+    --wave-x-end: 114vw;
     --wave-duration: 12.5s;
-    --wave-delay: -10.75s;
+    --wave-delay: -2.25s;
     --wave-opacity: 0.72;
     z-index: 6;
+  }
+
+  #home-stage .home-layered-background__wave--05-b {
+    --wave-height: 36%;
+    --wave-top: 24%;
+    --wave-duration: 17s;
+    --wave-delay: -8.5s;
+    --wave-opacity: 0.62;
+    z-index: 7;
+  }
+
+  #home-stage .home-layered-background__wave--05-c {
+    --wave-height: 36%;
+    --wave-top: 65%;
+    --wave-duration: 20s;
+    --wave-delay: -15.8s;
+    --wave-opacity: 0.54;
+    z-index: 7;
   }
 
   #home-stage .home-layered-background__wave--06 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp');
     --wave-width: 142%;
-    --wave-height: 45%;
-    --wave-top: 47%;
-    --wave-x-start: -130vw;
-    --wave-x-end: 130vw;
+    --wave-height: 36%;
+    --wave-top: 17%;
+    --wave-x-start: -116vw;
+    --wave-x-end: 116vw;
     --wave-duration: 14.5s;
-    --wave-delay: -8.41s;
+    --wave-delay: -4.06s;
     --wave-opacity: 0.68;
     z-index: 6;
+  }
+
+  #home-stage .home-layered-background__wave--06-b {
+    --wave-height: 38%;
+    --wave-top: 44%;
+    --wave-duration: 18.5s;
+    --wave-delay: -10.36s;
+    --wave-opacity: 0.6;
+    z-index: 7;
+  }
+
+  #home-stage .home-layered-background__wave--06-c {
+    --wave-height: 34%;
+    --wave-top: 72%;
+    --wave-duration: 21.5s;
+    --wave-delay: -18.06s;
+    --wave-opacity: 0.52;
+    z-index: 7;
   }
 
   #home-stage .home-layered-background__wave--07 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp');
     --wave-width: 176%;
-    --wave-height: 94%;
-    --wave-top: 4%;
-    --wave-x-start: -146vw;
-    --wave-x-end: 146vw;
+    --wave-height: 92%;
+    --wave-top: -8%;
+    --wave-x-start: -130vw;
+    --wave-x-end: 130vw;
     --wave-duration: 21s;
-    --wave-delay: -9.66s;
-    --wave-opacity: 0.64;
+    --wave-delay: -5.04s;
+    --wave-opacity: 0.5;
     z-index: 1;
+  }
+
+  #home-stage .home-layered-background__wave--07-b {
+    --wave-height: 90%;
+    --wave-top: 22%;
+    --wave-duration: 22s;
+    --wave-delay: -11.88s;
+    --wave-opacity: 0.4;
+  }
+
+  #home-stage .home-layered-background__wave--07-c {
+    --wave-height: 88%;
+    --wave-top: 58%;
+    --wave-duration: 23s;
+    --wave-delay: -18.86s;
+    --wave-opacity: 0.3;
   }
 
   #home-stage .home-layered-background__wave--08 {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp');
     --wave-width: 220%;
-    --wave-height: 150%;
-    --wave-top: -20%;
-    --wave-x-start: -170vw;
-    --wave-x-end: 170vw;
-    --wave-duration: 24s;
-    --wave-delay: -16.8s;
-    --wave-opacity: 0.2;
+    --wave-height: 500%;
+    --wave-top: -205%;
+    --wave-x-start: -155vw;
+    --wave-x-end: 155vw;
+    --wave-duration: 22.5s;
+    --wave-delay: -9.45s;
+    --wave-opacity: 0.5;
     z-index: 0;
   }
 
-  #home-stage .home-layered-background__wave--01-b {
-    --wave-width: 148%;
-    --wave-height: 62%;
-    --wave-top: 9%;
-    --wave-x-start: -132vw;
-    --wave-x-end: 132vw;
-    --wave-duration: 16s;
-    --wave-delay: -12.48s;
-    --wave-opacity: 0.72;
-    z-index: 4;
-  }
-
-  #home-stage .home-layered-background__wave--02-b {
-    --wave-width: 158%;
-    --wave-height: 66%;
-    --wave-top: 47%;
-    --wave-x-start: -138vw;
-    --wave-x-end: 138vw;
-    --wave-duration: 18s;
-    --wave-delay: -6.48s;
-    --wave-opacity: 0.76;
-    z-index: 3;
-  }
-
-  #home-stage .home-layered-background__wave--03-b {
-    --wave-width: 152%;
-    --wave-height: 44%;
-    --wave-top: 34%;
-    --wave-x-start: -134vw;
-    --wave-x-end: 134vw;
-    --wave-duration: 15s;
-    --wave-delay: -9.6s;
-    --wave-opacity: 0.68;
-    z-index: 5;
-  }
-
-  #home-stage .home-layered-background__wave--04-b {
-    --wave-width: 154%;
-    --wave-height: 50%;
-    --wave-top: 8%;
-    --wave-x-start: -135vw;
-    --wave-x-end: 135vw;
-    --wave-duration: 17s;
-    --wave-delay: -8.5s;
-    --wave-opacity: 0.64;
-    z-index: 5;
-  }
-
-  #home-stage .home-layered-background__wave--05-b {
-    --wave-width: 146%;
-    --wave-height: 38%;
-    --wave-top: 28%;
-    --wave-x-start: -130vw;
-    --wave-x-end: 130vw;
-    --wave-duration: 13.5s;
-    --wave-delay: -11.07s;
-    --wave-opacity: 0.62;
-    z-index: 7;
-  }
-
-  #home-stage .home-layered-background__wave--06-b {
-    --wave-width: 150%;
-    --wave-height: 40%;
-    --wave-top: 16%;
-    --wave-x-start: -133vw;
-    --wave-x-end: 133vw;
-    --wave-duration: 16.5s;
-    --wave-delay: -6.6s;
-    --wave-opacity: 0.6;
-    z-index: 7;
-  }
-
-  #home-stage .home-layered-background__wave--07-b {
-    --wave-width: 166%;
-    --wave-height: 88%;
-    --wave-top: 22%;
-    --wave-x-start: -142vw;
-    --wave-x-end: 142vw;
-    --wave-duration: 22.5s;
-    --wave-delay: -13.5s;
-    --wave-opacity: 0.45;
+  #home-stage .home-layered-background__wave--08-b {
+    --wave-width: 200%;
+    --wave-height: 190%;
+    --wave-top: -25%;
+    --wave-x-start: -150vw;
+    --wave-x-end: 150vw;
+    --wave-duration: 24s;
+    --wave-delay: -4.32s;
+    --wave-opacity: 0.24;
     z-index: 1;
   }
 
-  #home-stage .home-layered-background__wave--08-b {
-    --wave-width: 184%;
-    --wave-height: 88%;
-    --wave-top: 30%;
-    --wave-x-start: -148vw;
-    --wave-x-end: 148vw;
-    --wave-duration: 23.5s;
-    --wave-delay: -17.86s;
-    --wave-opacity: 0.28;
+  #home-stage .home-layered-background__wave--08-c {
+    --wave-width: 200%;
+    --wave-height: 190%;
+    --wave-top: 54%;
+    --wave-x-start: -150vw;
+    --wave-x-end: 150vw;
+    --wave-duration: 26s;
+    --wave-delay: -19.24s;
+    --wave-opacity: 0.2;
     z-index: 1;
   }
 }

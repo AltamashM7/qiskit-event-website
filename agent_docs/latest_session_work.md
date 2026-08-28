@@ -51,9 +51,9 @@ The chosen production architecture is one static no-wave base background, eight 
 
 ## Home layered background integration (Phase B)
 
-The current Phase B branch integrates the Phase A desktop deliveries into Home: one native-dimension WebP base, the eight accepted transparent wave assets rendered as 16 desktop instances, and the foreground neutral/boundary overlay. The reusable `HomeLayeredBackground.astro` component owns the responsive base selection and decorative layer structure while the existing Home content, navigator, subject, and interaction remain unchanged.
+The current Phase B branch integrates the Phase A desktop deliveries into Home: one native-dimension WebP base, the eight accepted transparent wave assets rendered as 20 desktop instances, and the foreground neutral/boundary overlay. The reusable `HomeLayeredBackground.astro` component owns the responsive base selection and decorative layer structure while the existing Home content, navigator, subject, and interaction remain unchanged.
 
-Desktop waves use CSS-only continuous linear horizontal transform motion with independent stable asset IDs, positions, breadths, durations, delays, and depth. The broad ribbon and halftone instances sit beneath overlapping thick, thin, and dashed instances. Reduced motion keeps the 16 desktop layers visible and static. Mobile continues to use the existing Frame A composition and does not request the desktop layered resources. The six reduced-motion visual-preview captures wait for the desktop layer resources before capture; no source or delivery asset bytes were changed.
+Desktop waves use CSS-only continuous linear horizontal transform motion with independent stable asset IDs, positions, breadths, durations, delays, and depth. The broad ribbon and halftone instances sit beneath overlapping thick, thin, and dashed instances. Reduced motion keeps the 20 desktop layers visible and static. Mobile continues to use the existing Frame A composition and does not request the desktop layered resources. The six reduced-motion visual-preview captures wait for the desktop layer resources before capture; no source or delivery asset bytes were changed.
 
 Phase B desktop visual acceptance remains pending independent Web Orchestrator/user review.
 
