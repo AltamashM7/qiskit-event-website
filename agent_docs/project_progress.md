@@ -2,29 +2,23 @@
 
 ## Current status
 
-**Phase: Draft PR #8 idle-float correction implemented; final-head verification and USER float visual QA pending**
+**Phase: Phase 3 mobile layered Home accent/title finishing correction; final-head verification and USER re-review pending**
 
 Repository:
 
 `https://github.com/AltamashM7/qiskit-event-website`
 
-Main baseline before PR #8:
+Current verified main baseline:
 
-`67f3094599dbd7af6fd1772e486ff250677d5e22`
+`6f515d7ffd238519b9b44117942316874469142e`
 
 Branch:
 
-`phase-2/home-layered-background-integration`
+`phase-3/home-mobile-layered-integration`
 
-PR:
+PR: [Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9).
 
-`https://github.com/AltamashM7/qiskit-event-website/pull/8`
-
-Previous application head before this correction:
-
-`007e1e74f4840afc4db393aef9db26c20ef80c4f`
-
-PR #8 remains Draft/open/unmerged.
+PR #8 was accepted and squash-merged into `main`.
 
 ## Accepted / merged milestones
 
@@ -51,7 +45,7 @@ PR #8 remains Draft/open/unmerged.
 - desktop/mobile Stage.
 - generic event copy.
 - box interaction.
-- Frame A mobile.
+- separate art-directed mobile composition.
 
 ### Layered background Phase A
 - PR #7 accepted/merged.
@@ -65,7 +59,7 @@ PR #6 A→B→C full-frame stepped animation:
 - unmerged;
 - superseded.
 
-## PR #8 layered desktop background
+## Merged desktop layered Home background
 
 USER accepted:
 - boundary illusion;
@@ -90,7 +84,7 @@ Current structure:
 
 Wave system locked.
 
-## PR #8 box-motion correction
+## Merged PR #8 box-motion correction
 
 Previous application commit:
 
@@ -142,6 +136,25 @@ Unchanged:
 - mobile tap;
 - ARIA.
 
+## Phase 3 mobile layered Home background
+
+Current branch:
+`phase-3/home-mobile-layered-integration`
+
+Implementation:
+- portrait base `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
+- transparent foreground overlay `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`;
+- 44 mobile wave instances with all eight wave families represented;
+- mobile durations halved with corresponding negative delays phase-preserved; approximately doubled speed;
+- the original yellow/orange Wave 03 small-wave family is restored; all other active mobile wave visuals are white, using five mobile-only white variants plus shared white dashed deliveries;
+- primary thick waves remain strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains lower atmospheric opacity, and smaller families use graduated opacity;
+- thin/dashed small-wave families 03–06 are doubled from four to eight instances each, for 44 mobile instances total;
+- mobile-specific percentage/container-relative positioning and depth order;
+- the previous warm direction and subsequent blue/cyan experiment are superseded; opacity, scale, depth, count, overlap, and motion now provide mobile hierarchy;
+- desktop layered wave behavior and accepted box idle/reveal behavior were not retuned.
+
+Broad phone and PC visual review passed for speed, large-wave concentration, and the portrait composition. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected; two final finishing corrections remain: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Final-head CI/preview verification and USER visual re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
+
 ## Previous final-head verification
 
 Actions:
@@ -171,25 +184,23 @@ Immutable preview:
 
 No production deployment.
 
-## Remaining before PR #8 merge
+## Remaining for Phase 3 acceptance
 
-Only subjective live normal-motion QA of the new idle float:
-- smooth same-path to-and-fro motion without perceived stutter;
-- naturalness/heaviness;
-- no perceived jump;
-- performance;
-- wave non-regression.
+Only the current Phase 3 accent/title correction verification and subjective mobile re-review remain:
+- mobile wave density, portrait balance, and boundary emergence;
+- normal/compact/short/tall portrait layout safety;
+- reduced-motion composition and performance;
+- desktop non-regression.
 
 Then:
 - final exact-head Orchestrator recheck;
 - explicit USER merge approval;
-- squash merge;
+- squash merge the Phase 3 PR;
 - verify main;
 - docs refresh.
 
 ## Not yet done
 
-- mobile layered art/integration;
 - final Home lower content;
 - Master Navigator polish;
 - About Event visuals;

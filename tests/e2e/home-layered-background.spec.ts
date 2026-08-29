@@ -6,6 +6,8 @@ declare const process: {
 };
 
 const frameAPath = '/assets/home/background/home-probability-field-frame-a-v1.png';
+const mobileBasePath = '/assets/home/mobile-layered/home-mobile-layered-base-v1.png';
+const mobileOverlayPath = '/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png';
 const basePath =
   '/assets/home/background/layered/web/desktop/base/home-probability-field-base-desktop.webp';
 const overlayPath =
@@ -20,8 +22,46 @@ const wavePaths = [
   '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
   '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
 ];
+const mobileWavePaths = [
+  '/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png',
+  wavePaths[2],
+  '/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png',
+  wavePaths[4],
+  wavePaths[5],
+  '/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png',
+];
+const supersededMobileWavePaths = [
+  '/assets/home/background/layered/web/mobile/waves/wave-01-warm-ivory-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-02-pale-butter-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png',
+];
+const mobileWaveAssetPaths = mobileWavePaths;
+const expectedMobileWaveAssetsByFamily = new Map([
+  ['wave-01', mobileWavePaths[0]],
+  ['wave-02', mobileWavePaths[1]],
+  ['wave-03', wavePaths[2]],
+  ['wave-04', mobileWavePaths[3]],
+  ['wave-05', wavePaths[4]],
+  ['wave-06', wavePaths[5]],
+  ['wave-07', mobileWavePaths[6]],
+  ['wave-08', mobileWavePaths[7]],
+]);
 const desktopLayeredPaths = [basePath, overlayPath, ...wavePaths];
+const mobileLayeredPaths = [mobileBasePath, mobileOverlayPath, ...mobileWaveAssetPaths];
 const renderedWaveCount = 20;
+const renderedMobileWaveCount = 44;
+const expectedMobileSmallWaveFamilyCounts = new Map([
+  ['wave-03', 8],
+  ['wave-04', 8],
+  ['wave-05', 8],
+  ['wave-06', 8],
+]);
 const expectedWaveFamilyCounts = new Map(
   wavePaths.map((path, index) => [path, index < 2 ? 1 : 3]),
 );
@@ -253,7 +293,7 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
     const overlay = element.querySelector('[data-layered-background-overlay]');
     const stageBackground = element.closest('.stage-shell__background');
     const subject = element.closest('.stage-shell')?.querySelector('.stage-shell__subject');
-    const waves = Array.from(element.querySelectorAll('[data-wave-id]'));
+    const waves = Array.from(element.querySelectorAll('[data-wave-device="desktop"] [data-wave-id]'));
 
     return {
       baseCurrentSrc: base instanceof HTMLImageElement ? new URL(base.currentSrc).pathname : null,
@@ -468,7 +508,7 @@ test('Desktop uses a dense layered base, reused wave families, and foreground ov
   expect(requests).not.toContain('/assets/home/background/home-probability-field-frame-c-v1.png');
 
   const keyframeTransforms = await page
-    .locator('[data-wave-id]')
+    .locator('[data-wave-device="desktop"] [data-wave-id]')
     .first()
     .evaluate((element) => {
       const animation = element.getAnimations()[0];
@@ -523,7 +563,7 @@ test('Desktop wave reset is hidden beneath the overlay across representative asp
       };
       const overlayTransform = overlay instanceof HTMLElement ? getComputedStyle(overlay).transform : 'none';
       const overlayScaleMatch = overlayTransform.match(/^matrix(?:3d)?\(([+-]?[\d.]+)/);
-      const waves = Array.from(element.querySelectorAll('[data-wave-id]'));
+      const waves = Array.from(element.querySelectorAll('[data-wave-device="desktop"] [data-wave-id]'));
 
       return {
         stageWidth: elementRect.width,
@@ -605,7 +645,7 @@ test('Desktop reduced motion keeps the dense layered composition static', async 
   const reducedState = await page.locator('[data-home-layered-background]').evaluate((element) => {
     const base = element.querySelector('.home-layered-background__base img');
     const overlay = element.querySelector('[data-layered-background-overlay]');
-    const waves = Array.from(element.querySelectorAll('[data-wave-id]'));
+    const waves = Array.from(element.querySelectorAll('[data-wave-device="desktop"] [data-wave-id]'));
 
     return {
       baseCurrentSrc: base instanceof HTMLImageElement ? new URL(base.currentSrc).pathname : null,
@@ -632,13 +672,13 @@ test('Desktop reduced motion keeps the dense layered composition static', async 
 
   await page.waitForTimeout(120);
   const laterTransforms = await page
-    .locator('[data-wave-id]')
+    .locator('[data-wave-device="desktop"] [data-wave-id]')
     .evaluateAll((waves) => waves.map((wave) => getComputedStyle(wave).transform));
   expect(laterTransforms).toEqual(reducedState.waveTransforms);
 });
 
-test('Mobile keeps Frame A and does not request desktop layered resources', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'mobile-chromium', 'Mobile-only resource selection coverage.');
+test('Mobile uses the portrait layered base, shared waves, and foreground overlay', async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith('mobile-'), 'Mobile-only layered background coverage.');
 
   const requests: string[] = [];
   page.on('request', (request) => requests.push(requestedPath(request.url())));
@@ -647,25 +687,158 @@ test('Mobile keeps Frame A and does not request desktop layered resources', asyn
 
   const mobileState = await page.locator('[data-home-layered-background]').evaluate((element) => {
     const base = element.querySelector('.home-layered-background__base img');
-    const waves = Array.from(element.querySelectorAll('[data-wave-id]'));
+    const desktopWaveLayer = element.querySelector('[data-wave-device="desktop"]');
+    const mobileWaves = Array.from(
+      element.querySelectorAll('[data-wave-device="mobile"] [data-wave-id]'),
+    );
     const overlay = element.querySelector('[data-layered-background-overlay]');
+    const mobileWaveStyles = mobileWaves.map((wave) => getComputedStyle(wave));
 
     return {
       baseCurrentSrc: base instanceof HTMLImageElement ? new URL(base.currentSrc).pathname : null,
-      waveCount: waves.length,
-      waveDisplays: waves.map((wave) => getComputedStyle(wave).display),
-      waveAnimationNames: waves.map((wave) => getComputedStyle(wave).animationName),
+      baseObjectFit: base instanceof HTMLImageElement ? getComputedStyle(base).objectFit : '',
+      baseObjectPosition: base instanceof HTMLImageElement ? getComputedStyle(base).objectPosition : '',
+      desktopWaveDisplay: desktopWaveLayer instanceof HTMLElement ? getComputedStyle(desktopWaveLayer).display : '',
+      mobileWaveCount: mobileWaves.length,
+      mobileWaveIds: mobileWaves.map((wave) => wave.getAttribute('data-wave-id')),
+      mobileWaveAssets: mobileWaves.map((wave) => wave.getAttribute('data-wave-asset')),
+      mobileWaveFamilies: mobileWaves.map((wave) => wave.getAttribute('data-wave-family')),
+      mobileWaveBackgrounds: mobileWaveStyles.map((styles) => styles.backgroundImage),
+      mobileWaveDisplays: mobileWaveStyles.map((styles) => styles.display),
+      mobileWaveAnimationNames: mobileWaveStyles.map((styles) => styles.animationName),
+      mobileWaveTimingFunctions: mobileWaveStyles.map((styles) => styles.animationTimingFunction),
+      mobileWaveIterationCounts: mobileWaveStyles.map((styles) => styles.animationIterationCount),
+      mobileWaveOpacities: mobileWaveStyles.map((styles) => styles.opacity),
+      mobileWaveDurations: mobileWaveStyles.map((styles) => styles.animationDuration),
+      mobileWaveTransforms: mobileWaveStyles.map((styles) => styles.transform),
+      mobileWaveWidths: mobileWaveStyles.map((styles) => styles.getPropertyValue('--wave-width').trim()),
+      mobileWaveHeights: mobileWaveStyles.map((styles) => styles.getPropertyValue('--wave-height').trim()),
+      mobileWaveZIndexes: mobileWaveStyles.map((styles) => styles.zIndex),
       overlayDisplay: overlay instanceof HTMLElement ? getComputedStyle(overlay).display : '',
+      overlayBackground: overlay instanceof HTMLElement ? getComputedStyle(overlay).backgroundImage : '',
+      overlaySize: overlay instanceof HTMLElement ? getComputedStyle(overlay).backgroundSize : '',
+      overlayZIndex: overlay instanceof HTMLElement ? getComputedStyle(overlay).zIndex : '',
+      frameExperimentNodes: element.querySelectorAll('[data-home-frame]').length,
     };
   });
 
-  expect(mobileState.baseCurrentSrc).toBe(frameAPath);
-  expect(mobileState.waveCount).toBe(renderedWaveCount);
-  expect(requests).toContain(frameAPath);
-  for (const path of desktopLayeredPaths) {
+  expect(mobileState.baseCurrentSrc).toBe(mobileBasePath);
+  expect(mobileState.baseObjectFit).toBe('cover');
+  expect(mobileState.baseObjectPosition).toBe('50% 50%');
+  expect(mobileState.desktopWaveDisplay).toBe('none');
+  expect(mobileState.mobileWaveCount).toBe(renderedMobileWaveCount);
+  const activeMobileWaveAssets = mobileState.mobileWaveAssets.filter(
+    (path): path is string => path !== null,
+  );
+  const activeMobileWaveFamilies = mobileState.mobileWaveFamilies.filter(
+    (family): family is string => family !== null,
+  );
+  expect(new Set(activeMobileWaveAssets)).toEqual(new Set(mobileWaveAssetPaths));
+  expect(activeMobileWaveAssets.some((path) => supersededMobileWavePaths.includes(path))).toBe(false);
+  expect(new Set(activeMobileWaveFamilies)).toEqual(new Set(wavePaths.map((_, index) => `wave-0${index + 1}`)));
+  const mobileWaveFamilyCounts = new Map<string, number>();
+  const mobileWaveAssetsByFamily = new Map<string, Set<string>>();
+  activeMobileWaveFamilies.forEach((family, index) => {
+    mobileWaveFamilyCounts.set(family, (mobileWaveFamilyCounts.get(family) ?? 0) + 1);
+    const asset = activeMobileWaveAssets[index];
+    if (!asset) return;
+    const familyAssets = mobileWaveAssetsByFamily.get(family) ?? new Set<string>();
+    familyAssets.add(asset);
+    mobileWaveAssetsByFamily.set(family, familyAssets);
+  });
+  for (const [family, count] of expectedMobileSmallWaveFamilyCounts) {
+    expect(mobileWaveFamilyCounts.get(family)).toBe(count);
+  }
+  for (const [family, expectedAsset] of expectedMobileWaveAssetsByFamily) {
+    expect(mobileWaveAssetsByFamily.get(family)).toEqual(new Set([expectedAsset]));
+  }
+  expect(mobileState.mobileWaveBackgrounds.every((background) =>
+    mobileWaveAssetPaths.some((path) => background.includes(path)),
+  )).toBe(true);
+  expect(mobileState.mobileWaveDisplays).toEqual(Array(renderedMobileWaveCount).fill('block'));
+  expect(mobileState.mobileWaveAnimationNames).toEqual(
+    Array(renderedMobileWaveCount).fill('home-layered-wave-travel'),
+  );
+  expect(mobileState.mobileWaveTimingFunctions).toEqual(Array(renderedMobileWaveCount).fill('linear'));
+  expect(mobileState.mobileWaveIterationCounts).toEqual(Array(renderedMobileWaveCount).fill('infinite'));
+  const mobileWaveOpacityById = new Map(
+    mobileState.mobileWaveIds.map((id, index) => [id, mobileState.mobileWaveOpacities[index]]),
+  );
+  expect(mobileWaveOpacityById.get('mobile-wave-01-upper')).toBe('1');
+  expect(mobileWaveOpacityById.get('mobile-wave-01-middle')).toBe('0.72');
+  expect(mobileWaveOpacityById.get('mobile-wave-02-lower')).toBe('1');
+  expect(mobileWaveOpacityById.get('mobile-wave-02-middle')).toBe('0.72');
+  expect(mobileWaveOpacityById.get('mobile-wave-08-upper')).toBe('0.42');
+  expect(mobileWaveOpacityById.get('mobile-wave-08-lower')).toBe('0.28');
+  expect(mobileWaveOpacityById.get('mobile-wave-08-middle')).toBe('0.24');
+  expect(mobileWaveOpacityById.get('mobile-wave-08-deep')).toBe('0.2');
+  expect(mobileState.mobileWaveTransforms.every((transform) => transform !== 'none')).toBe(true);
+  expect(mobileState.mobileWaveDurations.every((duration) => {
+    const seconds = Number.parseFloat(duration);
+    return seconds >= 4 && seconds <= 8;
+  })).toBe(true);
+  expect(mobileState.mobileWaveWidths.every((width) => width.endsWith('%'))).toBe(true);
+  expect(mobileState.mobileWaveHeights.every((height) => height.endsWith('%'))).toBe(true);
+  expect(mobileState.mobileWaveZIndexes.every((zIndex) => Number.parseInt(zIndex, 10) < 20)).toBe(true);
+  expect(mobileState.overlayDisplay).toBe('block');
+  expect(mobileState.overlayBackground).toContain(mobileOverlayPath);
+  expect(mobileState.overlaySize).toBe('cover');
+  expect(mobileState.overlayZIndex).toBe('20');
+  expect(mobileState.frameExperimentNodes).toBe(0);
+
+  for (const path of mobileLayeredPaths) {
+    expect(requests).toContain(path);
+  }
+  for (const path of desktopLayeredPaths.slice(0, 2)) {
     expect(requests).not.toContain(path);
   }
-  expect(mobileState.waveDisplays).toEqual(Array(renderedWaveCount).fill('none'));
-  expect(mobileState.waveAnimationNames).toEqual(Array(renderedWaveCount).fill('none'));
-  expect(mobileState.overlayDisplay).toBe('none');
+  expect(requests).not.toContain(frameAPath);
+  expect(requests).not.toContain('/assets/home/background/home-probability-field-frame-b-v1.png');
+  expect(requests).not.toContain('/assets/home/background/home-probability-field-frame-c-v1.png');
+  expect(requests.filter((path) => path.startsWith('/assets/home/mobile-layered/'))).toEqual([
+    mobileBasePath,
+    mobileOverlayPath,
+  ]);
+});
+
+test('Mobile reduced motion keeps the layered composition static', async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith('mobile-'), 'Mobile-only reduced-motion coverage.');
+
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/', { waitUntil: 'networkidle' });
+
+  const reducedState = await page.locator('[data-home-layered-background]').evaluate((element) => {
+    const mobileWaves = Array.from(
+      element.querySelectorAll('[data-wave-device="mobile"] [data-wave-id]'),
+    );
+    const desktopWaveLayer = element.querySelector('[data-wave-device="desktop"]');
+    const overlay = element.querySelector('[data-layered-background-overlay]');
+    const base = element.querySelector('.home-layered-background__base img');
+
+    return {
+      baseCurrentSrc: base instanceof HTMLImageElement ? new URL(base.currentSrc).pathname : null,
+      desktopWaveDisplay: desktopWaveLayer instanceof HTMLElement ? getComputedStyle(desktopWaveLayer).display : '',
+      mobileWaveDisplays: mobileWaves.map((wave) => getComputedStyle(wave).display),
+      mobileWaveAnimationNames: mobileWaves.map((wave) => getComputedStyle(wave).animationName),
+      mobileWaveAnimations: mobileWaves.map((wave) => wave.getAnimations().length),
+      mobileWaveTransforms: mobileWaves.map((wave) => getComputedStyle(wave).transform),
+      overlayDisplay: overlay instanceof HTMLElement ? getComputedStyle(overlay).display : '',
+      overlayBackground: overlay instanceof HTMLElement ? getComputedStyle(overlay).backgroundImage : '',
+    };
+  });
+
+  expect(reducedState.baseCurrentSrc).toBe(mobileBasePath);
+  expect(reducedState.desktopWaveDisplay).toBe('none');
+  expect(reducedState.mobileWaveDisplays).toEqual(Array(renderedMobileWaveCount).fill('block'));
+  expect(reducedState.mobileWaveAnimationNames).toEqual(Array(renderedMobileWaveCount).fill('none'));
+  expect(reducedState.mobileWaveAnimations).toEqual(Array(renderedMobileWaveCount).fill(0));
+  expect(reducedState.mobileWaveTransforms.every((transform) => transform !== 'none')).toBe(true);
+  expect(reducedState.overlayDisplay).toBe('block');
+  expect(reducedState.overlayBackground).toContain(mobileOverlayPath);
+
+  await page.waitForTimeout(120);
+  const laterTransforms = await page
+    .locator('[data-wave-device="mobile"] [data-wave-id]')
+    .evaluateAll((waves) => waves.map((wave) => getComputedStyle(wave).transform));
+  expect(laterTransforms).toEqual(reducedState.mobileWaveTransforms);
 });

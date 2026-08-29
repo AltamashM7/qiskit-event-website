@@ -2,15 +2,15 @@
 
 ## Status
 
-This file records the current Home Stage scene on PR #8.
+This file records the current Home Stage scene on the Phase 3 mobile layered-background branch.
 
 Desktop layered-background visuals are USER accepted.
 
-The prior Schrödinger-box stronger idle motion and phase-split reveal were implemented and technically verified at the previous application head:
+PR #8 was accepted and squash-merged into `main` at:
 
-`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+`6f515d7ffd238519b9b44117942316874469142e`
 
-The prior normal-motion review found two bounded issues: the float read as move/pause/direction-change phases, and the phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe float remained unresolved because it produced perceived variable-speed/stutter. The correction below replaces only the idle float; renewed USER normal-motion acceptance of that float remains pending.
+Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. Broad phone and PC visual review passed; the previous warm direction and subsequent blue/cyan experiment were rejected, so this Phase 3 correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and improves QISKIT title readability, with final-head verification and USER visual re-review pending.
 
 ## Desktop Home composition
 
@@ -24,10 +24,11 @@ The prior normal-motion review found two bounded issues: the float read as move/
 
 ## Mobile Home composition
 
-Mobile remains separately art-directed:
-- Frame A background;
+Mobile remains separately art-directed with:
+- portrait layered base and transparent foreground overlay;
+- responsive mobile wave instances reusing the shared approved wave deliveries;
 - stacked navigation → identity/copy → box;
-- no desktop layered resource downloads.
+- no desktop base/overlay resource downloads.
 
 ## Current identity copy
 
@@ -57,6 +58,8 @@ Mobile:
 - line-height `0.88`
 
 “EVENT” uses yellow fill with dark stroke/shadow.
+
+“QISKIT” uses the matching paper-colored stroke/shadow backing so its black fill remains readable across the dark boundary.
 
 ## Desktop layered background — LOCKED
 
@@ -215,18 +218,32 @@ Representative viewports:
 ## Mobile resource isolation
 
 Below `48rem`:
-- desktop wave layers hidden;
-- overlay hidden;
-- desktop layered CSS URLs not fetched;
-- Frame A selected.
+- desktop wave instance layer hidden;
+- mobile wave instance layer and mobile overlay shown;
+- mobile base/overlay URLs selected;
+- desktop base/overlay CSS URLs not fetched;
+- shared white wave delivery URLs remain reused for families 05 and 06; six purposeful mobile-only white variants supply families 01, 02, 03, 04, 07, and 08.
 
-Frame A:
+Mobile base:
 
-`public/assets/home/background/home-probability-field-frame-a-v1.png`
+`public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`
 
-Current mobile object-position:
+Mobile overlay:
 
-`55% center`
+`public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`
+
+The base and overlay are the same `841 × 1870` portrait composition and use responsive `cover` sizing within the Stage.
+
+## Mobile layered probability field — Phase 3 / accent-and-title finishing correction pending
+
+- 44 mobile instances are configured independently from the accepted 20-instance desktop layout.
+- Mobile wave durations are halved and corresponding negative delays are phase-preserved; the current duration range is approximately `4.05–7.8s`.
+- All eight wave families remain represented: the original yellow/orange Wave 03 small-wave family is restored, while the other active mobile wave visuals remain white across thick, thin, dashed, halftone, and translucent ribbon families.
+- Large/background mobile families 01, 02, and 08 retain their current presence; primary thick waves use full opacity, secondary thick waves use `0.72`, and the broad Wave 08 ribbon retains lower atmospheric opacity.
+- Thin/dashed small-wave families 03–06 increase from four to eight instances each, with staggered portrait positions, delays, and graduated opacities.
+- Broad ribbon and halftone instances use lower z-order underlayers; thick, thin, and dashed waves sit above them; the mobile foreground overlay is z-index `20`.
+- Wave placement uses percentages and container-relative boundary references rather than phone-specific pixel coordinates.
+- Motion remains CSS-only linear transform travel with per-instance phase offsets; reduced motion disables decorative wave animation while leaving the layered composition visible.
 
 ## Schrödinger box placement
 
@@ -283,7 +300,7 @@ Actual images:
 - own fixed artwork geometry;
 - reveal image retains fixed calibration.
 
-## Simple two-endpoint idle float correction — IMPLEMENTED / USER QA PENDING
+## Simple two-endpoint idle float correction — USER ACCEPTED / LOCKED
 
 Animation:
 
@@ -385,11 +402,6 @@ USER accepted desktop background:
 - vertical occupancy;
 - performance.
 
-Implemented and awaiting final-head verification plus USER visual acceptance of the idle float:
-- simple two-endpoint 3.1s alternate box float;
-- subjective naturalness;
-- perceived performance during normal motion.
+The 640ms phase-split reveal, simple two-endpoint 3.1s alternate box float, and desktop layered waves are USER accepted and locked.
 
-The 640ms phase-split reveal is USER accepted and locked. Desktop layered waves remain USER accepted and locked.
-
-The exact-head preview for this correction must be re-read from the final GitHub Actions run before USER review.
+The Phase 3 mobile layered composition is implemented. Broad phone and PC visual review passed, with two final finishing corrections remaining: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Speed, large-wave concentration, and desktop behavior remain accepted; the exact-head preview must be re-read from the Phase 3 GitHub Actions run before final USER review.

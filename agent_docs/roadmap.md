@@ -8,41 +8,42 @@ Use bounded gates:
 
 GitHub is authoritative.
 
-## Current gate — PR #8 final visual acceptance
+## Current gate — Phase 3 mobile layered-background visual acceptance
 
-Implementation is complete and technically green.
+PR #8 has been accepted and squash-merged into `main`.
 
-Current application head:
+Current verified `main` baseline:
 
-`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+`6f515d7ffd238519b9b44117942316874469142e`
 
 Desktop layered background:
 - USER accepted.
 
 Two-endpoint box float:
-- implemented;
-- technically verified pending final-head CI;
-- USER normal-motion QA pending.
+- USER accepted and locked.
 
 Phase-split reveal:
 - implemented;
 - technically verified;
 - USER accepted and locked.
 
-If USER passes the float:
+Mobile layered background:
+- portrait base and transparent foreground overlay supplied and verified by USER;
+- 44 responsive mobile wave instances: the existing large/background and halftone presence plus a doubled thin/dashed small-wave population;
+- the original yellow/orange Wave 03 small-wave family is restored; all other active mobile wave visuals are white, using five mobile-only white variants plus the shared white dashed deliveries;
+- implementation is on `phase-3/home-mobile-layered-integration`;
+- Broad phone and PC visual review passed. The previous warm direction and subsequent blue/cyan experiment were rejected; final-head CI/preview and USER re-review of the Wave 03 accent restoration and QISKIT title-readability correction remain pending.
+
+If USER passes the mobile composition:
 - re-check exact PR head/CI;
 - require explicit merge authorization;
-- squash merge PR #8;
+- squash merge the Phase 3 PR;
 - verify new main;
 - refresh docs.
 
-If USER finds an issue:
-- one narrow correction on same PR;
-- no wave retuning unless objective regression.
+## After Phase 3 — Home stabilization/polish
 
-## After PR #8 — Home stabilization/polish
-
-New bounded phase after PR #8 merges.
+New bounded phase after the mobile layered background is accepted and merged.
 
 Candidate work:
 - Master Navigator visual refinement;
@@ -52,20 +53,6 @@ Candidate work:
 - broader accessibility/performance review after visual stabilization.
 
 Do not reopen accepted layered-wave behavior casually.
-
-## Mobile layered background — separate optional phase
-
-Current mobile uses Frame A and is valid.
-
-Do not stretch desktop layered art into portrait automatically.
-
-If mobile layering is desired:
-1. art-direct separately;
-2. decide if mobile base/overlay masters are needed;
-3. use Art Assets workflow;
-4. establish mobile performance expectations;
-5. use a new bounded PR;
-6. real-device QA.
 
 ## About Event Stage
 

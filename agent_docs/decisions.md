@@ -50,7 +50,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Larger/broader wave families remain behind smaller/thinner/dashed waves.
 - The dominant translucent ribbon is intentionally vertically broad (currently about 220% width, 500% height, 0.5 opacity, z-index 0).
 - Desktop wave reset/spawn must remain hidden beneath the irregular neutral overlay and emerge through the boundary rather than appear inside the yellow region.
-- Mobile remains on Frame A until a separate mobile layered-art/integration decision is made.
+- Mobile remains separately art-directed from desktop; Frame A is retained as historical fallback while the Phase 3 portrait layered implementation is reviewed.
 
 ### Animation / performance
 
@@ -101,7 +101,8 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 
 - Production hosting is likely to remain Cloudflare Pages, but the production release path/hostname is not established.
 - Codex Luna is the current preferred repository-native Builder for bounded implementation work.
-- PR #8 now uses a restrained transform+opacity Schrödinger “phase split” (640ms, very small opposing displacement/scale) accepted and locked by the USER, plus a simple two-endpoint `ease-in-out` alternate transform-only idle float. The new float remains provisional until USER live-motion visual QA accepts it.
+- PR #8’s restrained transform+opacity Schrödinger “phase split” and simple two-endpoint `ease-in-out` alternate transform-only idle float are accepted and locked by the USER.
+- Phase 3 mobile layering uses the USER-created/verified `home-mobile-layered-base-v1.png` and `home-mobile-layered-overlay-v1.png` with its own responsive portrait wave configuration. Broad phone and PC visual review passed; the previous warm direction and subsequent blue/cyan experiment were rejected, so the current correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave families 03–06 from four to eight instances each, and adds the matching QISKIT title backing, with final visual re-review pending.
 - A single primary implementation owner should handle the first representative visual composition; specialist agents may review architecture, responsiveness, accessibility, testing, or performance.
 - About Event may use a stylized qubit as its primary Stage subject.
 - About Quantum Mechanics may use a Schrödinger's-cat wanted poster plus a lower qubit/measurement feature scene.

@@ -16,21 +16,19 @@ Repository:
 
 PR:
 
-`https://github.com/AltamashM7/qiskit-event-website/pull/8`
+[Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9) for `phase-3/home-mobile-layered-integration`.
 
 Branch:
 
-`phase-2/home-layered-background-integration`
+`phase-3/home-mobile-layered-integration`
 
-Application head before current correction:
+Current verified main baseline:
 
-`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+`6f515d7ffd238519b9b44117942316874469142e`
 
-Main baseline:
+PR #8 was accepted and squash-merged into `main`.
 
-`67f3094599dbd7af6fd1772e486ff250677d5e22`
-
-PR #8 remains Draft/open/unmerged.
+The Phase 3 mobile layered implementation passed broad phone and PC visual review for speed and large-wave concentration; the previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected, so the current same-PR correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, and improves QISKIT readability pending final USER re-review.
 
 ## Desktop layered background result
 
@@ -49,14 +47,25 @@ Accepted:
 
 Wave system is locked.
 
+## Current Phase 3 mobile layered background
+
+The current branch adds a separately art-directed portrait composition using:
+- `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
+- `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`, whose real transparency is preserved;
+- 44 responsive mobile wave instances; mobile durations are halved with corresponding negative delays phase-preserved.
+- The original yellow/orange Wave 03 small-wave family is restored; all other active mobile wave visuals are white, using five mobile-only white variants plus shared white dashed deliveries. Primary thick waves are strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains lower atmospheric opacity, and smaller families use graduated opacity.
+- Thin/dashed small-wave families 03–06 are doubled from four to eight instances each with staggered positions and delays.
+
+Desktop base/overlay assets are isolated from mobile, and the previous mobile color variants are superseded. Broad phone and PC review passed for speed and large-wave concentration, but the warm direction and subsequent blue/cyan experiment were rejected, so the Wave 03 accent restoration and QISKIT title-readability correction await final-head verification and USER re-review. Master Navigator refinement remains a later separate phase.
+
 Technical regression guards retain:
 - actual effective velocity measurement;
 - alpha-based painted-edge spawn measurement;
 - actual irregular overlay boundary;
 - four representative desktop aspect ratios;
-- mobile non-download assertions.
+- desktop/mobile resource-isolation assertions and mobile layered composition checks.
 
-## Previous box refinement completed while docs were being prepared
+## Historical PR #8 box refinement
 
 Luna implemented the requested box polish after the first documentation-only handoff commits landed.
 
@@ -145,7 +154,7 @@ Luna reported:
 
 Authoritative GitHub final-head verification did complete successfully, so there is no known test failure associated with this caveat.
 
-## USER normal-motion feedback and current correction
+## Historical PR #8 USER normal-motion feedback and accepted correction
 
 The USER found that the prior idle path visibly moved, paused, and changed direction, while the phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe path remained unresolved because its uneven segments produced perceived variable-speed/stutter. The same-PR correction now uses:
 
@@ -155,17 +164,17 @@ The USER found that the prior idle path visibly moved, paused, and changed direc
 - reveal starting at `translate3d(0.65%, -0.65%, 0) scale(1.006)`;
 - the existing reveal-image calibration and interaction state machine unchanged.
 
-The desktop layered wave system remains USER accepted and locked. The correction requires final-head CI verification and renewed USER normal-motion acceptance of the new idle float; PR #8 remains Draft and unmerged.
+The desktop layered wave system, box float, and reveal remain USER accepted and locked after PR #8 merged. The current Phase 3 mobile accent/title finishing correction requires its own final-head CI verification and USER re-review.
 
 ## Immediate continuation
 
-A fresh Orchestrator should first re-read the live PR head and final-head CI for this correction.
+A fresh Orchestrator should first re-read the live Phase 3 PR head and final-head CI/preview.
 
 First:
-1. inspect live PR #8;
+1. inspect the live Phase 3 PR;
 2. inspect exact current head;
-3. ask USER to review the new immutable normal-motion preview;
-4. have USER judge the new two-endpoint to-and-fro idle float;
+3. inspect the mobile layered preview across representative portrait variants;
+4. have USER judge the mobile composition, motion, and boundary emergence;
 5. if USER finds an issue, one bounded same-PR correction;
 6. if USER passes all visual checks, re-check head/CI and require explicit merge approval;
 7. squash merge only after approval;

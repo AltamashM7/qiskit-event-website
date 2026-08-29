@@ -6,7 +6,7 @@ This is the primary restart document for a fresh Web ChatGPT Orchestrator sessio
 
 The previous long Orchestrator conversation can be retired. A new Orchestrator should continue from live GitHub state plus these durable documents, not from assumed conversation memory.
 
-Always re-read GitHub before mutation. This file records the project state as of 2026-08-28.
+Always re-read GitHub before mutation. This file records the project state as of 2026-08-29.
 
 ## Mandatory read order
 
@@ -34,33 +34,17 @@ Default branch:
 
 `main`
 
-Current main baseline before PR #8:
+Current verified main baseline:
 
-`67f3094599dbd7af6fd1772e486ff250677d5e22`
+`6f515d7ffd238519b9b44117942316874469142e`
 
 Current branch:
 
-`phase-2/home-layered-background-integration`
+`phase-3/home-mobile-layered-integration`
 
-Current Draft PR:
+[Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9) is open for the Phase 3 branch; re-read the live PR/head from GitHub.
 
-`https://github.com/AltamashM7/qiskit-event-website/pull/8`
-
-Current application head before the documentation refresh that contains this handoff:
-
-`007e1e74f4840afc4db393aef9db26c20ef80c4f`
-
-Commit:
-
-`fix: strengthen box motion and phase reveal`
-
-The documentation commit that contains this refreshed handoff will advance the literal branch head again without changing application behavior. Therefore a new Orchestrator must re-read PR #8 instead of assuming `007e1e…` is still the branch tip.
-
-PR #8 remains:
-- open;
-- Draft;
-- mergeable;
-- unmerged.
+PR #8 was accepted and squash-merged into `main`.
 
 Never merge without explicit USER authorization.
 
@@ -79,10 +63,10 @@ Superseded:
 - PR #6 is closed/unmerged and must not be revived unless the architecture decision is deliberately reopened.
 
 Current:
-- PR #8 integrates and tunes the desktop layered Home probability field.
-- The USER has already passed all desktop layered-background visual checks.
-- A subsequent USER normal-motion review found two bounded issues: the prior sparse eased float read as move/pause/direction-change phases, and the phase split felt too aggressive. The USER accepted the calmer 640ms reveal, while the prior 13-keyframe float remained unresolved because it produced perceived variable-speed/stutter.
-- This same-PR correction replaces only the idle float with simple two-endpoint alternate motion. The reveal is accepted/locked; final-head CI and renewed USER acceptance of the new float remain pending.
+- the accepted desktop layered Home probability field, 640ms reveal, and two-endpoint box float are locked from merged PR #8;
+- the Phase 3 branch integrates the USER-created/verified portrait mobile base and transparent overlay;
+- mobile uses its own responsive 44-instance wave configuration while reusing the eight shared wave deliveries and mobile-only white variants;
+- prior final-head CI/preview verification passed in run 33250823577; broad phone and PC visual review passed, but the warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected. The current correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and adds the matching QISKIT title backing; final visual re-review remains pending.
 
 ## Product intent
 
@@ -164,22 +148,26 @@ No later application commit modified the wave implementation. The box-motion com
 - `tests/e2e/home-composition.spec.ts`
 - `tests/e2e/home-visual-preview.spec.ts`
 
-Do not reopen wave tuning during the final PR #8 box review unless an objective regression is observed.
+Do not reopen accepted desktop wave tuning during the Phase 3 mobile review unless an objective regression is observed.
 
 See `agent_docs/current_scene.md` for exact wave mechanics.
 
 ## Home mobile
 
-Mobile intentionally remains separately art-directed.
+Mobile is separately art-directed from desktop and is now layered on the Phase 3 branch.
 
 Current behavior:
-- uses Frame A;
-- does not request desktop layered base/overlay/wave assets;
+- uses `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
+- uses the real-transparent `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`;
+- renders 44 responsive mobile instances from the existing wave deliveries, with mobile durations halved and corresponding negative delays phase-preserved;
+- uses white active mobile wave visuals except for the restored original yellow/orange Wave 03 small-wave family: five mobile-only white variants for families 01, 02, 04, 07, and 08 plus shared original Wave 03 and white dashed deliveries for 05 and 06; primary thick waves remain strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains atmospheric opacity, and thin/dashed families use graduated opacity;
+- doubles the thin/dashed small-wave families 03–06 from four to eight instances each with staggered portrait positions and delays;
+- does not request desktop base/overlay assets;
 - maintains accepted stacked Home composition;
 - box remains interactive via tap;
 - normal, compact, short, and tall mobile Playwright variants exist.
 
-Mobile layered integration is a separate future phase.
+Broad phone and PC visual review passed, with two final finishing corrections remaining: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Speed, large-wave concentration, density structure, and desktop behavior remain accepted; final-head verification and USER visual re-review remain pending. Frame A is retained as historical fallback/provenance and is superseded for the active mobile background by this implementation once the phase is accepted.
 
 ## Schrödinger box — current implementation
 
@@ -215,7 +203,7 @@ Responsibilities:
 
 This separation is intentional and prevents idle/reveal transforms from fighting.
 
-### Simple two-endpoint idle float correction — IMPLEMENTED, visual acceptance pending
+### Simple two-endpoint idle float correction — USER ACCEPTED / LOCKED
 
 Current animation:
 
@@ -231,7 +219,7 @@ There are exactly two authored spatial endpoints and no intermediate spatial key
 
 ### Calmer quantum phase-split reveal correction — IMPLEMENTED, USER ACCEPTED / LOCKED
 
-The USER accepted this calmer reveal. Preserve the existing 640ms transform+opacity implementation exactly while the idle float is reviewed.
+The USER accepted this calmer reveal. Preserve the existing 640ms transform+opacity implementation exactly during the mobile review.
 
 State transition:
 - duration: `640ms`;
@@ -352,32 +340,32 @@ Therefore deterministic screenshots can prove final closed/revealed composition 
 - normal-motion float feel;
 - perceived performance during the transition.
 
-The new idle float remains USER live-preview QA; the 640ms phase-split reveal has already passed USER review.
+The accepted desktop layered wave system, 640ms phase-split reveal, and two-endpoint idle float are locked. Broad phone and PC review passed; the two narrow mobile/title finishing corrections remain pending final-head verification and USER re-review.
 
-## Immediate next action after this correction
+## Immediate next action for Phase 3
 
-First re-read the live PR #8 head, final-head CI, and immutable normal-motion preview, then have the USER inspect the corrected motion:
+First re-read the live Phase 3 PR head, final-head CI, and immutable preview, then have the USER inspect the mobile composition across the existing portrait variants:
 
 The final preview URL must be taken from the new exact-head Actions run.
 
 USER should judge:
-1. does the two-endpoint float move smoothly without midway speed changes or stutter?
-2. does it still feel natural/heavy rather than bouncy or orbiting?
-3. does the box traverse the same path upward and downward with only subtle horizontal drift/rotation?
-4. is there any visible jump or misalignment during interaction?
-5. do hover/focus/click/tap still feel correct?
-6. does performance still feel good?
-7. are the accepted waves unchanged?
+1. does mobile feel like the same probability-field system as desktop while remaining portrait-specific?
+2. do waves emerge from and disappear beneath the irregular boundary naturally?
+3. are density, depth, vertical coverage, speed, and reset concealment appropriate?
+4. do normal, compact, short, and tall portrait layouts remain readable and overflow-free?
+5. do hover/focus/click/tap and the accepted box alignment remain correct?
+6. does reduced motion leave an intentional static composition?
+7. are the accepted desktop waves and box motion unchanged?
 
 If the USER finds a problem:
-- translate only that problem into one bounded correction on SAME PR #8;
-- preserve the wave lock;
+- translate only that problem into one bounded correction on the same Phase 3 PR;
+- preserve the accepted desktop wave and box locks;
 - verify the new final head again.
 
 If all visual checks pass:
 - Orchestrator re-checks exact live PR head and final-head CI;
 - USER must explicitly approve/authorize merge;
-- squash-merge PR #8 only then;
+- squash-merge the Phase 3 PR only then;
 - verify new `main` SHA;
 - update durable docs for the merged state.
 

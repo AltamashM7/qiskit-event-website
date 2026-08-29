@@ -87,11 +87,11 @@ Mobile may legitimately change:
 
 The Astro implementation architecture is established and Home Composition V1 is merged.
 
-The current bounded phase is Draft PR #8. The desktop layered Home probability field has passed USER visual QA. A normal-motion review identified a stop-like box float and an overly aggressive phase split; the USER accepted the calmer 640ms phase split, and the idle float is now a simple two-endpoint alternate transform, with final-head verification and renewed USER review of that float remaining.
+The current bounded phase is the new Phase 3 mobile layered-background integration branch. PR #8 has been accepted and squash-merged into `main` at `6f515d7ffd238519b9b44117942316874469142e`. The accepted desktop layered Home probability field, 640ms phase split, and two-endpoint box float remain locked; broad phone and PC visual review passed for the separately art-directed mobile base/overlay, speed, and large-wave concentration. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected, so the current correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, and adds the matching QISKIT title backing pending final visual re-review.
 
-Mobile intentionally remains on the accepted Frame A composition and does not load desktop layered assets.
+Mobile now uses the Phase 3 portrait layered composition on this branch and does not load desktop base/overlay assets. Frame A remains historical fallback/provenance.
 
-After PR #8 is accepted and merged, continue through separately bounded Home-polish, About-page, content/branding, performance, and production phases.
+After Phase 3 is accepted and merged, continue through separately bounded Home-polish, About-page, content/branding, performance, and production phases.
 
 Primary continuation docs:
 - `agent_docs/orchestrator_handoff.md`

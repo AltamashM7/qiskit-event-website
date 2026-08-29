@@ -365,7 +365,7 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
   expect(geometry.subject!.left).toBeGreaterThanOrEqual(0);
   expect(geometry.subject!.right).toBeLessThanOrEqual(geometry.clientWidth);
   expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth);
-  expect(geometry.backgroundPosition).toBe('55% 50%');
+  expect(geometry.backgroundPosition).toBe('50% 50%');
   expect(geometry.ledeLines).toEqual([
     {
       text: 'Explore quantum computing',
@@ -401,6 +401,27 @@ test('Home title uses the vendored display font', async ({ page }) => {
   expect(fontState).not.toBeNull();
   expect(fontState!.family).toContain('Archivo Black');
   expect(fontState!.loaded).toBe(true);
+});
+
+test('Home title words keep matching contrasting backing treatments', async ({ page }) => {
+  await page.goto('/');
+
+  const titleWords = await page.locator('.home-stage__title > span').evaluateAll((words) =>
+    words.map((word) => {
+      const styles = getComputedStyle(word);
+      return {
+        text: word.textContent?.trim() ?? '',
+        stroke: styles.getPropertyValue('-webkit-text-stroke'),
+        shadow: styles.textShadow,
+      };
+    }),
+  );
+
+  expect(titleWords.map(({ text }) => text)).toEqual(['Qiskit', 'Event']);
+  expect(titleWords[0]?.stroke).toContain('rgb(247, 247, 245)');
+  expect(titleWords[0]?.shadow).toContain('rgb(247, 247, 245)');
+  expect(titleWords[1]?.stroke).toContain('rgb(17, 24, 32)');
+  expect(titleWords[1]?.shadow).toContain('rgb(17, 24, 32)');
 });
 
 test('Home background reaches the target viewport edges without horizontal overflow', async ({ page }) => {

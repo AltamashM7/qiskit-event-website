@@ -1,105 +1,94 @@
 ---
-const waves = [
-  {
-    id: 'wave-01-thick-cream-upper',
-    className: 'home-layered-background__wave--01',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-01-thick-cream-upper.webp',
-  },
-  {
-    id: 'wave-02-thick-cream-lower',
-    className: 'home-layered-background__wave--02',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-02-thick-cream-lower.webp',
-  },
-  {
-    id: 'wave-03-thin-yellow',
-    className: 'home-layered-background__wave--03 home-layered-background__wave--03-a',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp',
-  },
-  {
-    id: 'wave-03-thin-yellow-b',
-    className: 'home-layered-background__wave--03 home-layered-background__wave--03-b',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp',
-  },
-  {
-    id: 'wave-03-thin-yellow-c',
-    className: 'home-layered-background__wave--03 home-layered-background__wave--03-c',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp',
-  },
-  {
-    id: 'wave-04-thin-ivory',
-    className: 'home-layered-background__wave--04 home-layered-background__wave--04-a',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp',
-  },
-  {
-    id: 'wave-04-thin-ivory-b',
-    className: 'home-layered-background__wave--04 home-layered-background__wave--04-b',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp',
-  },
-  {
-    id: 'wave-04-thin-ivory-c',
-    className: 'home-layered-background__wave--04 home-layered-background__wave--04-c',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp',
-  },
-  {
-    id: 'wave-05-dashed-white-upper',
-    className: 'home-layered-background__wave--05 home-layered-background__wave--05-a',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp',
-  },
-  {
-    id: 'wave-05-dashed-white-upper-b',
-    className: 'home-layered-background__wave--05 home-layered-background__wave--05-b',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp',
-  },
-  {
-    id: 'wave-05-dashed-white-upper-c',
-    className: 'home-layered-background__wave--05 home-layered-background__wave--05-c',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp',
-  },
-  {
-    id: 'wave-06-dashed-white-lower',
-    className: 'home-layered-background__wave--06 home-layered-background__wave--06-a',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp',
-  },
-  {
-    id: 'wave-06-dashed-white-lower-b',
-    className: 'home-layered-background__wave--06 home-layered-background__wave--06-b',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp',
-  },
-  {
-    id: 'wave-06-dashed-white-lower-c',
-    className: 'home-layered-background__wave--06 home-layered-background__wave--06-c',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp',
-  },
-  {
-    id: 'wave-07-halftone-yellow-band',
-    className: 'home-layered-background__wave--07 home-layered-background__wave--07-a',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
-  },
-  {
-    id: 'wave-07-halftone-yellow-band-b',
-    className: 'home-layered-background__wave--07 home-layered-background__wave--07-b',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
-  },
-  {
-    id: 'wave-07-halftone-yellow-band-c',
-    className: 'home-layered-background__wave--07 home-layered-background__wave--07-c',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
-  },
-  {
-    id: 'wave-08-translucent-cream-ribbon',
-    className: 'home-layered-background__wave--08 home-layered-background__wave--08-a',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
-  },
-  {
-    id: 'wave-08-translucent-cream-ribbon-b',
-    className: 'home-layered-background__wave--08 home-layered-background__wave--08-b',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
-  },
-  {
-    id: 'wave-08-translucent-cream-ribbon-c',
-    className: 'home-layered-background__wave--08 home-layered-background__wave--08-c',
-    asset: '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
-  },
+const waveAssets = {
+  wave01: '/assets/home/background/layered/web/desktop/waves/wave-01-thick-cream-upper.webp',
+  wave02: '/assets/home/background/layered/web/desktop/waves/wave-02-thick-cream-lower.webp',
+  wave03: '/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp',
+  wave04: '/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp',
+  wave05: '/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp',
+  wave06: '/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp',
+  wave07: '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
+  wave08: '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
+} as const;
+
+const mobileWaveAssets = {
+  wave01: '/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png',
+  wave02: '/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png',
+  wave03: waveAssets.wave03,
+  wave04: '/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png',
+  wave05: waveAssets.wave05,
+  wave06: waveAssets.wave06,
+  wave07: '/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png',
+  wave08: '/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png',
+} as const;
+
+const desktopWaves = [
+  { id: 'wave-01-thick-cream-upper', className: 'home-layered-background__wave--01', asset: waveAssets.wave01 },
+  { id: 'wave-02-thick-cream-lower', className: 'home-layered-background__wave--02', asset: waveAssets.wave02 },
+  { id: 'wave-03-thin-yellow', className: 'home-layered-background__wave--03 home-layered-background__wave--03-a', asset: waveAssets.wave03 },
+  { id: 'wave-03-thin-yellow-b', className: 'home-layered-background__wave--03 home-layered-background__wave--03-b', asset: waveAssets.wave03 },
+  { id: 'wave-03-thin-yellow-c', className: 'home-layered-background__wave--03 home-layered-background__wave--03-c', asset: waveAssets.wave03 },
+  { id: 'wave-04-thin-ivory', className: 'home-layered-background__wave--04 home-layered-background__wave--04-a', asset: waveAssets.wave04 },
+  { id: 'wave-04-thin-ivory-b', className: 'home-layered-background__wave--04 home-layered-background__wave--04-b', asset: waveAssets.wave04 },
+  { id: 'wave-04-thin-ivory-c', className: 'home-layered-background__wave--04 home-layered-background__wave--04-c', asset: waveAssets.wave04 },
+  { id: 'wave-05-dashed-white-upper', className: 'home-layered-background__wave--05 home-layered-background__wave--05-a', asset: waveAssets.wave05 },
+  { id: 'wave-05-dashed-white-upper-b', className: 'home-layered-background__wave--05 home-layered-background__wave--05-b', asset: waveAssets.wave05 },
+  { id: 'wave-05-dashed-white-upper-c', className: 'home-layered-background__wave--05 home-layered-background__wave--05-c', asset: waveAssets.wave05 },
+  { id: 'wave-06-dashed-white-lower', className: 'home-layered-background__wave--06 home-layered-background__wave--06-a', asset: waveAssets.wave06 },
+  { id: 'wave-06-dashed-white-lower-b', className: 'home-layered-background__wave--06 home-layered-background__wave--06-b', asset: waveAssets.wave06 },
+  { id: 'wave-06-dashed-white-lower-c', className: 'home-layered-background__wave--06 home-layered-background__wave--06-c', asset: waveAssets.wave06 },
+  { id: 'wave-07-halftone-yellow-band', className: 'home-layered-background__wave--07 home-layered-background__wave--07-a', asset: waveAssets.wave07 },
+  { id: 'wave-07-halftone-yellow-band-b', className: 'home-layered-background__wave--07 home-layered-background__wave--07-b', asset: waveAssets.wave07 },
+  { id: 'wave-07-halftone-yellow-band-c', className: 'home-layered-background__wave--07 home-layered-background__wave--07-c', asset: waveAssets.wave07 },
+  { id: 'wave-08-translucent-cream-ribbon', className: 'home-layered-background__wave--08 home-layered-background__wave--08-a', asset: waveAssets.wave08 },
+  { id: 'wave-08-translucent-cream-ribbon-b', className: 'home-layered-background__wave--08 home-layered-background__wave--08-b', asset: waveAssets.wave08 },
+  { id: 'wave-08-translucent-cream-ribbon-c', className: 'home-layered-background__wave--08 home-layered-background__wave--08-c', asset: waveAssets.wave08 },
+];
+
+const mobileWaves = [
+  { id: 'mobile-wave-08-upper', className: 'home-layered-background__wave--mobile-08-a', family: 'wave-08', asset: mobileWaveAssets.wave08 },
+  { id: 'mobile-wave-07-upper', className: 'home-layered-background__wave--mobile-07-a', family: 'wave-07', asset: mobileWaveAssets.wave07 },
+  { id: 'mobile-wave-01-upper', className: 'home-layered-background__wave--mobile-01', family: 'wave-01', asset: mobileWaveAssets.wave01 },
+  { id: 'mobile-wave-03-upper', className: 'home-layered-background__wave--mobile-03-a', family: 'wave-03', asset: mobileWaveAssets.wave03 },
+  { id: 'mobile-wave-04-upper', className: 'home-layered-background__wave--mobile-04-a', family: 'wave-04', asset: mobileWaveAssets.wave04 },
+  { id: 'mobile-wave-05-upper', className: 'home-layered-background__wave--mobile-05-a', family: 'wave-05', asset: mobileWaveAssets.wave05 },
+  { id: 'mobile-wave-06-middle', className: 'home-layered-background__wave--mobile-06-a', family: 'wave-06', asset: mobileWaveAssets.wave06 },
+  { id: 'mobile-wave-08-lower', className: 'home-layered-background__wave--mobile-08-b', family: 'wave-08', asset: mobileWaveAssets.wave08 },
+  { id: 'mobile-wave-08-middle', className: 'home-layered-background__wave--mobile-08-c', family: 'wave-08', asset: mobileWaveAssets.wave08 },
+  { id: 'mobile-wave-08-deep', className: 'home-layered-background__wave--mobile-08-d', family: 'wave-08', asset: mobileWaveAssets.wave08 },
+  { id: 'mobile-wave-02-lower', className: 'home-layered-background__wave--mobile-02', family: 'wave-02', asset: mobileWaveAssets.wave02 },
+  { id: 'mobile-wave-02-middle', className: 'home-layered-background__wave--mobile-02-b', family: 'wave-02', asset: mobileWaveAssets.wave02 },
+  { id: 'mobile-wave-03-lower', className: 'home-layered-background__wave--mobile-03-b', family: 'wave-03', asset: mobileWaveAssets.wave03 },
+  { id: 'mobile-wave-03-middle', className: 'home-layered-background__wave--mobile-03-c', family: 'wave-03', asset: mobileWaveAssets.wave03 },
+  { id: 'mobile-wave-03-deep', className: 'home-layered-background__wave--mobile-03-d', family: 'wave-03', asset: mobileWaveAssets.wave03 },
+  { id: 'mobile-wave-03-extra-high', className: 'home-layered-background__wave--mobile-03-e', family: 'wave-03', asset: mobileWaveAssets.wave03 },
+  { id: 'mobile-wave-03-extra-upper-middle', className: 'home-layered-background__wave--mobile-03-f', family: 'wave-03', asset: mobileWaveAssets.wave03 },
+  { id: 'mobile-wave-03-extra-lower-middle', className: 'home-layered-background__wave--mobile-03-g', family: 'wave-03', asset: mobileWaveAssets.wave03 },
+  { id: 'mobile-wave-03-extra-low', className: 'home-layered-background__wave--mobile-03-h', family: 'wave-03', asset: mobileWaveAssets.wave03 },
+  { id: 'mobile-wave-04-lower', className: 'home-layered-background__wave--mobile-04-b', family: 'wave-04', asset: mobileWaveAssets.wave04 },
+  { id: 'mobile-wave-04-middle', className: 'home-layered-background__wave--mobile-04-c', family: 'wave-04', asset: mobileWaveAssets.wave04 },
+  { id: 'mobile-wave-04-deep', className: 'home-layered-background__wave--mobile-04-d', family: 'wave-04', asset: mobileWaveAssets.wave04 },
+  { id: 'mobile-wave-04-extra-high', className: 'home-layered-background__wave--mobile-04-e', family: 'wave-04', asset: mobileWaveAssets.wave04 },
+  { id: 'mobile-wave-04-extra-upper-middle', className: 'home-layered-background__wave--mobile-04-f', family: 'wave-04', asset: mobileWaveAssets.wave04 },
+  { id: 'mobile-wave-04-extra-lower-middle', className: 'home-layered-background__wave--mobile-04-g', family: 'wave-04', asset: mobileWaveAssets.wave04 },
+  { id: 'mobile-wave-04-extra-low', className: 'home-layered-background__wave--mobile-04-h', family: 'wave-04', asset: mobileWaveAssets.wave04 },
+  { id: 'mobile-wave-05-lower', className: 'home-layered-background__wave--mobile-05-b', family: 'wave-05', asset: mobileWaveAssets.wave05 },
+  { id: 'mobile-wave-05-middle', className: 'home-layered-background__wave--mobile-05-c', family: 'wave-05', asset: mobileWaveAssets.wave05 },
+  { id: 'mobile-wave-05-deep', className: 'home-layered-background__wave--mobile-05-d', family: 'wave-05', asset: mobileWaveAssets.wave05 },
+  { id: 'mobile-wave-05-extra-high', className: 'home-layered-background__wave--mobile-05-e', family: 'wave-05', asset: mobileWaveAssets.wave05 },
+  { id: 'mobile-wave-05-extra-upper-middle', className: 'home-layered-background__wave--mobile-05-f', family: 'wave-05', asset: mobileWaveAssets.wave05 },
+  { id: 'mobile-wave-05-extra-lower-middle', className: 'home-layered-background__wave--mobile-05-g', family: 'wave-05', asset: mobileWaveAssets.wave05 },
+  { id: 'mobile-wave-05-extra-low', className: 'home-layered-background__wave--mobile-05-h', family: 'wave-05', asset: mobileWaveAssets.wave05 },
+  { id: 'mobile-wave-06-lower', className: 'home-layered-background__wave--mobile-06-b', family: 'wave-06', asset: mobileWaveAssets.wave06 },
+  { id: 'mobile-wave-06-middle', className: 'home-layered-background__wave--mobile-06-c', family: 'wave-06', asset: mobileWaveAssets.wave06 },
+  { id: 'mobile-wave-06-deep', className: 'home-layered-background__wave--mobile-06-d', family: 'wave-06', asset: mobileWaveAssets.wave06 },
+  { id: 'mobile-wave-06-extra-high', className: 'home-layered-background__wave--mobile-06-e', family: 'wave-06', asset: mobileWaveAssets.wave06 },
+  { id: 'mobile-wave-06-extra-upper-middle', className: 'home-layered-background__wave--mobile-06-f', family: 'wave-06', asset: mobileWaveAssets.wave06 },
+  { id: 'mobile-wave-06-extra-lower-middle', className: 'home-layered-background__wave--mobile-06-g', family: 'wave-06', asset: mobileWaveAssets.wave06 },
+  { id: 'mobile-wave-06-extra-low', className: 'home-layered-background__wave--mobile-06-h', family: 'wave-06', asset: mobileWaveAssets.wave06 },
+  { id: 'mobile-wave-07-lower', className: 'home-layered-background__wave--mobile-07-b', family: 'wave-07', asset: mobileWaveAssets.wave07 },
+  { id: 'mobile-wave-07-middle', className: 'home-layered-background__wave--mobile-07-c', family: 'wave-07', asset: mobileWaveAssets.wave07 },
+  { id: 'mobile-wave-07-deep', className: 'home-layered-background__wave--mobile-07-d', family: 'wave-07', asset: mobileWaveAssets.wave07 },
+  { id: 'mobile-wave-01-middle', className: 'home-layered-background__wave--mobile-01-b', family: 'wave-01', asset: mobileWaveAssets.wave01 },
 ];
 ---
 
@@ -111,22 +100,35 @@ const waves = [
       type="image/webp"
     />
     <img
-      src="/assets/home/background/home-probability-field-frame-a-v1.png"
+      src="/assets/home/mobile-layered/home-mobile-layered-base-v1.png"
       alt=""
-      width="1672"
-      height="941"
+      width="841"
+      height="1870"
       loading="eager"
       decoding="async"
       fetchpriority="high"
     />
   </picture>
 
-  <div class="home-layered-background__waves">
+  <div class="home-layered-background__waves home-layered-background__waves--desktop" data-wave-device="desktop">
     {
-      waves.map((wave) => (
+      desktopWaves.map((wave) => (
         <span
           class={`home-layered-background__wave ${wave.className}`}
           data-wave-id={wave.id}
+          data-wave-asset={wave.asset}
+        ></span>
+      ))
+    }
+  </div>
+
+  <div class="home-layered-background__waves home-layered-background__waves--mobile" data-wave-device="mobile">
+    {
+      mobileWaves.map((wave) => (
+        <span
+          class={`home-layered-background__wave ${wave.className}`}
+          data-wave-id={wave.id}
+          data-wave-family={wave.family}
           data-wave-asset={wave.asset}
         ></span>
       ))
@@ -137,5 +139,6 @@ const waves = [
     class="home-layered-background__overlay"
     data-layered-background-overlay
     data-overlay-asset="/assets/home/background/layered/web/desktop/overlay/home-probability-field-overlay-desktop.webp"
+    data-overlay-mobile-asset="/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png"
   ></span>
 </div>
