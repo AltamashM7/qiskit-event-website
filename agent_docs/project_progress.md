@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase: Phase 3 mobile layered Home all-white/small-wave correction; final-head verification and USER re-review pending**
+**Phase: Phase 3 mobile layered Home accent/title finishing correction; final-head verification and USER re-review pending**
 
 Repository:
 
@@ -146,14 +146,14 @@ Implementation:
 - transparent foreground overlay `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`;
 - 44 mobile wave instances with all eight wave families represented;
 - mobile durations halved with corresponding negative delays phase-preserved; approximately doubled speed;
-- all active mobile wave visuals are white, using six mobile-only white variants plus shared white dashed deliveries;
+- the original yellow/orange Wave 03 small-wave family is restored; all other active mobile wave visuals are white, using five mobile-only white variants plus shared white dashed deliveries;
 - primary thick waves remain strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains lower atmospheric opacity, and smaller families use graduated opacity;
 - thin/dashed small-wave families 03–06 are doubled from four to eight instances each, for 44 mobile instances total;
 - mobile-specific percentage/container-relative positioning and depth order;
 - the previous warm direction and subsequent blue/cyan experiment are superseded; opacity, scale, depth, count, overlap, and motion now provide mobile hierarchy;
 - desktop layered wave behavior and accepted box idle/reveal behavior were not retuned.
 
-USER mobile QA accepts speed and large-wave concentration. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected; the current correction returns all active mobile waves to white and increases thin/dashed small-wave presence. Final-head CI/preview verification and USER visual re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
+Broad phone and PC visual review passed for speed, large-wave concentration, and the portrait composition. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected; two final finishing corrections remain: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Final-head CI/preview verification and USER visual re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
 
 ## Previous final-head verification
 
@@ -186,7 +186,7 @@ No production deployment.
 
 ## Remaining for Phase 3 acceptance
 
-Only the current Phase 3 color-correction verification and subjective mobile re-review remain:
+Only the current Phase 3 accent/title correction verification and subjective mobile re-review remain:
 - mobile wave density, portrait balance, and boundary emergence;
 - normal/compact/short/tall portrait layout safety;
 - reduced-motion composition and performance;

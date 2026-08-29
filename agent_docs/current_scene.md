@@ -10,7 +10,7 @@ PR #8 was accepted and squash-merged into `main` at:
 
 `6f515d7ffd238519b9b44117942316874469142e`
 
-Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. USER mobile QA accepts the current speed and large-wave population; the previous warm direction and subsequent blue/cyan experiment were rejected, so this Phase 3 correction returns all active mobile wave visuals to white, applies desktop-like opacity hierarchy, and doubles the thin/dashed small-wave population, with final-head verification and USER visual re-review pending.
+Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. Broad phone and PC visual review passed; the previous warm direction and subsequent blue/cyan experiment were rejected, so this Phase 3 correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and improves QISKIT title readability, with final-head verification and USER visual re-review pending.
 
 ## Desktop Home composition
 
@@ -58,6 +58,8 @@ Mobile:
 - line-height `0.88`
 
 “EVENT” uses yellow fill with dark stroke/shadow.
+
+“QISKIT” uses the matching paper-colored stroke/shadow backing so its black fill remains readable across the dark boundary.
 
 ## Desktop layered background — LOCKED
 
@@ -232,11 +234,11 @@ Mobile overlay:
 
 The base and overlay are the same `841 × 1870` portrait composition and use responsive `cover` sizing within the Stage.
 
-## Mobile layered probability field — Phase 3 / all-white small-wave correction pending
+## Mobile layered probability field — Phase 3 / accent-and-title finishing correction pending
 
 - 44 mobile instances are configured independently from the accepted 20-instance desktop layout.
 - Mobile wave durations are halved and corresponding negative delays are phase-preserved; the current duration range is approximately `4.05–7.8s`.
-- All eight wave families remain represented as white mobile visuals: thick, thin, dashed, halftone, and translucent ribbon families.
+- All eight wave families remain represented: the original yellow/orange Wave 03 small-wave family is restored, while the other active mobile wave visuals remain white across thick, thin, dashed, halftone, and translucent ribbon families.
 - Large/background mobile families 01, 02, and 08 retain their current presence; primary thick waves use full opacity, secondary thick waves use `0.72`, and the broad Wave 08 ribbon retains lower atmospheric opacity.
 - Thin/dashed small-wave families 03–06 increase from four to eight instances each, with staggered portrait positions, delays, and graduated opacities.
 - Broad ribbon and halftone instances use lower z-order underlayers; thick, thin, and dashed waves sit above them; the mobile foreground overlay is z-index `20`.
@@ -402,4 +404,4 @@ USER accepted desktop background:
 
 The 640ms phase-split reveal, simple two-endpoint 3.1s alternate box float, and desktop layered waves are USER accepted and locked.
 
-The Phase 3 mobile layered composition is implemented. USER mobile QA accepts speed and large-wave concentration; the previous warm direction and subsequent blue/cyan experiment were rejected, and this all-white/denser-small-wave correction awaits final-head verification and USER visual re-review. The exact-head preview must be re-read from the Phase 3 GitHub Actions run before review.
+The Phase 3 mobile layered composition is implemented. Broad phone and PC visual review passed, with two final finishing corrections remaining: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Speed, large-wave concentration, and desktop behavior remain accepted; the exact-head preview must be re-read from the Phase 3 GitHub Actions run before final USER review.

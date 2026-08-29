@@ -107,6 +107,11 @@
   text-transform: uppercase;
 }
 
+#home-stage .home-stage__title span:first-child {
+  -webkit-text-stroke: 0.03em var(--home-paper);
+  text-shadow: 0.035em 0.035em 0 var(--home-paper);
+}
+
 #home-stage .home-stage__title span:last-child {
   color: var(--home-yellow);
   -webkit-text-stroke: 0.03em var(--home-ink);
@@ -846,7 +851,7 @@
 
   #home-stage .home-layered-background__wave--mobile-03-a,
   #home-stage .home-layered-background__wave--mobile-03-b {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
     --wave-width: 180%;
     --wave-height: 25%;
     --wave-boundary-reference: 62cqw;
@@ -1044,7 +1049,7 @@
 
   #home-stage .home-layered-background__wave--mobile-03-c,
   #home-stage .home-layered-background__wave--mobile-03-d {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
     --wave-width: 174%;
     --wave-height: 21%;
     --wave-boundary-reference: 60cqw;
@@ -1072,7 +1077,7 @@
   #home-stage .home-layered-background__wave--mobile-03-f,
   #home-stage .home-layered-background__wave--mobile-03-g,
   #home-stage .home-layered-background__wave--mobile-03-h {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
     --wave-width: 168%;
     --wave-height: 18%;
     --wave-boundary-reference: 60cqw;

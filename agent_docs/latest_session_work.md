@@ -28,7 +28,7 @@ Current verified main baseline:
 
 PR #8 was accepted and squash-merged into `main`.
 
-The Phase 3 mobile layered implementation passed USER visual QA for speed and large-wave concentration; the previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected, so the current same-PR correction returns all active mobile waves to white, applies desktop-like opacity hierarchy, and increases small-wave presence pending final USER re-review.
+The Phase 3 mobile layered implementation passed broad phone and PC visual review for speed and large-wave concentration; the previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected, so the current same-PR correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, and improves QISKIT readability pending final USER re-review.
 
 ## Desktop layered background result
 
@@ -53,10 +53,10 @@ The current branch adds a separately art-directed portrait composition using:
 - `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
 - `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`, whose real transparency is preserved;
 - 44 responsive mobile wave instances; mobile durations are halved with corresponding negative delays phase-preserved.
-- All active mobile wave visuals are white, using six mobile-only white variants plus shared white dashed deliveries. Primary thick waves are strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains lower atmospheric opacity, and smaller families use graduated opacity.
+- The original yellow/orange Wave 03 small-wave family is restored; all other active mobile wave visuals are white, using five mobile-only white variants plus shared white dashed deliveries. Primary thick waves are strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains lower atmospheric opacity, and smaller families use graduated opacity.
 - Thin/dashed small-wave families 03–06 are doubled from four to eight instances each with staggered positions and delays.
 
-Desktop base/overlay assets are isolated from mobile, and the previous mobile color variants are superseded. The prior mobile phase passed final-head CI/preview verification; USER QA accepts speed and large-wave concentration, but the warm direction and subsequent blue/cyan experiment were rejected, so this all-white/denser-small-wave correction awaits final-head verification and USER re-review. Master Navigator refinement remains a later separate phase.
+Desktop base/overlay assets are isolated from mobile, and the previous mobile color variants are superseded. Broad phone and PC review passed for speed and large-wave concentration, but the warm direction and subsequent blue/cyan experiment were rejected, so the Wave 03 accent restoration and QISKIT title-readability correction await final-head verification and USER re-review. Master Navigator refinement remains a later separate phase.
 
 Technical regression guards retain:
 - actual effective velocity measurement;
@@ -164,7 +164,7 @@ The USER found that the prior idle path visibly moved, paused, and changed direc
 - reveal starting at `translate3d(0.65%, -0.65%, 0) scale(1.006)`;
 - the existing reveal-image calibration and interaction state machine unchanged.
 
-The desktop layered wave system, box float, and reveal remain USER accepted and locked after PR #8 merged. The current Phase 3 mobile all-white/denser-small-wave correction requires its own final-head CI verification and USER re-review.
+The desktop layered wave system, box float, and reveal remain USER accepted and locked after PR #8 merged. The current Phase 3 mobile accent/title finishing correction requires its own final-head CI verification and USER re-review.
 
 ## Immediate continuation
 

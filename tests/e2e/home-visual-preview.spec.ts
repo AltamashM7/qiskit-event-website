@@ -28,7 +28,7 @@ const mobileLayeredBackgroundPaths = [
   '/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png',
   '/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png',
   '/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png',
-  '/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png',
+  '/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp',
   '/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png',
   '/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp',
   '/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp',

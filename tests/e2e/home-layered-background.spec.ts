@@ -22,10 +22,10 @@ const wavePaths = [
   '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
   '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
 ];
-const mobileWhiteWavePaths = [
+const mobileWavePaths = [
   '/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png',
   '/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png',
-  '/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png',
+  wavePaths[2],
   '/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png',
   wavePaths[4],
   wavePaths[5],
@@ -37,10 +37,21 @@ const supersededMobileWavePaths = [
   '/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png',
   '/assets/home/background/layered/web/mobile/waves/wave-02-pale-butter-v1.png',
   '/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png',
   '/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png',
   '/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png',
 ];
-const mobileWaveAssetPaths = mobileWhiteWavePaths;
+const mobileWaveAssetPaths = mobileWavePaths;
+const expectedMobileWaveAssetsByFamily = new Map([
+  ['wave-01', mobileWavePaths[0]],
+  ['wave-02', mobileWavePaths[1]],
+  ['wave-03', wavePaths[2]],
+  ['wave-04', mobileWavePaths[3]],
+  ['wave-05', wavePaths[4]],
+  ['wave-06', wavePaths[5]],
+  ['wave-07', mobileWavePaths[6]],
+  ['wave-08', mobileWavePaths[7]],
+]);
 const desktopLayeredPaths = [basePath, overlayPath, ...wavePaths];
 const mobileLayeredPaths = [mobileBasePath, mobileOverlayPath, ...mobileWaveAssetPaths];
 const renderedWaveCount = 20;
@@ -723,15 +734,23 @@ test('Mobile uses the portrait layered base, shared waves, and foreground overla
     (family): family is string => family !== null,
   );
   expect(new Set(activeMobileWaveAssets)).toEqual(new Set(mobileWaveAssetPaths));
-  expect(activeMobileWaveAssets.every((path) => path.includes('white'))).toBe(true);
   expect(activeMobileWaveAssets.some((path) => supersededMobileWavePaths.includes(path))).toBe(false);
   expect(new Set(activeMobileWaveFamilies)).toEqual(new Set(wavePaths.map((_, index) => `wave-0${index + 1}`)));
   const mobileWaveFamilyCounts = new Map<string, number>();
-  for (const family of activeMobileWaveFamilies) {
+  const mobileWaveAssetsByFamily = new Map<string, Set<string>>();
+  activeMobileWaveFamilies.forEach((family, index) => {
     mobileWaveFamilyCounts.set(family, (mobileWaveFamilyCounts.get(family) ?? 0) + 1);
-  }
+    const asset = activeMobileWaveAssets[index];
+    if (!asset) return;
+    const familyAssets = mobileWaveAssetsByFamily.get(family) ?? new Set<string>();
+    familyAssets.add(asset);
+    mobileWaveAssetsByFamily.set(family, familyAssets);
+  });
   for (const [family, count] of expectedMobileSmallWaveFamilyCounts) {
     expect(mobileWaveFamilyCounts.get(family)).toBe(count);
+  }
+  for (const [family, expectedAsset] of expectedMobileWaveAssetsByFamily) {
+    expect(mobileWaveAssetsByFamily.get(family)).toEqual(new Set([expectedAsset]));
   }
   expect(mobileState.mobileWaveBackgrounds.every((background) =>
     mobileWaveAssetPaths.some((path) => background.includes(path)),
