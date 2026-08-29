@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase: Phase 3 mobile layered Home background implemented; final-head verification passed; USER mobile visual QA pending**
+**Phase: Phase 3 mobile layered Home background speed/concentration correction; final-head verification and USER re-review pending**
 
 Repository:
 
@@ -144,12 +144,13 @@ Current branch:
 Implementation:
 - portrait base `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
 - transparent foreground overlay `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`;
-- 14 mobile wave instances with all eight shared wave families represented;
+- 28 mobile wave instances with all eight shared wave families represented;
+- mobile durations halved with corresponding negative delays phase-preserved; approximately doubled speed;
 - mobile-specific percentage/container-relative positioning and depth order;
 - no duplicated mobile wave binaries;
 - desktop layered wave behavior and accepted box idle/reveal behavior were not retuned.
 
-The mobile layered phase has passed final-head CI/preview verification and remains pending USER visual QA across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
+USER mobile QA passed all aspects except initial wave speed/population. The current correction doubles mobile speed and increases the population from 14 to 28; final-head CI/preview verification and USER re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
 
 ## Previous final-head verification
 
@@ -182,7 +183,7 @@ No production deployment.
 
 ## Remaining for Phase 3 acceptance
 
-Only Phase 3 verification and subjective mobile visual QA remain:
+Only the current Phase 3 correction verification and subjective mobile re-review remain:
 - mobile wave density, portrait balance, and boundary emergence;
 - normal/compact/short/tall portrait layout safety;
 - reduced-motion composition and performance;

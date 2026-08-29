@@ -25,7 +25,7 @@ const wavePaths = [
 const desktopLayeredPaths = [basePath, overlayPath, ...wavePaths];
 const mobileLayeredPaths = [mobileBasePath, mobileOverlayPath, ...wavePaths];
 const renderedWaveCount = 20;
-const renderedMobileWaveCount = 14;
+const renderedMobileWaveCount = 28;
 const expectedWaveFamilyCounts = new Map(
   wavePaths.map((path, index) => [path, index < 2 ? 1 : 3]),
 );
@@ -704,7 +704,7 @@ test('Mobile uses the portrait layered base, shared waves, and foreground overla
   expect(mobileState.mobileWaveTransforms.every((transform) => transform !== 'none')).toBe(true);
   expect(mobileState.mobileWaveDurations.every((duration) => {
     const seconds = Number.parseFloat(duration);
-    return seconds >= 8 && seconds <= 16;
+    return seconds >= 4 && seconds <= 8;
   })).toBe(true);
   expect(mobileState.mobileWaveWidths.every((width) => width.endsWith('%'))).toBe(true);
   expect(mobileState.mobileWaveHeights.every((height) => height.endsWith('%'))).toBe(true);

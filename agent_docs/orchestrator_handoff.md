@@ -65,8 +65,8 @@ Superseded:
 Current:
 - the accepted desktop layered Home probability field, 640ms reveal, and two-endpoint box float are locked from merged PR #8;
 - the Phase 3 branch integrates the USER-created/verified portrait mobile base and transparent overlay;
-- mobile uses its own responsive 14-instance wave configuration while reusing the eight shared wave deliveries;
-- final-head CI/preview verification passed in run 33239168083; USER visual QA for the mobile composition remains pending.
+- mobile uses its own responsive 28-instance wave configuration while reusing the eight shared wave deliveries;
+- prior final-head CI/preview verification passed in run 33239168083; USER QA passed except for initial speed/population, so the current correction doubles mobile speed and awaits new final-head verification and USER re-review.
 
 ## Product intent
 
@@ -159,13 +159,13 @@ Mobile is separately art-directed from desktop and is now layered on the Phase 3
 Current behavior:
 - uses `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
 - uses the real-transparent `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`;
-- renders 14 responsive mobile instances from the existing shared wave deliveries;
+- renders 28 responsive mobile instances from the existing shared wave deliveries, with mobile durations halved and corresponding negative delays phase-preserved;
 - does not request desktop base/overlay assets;
 - maintains accepted stacked Home composition;
 - box remains interactive via tap;
 - normal, compact, short, and tall mobile Playwright variants exist.
 
-The mobile layered result remains pending USER visual QA. Frame A is retained as historical fallback/provenance and is superseded for the active mobile background by this implementation once the phase is accepted.
+USER mobile QA passed the layered result except for initial speed/population; the current correction remains pending final-head verification and USER re-review. Frame A is retained as historical fallback/provenance and is superseded for the active mobile background by this implementation once the phase is accepted.
 
 ## Schrödinger box — current implementation
 
@@ -338,7 +338,7 @@ Therefore deterministic screenshots can prove final closed/revealed composition 
 - normal-motion float feel;
 - perceived performance during the transition.
 
-The accepted desktop layered wave system, 640ms phase-split reveal, and two-endpoint idle float are locked. The current mobile layered composition remains USER visual QA.
+The accepted desktop layered wave system, 640ms phase-split reveal, and two-endpoint idle float are locked. The current mobile speed/concentration correction remains pending final-head verification and USER re-review.
 
 ## Immediate next action for Phase 3
 

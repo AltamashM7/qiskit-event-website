@@ -10,7 +10,7 @@ PR #8 was accepted and squash-merged into `main` at:
 
 `6f515d7ffd238519b9b44117942316874469142e`
 
-Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. This Phase 3 branch adds the mobile layered background; implementation verification and USER mobile visual QA remain pending.
+Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. This Phase 3 branch adds the mobile layered background; USER mobile QA passed except for initial speed/population, which the current correction doubles; final-head verification and USER re-review remain pending.
 
 ## Desktop Home composition
 
@@ -234,7 +234,8 @@ The base and overlay are the same `841 × 1870` portrait composition and use res
 
 ## Mobile layered probability field — Phase 3 / USER QA PENDING
 
-- 14 mobile instances are configured independently from the accepted 20-instance desktop layout.
+- 28 mobile instances are configured independently from the accepted 20-instance desktop layout.
+- Mobile wave durations are halved and corresponding negative delays are phase-preserved; the current duration range is approximately `4.05–7.8s`.
 - All eight approved shared wave families remain represented: thick cream, thin yellow, thin ivory, dashed white, halftone yellow, and translucent cream ribbon families.
 - Broad ribbon and halftone instances use lower z-order underlayers; thick, thin, and dashed waves sit above them; the mobile foreground overlay is z-index `20`.
 - Wave placement uses percentages and container-relative boundary references rather than phone-specific pixel coordinates.
@@ -399,4 +400,4 @@ USER accepted desktop background:
 
 The 640ms phase-split reveal, simple two-endpoint 3.1s alternate box float, and desktop layered waves are USER accepted and locked.
 
-The Phase 3 mobile layered composition is implemented and awaits final-head verification plus USER visual acceptance. The exact-head preview must be re-read from the Phase 3 GitHub Actions run before USER review.
+The Phase 3 mobile layered composition is implemented. USER mobile QA passed all aspects except initial speed/population; the current correction awaits final-head verification and USER re-review. The exact-head preview must be re-read from the Phase 3 GitHub Actions run before review.

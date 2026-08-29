@@ -29,9 +29,9 @@ Phase-split reveal:
 
 Mobile layered background:
 - portrait base and transparent foreground overlay supplied and verified by USER;
-- 14 responsive mobile wave instances reusing the eight shared wave deliveries;
+- 28 responsive mobile wave instances reusing the eight shared wave deliveries, with doubled mobile speed;
 - implementation is on `phase-3/home-mobile-layered-integration`;
-- final-head CI/preview and USER visual QA remain pending.
+- USER QA passed except for initial speed/population; final-head CI/preview and USER re-review of the correction remain pending.
 
 If USER passes the mobile composition:
 - re-check exact PR head/CI;

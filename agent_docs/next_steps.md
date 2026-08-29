@@ -6,7 +6,7 @@ PR #8 was accepted and squash-merged into `main` at:
 
 `6f515d7ffd238519b9b44117942316874469142e`
 
-The current bounded phase is `phase-3/home-mobile-layered-integration`. It replaces the mobile Frame A background treatment with a separately art-directed layered portrait composition. The implementation remains pending final-head CI/preview verification and USER visual QA.
+The current bounded phase is `phase-3/home-mobile-layered-integration`. USER mobile QA passed the layered portrait composition except for initial wave speed/population; the current correction doubles mobile speed and increases the population from 14 to 28. Final-head CI/preview verification and USER re-review remain pending.
 
 Do not begin Master Navigator refinement or another page until this mobile visual gate is complete.
 
@@ -14,7 +14,7 @@ Do not begin Master Navigator refinement or another page until this mobile visua
 
 - Base: `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`
 - Foreground overlay: `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`
-- 14 responsive mobile wave instances;
+- 28 responsive mobile wave instances with doubled mobile speed;
 - all eight approved wave deliveries reused as shared assets;
 - no duplicated mobile wave binaries;
 - mobile base/overlay and wave configuration are isolated from desktop resources;

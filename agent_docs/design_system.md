@@ -78,7 +78,7 @@ The accepted desktop architecture is:
 
 The USER has visually accepted the current desktop boundary illusion, speed, population, overlap, amplitude, vertical occupancy, broad ribbon, and performance. Do not casually retune this system during unrelated Home polish.
 
-Mobile remains separately art-directed. The current Phase 3 implementation uses a portrait base/overlay and responsive instances of the shared wave assets; its visual acceptance is still pending.
+Mobile remains separately art-directed. The current Phase 3 implementation uses a portrait base/overlay and 28 responsive instances of the shared wave assets; USER mobile QA passed except for initial speed/population, now addressed by a speed/concentration correction pending final re-review.
 
 ## Home Stage composition
 

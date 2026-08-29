@@ -87,7 +87,7 @@ Mobile may legitimately change:
 
 The Astro implementation architecture is established and Home Composition V1 is merged.
 
-The current bounded phase is the new Phase 3 mobile layered-background integration branch. PR #8 has been accepted and squash-merged into `main` at `6f515d7ffd238519b9b44117942316874469142e`. The accepted desktop layered Home probability field, 640ms phase split, and two-endpoint box float remain locked; this phase adds a separately art-directed mobile base/overlay and responsive shared-wave configuration pending USER visual QA.
+The current bounded phase is the new Phase 3 mobile layered-background integration branch. PR #8 has been accepted and squash-merged into `main` at `6f515d7ffd238519b9b44117942316874469142e`. The accepted desktop layered Home probability field, 640ms phase split, and two-endpoint box float remain locked; USER mobile QA passed the separately art-directed mobile base/overlay and responsive shared-wave configuration except for initial speed/population, now addressed by the current 28-instance speed correction pending final re-review.
 
 Mobile now uses the Phase 3 portrait layered composition on this branch and does not load desktop base/overlay assets. Frame A remains historical fallback/provenance.
 
