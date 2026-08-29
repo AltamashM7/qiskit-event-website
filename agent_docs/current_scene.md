@@ -2,15 +2,15 @@
 
 ## Status
 
-This file records the current Home Stage scene on PR #8.
+This file records the current Home Stage scene on the Phase 3 mobile layered-background branch.
 
 Desktop layered-background visuals are USER accepted.
 
-The prior Schrödinger-box stronger idle motion and phase-split reveal were implemented and technically verified at the previous application head:
+PR #8 was accepted and squash-merged into `main` at:
 
-`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+`6f515d7ffd238519b9b44117942316874469142e`
 
-The prior normal-motion review found two bounded issues: the float read as move/pause/direction-change phases, and the phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe float remained unresolved because it produced perceived variable-speed/stutter. The correction below replaces only the idle float; renewed USER normal-motion acceptance of that float remains pending.
+Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. This Phase 3 branch adds the mobile layered background; implementation verification and USER mobile visual QA remain pending.
 
 ## Desktop Home composition
 
@@ -24,10 +24,11 @@ The prior normal-motion review found two bounded issues: the float read as move/
 
 ## Mobile Home composition
 
-Mobile remains separately art-directed:
-- Frame A background;
+Mobile remains separately art-directed with:
+- portrait layered base and transparent foreground overlay;
+- responsive mobile wave instances reusing the shared approved wave deliveries;
 - stacked navigation → identity/copy → box;
-- no desktop layered resource downloads.
+- no desktop base/overlay resource downloads.
 
 ## Current identity copy
 
@@ -215,18 +216,29 @@ Representative viewports:
 ## Mobile resource isolation
 
 Below `48rem`:
-- desktop wave layers hidden;
-- overlay hidden;
-- desktop layered CSS URLs not fetched;
-- Frame A selected.
+- desktop wave instance layer hidden;
+- mobile wave instance layer and mobile overlay shown;
+- mobile base/overlay URLs selected;
+- desktop base/overlay CSS URLs not fetched;
+- shared wave delivery URLs are reused without mobile binary duplicates.
 
-Frame A:
+Mobile base:
 
-`public/assets/home/background/home-probability-field-frame-a-v1.png`
+`public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`
 
-Current mobile object-position:
+Mobile overlay:
 
-`55% center`
+`public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`
+
+The base and overlay are the same `841 × 1870` portrait composition and use responsive `cover` sizing within the Stage.
+
+## Mobile layered probability field — Phase 3 / USER QA PENDING
+
+- 14 mobile instances are configured independently from the accepted 20-instance desktop layout.
+- All eight approved shared wave families remain represented: thick cream, thin yellow, thin ivory, dashed white, halftone yellow, and translucent cream ribbon families.
+- Broad ribbon and halftone instances use lower z-order underlayers; thick, thin, and dashed waves sit above them; the mobile foreground overlay is z-index `20`.
+- Wave placement uses percentages and container-relative boundary references rather than phone-specific pixel coordinates.
+- Motion remains CSS-only linear transform travel with per-instance phase offsets; reduced motion disables decorative wave animation while leaving the layered composition visible.
 
 ## Schrödinger box placement
 
@@ -283,7 +295,7 @@ Actual images:
 - own fixed artwork geometry;
 - reveal image retains fixed calibration.
 
-## Simple two-endpoint idle float correction — IMPLEMENTED / USER QA PENDING
+## Simple two-endpoint idle float correction — USER ACCEPTED / LOCKED
 
 Animation:
 
@@ -385,11 +397,6 @@ USER accepted desktop background:
 - vertical occupancy;
 - performance.
 
-Implemented and awaiting final-head verification plus USER visual acceptance of the idle float:
-- simple two-endpoint 3.1s alternate box float;
-- subjective naturalness;
-- perceived performance during normal motion.
+The 640ms phase-split reveal, simple two-endpoint 3.1s alternate box float, and desktop layered waves are USER accepted and locked.
 
-The 640ms phase-split reveal is USER accepted and locked. Desktop layered waves remain USER accepted and locked.
-
-The exact-head preview for this correction must be re-read from the final GitHub Actions run before USER review.
+The Phase 3 mobile layered composition is implemented and awaits final-head verification plus USER visual acceptance. The exact-head preview must be re-read from the Phase 3 GitHub Actions run before USER review.

@@ -143,8 +143,8 @@ Exact budgets are still open and must be established before production acceptanc
 - Astro static output + TypeScript + npm + Node 24 are established.
 - Reusable Stage/layout/navigation boundaries, browser QA, accessibility baseline, and GitHub Actions are established.
 - Home Composition V1 is implemented and merged.
-- The desktop layered Home probability field on Draft PR #8 has passed USER visual QA. A subsequent normal-motion review found the prior box float too stop-like and the phase split too aggressive; the calmer 640ms phase split passed USER review, and a simple two-endpoint alternate float is now implemented on the same Draft PR, with final-head CI and USER acceptance of the new float pending.
-- Mobile intentionally remains on Frame A; mobile layered integration is a separate future phase.
+- The desktop layered Home probability field, 640ms phase-split reveal, and simple two-endpoint alternate box float from merged PR #8 are USER accepted and locked.
+- The current Phase 3 branch implements a separate responsive mobile layered probability field using the USER-verified portrait base/overlay and shared wave masters; final-head CI and USER visual QA for this mobile composition remain pending.
 - Cloudflare Pages Direct Upload through GitHub Actions is established for PR previews. Production deployment is not established.
 - Codex Luna is the current repository-native Builder for bounded implementation phases; the Web ChatGPT Orchestrator independently verifies and owns acceptance gates.
 

@@ -365,7 +365,7 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
   expect(geometry.subject!.left).toBeGreaterThanOrEqual(0);
   expect(geometry.subject!.right).toBeLessThanOrEqual(geometry.clientWidth);
   expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth);
-  expect(geometry.backgroundPosition).toBe('55% 50%');
+  expect(geometry.backgroundPosition).toBe('50% 50%');
   expect(geometry.ledeLines).toEqual([
     {
       text: 'Explore quantum computing',

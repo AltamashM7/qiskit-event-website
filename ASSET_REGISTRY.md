@@ -75,7 +75,7 @@ Integration:
 - Masters: `public/assets/home/background/layered/masters/desktop/`
 - Web delivery: `public/assets/home/background/layered/web/desktop/`
 
-Status: **USER-SUPPLIED DESKTOP ASSET FOUNDATION / INTEGRATED ON PR #8 / DESKTOP LAYERED VISUAL SYSTEM USER-ACCEPTED; PR ACCEPTANCE PENDING BOX-MOTION VISUAL QA**
+Status: **USER-SUPPLIED DESKTOP ASSET FOUNDATION / INTEGRATED AND ACCEPTED IN MERGED PR #8 / DESKTOP LAYERED VISUAL SYSTEM USER-ACCEPTED**
 
 Purpose:
 - Desktop base, overlay, and independent wave layers for the next Home background architecture.
@@ -83,9 +83,9 @@ Purpose:
 
 Architecture context:
 - Chosen production architecture: one static no-wave base background, the eight accepted transparent wave assets reused as a richer desktop instance composition above it, and a foreground neutral/boundary overlay above the waves.
-- Phase A imported and optimized the assets; the current Phase B integration renders 20 desktop instances with lightweight independent linear horizontal transform movement. The USER has visually accepted the desktop layered background at application head `25cf7117e0f44da99534d9372a85f25291325034`. Schrödinger-box motion/reveal polish is implemented at application head `007e1e74f4840afc4db393aef9db26c20ef80c4f`; USER live-motion visual QA is the remaining PR #8 gate.
+- Phase A imported and optimized the assets; merged PR #8 renders 20 desktop instances with lightweight independent linear horizontal transform movement. The USER accepted the desktop layered background, box motion, and reveal; PR #8 was squash-merged into `main` at `6f515d7ffd238519b9b44117942316874469142e`.
 - The earlier full-frame A/B/C animation exploration PR #6 is closed/unmerged and superseded as the chosen implementation direction by this layered-wave architecture.
-- The current Phase B branch integrates the desktop base, 20 wave instances reusing the eight wave deliveries, and foreground overlay into Home. Broad ribbon/halftone instances form underlayers, while thick, thin, and dashed instances overlap above them. Mobile continues to use Frame A and does not request the desktop layer URLs.
+- The merged Phase B integration uses the desktop base, 20 wave instances reusing the eight wave deliveries, and foreground overlay. The current Phase 3 mobile integration uses its own responsive instance configuration with the same shared wave deliveries and mobile-specific base/overlay assets; desktop base/overlay URLs remain isolated from mobile.
 - No source or delivery asset bytes were changed during integration.
 - The overlay was inspected at the pixel level: its RGBA alpha channel has real transparency, including `615,141` fully transparent pixels on the right side. The apparent black area is not baked black fill.
 - Mobile-specific layered base/overlay assets are not included in this phase.
@@ -126,6 +126,19 @@ Delivery generation:
 | Wave 06 delivery | `public/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp` | Web-serving dashed white lower wave | `1800 × 700` | WebP RGBA; alpha `0–255` | 9,388 | `7721E4E5E8027C86892907025153E1D61121F62BFE03D249FB933429562A69D8` | Generated from Wave 06 master; delivery derivative |
 | Wave 07 delivery | `public/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp` | Web-serving halftone yellow band | `1800 × 700` | WebP RGBA; alpha `0–172` | 174,514 | `3A2DF2BE9A3068791FFD753089E59C4186FE44B2E615ECD3133DFFCB3D631FD6` | Generated from Wave 07 master; delivery derivative |
 | Wave 08 delivery | `public/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp` | Web-serving translucent cream ribbon | `1800 × 700` | WebP RGBA; alpha `0–201` | 25,720 | `DDE65E13668464E8A362AE91A257C7D2F9222B1E857C476E9AC825AE11EAF0A0` | Generated from Wave 08 master; delivery derivative |
+
+### Home mobile layered background (Phase 3)
+
+**Status:** **USER-CREATED / USER-VERIFIED / COMMITTED IMPLEMENTATION INPUT**
+
+Purpose:
+- Portrait base and transparent foreground overlay for the mobile layered Home probability field.
+- These files are used together as the mobile-specific composition; the existing eight approved wave deliveries remain shared with desktop.
+
+| Asset | Canonical path | Role | Dimensions | Format / alpha | Bytes | SHA-256 |
+| --- | --- | --- | ---: | --- | ---: | --- |
+| Mobile layered base | `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png` | Mobile layered Home base | `841 × 1870` | PNG RGB; no alpha | 907,395 | `4169D4B066341C7DA7A2268C525CAB26C39B6976229A5863A4DF5F97B17D33EA` |
+| Mobile layered overlay | `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png` | Mobile layered Home foreground/boundary overlay | `841 × 1870` | PNG RGBA; alpha `0–255`; real transparency; 654,990 fully transparent pixels | 909,540 | `1193E5B009A0EF6FCF13B4A10F1A656CEC04B51BBD0B8A8706085D7815702650` |
 
 ### Home background — continuation frame C
 
@@ -262,7 +275,7 @@ Provenance and license:
 ## Future assets
 
 Not yet production-approved:
-- mobile-specific Home background if needed,
+- future alternate mobile-specific Home backgrounds,
 - final official branding assets,
 - About Event Stage subject,
 - About Event background,
