@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase: Phase 3 mobile layered Home background tint refinement; final-head verification and USER re-review pending**
+**Phase: Phase 3 mobile layered Home background color correction; final-head verification and USER re-review pending**
 
 Repository:
 
@@ -146,12 +146,12 @@ Implementation:
 - transparent foreground overlay `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`;
 - 28 mobile wave instances with all eight shared wave families represented;
 - mobile durations halved with corresponding negative delays phase-preserved; approximately doubled speed;
-- mobile-only warm tint variants for large/background wave families 01, 02, and 08; opacity remains the primary visibility control;
+- mobile-only white, sky-blue, and sky-cyan variants for large/background wave families 01, 02, and 08; Wave 01 and Wave 02 use full opacity while Wave 08 retains its lower-opacity atmospheric treatment;
 - mobile-specific percentage/container-relative positioning and depth order;
 - only three purposeful mobile tint variants supplement the shared wave deliveries;
 - desktop layered wave behavior and accepted box idle/reveal behavior were not retuned.
 
-USER mobile QA accepts speed and concentration. The current refinement adds subtle mobile-only tint variants for large/background wave families 01, 02, and 08; final-head CI/preview verification and USER visual re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
+USER mobile QA accepts speed and concentration. The previous warm/yellow-adjacent tint direction reduced visibility against yellow; the current correction replaces it with white, sky-blue, and sky-cyan mobile-only variants for large/background wave families 01, 02, and 08. Final-head CI/preview verification and USER visual re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
 
 ## Previous final-head verification
 
@@ -184,7 +184,7 @@ No production deployment.
 
 ## Remaining for Phase 3 acceptance
 
-Only the current Phase 3 tint-refinement verification and subjective mobile re-review remain:
+Only the current Phase 3 color-correction verification and subjective mobile re-review remain:
 - mobile wave density, portrait balance, and boundary emergence;
 - normal/compact/short/tall portrait layout safety;
 - reduced-motion composition and performance;

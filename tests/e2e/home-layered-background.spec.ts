@@ -23,9 +23,9 @@ const wavePaths = [
   '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
 ];
 const mobileTintedWavePaths = [
-  '/assets/home/background/layered/web/mobile/waves/wave-01-warm-ivory-v1.png',
-  '/assets/home/background/layered/web/mobile/waves/wave-02-pale-butter-v1.png',
-  '/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png',
 ];
 const mobileWaveAssetPaths = [
   mobileTintedWavePaths[0],
@@ -683,6 +683,7 @@ test('Mobile uses the portrait layered base, shared waves, and foreground overla
       mobileWaveAnimationNames: mobileWaveStyles.map((styles) => styles.animationName),
       mobileWaveTimingFunctions: mobileWaveStyles.map((styles) => styles.animationTimingFunction),
       mobileWaveIterationCounts: mobileWaveStyles.map((styles) => styles.animationIterationCount),
+      mobileWaveOpacities: mobileWaveStyles.map((styles) => styles.opacity),
       mobileWaveDurations: mobileWaveStyles.map((styles) => styles.animationDuration),
       mobileWaveTransforms: mobileWaveStyles.map((styles) => styles.transform),
       mobileWaveWidths: mobileWaveStyles.map((styles) => styles.getPropertyValue('--wave-width').trim()),
@@ -712,6 +713,17 @@ test('Mobile uses the portrait layered base, shared waves, and foreground overla
   );
   expect(mobileState.mobileWaveTimingFunctions).toEqual(Array(renderedMobileWaveCount).fill('linear'));
   expect(mobileState.mobileWaveIterationCounts).toEqual(Array(renderedMobileWaveCount).fill('infinite'));
+  const mobileWaveOpacityById = new Map(
+    mobileState.mobileWaveIds.map((id, index) => [id, mobileState.mobileWaveOpacities[index]]),
+  );
+  expect(mobileWaveOpacityById.get('mobile-wave-01-upper')).toBe('1');
+  expect(mobileWaveOpacityById.get('mobile-wave-01-middle')).toBe('1');
+  expect(mobileWaveOpacityById.get('mobile-wave-02-lower')).toBe('1');
+  expect(mobileWaveOpacityById.get('mobile-wave-02-middle')).toBe('1');
+  expect(mobileWaveOpacityById.get('mobile-wave-08-upper')).toBe('0.42');
+  expect(mobileWaveOpacityById.get('mobile-wave-08-lower')).toBe('0.28');
+  expect(mobileWaveOpacityById.get('mobile-wave-08-middle')).toBe('0.24');
+  expect(mobileWaveOpacityById.get('mobile-wave-08-deep')).toBe('0.2');
   expect(mobileState.mobileWaveTransforms.every((transform) => transform !== 'none')).toBe(true);
   expect(mobileState.mobileWaveDurations.every((duration) => {
     const seconds = Number.parseFloat(duration);

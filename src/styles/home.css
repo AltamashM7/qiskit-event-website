@@ -755,7 +755,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-08-a {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png');
     --wave-width: 230%;
     --wave-height: 118%;
     --wave-top: -18%;
@@ -770,7 +770,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-08-b {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png');
     --wave-width: 220%;
     --wave-height: 105%;
     --wave-top: 46%;
@@ -815,7 +815,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-01 {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-01-warm-ivory-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png');
     --wave-width: 185%;
     --wave-height: 37%;
     --wave-top: 1%;
@@ -830,7 +830,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-02 {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-02-pale-butter-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png');
     --wave-width: 192%;
     --wave-height: 40%;
     --wave-top: 45%;
@@ -953,7 +953,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-08-c {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png');
     --wave-width: 224%;
     --wave-height: 82%;
     --wave-top: 22%;
@@ -968,7 +968,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-08-d {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png');
     --wave-width: 214%;
     --wave-height: 76%;
     --wave-top: 78%;
@@ -1013,7 +1013,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-01-b {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-01-warm-ivory-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png');
     --wave-width: 178%;
     --wave-height: 33%;
     --wave-top: 26%;
@@ -1023,12 +1023,12 @@
     --wave-x-end: 139cqw;
     --wave-duration: 4.95s;
     --wave-delay: -1.35s;
-    --wave-opacity: 0.72;
+    --wave-opacity: 1;
     z-index: 4;
   }
 
   #home-stage .home-layered-background__wave--mobile-02-b {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-02-pale-butter-v1.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png');
     --wave-width: 184%;
     --wave-height: 34%;
     --wave-top: 68%;
@@ -1038,7 +1038,7 @@
     --wave-x-end: 141cqw;
     --wave-duration: 5.35s;
     --wave-delay: -3.7s;
-    --wave-opacity: 0.72;
+    --wave-opacity: 1;
     z-index: 3;
   }
 

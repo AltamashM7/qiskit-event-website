@@ -10,7 +10,7 @@ PR #8 was accepted and squash-merged into `main` at:
 
 `6f515d7ffd238519b9b44117942316874469142e`
 
-Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. USER mobile QA accepts the current speed and 28-instance population; this Phase 3 refinement adds subtle tint variants for the large/background mobile waves, with final-head verification and USER visual re-review pending.
+Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. USER mobile QA accepts the current speed and 28-instance population; the previous warm/yellow-adjacent tint direction reduced visibility, so this Phase 3 correction uses white, sky-blue, and sky-cyan variants for the large/background mobile waves, with final-head verification and USER visual re-review pending.
 
 ## Desktop Home composition
 
@@ -220,7 +220,7 @@ Below `48rem`:
 - mobile wave instance layer and mobile overlay shown;
 - mobile base/overlay URLs selected;
 - desktop base/overlay CSS URLs not fetched;
-- shared wave delivery URLs remain reused for unchanged families; three purposeful mobile tint variants supply the large 01, 02, and 08 families.
+- shared wave delivery URLs remain reused for unchanged families; three purposeful mobile color variants supply the large 01, 02, and 08 families.
 
 Mobile base:
 
@@ -232,12 +232,12 @@ Mobile overlay:
 
 The base and overlay are the same `841 × 1870` portrait composition and use responsive `cover` sizing within the Stage.
 
-## Mobile layered probability field — Phase 3 / tint refinement pending
+## Mobile layered probability field — Phase 3 / color correction pending
 
 - 28 mobile instances are configured independently from the accepted 20-instance desktop layout.
 - Mobile wave durations are halved and corresponding negative delays are phase-preserved; the current duration range is approximately `4.05–7.8s`.
 - All eight approved shared wave families remain represented: thick cream, thin yellow, thin ivory, dashed white, halftone yellow, and translucent cream ribbon families.
-- Large/background mobile families 01, 02, and 08 use mobile-only warm ivory, pale butter, and soft champagne variants; existing opacity remains the primary visibility control.
+- Large/background mobile families 01, 02, and 08 use mobile-only white, sky-blue, and sky-cyan variants; Wave 01 and Wave 02 relevant instances use full opacity, while Wave 08 retains the lower-opacity atmospheric treatment.
 - Broad ribbon and halftone instances use lower z-order underlayers; thick, thin, and dashed waves sit above them; the mobile foreground overlay is z-index `20`.
 - Wave placement uses percentages and container-relative boundary references rather than phone-specific pixel coordinates.
 - Motion remains CSS-only linear transform travel with per-instance phase offsets; reduced motion disables decorative wave animation while leaving the layered composition visible.
@@ -401,4 +401,4 @@ USER accepted desktop background:
 
 The 640ms phase-split reveal, simple two-endpoint 3.1s alternate box float, and desktop layered waves are USER accepted and locked.
 
-The Phase 3 mobile layered composition is implemented. USER mobile QA accepts speed and concentration; the current large-wave tint refinement awaits final-head verification and USER visual re-review. The exact-head preview must be re-read from the Phase 3 GitHub Actions run before review.
+The Phase 3 mobile layered composition is implemented. USER mobile QA accepts speed and concentration; the previous warm tint direction reduced visibility against yellow, and the current large-wave palette correction awaits final-head verification and USER visual re-review. The exact-head preview must be re-read from the Phase 3 GitHub Actions run before review.
