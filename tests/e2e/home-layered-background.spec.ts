@@ -22,8 +22,19 @@ const wavePaths = [
   '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
   '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
 ];
+const mobileTintedWavePaths = [
+  '/assets/home/background/layered/web/mobile/waves/wave-01-warm-ivory-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-02-pale-butter-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png',
+];
+const mobileWaveAssetPaths = [
+  mobileTintedWavePaths[0],
+  mobileTintedWavePaths[1],
+  ...wavePaths.slice(2, 7),
+  mobileTintedWavePaths[2],
+];
 const desktopLayeredPaths = [basePath, overlayPath, ...wavePaths];
-const mobileLayeredPaths = [mobileBasePath, mobileOverlayPath, ...wavePaths];
+const mobileLayeredPaths = [mobileBasePath, mobileOverlayPath, ...mobileWaveAssetPaths];
 const renderedWaveCount = 20;
 const renderedMobileWaveCount = 28;
 const expectedWaveFamilyCounts = new Map(
@@ -690,10 +701,10 @@ test('Mobile uses the portrait layered base, shared waves, and foreground overla
   expect(mobileState.baseObjectPosition).toBe('50% 50%');
   expect(mobileState.desktopWaveDisplay).toBe('none');
   expect(mobileState.mobileWaveCount).toBe(renderedMobileWaveCount);
-  expect(new Set(mobileState.mobileWaveAssets)).toEqual(new Set(wavePaths));
+  expect(new Set(mobileState.mobileWaveAssets)).toEqual(new Set(mobileWaveAssetPaths));
   expect(new Set(mobileState.mobileWaveFamilies)).toEqual(new Set(wavePaths.map((_, index) => `wave-0${index + 1}`)));
   expect(mobileState.mobileWaveBackgrounds.every((background) =>
-    wavePaths.some((path) => background.includes(path)),
+    mobileWaveAssetPaths.some((path) => background.includes(path)),
   )).toBe(true);
   expect(mobileState.mobileWaveDisplays).toEqual(Array(renderedMobileWaveCount).fill('block'));
   expect(mobileState.mobileWaveAnimationNames).toEqual(

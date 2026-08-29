@@ -28,7 +28,7 @@ Current verified main baseline:
 
 PR #8 was accepted and squash-merged into `main`.
 
-The Phase 3 mobile layered implementation passed USER visual QA except for initial mobile wave speed/population; the current same-PR correction doubles both and awaits final USER re-review.
+The Phase 3 mobile layered implementation passed USER visual QA for speed and concentration; the current same-PR refinement adds subtle tint variants for large/background mobile waves and awaits final USER re-review.
 
 ## Desktop layered background result
 
@@ -53,8 +53,9 @@ The current branch adds a separately art-directed portrait composition using:
 - `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
 - `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`, whose real transparency is preserved;
 - 28 responsive mobile wave instances reusing the eight shared wave deliveries; mobile durations are halved with corresponding negative delays phase-preserved.
+- Large/background mobile families 01, 02, and 08 now use mobile-only warm tint variants; existing opacity remains primary.
 
-Desktop base/overlay assets are isolated from mobile, and no mobile wave binaries duplicate the shared deliveries. The prior mobile phase passed final-head CI/preview verification; USER QA found only initial speed/population too low, so the current correction awaits final-head verification and USER re-review. Master Navigator refinement remains a later separate phase.
+Desktop base/overlay assets are isolated from mobile, and only three purposeful mobile tint variants supplement the shared deliveries. The prior mobile phase passed final-head CI/preview verification; USER QA accepts speed and concentration, so the current tint refinement awaits final-head verification and USER re-review. Master Navigator refinement remains a later separate phase.
 
 Technical regression guards retain:
 - actual effective velocity measurement;
@@ -162,7 +163,7 @@ The USER found that the prior idle path visibly moved, paused, and changed direc
 - reveal starting at `translate3d(0.65%, -0.65%, 0) scale(1.006)`;
 - the existing reveal-image calibration and interaction state machine unchanged.
 
-The desktop layered wave system, box float, and reveal remain USER accepted and locked after PR #8 merged. The current Phase 3 mobile speed/concentration correction requires its own final-head CI verification and USER re-review.
+The desktop layered wave system, box float, and reveal remain USER accepted and locked after PR #8 merged. The current Phase 3 mobile large-wave tint refinement requires its own final-head CI verification and USER re-review.
 
 ## Immediate continuation
 

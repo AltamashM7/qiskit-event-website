@@ -30,8 +30,9 @@ Phase-split reveal:
 Mobile layered background:
 - portrait base and transparent foreground overlay supplied and verified by USER;
 - 28 responsive mobile wave instances reusing the eight shared wave deliveries, with doubled mobile speed;
+- mobile-only warm tint variants for large/background wave families 01, 02, and 08;
 - implementation is on `phase-3/home-mobile-layered-integration`;
-- USER QA passed except for initial speed/population; final-head CI/preview and USER re-review of the correction remain pending.
+- USER QA accepts speed and concentration; final-head CI/preview and USER re-review of the tint refinement remain pending.
 
 If USER passes the mobile composition:
 - re-check exact PR head/CI;
