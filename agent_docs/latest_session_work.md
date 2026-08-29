@@ -92,7 +92,7 @@ Images own fixed geometry/calibration.
 
 ### Prior motion behavior
 
-The prior sparse eased idle path and fast/high-intensity phase split are now superseded by the correction below. The state-wrapper architecture, fixed image geometry, and interaction state machine are retained.
+The prior sparse eased idle path and fast/high-intensity phase split are now superseded by the correction below. The state-wrapper architecture, fixed image geometry, and interaction state machine are retained. The USER has accepted the calmer phase split; only the idle float remains under visual review.
 
 Reveal image calibration remains:
 `translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
@@ -147,15 +147,15 @@ Authoritative GitHub final-head verification did complete successfully, so there
 
 ## USER normal-motion feedback and current correction
 
-The USER found that the prior idle path visibly moved, paused, and changed direction, while the phase split felt too aggressive. The same-PR correction now uses:
+The USER found that the prior idle path visibly moved, paused, and changed direction, while the phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe path remained unresolved because its uneven segments produced perceived variable-speed/stutter. The same-PR correction now uses:
 
-- a 6.2s linear transform-only loop with nearby asymmetric keyframes, approximately 0.96rem vertical travel, ±0.15rem horizontal travel, and -0.48deg to +0.74deg rotation;
-- a 640ms `cubic-bezier(0.22,0.61,0.36,1)` transform+opacity phase split;
+- a 3.1s `ease-in-out` infinite `alternate` transform-only float with exactly two spatial endpoints: `translate3d(0.04rem, -0.08rem, 0) rotate(-0.35deg)` and `translate3d(-0.04rem, -0.92rem, 0) rotate(0.45deg)`;
+- the accepted/locked 640ms `cubic-bezier(0.22,0.61,0.36,1)` transform+opacity phase split;
 - closed leaving at `translate3d(-0.65%, 0.65%, 0) scale(0.995)`;
 - reveal starting at `translate3d(0.65%, -0.65%, 0) scale(1.006)`;
 - the existing reveal-image calibration and interaction state machine unchanged.
 
-The desktop layered wave system remains USER accepted and locked. The correction requires final-head CI verification and renewed USER normal-motion visual acceptance; PR #8 remains Draft and unmerged.
+The desktop layered wave system remains USER accepted and locked. The correction requires final-head CI verification and renewed USER normal-motion acceptance of the new idle float; PR #8 remains Draft and unmerged.
 
 ## Immediate continuation
 
@@ -165,7 +165,7 @@ First:
 1. inspect live PR #8;
 2. inspect exact current head;
 3. ask USER to review the new immutable normal-motion preview;
-4. judge continuous idle + calmer phase split;
+4. have USER judge the new two-endpoint to-and-fro idle float;
 5. if USER finds an issue, one bounded same-PR correction;
 6. if USER passes all visual checks, re-check head/CI and require explicit merge approval;
 7. squash merge only after approval;

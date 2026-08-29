@@ -2,31 +2,27 @@
 
 ## Current gate
 
-The previous box-motion implementation was technically green, but USER normal-motion review found two issues: the sparse eased float read as move/pause/direction-change phases, and the phase split felt too aggressive.
+The previous box-motion implementation was technically green, but USER normal-motion review found two issues: the sparse eased float read as move/pause/direction-change phases, and the phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe float remained unresolved because it produced perceived variable-speed/stutter.
 
 Previous application head before this correction:
 
 `007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-This same-PR correction replaces both behaviors. Final-head verification and renewed USER normal-motion visual QA remain pending.
+This same-PR correction replaces only the idle float. Final-head verification and renewed USER normal-motion QA of the new float remain pending.
 
-The current gate is USER normal-motion visual QA of:
-1. strengthened Schrödinger-box idle float;
-2. transform+opacity phase-split reveal.
+The current gate is USER normal-motion visual QA of the simple two-endpoint Schrödinger-box idle float. The 640ms transform+opacity phase-split reveal is accepted and locked.
 
 Do NOT ask Luna for another correction until the USER actually identifies a visual problem.
 
 ## Preview to review
 
-Immutable exact-head preview:
-
-`https://0a1bd3fa.qiskit-event-website.pages.dev`
+Immutable exact-head preview: pending the final-head Actions run for this correction.
 
 PR alias:
 
 `https://pr-8.qiskit-event-website.pages.dev`
 
-Use immutable URL when validating this exact implementation.
+Use the immutable URL from the final-head Actions run when validating this exact implementation.
 
 ## USER QA checklist
 
@@ -41,20 +37,12 @@ Check:
 - moving waves no longer visually hide the float.
 
 Current implementation:
-- 6.2s linear infinite;
-- 12-point interior path plus the 0/100% loop closure;
-- approximately 0.96rem vertical travel and ±0.15rem horizontal travel;
-- rotation approximately -0.48deg → +0.74deg;
-- nearby asymmetric keyframes avoid explicit hold frames.
+- 3.1s `ease-in-out` infinite `alternate`;
+- lower endpoint `translate3d(0.04rem, -0.08rem, 0) rotate(-0.35deg)`;
+- upper endpoint `translate3d(-0.04rem, -0.92rem, 0) rotate(0.45deg)`;
+- exactly two authored spatial endpoints and no intermediate motion keyframes.
 
-### Phase split
-Check:
-- more interesting than plain crossfade;
-- does not feel like a cheap glitch;
-- displacement is small enough;
-- closed/reveal states visually pass through one another cleanly;
-- final revealed geometry settles exactly;
-- reverse transition also feels coherent.
+### Phase split — accepted / locked
 
 Current implementation:
 - 640ms;

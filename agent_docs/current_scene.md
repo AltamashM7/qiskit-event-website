@@ -10,7 +10,7 @@ The prior Schrödinger-box stronger idle motion and phase-split reveal were impl
 
 `007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-The prior normal-motion review found two bounded issues: the float read as move/pause/direction-change phases, and the phase split felt too aggressive. The correction below addresses both; renewed USER live normal-motion visual acceptance remains pending.
+The prior normal-motion review found two bounded issues: the float read as move/pause/direction-change phases, and the phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe float remained unresolved because it produced perceived variable-speed/stutter. The correction below replaces only the idle float; renewed USER normal-motion acceptance of that float remains pending.
 
 ## Desktop Home composition
 
@@ -283,35 +283,27 @@ Actual images:
 - own fixed artwork geometry;
 - reveal image retains fixed calibration.
 
-## Continuous idle float correction — IMPLEMENTED / USER QA PENDING
+## Simple two-endpoint idle float correction — IMPLEMENTED / USER QA PENDING
 
 Animation:
 
-`home-box-float 6.2s linear infinite`
+`home-box-float 3.1s ease-in-out infinite alternate`
 
 Keyframes:
-- 0/100%: `translate3d(0.03rem, -0.45rem, 0) rotate(-0.18deg)`
-- 8%: `translate3d(0.08rem, -0.62rem, 0) rotate(0.02deg)`
-- 16%: `translate3d(0.13rem, -0.8rem, 0) rotate(0.28deg)`
-- 24%: `translate3d(0.15rem, -0.93rem, 0) rotate(0.5deg)`
-- 32%: `translate3d(0.12rem, -0.99rem, 0) rotate(0.68deg)`
-- 40%: `translate3d(0.04rem, -0.95rem, 0) rotate(0.74deg)`
-- 48%: `translate3d(-0.05rem, -0.82rem, 0) rotate(0.6deg)`
-- 56%: `translate3d(-0.12rem, -0.62rem, 0) rotate(0.38deg)`
-- 64%: `translate3d(-0.15rem, -0.38rem, 0) rotate(0.1deg)`
-- 72%: `translate3d(-0.11rem, -0.15rem, 0) rotate(-0.16deg)`
-- 80%: `translate3d(-0.04rem, -0.03rem, 0) rotate(-0.38deg)`
-- 88%: `translate3d(0.02rem, -0.08rem, 0) rotate(-0.48deg)`
-- 96%: `translate3d(0.01rem, -0.25rem, 0) rotate(-0.4deg)`
+- 0% lower endpoint: `translate3d(0.04rem, -0.08rem, 0) rotate(-0.35deg)`
+- 100% upper endpoint: `translate3d(-0.04rem, -0.92rem, 0) rotate(0.45deg)`
 
 Only transform is animated.
 
 Intent:
-- more perceptible against moving waves;
-- still restrained/heavy;
-- slightly asymmetric so it does not read as a mechanical bob.
+- one smooth upward trip and the same path downward through `alternate`;
+- vertical movement remains dominant;
+- horizontal drift and rotation remain subtle;
+- no intermediate spatial keyframes or multi-direction path.
 
-## Calmer phase-split reveal correction — IMPLEMENTED / USER QA PENDING
+## Calmer phase-split reveal correction — IMPLEMENTED / USER ACCEPTED / LOCKED
+
+The USER accepted this calmer 640ms reveal. Preserve it while the new idle float is reviewed.
 
 State wrappers transition:
 
@@ -393,11 +385,11 @@ USER accepted desktop background:
 - vertical occupancy;
 - performance.
 
-Implemented and awaiting final-head verification plus USER visual acceptance:
-- continuous 6.2s box float;
-- calmer 640ms phase-split transition;
+Implemented and awaiting final-head verification plus USER visual acceptance of the idle float:
+- simple two-endpoint 3.1s alternate box float;
 - subjective naturalness;
-- subjective transition quality;
 - perceived performance during normal motion.
+
+The 640ms phase-split reveal is USER accepted and locked. Desktop layered waves remain USER accepted and locked.
 
 The exact-head preview for this correction must be re-read from the final GitHub Actions run before USER review.

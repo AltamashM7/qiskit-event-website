@@ -81,8 +81,8 @@ Superseded:
 Current:
 - PR #8 integrates and tunes the desktop layered Home probability field.
 - The USER has already passed all desktop layered-background visual checks.
-- A subsequent USER normal-motion review found two bounded issues: the prior sparse eased float read as move/pause/direction-change phases, and the phase split felt too aggressive.
-- This same-PR correction replaces those behaviors with a continuous idle path and calmer phase split; final-head CI and renewed USER visual acceptance remain pending.
+- A subsequent USER normal-motion review found two bounded issues: the prior sparse eased float read as move/pause/direction-change phases, and the phase split felt too aggressive. The USER accepted the calmer 640ms reveal, while the prior 13-keyframe float remained unresolved because it produced perceived variable-speed/stutter.
+- This same-PR correction replaces only the idle float with simple two-endpoint alternate motion. The reveal is accepted/locked; final-head CI and renewed USER acceptance of the new float remain pending.
 
 ## Product intent
 
@@ -215,30 +215,23 @@ Responsibilities:
 
 This separation is intentional and prevents idle/reveal transforms from fighting.
 
-### Continuous idle float correction — IMPLEMENTED, visual acceptance pending
+### Simple two-endpoint idle float correction — IMPLEMENTED, visual acceptance pending
 
 Current animation:
 
-`home-box-float 6.2s linear infinite`
+`home-box-float 3.1s ease-in-out infinite alternate`
 
 Keyframes:
-- 0/100%: `translate3d(0.03rem, -0.45rem, 0) rotate(-0.18deg)`
-- 8%: `translate3d(0.08rem, -0.62rem, 0) rotate(0.02deg)`
-- 16%: `translate3d(0.13rem, -0.8rem, 0) rotate(0.28deg)`
-- 24%: `translate3d(0.15rem, -0.93rem, 0) rotate(0.5deg)`
-- 32%: `translate3d(0.12rem, -0.99rem, 0) rotate(0.68deg)`
-- 40%: `translate3d(0.04rem, -0.95rem, 0) rotate(0.74deg)`
-- 48%: `translate3d(-0.05rem, -0.82rem, 0) rotate(0.6deg)`
-- 56%: `translate3d(-0.12rem, -0.62rem, 0) rotate(0.38deg)`
-- 64%: `translate3d(-0.15rem, -0.38rem, 0) rotate(0.1deg)`
-- 72%: `translate3d(-0.11rem, -0.15rem, 0) rotate(-0.16deg)`
-- 80%: `translate3d(-0.04rem, -0.03rem, 0) rotate(-0.38deg)`
-- 88%: `translate3d(0.02rem, -0.08rem, 0) rotate(-0.48deg)`
-- 96%: `translate3d(0.01rem, -0.25rem, 0) rotate(-0.4deg)`
+- 0% lower endpoint: `translate3d(0.04rem, -0.08rem, 0) rotate(-0.35deg)`
+- 100% upper endpoint: `translate3d(-0.04rem, -0.92rem, 0) rotate(0.45deg)`
 
 Only transform is animated.
 
-### Calmer quantum phase-split reveal correction — IMPLEMENTED, visual acceptance pending
+There are exactly two authored spatial endpoints and no intermediate spatial keyframes. `alternate` traverses the same path in both directions with smooth endpoint easing.
+
+### Calmer quantum phase-split reveal correction — IMPLEMENTED, USER ACCEPTED / LOCKED
+
+The USER accepted this calmer reveal. Preserve the existing 640ms transform+opacity implementation exactly while the idle float is reviewed.
 
 State transition:
 - duration: `640ms`;
@@ -356,12 +349,10 @@ Luna reported that the local Windows aggregate `npm run verify` process did not 
 The screenshot pipeline deliberately emulates reduced motion.
 
 Therefore deterministic screenshots can prove final closed/revealed composition remains stable, but cannot validate:
-- stronger normal-motion float feel;
-- normal-motion phase-split aesthetics;
-- whether transition feels too subtle/too strong;
+- normal-motion float feel;
 - perceived performance during the transition.
 
-That remains USER live-preview QA.
+The new idle float remains USER live-preview QA; the 640ms phase-split reveal has already passed USER review.
 
 ## Immediate next action after this correction
 
@@ -370,14 +361,13 @@ First re-read the live PR #8 head, final-head CI, and immutable normal-motion pr
 The final preview URL must be taken from the new exact-head Actions run.
 
 USER should judge:
-1. is the continuous float noticeable without visible stops?
-2. does it still feel natural/heavy rather than bouncy?
-3. is the calmer phase split legible without feeling aggressive?
-4. does the reveal remain restrained rather than glitchy?
-5. is there any visible jump/misalignment?
-6. do hover/focus/click/tap still feel correct?
-7. does performance still feel good?
-8. are the accepted waves unchanged?
+1. does the two-endpoint float move smoothly without midway speed changes or stutter?
+2. does it still feel natural/heavy rather than bouncy or orbiting?
+3. does the box traverse the same path upward and downward with only subtle horizontal drift/rotation?
+4. is there any visible jump or misalignment during interaction?
+5. do hover/focus/click/tap still feel correct?
+6. does performance still feel good?
+7. are the accepted waves unchanged?
 
 If the USER finds a problem:
 - translate only that problem into one bounded correction on SAME PR #8;

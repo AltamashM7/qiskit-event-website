@@ -87,7 +87,7 @@ Mobile may legitimately change:
 
 The Astro implementation architecture is established and Home Composition V1 is merged.
 
-The current bounded phase is Draft PR #8. The desktop layered Home probability field has passed USER visual QA. A normal-motion review identified a stop-like box float and an overly aggressive phase split; the continuous float and calmer transform+opacity correction are now implemented, with final-head verification and renewed USER live-motion review remaining.
+The current bounded phase is Draft PR #8. The desktop layered Home probability field has passed USER visual QA. A normal-motion review identified a stop-like box float and an overly aggressive phase split; the USER accepted the calmer 640ms phase split, and the idle float is now a simple two-endpoint alternate transform, with final-head verification and renewed USER review of that float remaining.
 
 Mobile intentionally remains on the accepted Frame A composition and does not load desktop layered assets.
 

@@ -35,7 +35,7 @@ test('Home starts closed with the approved shared-composition layers', async ({ 
   expect(revealedWrapper).toEqual(closedWrapper);
 });
 
-test('Box uses continuous transform-only idle motion and a calmer phase-split transition', async ({ page }) => {
+test('Box uses simple two-endpoint idle motion and a calmer phase-split transition', async ({ page }) => {
   await page.goto('/');
 
   const motion = await page.getByRole('button', { name: boxName }).evaluate((element) => {
@@ -96,6 +96,7 @@ test('Box uses continuous transform-only idle motion and a calmer phase-split tr
       animationDuration: styles.animationDuration,
       animationTimingFunction: styles.animationTimingFunction,
       animationIterationCount: styles.animationIterationCount,
+      animationDirection: styles.animationDirection,
       closed: state('.schrodinger-box__state--closed'),
       reveal: state('.schrodinger-box__state--reveal'),
       keyframes,
@@ -113,9 +114,10 @@ test('Box uses continuous transform-only idle motion and a calmer phase-split tr
   });
 
   expect(motion.animationName).toBe('home-box-float');
-  expect(motion.animationDuration).toBe('6.2s');
-  expect(motion.animationTimingFunction).toBe('linear');
+  expect(motion.animationDuration).toBe('3.1s');
+  expect(motion.animationTimingFunction).toBe('ease-in-out');
   expect(motion.animationIterationCount).toBe('infinite');
+  expect(motion.animationDirection).toBe('alternate');
   expect(motion.closed).not.toBeNull();
   expect(motion.reveal).not.toBeNull();
   expect(motion.closed!.transitionProperty).toBe('transform, opacity');
@@ -124,53 +126,20 @@ test('Box uses continuous transform-only idle motion and a calmer phase-split tr
     'cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1)',
   );
   expect(motion.reveal!.transform).not.toBe('none');
-  expect(motion.keyframes).toHaveLength(13);
+  expect(motion.keyframes).toHaveLength(2);
   expect(motion.keyframes.map((keyframe) => keyframe.properties)).toEqual([
-    ['transform'],
-    ['transform'],
-    ['transform'],
-    ['transform'],
-    ['transform'],
-    ['transform'],
-    ['transform'],
-    ['transform'],
-    ['transform'],
-    ['transform'],
-    ['transform'],
     ['transform'],
     ['transform'],
   ]);
   expect(motion.keyframes.map((keyframe) => keyframe.offset)).toEqual([
-    '0%, 100%',
-    '8%',
-    '16%',
-    '24%',
-    '32%',
-    '40%',
-    '48%',
-    '56%',
-    '64%',
-    '72%',
-    '80%',
-    '88%',
-    '96%',
+    '0%',
+    '100%',
   ]);
   expect(motion.keyframes.map((keyframe) => keyframe.transform)).toEqual([
-    'translate(0.03rem, -0.45rem) rotate(-0.18deg)',
-    'translate(0.08rem, -0.62rem) rotate(0.02deg)',
-    'translate(0.13rem, -0.8rem) rotate(0.28deg)',
-    'translate(0.15rem, -0.93rem) rotate(0.5deg)',
-    'translate(0.12rem, -0.99rem) rotate(0.68deg)',
-    'translate(0.04rem, -0.95rem) rotate(0.74deg)',
-    'translate(-0.05rem, -0.82rem) rotate(0.6deg)',
-    'translate(-0.12rem, -0.62rem) rotate(0.38deg)',
-    'translate(-0.15rem, -0.38rem) rotate(0.1deg)',
-    'translate(-0.11rem, -0.15rem) rotate(-0.16deg)',
-    'translate(-0.04rem, -0.03rem) rotate(-0.38deg)',
-    'translate(0.02rem, -0.08rem) rotate(-0.48deg)',
-    'translate(0.01rem, -0.25rem) rotate(-0.4deg)',
+    'translate(0.04rem, -0.08rem) rotate(-0.35deg)',
+    'translate(-0.04rem, -0.92rem) rotate(0.45deg)',
   ]);
-  expect(new Set(motion.keyframes.map((keyframe) => keyframe.transform)).size).toBe(13);
+  expect(new Set(motion.keyframes.map((keyframe) => keyframe.transform)).size).toBe(2);
   expect(motion.stateTransforms).toEqual({
     closedResting: 'translate(0, 0) scale(1)',
     revealStarting: 'translate(0.65%, -0.65%) scale(1.006)',

@@ -19,17 +19,17 @@ Current application head:
 Desktop layered background:
 - USER accepted.
 
-Stronger box float:
+Two-endpoint box float:
 - implemented;
-- technically verified;
-- USER visual QA pending.
+- technically verified pending final-head CI;
+- USER normal-motion QA pending.
 
 Phase-split reveal:
 - implemented;
 - technically verified;
-- USER visual QA pending.
+- USER accepted and locked.
 
-If USER passes both:
+If USER passes the float:
 - re-check exact PR head/CI;
 - require explicit merge authorization;
 - squash merge PR #8;

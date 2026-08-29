@@ -101,7 +101,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 
 - Production hosting is likely to remain Cloudflare Pages, but the production release path/hostname is not established.
 - Codex Luna is the current preferred repository-native Builder for bounded implementation work.
-- PR #8 now implements a restrained transform+opacity Schrödinger “phase split” (640ms, very small opposing displacement/scale) and a continuous transform-only idle float using a multi-point linear path. These corrected values remain provisional until USER live-motion visual QA accepts them.
+- PR #8 now uses a restrained transform+opacity Schrödinger “phase split” (640ms, very small opposing displacement/scale) accepted and locked by the USER, plus a simple two-endpoint `ease-in-out` alternate transform-only idle float. The new float remains provisional until USER live-motion visual QA accepts it.
 - A single primary implementation owner should handle the first representative visual composition; specialist agents may review architecture, responsiveness, accessibility, testing, or performance.
 - About Event may use a stylized qubit as its primary Stage subject.
 - About Quantum Mechanics may use a Schrödinger's-cat wanted poster plus a lower qubit/measurement feature scene.

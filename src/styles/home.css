@@ -543,7 +543,7 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   transform-origin: 50% 55%;
-  animation: home-box-float 6.2s linear infinite;
+  animation: home-box-float 3.1s ease-in-out infinite alternate;
 }
 
 .schrodinger-box__art {
@@ -605,57 +605,12 @@
 }
 
 @keyframes home-box-float {
-  0%,
+  0% {
+    transform: translate3d(0.04rem, -0.08rem, 0) rotate(-0.35deg);
+  }
+
   100% {
-    transform: translate3d(0.03rem, -0.45rem, 0) rotate(-0.18deg);
-  }
-
-  8% {
-    transform: translate3d(0.08rem, -0.62rem, 0) rotate(0.02deg);
-  }
-
-  16% {
-    transform: translate3d(0.13rem, -0.8rem, 0) rotate(0.28deg);
-  }
-
-  24% {
-    transform: translate3d(0.15rem, -0.93rem, 0) rotate(0.5deg);
-  }
-
-  32% {
-    transform: translate3d(0.12rem, -0.99rem, 0) rotate(0.68deg);
-  }
-
-  40% {
-    transform: translate3d(0.04rem, -0.95rem, 0) rotate(0.74deg);
-  }
-
-  48% {
-    transform: translate3d(-0.05rem, -0.82rem, 0) rotate(0.6deg);
-  }
-
-  56% {
-    transform: translate3d(-0.12rem, -0.62rem, 0) rotate(0.38deg);
-  }
-
-  64% {
-    transform: translate3d(-0.15rem, -0.38rem, 0) rotate(0.1deg);
-  }
-
-  72% {
-    transform: translate3d(-0.11rem, -0.15rem, 0) rotate(-0.16deg);
-  }
-
-  80% {
-    transform: translate3d(-0.04rem, -0.03rem, 0) rotate(-0.38deg);
-  }
-
-  88% {
-    transform: translate3d(0.02rem, -0.08rem, 0) rotate(-0.48deg);
-  }
-
-  96% {
-    transform: translate3d(0.01rem, -0.25rem, 0) rotate(-0.4deg);
+    transform: translate3d(-0.04rem, -0.92rem, 0) rotate(0.45deg);
   }
 }
 

@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase: Draft PR #8 box-motion correction implemented; final-head verification and USER visual QA pending**
+**Phase: Draft PR #8 idle-float correction implemented; final-head verification and USER float visual QA pending**
 
 Repository:
 
@@ -106,18 +106,17 @@ The previous application commit changed exactly four files relative to the docum
 
 No wave asset/component retuning occurred.
 
-The subsequent USER normal-motion review found that the prior sparse eased float read as move/pause/direction-change phases and that its phase split felt too aggressive. This correction addresses only those two issues.
+The subsequent USER normal-motion review found that the prior sparse eased float read as move/pause/direction-change phases and that its phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe float remained unresolved because it produced perceived variable-speed/stutter. This correction replaces only the idle float.
 
-### Continuous idle
+### Simple two-endpoint idle
 - outer wrapper owns transform;
-- 6.2s linear infinite;
-- 12-point irregular path plus 0/100% closure;
-- approximately 0.96rem vertical travel;
-- horizontal travel ±0.15rem;
-- rotation -0.48deg to +0.74deg;
+- 3.1s ease-in-out infinite alternate;
+- lower endpoint `translate3d(0.04rem, -0.08rem, 0) rotate(-0.35deg)`;
+- upper endpoint `translate3d(-0.04rem, -0.92rem, 0) rotate(0.45deg)`;
+- exactly two authored spatial keyframes;
 - transform-only.
 
-### Calmer phase split
+### Calmer phase split — USER ACCEPTED / LOCKED
 - inner state wrappers added;
 - 640ms;
 - cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -174,9 +173,9 @@ No production deployment.
 
 ## Remaining before PR #8 merge
 
-Only subjective live normal-motion QA:
-- float visibility/naturalness;
-- phase-split quality;
+Only subjective live normal-motion QA of the new idle float:
+- smooth same-path to-and-fro motion without perceived stutter;
+- naturalness/heaviness;
 - no perceived jump;
 - performance;
 - wave non-regression.
