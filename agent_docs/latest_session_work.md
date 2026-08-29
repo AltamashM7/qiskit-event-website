@@ -16,7 +16,7 @@ Repository:
 
 PR:
 
-New Phase 3 Draft PR for `phase-3/home-mobile-layered-integration` (URL recorded after creation).
+[Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9) for `phase-3/home-mobile-layered-integration`.
 
 Branch:
 
@@ -54,7 +54,7 @@ The current branch adds a separately art-directed portrait composition using:
 - `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`, whose real transparency is preserved;
 - 14 responsive mobile wave instances reusing the eight shared wave deliveries.
 
-Desktop base/overlay assets are isolated from mobile, and no mobile wave binaries duplicate the shared deliveries. The mobile phase remains pending final-head CI/preview verification and USER visual QA; Master Navigator refinement remains a later separate phase.
+Desktop base/overlay assets are isolated from mobile, and no mobile wave binaries duplicate the shared deliveries. The mobile phase has passed final-head CI/preview verification and remains pending USER visual QA; Master Navigator refinement remains a later separate phase.
 
 Technical regression guards retain:
 - actual effective velocity measurement;

@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase: Phase 3 mobile layered Home background implemented; final-head verification and USER mobile visual QA pending**
+**Phase: Phase 3 mobile layered Home background implemented; final-head verification passed; USER mobile visual QA pending**
 
 Repository:
 
@@ -16,7 +16,7 @@ Branch:
 
 `phase-3/home-mobile-layered-integration`
 
-PR: Draft PR for this Phase 3 branch; URL is recorded after creation.
+PR: [Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9).
 
 PR #8 was accepted and squash-merged into `main`.
 
@@ -149,7 +149,7 @@ Implementation:
 - no duplicated mobile wave binaries;
 - desktop layered wave behavior and accepted box idle/reveal behavior were not retuned.
 
-The mobile layered phase remains pending final-head CI/preview verification and USER visual QA across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
+The mobile layered phase has passed final-head CI/preview verification and remains pending USER visual QA across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
 
 ## Previous final-head verification
 

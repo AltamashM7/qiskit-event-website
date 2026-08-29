@@ -42,7 +42,7 @@ Current branch:
 
 `phase-3/home-mobile-layered-integration`
 
-A new Draft PR for the Phase 3 branch is opened after the implementation commit; re-read the live PR URL/head from GitHub.
+[Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9) is open for the Phase 3 branch; re-read the live PR/head from GitHub.
 
 PR #8 was accepted and squash-merged into `main`.
 
@@ -66,7 +66,7 @@ Current:
 - the accepted desktop layered Home probability field, 640ms reveal, and two-endpoint box float are locked from merged PR #8;
 - the Phase 3 branch integrates the USER-created/verified portrait mobile base and transparent overlay;
 - mobile uses its own responsive 14-instance wave configuration while reusing the eight shared wave deliveries;
-- final-head CI/preview verification and USER visual QA for the mobile composition remain pending.
+- final-head CI/preview verification passed in run 33239168083; USER visual QA for the mobile composition remains pending.
 
 ## Product intent
 
