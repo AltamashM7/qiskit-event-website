@@ -1,128 +1,201 @@
 # Project Progress
 
-## Current overall status
+## Current status
 
-**Phase: Home Composition V1 accepted and merged; layered Home background asset foundation imported; animation/integration pending; PR preview QA infrastructure established**
+**Phase: Draft PR #8 idle-float correction implemented; final-head verification and USER float visual QA pending**
 
-Phase 0A2 has been independently accepted and squash-merged into `main`. Home Composition V1 has been independently accepted and squash-merged into `main`. The approved Home background continuation frames B/C remain committed as the earlier full-frame exploration; the old Draft PR #6 frame-swap exploration remains unmerged and is superseded as the chosen direction by the desktop layered-wave architecture. This Phase A branch imports the user-supplied layered masters and generates optimized desktop delivery assets; Home background animation/integration remains pending.
+Repository:
 
-The GitHub repository now exists, and the durable project-context documentation has been bootstrapped into it. The Phase 0A1 scaffold is merged into `main`.
+`https://github.com/AltamashM7/qiskit-event-website`
 
-Phase 0A1 established the Astro, static-output, TypeScript, npm, no-UI-framework scaffold and canonical source/asset directory structure. The original approved Home binaries have been manually supplied, imported, and merged into their canonical paths on `main`. Phase 0A2 established the reusable technical foundation and is now accepted and merged. Home Composition V1 is the first visual implementation and is intentionally limited to the Home Stage. The canonical approved full-frame Home set remains A/B/C for provenance, while the layered-wave architecture is now the chosen direction; no layered animation or Home integration has been added in this asset-foundation phase.
+Main baseline before PR #8:
 
-Cloudflare Pages Direct Upload PR-preview infrastructure is now established on this branch through GitHub Actions and `cloudflare/wrangler-action@v4`, gated after Technical verification. The preview publishes the built site and six reduced-motion Chromium screenshots for independent Web Orchestrator visual QA: desktop, normal-mobile, and compact-mobile closed/reveal pairs. Production deployment and Cloudflare Git integration are not established.
+`67f3094599dbd7af6fd1772e486ff250677d5e22`
 
-## Completed / accepted
+Branch:
 
-### Product direction
-- Full-screen Stage model accepted.
-- Lower information content model accepted.
-- Initial page set established:
-  - Home
-  - About Event
-  - About Quantum Mechanics
-- V1 Master Navigator direction established.
-- Plausible student-academic filler copy approved for development.
+`phase-2/home-layered-background-integration`
 
-### Visual direction
-- Main-subject halftone/dither/pixel-print style approved.
-- Neutral + bold page-accent system approved.
-- Home electric-yellow accent approved.
-- Home background foundational concept approved:
-  - calm monochrome/off-white area,
-  - yellow probability/interference field,
-  - simple large 2D wave forms,
-  - one static no-wave base background,
-  - eight independent transparent wave layers,
-  - foreground neutral/boundary overlay above the waves,
-  - lightweight independent continuous transform-based wave movement planned for a later phase; not implemented in Phase A.
+PR:
 
-### Schrödinger interaction
-- Closed-box discovery model approved.
-- No explicit instruction/CTA text.
-- `SCHRÖDINGER'S BOX` label on opaque state approved.
-- Hover/focus + click/tap interaction behavior approved.
-- Smooth low-cost idle movement approved.
-- Half-skeletal / half-living cat direction approved.
-- Adjusted cat composite approved as working reference.
-- Reveal-state box reference approved.
-- Reveal transparency concept approved:
-  - directional gradient,
-  - more transparent upper/right region,
-  - opposite side more opaque,
-  - fully opaque bottom,
-  - plain/minimal interior,
-  - no text over cat.
+`https://github.com/AltamashM7/qiskit-event-website/pull/8`
 
-### Workflow
-- Iterative art generation is moved to a dedicated Art Assets chat/workstream.
-- Main orchestrator/development context should only receive approved asset outputs and implementation constraints.
+Previous application head before this correction:
 
-### Technical scaffold
-- Astro static-output project scaffold established for Phase 0A1.
-- TypeScript and npm configured.
-- No React, Vue, Svelte, Tailwind, GSAP, or UI component framework added.
-- Canonical `src/` and `public/assets/` directory structure established.
-- Neutral About route shells and reusable Stage/navigation/layout boundaries now exist; Home Composition V1 is implemented within those boundaries.
-- The approved Home binary assets are imported and committed at their canonical paths, including the A/B/C background frame set.
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-### Phase 0A2 technical foundation (accepted / merged)
-- Astro static output, TypeScript, npm, and Node.js 24 LTS baseline established.
-- Reusable `SiteLayout`, `StageShell`, `MasterNavigator`, and data-driven route/navigation boundaries established.
-- Neutral shells remain in place for About Event and About Quantum Mechanics; Home now uses its bounded visual composition.
-- `astro check`, static build, Playwright Chromium browser QA, and serious/critical Axe baseline coverage established.
-- GitHub Actions verification established for pull requests to and pushes to `main`.
-- Reduced-motion tokens and baseline behavior established.
-- The approved binaries remain unchanged and are served from their canonical paths; Home V1 uses only the approved background and closed/reveal box states.
+PR #8 remains Draft/open/unmerged.
 
-### Home Composition V1 (accepted / merged)
-- Home Stage composition is implemented for desktop and mobile using the existing `StageShell` and `MasterNavigator` boundaries.
-- The approved static background and approved opaque/reveal box states are integrated without modifying the six source PNGs.
-- Hover/focus reveal, click lock/unlock, coarse-pointer tap toggle, restrained idle motion, and reduced-motion behavior are implemented.
-- Home Composition V1 was independently accepted and squash-merged into `main`.
-- Home currently renders background Frame A only; no B/C animation behavior was added during the asset-import phase.
-- Home-specific visual review was completed for V1; the PR-only preview and generated screenshots remain QA surfaces for future bounded changes.
+## Accepted / merged milestones
 
-### Home layered background asset foundation (Phase A)
-- The earlier full-frame A/B/C frame-swap exploration on Draft PR #6 remains unmerged and is superseded by the layered-wave direction.
-- User-supplied desktop layered masters were imported under `public/assets/home/background/layered/masters/desktop/`.
-- The chosen production architecture is one static no-wave base background, eight independent transparent wave layers, and a foreground neutral/boundary overlay above the waves.
-- Optimized desktop WebP delivery derivatives were generated under `public/assets/home/background/layered/web/desktop/` with the committed `scripts/generate-layered-background-deliveries.mjs` helper.
-- The overlay master was verified to contain real alpha transparency; the masters remain immutable and were not resized, cropped, recolored, or rewritten.
-- Later bounded integration may give the wave layers lightweight independent continuous transform-based movement; no layered animation or Home integration was implemented in this phase.
-- No replacement of the current Frame A rendering was implemented in this phase.
-- Mobile-specific layered base/overlay assets are not part of this phase.
+### Phase 0A1
+- Astro static output.
+- TypeScript/npm.
+- no UI framework.
+- canonical source/assets.
 
-### PR preview / visual QA infrastructure (established)
-- Same-repository pull requests now receive a Cloudflare Pages Direct Upload preview after the authoritative Technical verification job succeeds.
-- The preview uses a `pr-<number>` branch alias and includes these generated, uncommitted QA screenshots:
-  - `dist/__qa/home-desktop-closed.png`
-  - `dist/__qa/home-desktop-reveal.png`
-  - `dist/__qa/home-mobile-closed.png`
-  - `dist/__qa/home-mobile-reveal.png`
-  - `dist/__qa/home-mobile-compact-closed.png`
-  - `dist/__qa/home-mobile-compact-reveal.png`
-- Preview HTTP checks cover the Home route, all six generated Home screenshots across desktop, normal-mobile, and compact-mobile closed/reveal pairs, About Event, and About Quantum Mechanics.
-- Localhost production preview remains the rapid development loop. Production deployment and Cloudflare Git integration remain unestablished.
+### Asset import
+- approved Home backgrounds/box/cat assets.
+- A/B/C retained for provenance.
+
+### Phase 0A2
+- Node 24.
+- `SiteLayout` / `StageShell` / `MasterNavigator`.
+- Playwright.
+- Axe baseline.
+- GitHub Actions.
+- reduced motion.
+
+### Home Composition V1
+- accepted/merged.
+- desktop/mobile Stage.
+- generic event copy.
+- box interaction.
+- Frame A mobile.
+
+### Layered background Phase A
+- PR #7 accepted/merged.
+- desktop base/overlay/eight wave masters + WebP deliveries.
+- Sharp generator.
+
+## Superseded
+
+PR #6 A→B→C full-frame stepped animation:
+- closed;
+- unmerged;
+- superseded.
+
+## PR #8 layered desktop background
+
+USER accepted:
+- boundary illusion;
+- final wave speed;
+- population;
+- overlap;
+- depth;
+- vertical occupancy;
+- amplitude;
+- broad ribbon;
+- performance.
+
+Current structure:
+- 20 instances;
+- wave 01/02 one each;
+- wave 03–08 three each;
+- thick cream full opacity;
+- dominant ribbon approx 220%×500%, opacity .5, z0;
+- 7.2–16.5s;
+- 14.78–23.63 vw/s effective velocity;
+- actual alpha/overlay hidden reset tests across four aspect ratios.
+
+Wave system locked.
+
+## PR #8 box-motion correction
+
+Previous application commit:
+
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+`fix: strengthen box motion and phase reveal`
+
+The previous application commit changed exactly four files relative to the documentation head:
+- `src/components/home/SchrodingerBox.astro`
+- `src/styles/home.css`
+- `tests/e2e/home-composition.spec.ts`
+- `tests/e2e/home-visual-preview.spec.ts`
+
+No wave asset/component retuning occurred.
+
+The subsequent USER normal-motion review found that the prior sparse eased float read as move/pause/direction-change phases and that its phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe float remained unresolved because it produced perceived variable-speed/stutter. This correction replaces only the idle float.
+
+### Simple two-endpoint idle
+- outer wrapper owns transform;
+- 3.1s ease-in-out infinite alternate;
+- lower endpoint `translate3d(0.04rem, -0.08rem, 0) rotate(-0.35deg)`;
+- upper endpoint `translate3d(-0.04rem, -0.92rem, 0) rotate(0.45deg)`;
+- exactly two authored spatial keyframes;
+- transform-only.
+
+### Calmer phase split — USER ACCEPTED / LOCKED
+- inner state wrappers added;
+- 640ms;
+- cubic-bezier(0.22, 0.61, 0.36, 1);
+- transform + opacity only;
+- opposing ±0.65% displacement;
+- closed leaving scale .995;
+- reveal start scale 1.006;
+- final reveal wrapper scale 1.
+
+Reveal image calibration unchanged:
+`translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
+
+### Reduced motion
+- idle none;
+- phase transforms none;
+- 120ms linear opacity only.
+
+### Interaction
+Unchanged:
+- hover/focus temporary reveal;
+- click lock/unlock;
+- keyboard;
+- mobile tap;
+- ARIA.
+
+## Previous final-head verification
+
+Actions:
+
+`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33186955589`
+
+Exact tested head:
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Technical verification:
+- success;
+- 92 passed;
+- 53 skipped;
+- 0 failed;
+- 0 Astro errors/warnings.
+
+Cloudflare preview and visual QA:
+- success.
+
+Artifact:
+- `home-visual-qa-pr-8`
+- ID `9692181025`
+- digest `sha256:35612c1623b6bdda8b2d503edc50643c4b5083c106b585fddbb8d3dd8dc3519b`
+
+Immutable preview:
+`https://0a1bd3fa.qiskit-event-website.pages.dev`
+
+No production deployment.
+
+## Remaining before PR #8 merge
+
+Only subjective live normal-motion QA of the new idle float:
+- smooth same-path to-and-fro motion without perceived stutter;
+- naturalness/heaviness;
+- no perceived jump;
+- performance;
+- wave non-regression.
+
+Then:
+- final exact-head Orchestrator recheck;
+- explicit USER merge approval;
+- squash merge;
+- verify main;
+- docs refresh.
 
 ## Not yet done
 
-- Independent Web Orchestrator verification and approval of this Home layered background asset-foundation phase.
-- Production deployment.
-- Performance budgets.
-- Layered Home background integration and wave animation.
-- Mobile-specific layered Home background assets.
-- Final branding assets/treatment.
-- About Event implementation/assets.
-- About Quantum Mechanics implementation/assets.
-- Final event content integration.
-
-## Current recommended gate
-
-For the current Home layered background asset-foundation gate:
-1. Verify the committed desktop master and delivery paths, dimensions, alpha status, hashes, and registry metadata.
-2. Obtain independent Web Orchestrator verification of this Phase A branch and its final GitHub Actions result.
-3. Keep layered Home integration and wave animation as a separate bounded phase after this asset-foundation approval.
-4. Keep mobile-specific layered assets, About Event, and About Quantum Mechanics as separate future work.
-
-Cloudflare production deployment remains intentionally deferred. Home Composition V1 is accepted and merged. The old Draft PR #6 full-frame frame-swap exploration remains unmerged and superseded; do not begin layered Home integration or wave animation until this asset-foundation phase is independently verified.
+- mobile layered art/integration;
+- final Home lower content;
+- Master Navigator polish;
+- About Event visuals;
+- About Quantum Mechanics visuals;
+- final event content;
+- official branding;
+- formal performance budgets;
+- production hostname/release;
+- final SEO/release QA.

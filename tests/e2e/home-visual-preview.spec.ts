@@ -11,6 +11,18 @@ const requiredImageSelectors = [
   '.schrodinger-box__image--closed',
   '.schrodinger-box__image--reveal',
 ];
+const desktopLayeredBackgroundPaths = [
+  '/assets/home/background/layered/web/desktop/base/home-probability-field-base-desktop.webp',
+  '/assets/home/background/layered/web/desktop/overlay/home-probability-field-overlay-desktop.webp',
+  '/assets/home/background/layered/web/desktop/waves/wave-01-thick-cream-upper.webp',
+  '/assets/home/background/layered/web/desktop/waves/wave-02-thick-cream-lower.webp',
+  '/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp',
+  '/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp',
+  '/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp',
+  '/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp',
+  '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
+  '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
+];
 
 type CaptureInteraction = 'click' | 'tap';
 
@@ -23,6 +35,23 @@ async function waitForAnimationFrames(page: Page) {
         });
       }),
   );
+}
+
+async function waitForLayeredDesktopAssets(page: Page) {
+  const isDesktop = await page.evaluate(() => matchMedia('(min-width: 48rem)').matches);
+  if (!isDesktop) return;
+
+  await page.waitForFunction((paths: string[]) => {
+    const resourcePaths = performance.getEntriesByType('resource').map((entry) => {
+      try {
+        return new URL(entry.name).pathname;
+      } catch {
+        return '';
+      }
+    });
+
+    return paths.every((path) => resourcePaths.includes(path));
+  }, desktopLayeredBackgroundPaths);
 }
 
 async function waitForHomeAssets(page: Page) {
@@ -54,6 +83,7 @@ async function waitForHomeAssets(page: Page) {
     await Promise.all(images.map((image) => image.decode()));
   }, requiredImageSelectors);
 
+  await waitForLayeredDesktopAssets(page);
   await waitForAnimationFrames(page);
 }
 
@@ -80,11 +110,11 @@ async function captureHomeState(
   const isRevealed = Boolean(interaction);
   await expect(box).toHaveAttribute('aria-pressed', String(isRevealed));
   await expect(box).toHaveAttribute('data-revealed', String(isRevealed));
-  await expect(box.locator('.schrodinger-box__image--closed')).toHaveCSS(
+  await expect(box.locator('.schrodinger-box__state--closed')).toHaveCSS(
     'opacity',
     isRevealed ? '0' : '1',
   );
-  await expect(box.locator('.schrodinger-box__image--reveal')).toHaveCSS(
+  await expect(box.locator('.schrodinger-box__state--reveal')).toHaveCSS(
     'opacity',
     isRevealed ? '1' : '0',
   );

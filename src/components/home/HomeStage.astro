@@ -1,6 +1,7 @@
 ---
 import MasterNavigator from '../navigation/MasterNavigator.astro';
 import StageShell from '../stage/StageShell.astro';
+import HomeLayeredBackground from './HomeLayeredBackground.astro';
 import SchrodingerBox from './SchrodingerBox.astro';
 import '../../styles/home.css';
 ---
@@ -23,16 +24,7 @@ import '../../styles/home.css';
   </div>
 
   <div slot="background" class="home-stage__background-art">
-    <img
-      src="/assets/home/background/home-probability-field-frame-a-v1.png"
-      alt=""
-      aria-hidden="true"
-      width="1672"
-      height="941"
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-    />
+    <HomeLayeredBackground />
   </div>
 
   <SchrodingerBox slot="subject" />

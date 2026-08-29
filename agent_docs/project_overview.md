@@ -85,8 +85,16 @@ Mobile may legitimately change:
 
 ## Current phase
 
-Visual discovery for the Home Stage is substantially complete.
+The Astro implementation architecture is established and Home Composition V1 is merged.
 
-No production frontend code has been created yet.
+The current bounded phase is Draft PR #8. The desktop layered Home probability field has passed USER visual QA. A normal-motion review identified a stop-like box float and an overly aggressive phase split; the USER accepted the calmer 640ms phase split, and the idle float is now a simple two-endpoint alternate transform, with final-head verification and renewed USER review of that float remaining.
 
-The next project phase should formally decide the implementation architecture and then build a bounded Home Composition V1 using approved references.
+Mobile intentionally remains on the accepted Frame A composition and does not load desktop layered assets.
+
+After PR #8 is accepted and merged, continue through separately bounded Home-polish, About-page, content/branding, performance, and production phases.
+
+Primary continuation docs:
+- `agent_docs/orchestrator_handoff.md`
+- `agent_docs/current_scene.md`
+- `agent_docs/next_steps.md`
+- `agent_docs/roadmap.md`

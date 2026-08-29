@@ -1,103 +1,176 @@
 # Latest Session Work
 
-## Session outcome
+## Purpose
 
-The long visual-discovery conversation was deliberately stopped before implementation because context was becoming bloated and causing decision drift.
+The long Orchestrator conversation is being retired. Repository docs are the continuation mechanism.
 
-The project now uses durable repository documentation as the intended shared context between:
-- Web ChatGPT Orchestrator,
-- Codex Luna / repository-native Builder,
-- future fresh sessions.
+Primary restart:
 
-A separate Art Assets conversation/workstream will handle iterative image generation.
+`agent_docs/orchestrator_handoff.md`
 
-Repository bootstrap is now complete. GitHub is the authoritative shared implementation state for the project.
+## Current source-of-truth snapshot
 
-## Phase 0A1 scaffold state
+Repository:
 
-The Astro static-output project scaffold is now established with TypeScript, npm, no frontend UI framework, and the canonical `src/` and `public/assets/` directory structure. The original approved Home binaries have been manually supplied, imported, and merged into `main` at their canonical paths. Approved background continuation frames B/C remain committed as the earlier full-frame exploration; the About route shells remain neutral.
+`https://github.com/AltamashM7/qiskit-event-website`
 
-Home Composition V1 was independently accepted and squash-merged into `main`. The canonical approved background set is now A/B/C, while the frontend still renders Frame A only.
+PR:
 
-## Phase 0A2 technical foundation state
+`https://github.com/AltamashM7/qiskit-event-website/pull/8`
 
-The Phase 0A2 feature branch establishes the reusable technical foundation only. It adds `SiteLayout`, `StageShell`, `MasterNavigator`, data-driven route/navigation boundaries, neutral shells for the three prototype routes, Astro checking, a static build, Playwright Chromium QA at desktop and mobile viewports, a serious/critical Axe baseline, reduced-motion tokens, and GitHub Actions verification.
+Branch:
 
-Phase 0A2 was independently accepted and squash-merged into `main`. Its reusable technical foundation, checking, browser QA, reduced-motion tokens, and GitHub Actions verification remain the basis for Home V1.
+`phase-2/home-layered-background-integration`
 
-## PR preview / visual QA infrastructure state
+Application head before current correction:
 
-Cloudflare Pages Direct Upload PR-preview infrastructure is now established on the Home V1 branch through GitHub Actions and `cloudflare/wrangler-action@v4`. The preview job runs only for same-repository pull requests, waits for the authoritative Technical verification job, deploys the built `dist/` output under a pull-request alias, and verifies the live Home/About routes plus six generated reduced-motion Chromium screenshots covering desktop, normal-mobile, and compact-mobile closed/reveal pairs. Localhost production preview remains the rapid development loop. Production deployment and Cloudflare Git integration are not established.
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-## Home Composition V1 state
+Main baseline:
 
-Home V1 was independently accepted and squash-merged into `main`. The implementation is limited to the Home Stage:
+`67f3094599dbd7af6fd1772e486ff250677d5e22`
 
-- the approved static probability-field background is composed across the Stage;
-- the approved opaque and authoritative reveal box states share one fixed-aspect-ratio subject wrapper;
-- the existing real-link `MasterNavigator` is styled as a restrained top-center desktop menu and usable mobile bar;
-- generic event identity/copy is used without inventing dates, venue, sponsors, speakers, or other unconfirmed facts;
-- hover/focus reveal, click lock/unlock, coarse-pointer tap toggle, restrained CSS idle motion, and reduced-motion behavior are covered;
-- the individual cat masters remain reference assets; the visible reveal uses `box-reveal-v1.png` and does not reconstruct the cat;
-- the PR-only Cloudflare preview and generated screenshot artifacts remain QA surfaces; production deployment and About-page visual implementation remain intentionally deferred.
+PR #8 remains Draft/open/unmerged.
 
-## Home layered background asset foundation (Phase A)
+## Desktop layered background result
 
-The old Draft PR #6 full-frame A/B/C frame-swap exploration remains unmerged and is superseded as the chosen direction by the desktop layered-wave architecture. The user-supplied desktop base, overlay, and eight wave masters have been imported under the canonical layered master directories, and optimized native-dimension WebP delivery derivatives have been generated with the committed `scripts/generate-layered-background-deliveries.mjs` helper. The overlay master has real alpha transparency, and the source masters remain unchanged.
+USER has passed all visual checks.
 
-This phase is asset foundation only: no Home integration, wave animation, replacement of the current Frame A rendering, or mobile-specific layered base/overlay assets were added. The current Home implementation and PR #6 are unchanged.
+Accepted:
+- boundary emergence;
+- speed;
+- population;
+- overlap;
+- bigger behind smaller;
+- broad ribbon;
+- vertical occupancy;
+- crest/trough amplitude;
+- performance.
 
-The chosen production architecture is one static no-wave base background, eight independent transparent wave layers, and a foreground neutral/boundary overlay above the waves. The wave layers are intended for lightweight independent continuous transform-based movement in a later bounded phase; Phase A does not implement animation.
+Wave system is locked.
 
-## Latest approved visual state
+Technical regression guards retain:
+- actual effective velocity measurement;
+- alpha-based painted-edge spawn measurement;
+- actual irregular overlay boundary;
+- four representative desktop aspect ratios;
+- mobile non-download assertions.
 
-### Home background
-Approved foundational direction:
-- off-white/monochrome left side,
-- electric-yellow superposition/probability field,
-- flat 2D interference/wave forms,
-- selective small pixel breakup,
-- low noise,
-- no generic HUD clutter,
-- one static no-wave base background,
-- eight independent transparent wave layers,
-- foreground neutral/boundary overlay above the waves,
-- lightweight independent continuous transform-based wave movement planned for a later phase; not implemented in Phase A.
+## Previous box refinement completed while docs were being prepared
 
-### Schrödinger's Box
-Closed state:
-- opaque industrial illustrated box,
-- slight tilt,
-- floating idle motion,
-- `SCHRÖDINGER'S BOX` discovery label.
+Luna implemented the requested box polish after the first documentation-only handoff commits landed.
 
-Reveal state:
-- current approved reveal image is the authoritative reveal reference,
-- same general box orientation,
-- no large label over cat,
-- directional gradient translucency,
-- upper/right region more transparent,
-- opposite region more opaque,
-- bottom face fully opaque,
-- plain/minimal interior,
-- approved adjusted half-skeletal / half-living cat inside.
+Because the remote had advanced from `25cf711...` to documentation head `83c9cc49...`, the Builder preserved those documentation commits and pushed the application commit on top.
+
+Application commit:
+
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
+
+Message:
+
+`fix: strengthen box motion and phase reveal`
+
+## Independent Orchestrator review
+
+Compared `83c9cc49...` → `007e1e...`:
+- exactly one commit;
+- exactly four changed files;
+- wave implementation not retuned.
+
+Changed:
+- `src/components/home/SchrodingerBox.astro`
+- `src/styles/home.css`
+- `tests/e2e/home-composition.spec.ts`
+- `tests/e2e/home-visual-preview.spec.ts`
+
+### New markup
+Closed and reveal images now live in separate state wrappers.
+
+Outer button owns idle.
+State wrappers own transform/opacity transition.
+Images own fixed geometry/calibration.
+
+### Prior motion behavior
+
+The prior sparse eased idle path and fast/high-intensity phase split are now superseded by the correction below. The state-wrapper architecture, fixed image geometry, and interaction state machine are retained. The USER has accepted the calmer phase split; only the idle float remains under visual review.
+
+Reveal image calibration remains:
+`translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`
+
+### Reduced motion
+- idle disabled;
+- phase transform disabled;
+- opacity only 120ms linear.
 
 ### Interaction
-Desktop:
-- hover/focus gives temporary reveal,
-- click can lock/unlock reveal.
+State script unchanged.
+Hover/focus/click/keyboard/mobile tap behavior preserved.
 
-Mobile:
-- tap toggles reveal.
+## Previous CI evidence
 
-## Important correction
+Actions run:
 
-Do not use the older unadjusted split-cat reference.
+`https://github.com/AltamashM7/qiskit-event-website/actions/runs/33186955589`
 
-The correct working cat reference is the **adjusted composite** where the skeletal half was scaled/warped to better match the living cat's height/proportions.
+Head:
 
-If both adjusted and unadjusted variants exist in the repository, the unadjusted variant must be explicitly marked superseded or removed from production asset paths.
+`007e1e74f4840afc4db393aef9db26c20ef80c4f`
 
-## Immediate next step
+Results:
+- Technical verification success.
+- 92 passed.
+- 53 skipped.
+- 0 failed.
+- Cloudflare preview and visual QA success.
 
-This Phase A asset-foundation branch must receive independent Web Orchestrator verification of the desktop layered master and delivery assets, registry metadata, alpha integrity, and final GitHub Actions result. The old Draft PR #6 frame-swap exploration remains unmerged and superseded; do not begin layered Home integration or wave animation yet. Mobile-specific layered assets, production deployment, Cloudflare Git integration, About-page visual implementation, and additional page work remain separate future phases. Keep About Event and About Quantum Mechanics as neutral shells.
+Artifact:
+- `home-visual-qa-pr-8`
+- ID `9692181025`
+- digest `sha256:35612c1623b6bdda8b2d503edc50643c4b5083c106b585fddbb8d3dd8dc3519b`
+
+Immutable preview:
+
+`https://0a1bd3fa.qiskit-event-website.pages.dev`
+
+No production deployment.
+
+## Local verification caveat
+
+Luna reported:
+- npm ci completed;
+- npm run check passed;
+- npm run build passed;
+- equivalent separated Playwright matrix 92 passed / 53 skipped;
+- aggregate npm run verify did not exit cleanly in the Windows shell after starting the full matrix.
+
+Authoritative GitHub final-head verification did complete successfully, so there is no known test failure associated with this caveat.
+
+## USER normal-motion feedback and current correction
+
+The USER found that the prior idle path visibly moved, paused, and changed direction, while the phase split felt too aggressive. The USER accepted the calmer 640ms reveal; the prior 13-keyframe path remained unresolved because its uneven segments produced perceived variable-speed/stutter. The same-PR correction now uses:
+
+- a 3.1s `ease-in-out` infinite `alternate` transform-only float with exactly two spatial endpoints: `translate3d(0.04rem, -0.08rem, 0) rotate(-0.35deg)` and `translate3d(-0.04rem, -0.92rem, 0) rotate(0.45deg)`;
+- the accepted/locked 640ms `cubic-bezier(0.22,0.61,0.36,1)` transform+opacity phase split;
+- closed leaving at `translate3d(-0.65%, 0.65%, 0) scale(0.995)`;
+- reveal starting at `translate3d(0.65%, -0.65%, 0) scale(1.006)`;
+- the existing reveal-image calibration and interaction state machine unchanged.
+
+The desktop layered wave system remains USER accepted and locked. The correction requires final-head CI verification and renewed USER normal-motion acceptance of the new idle float; PR #8 remains Draft and unmerged.
+
+## Immediate continuation
+
+A fresh Orchestrator should first re-read the live PR head and final-head CI for this correction.
+
+First:
+1. inspect live PR #8;
+2. inspect exact current head;
+3. ask USER to review the new immutable normal-motion preview;
+4. have USER judge the new two-endpoint to-and-fro idle float;
+5. if USER finds an issue, one bounded same-PR correction;
+6. if USER passes all visual checks, re-check head/CI and require explicit merge approval;
+7. squash merge only after approval;
+8. verify main and refresh docs.
+
+Preview:
+
+`https://0a1bd3fa.qiskit-event-website.pages.dev`
