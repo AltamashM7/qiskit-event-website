@@ -85,7 +85,7 @@ Architecture context:
 - Chosen production architecture: one static no-wave base background, the eight accepted transparent wave assets reused as a richer desktop instance composition above it, and a foreground neutral/boundary overlay above the waves.
 - Phase A imported and optimized the assets; merged PR #8 renders 20 desktop instances with lightweight independent linear horizontal transform movement. The USER accepted the desktop layered background, box motion, and reveal; PR #8 was squash-merged into `main` at `6f515d7ffd238519b9b44117942316874469142e`.
 - The earlier full-frame A/B/C animation exploration PR #6 is closed/unmerged and superseded as the chosen implementation direction by this layered-wave architecture.
-- The merged Phase B integration uses the desktop base, 20 wave instances reusing the eight wave deliveries, and foreground overlay. The current Phase 3 mobile integration uses its own responsive instance configuration with the shared deliveries for unchanged families, three purposeful mobile-only color variants for large families 01, 02, and 08, and mobile-specific base/overlay assets; desktop base/overlay URLs remain isolated from mobile.
+- The merged Phase B integration uses the desktop base, 20 wave instances reusing the eight wave deliveries, and foreground overlay. The current Phase 3 mobile integration uses its own responsive instance configuration with six purposeful mobile-only white variants plus the shared white 05/06 deliveries, and mobile-specific base/overlay assets; desktop base/overlay URLs remain isolated from mobile.
 - No existing source or desktop delivery asset bytes were changed during integration.
 - The overlay was inspected at the pixel level: its RGBA alpha channel has real transparency, including `615,141` fully transparent pixels on the right side. The apparent black area is not baked black fill.
 - Mobile-specific layered base/overlay assets are not included in this phase.
@@ -127,27 +127,29 @@ Delivery generation:
 | Wave 07 delivery | `public/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp` | Web-serving halftone yellow band | `1800 × 700` | WebP RGBA; alpha `0–172` | 174,514 | `3A2DF2BE9A3068791FFD753089E59C4186FE44B2E615ECD3133DFFCB3D631FD6` | Generated from Wave 07 master; delivery derivative |
 | Wave 08 delivery | `public/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp` | Web-serving translucent cream ribbon | `1800 × 700` | WebP RGBA; alpha `0–201` | 25,720 | `DDE65E13668464E8A362AE91A257C7D2F9222B1E857C476E9AC825AE11EAF0A0` | Generated from Wave 08 master; delivery derivative |
 
-### Home mobile large-wave color variants (Phase 3 refinement)
+### Home mobile white wave variants (Phase 3 refinement)
 
 **Canonical root:** `public/assets/home/background/layered/web/mobile/waves/`
 
 Status: **MOBILE-ONLY DERIVED VARIANTS / COMMITTED / USER VISUAL QA PENDING**
 
 Purpose:
-- Improved visibility and restrained color variation for the large/background mobile wave families after the previous warm/yellow-adjacent direction read too close to the yellow field.
+- A coherent all-white mobile probability field after the USER rejected the blue/cyan experiment.
 - These variants preserve the source masters' `1800 × 700` geometry and alpha channels and are not used by the desktop composition.
 
-Palette and source mapping:
-- Wave 01 uses white (`#FFFFFF`).
-- Wave 02 uses sky blue (`#BFE4FF`).
-- Wave 08 uses sky cyan (`#BDF4FF`).
-- Wave 01 and Wave 02 relevant mobile instances use full opacity; Wave 08 retains its existing lower-opacity atmospheric treatment because it is the biggest background family.
+Source and delivery mapping:
+- Mobile families 01, 02, 03, 04, 07, and 08 use the white variants below.
+- Existing white desktop deliveries remain reused for mobile families 05 and 06.
+- Opacity, scale, depth, count, overlap, and motion provide hierarchy; hue variation is not used for active mobile waves.
 
 | Asset | Canonical path | Source master | Dimensions | Format / alpha | Bytes | SHA-256 |
 | --- | --- | --- | ---: | --- | ---: | --- |
-| Wave 01 white | `public/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png` | Wave 01 thick cream upper | `1800 × 700` | PNG RGBA; alpha identical to source (`0–255`) | 46,277 | `D95AC20C8F0C80EA89984D9DED11D178967789947BCA3357F64B4CEE17759FE9` |
-| Wave 02 sky blue | `public/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png` | Wave 02 thick cream lower | `1800 × 700` | PNG RGBA; alpha identical to source (`0–255`) | 46,457 | `BF1E4F61073C2275DDAD9E3C46F76BF03A06A6FABACFC22B9178E890420FA365` |
-| Wave 08 sky cyan | `public/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png` | Wave 08 translucent cream ribbon | `1800 × 700` | PNG RGBA; alpha identical to source (`0–201`) | 45,328 | `152B6FFF44462B3412A61EB1FC29CF04CE3072F101FA883A9926F242EB148002` |
+| Wave 01 white | `public/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png` | Wave 01 thick cream upper | `1800 × 700` | PNG RGBA; alpha identical to source (`0–255`) | 46,277 | `D95AC20C8F0C80EA89984D9DED11D178967789947BCA3357F64B4CEE17759FE9` |
+| Wave 02 white | `public/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png` | Wave 02 thick cream lower | `1800 × 700` | PNG RGBA; alpha identical to source (`0–255`) | 45,897 | `4BC836D6AF3A3545DE78B315D65E15C97C6489BC8BFC3DA7426066CF1552CA5E` |
+| Wave 03 white | `public/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png` | Wave 03 thin yellow | `1800 × 700` | PNG RGBA; alpha identical to source (`0–255`) | 46,740 | `47B4D4058C6AEE6DA72728D2ED4ECDE37455889818D17574FF601BFF4894FCA6` |
+| Wave 04 white | `public/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png` | Wave 04 thin ivory | `1800 × 700` | PNG RGBA; alpha identical to source (`0–255`) | 42,218 | `9173D0577358715FA8F8EF7179C341194270F0D978520E843622F08B2901EBB8` |
+| Wave 07 white | `public/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png` | Wave 07 halftone yellow band | `1800 × 700` | PNG RGBA; alpha identical to source (`0–172`) | 196,383 | `723F717282FF7E41538F733C3F1C9CCBBADECA86F88C3B9CEEC257B60DC91B16` |
+| Wave 08 white | `public/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png` | Wave 08 translucent cream ribbon | `1800 × 700` | PNG RGBA; alpha identical to source (`0–201`) | 44,837 | `6CBE58EA4894E711052E8A060C01FF9ABD276CCBD0120CB1F2FB8FFF8445D39B` |
 
 ### Home mobile layered background (Phase 3)
 

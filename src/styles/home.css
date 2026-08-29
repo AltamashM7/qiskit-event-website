@@ -755,7 +755,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-08-a {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png');
     --wave-width: 230%;
     --wave-height: 118%;
     --wave-top: -18%;
@@ -770,7 +770,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-08-b {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png');
     --wave-width: 220%;
     --wave-height: 105%;
     --wave-top: 46%;
@@ -785,7 +785,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-07-a {
-    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png');
     --wave-width: 200%;
     --wave-height: 74%;
     --wave-top: -4%;
@@ -800,7 +800,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-07-b {
-    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png');
     --wave-width: 195%;
     --wave-height: 72%;
     --wave-top: 57%;
@@ -815,7 +815,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-01 {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png');
     --wave-width: 185%;
     --wave-height: 37%;
     --wave-top: 1%;
@@ -830,7 +830,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-02 {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png');
     --wave-width: 192%;
     --wave-height: 40%;
     --wave-top: 45%;
@@ -846,7 +846,7 @@
 
   #home-stage .home-layered-background__wave--mobile-03-a,
   #home-stage .home-layered-background__wave--mobile-03-b {
-    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png');
     --wave-width: 180%;
     --wave-height: 25%;
     --wave-boundary-reference: 62cqw;
@@ -872,7 +872,7 @@
 
   #home-stage .home-layered-background__wave--mobile-04-a,
   #home-stage .home-layered-background__wave--mobile-04-b {
-    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png');
     --wave-width: 182%;
     --wave-height: 27%;
     --wave-boundary-reference: 59cqw;
@@ -953,7 +953,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-08-c {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png');
     --wave-width: 224%;
     --wave-height: 82%;
     --wave-top: 22%;
@@ -968,7 +968,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-08-d {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png');
     --wave-width: 214%;
     --wave-height: 76%;
     --wave-top: 78%;
@@ -983,7 +983,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-07-c {
-    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png');
     --wave-width: 188%;
     --wave-height: 58%;
     --wave-top: 26%;
@@ -998,7 +998,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-07-d {
-    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png');
     --wave-width: 188%;
     --wave-height: 52%;
     --wave-top: 84%;
@@ -1013,7 +1013,7 @@
   }
 
   #home-stage .home-layered-background__wave--mobile-01-b {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png');
     --wave-width: 178%;
     --wave-height: 33%;
     --wave-top: 26%;
@@ -1023,12 +1023,12 @@
     --wave-x-end: 139cqw;
     --wave-duration: 4.95s;
     --wave-delay: -1.35s;
-    --wave-opacity: 1;
+    --wave-opacity: 0.72;
     z-index: 4;
   }
 
   #home-stage .home-layered-background__wave--mobile-02-b {
-    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png');
     --wave-width: 184%;
     --wave-height: 34%;
     --wave-top: 68%;
@@ -1038,13 +1038,13 @@
     --wave-x-end: 141cqw;
     --wave-duration: 5.35s;
     --wave-delay: -3.7s;
-    --wave-opacity: 1;
+    --wave-opacity: 0.72;
     z-index: 3;
   }
 
   #home-stage .home-layered-background__wave--mobile-03-c,
   #home-stage .home-layered-background__wave--mobile-03-d {
-    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png');
     --wave-width: 174%;
     --wave-height: 21%;
     --wave-boundary-reference: 60cqw;
@@ -1068,9 +1068,51 @@
     --wave-opacity: 0.46;
   }
 
+  #home-stage .home-layered-background__wave--mobile-03-e,
+  #home-stage .home-layered-background__wave--mobile-03-f,
+  #home-stage .home-layered-background__wave--mobile-03-g,
+  #home-stage .home-layered-background__wave--mobile-03-h {
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png');
+    --wave-width: 168%;
+    --wave-height: 18%;
+    --wave-boundary-reference: 60cqw;
+    --wave-hidden-spawn-inset: 7cqw;
+    --wave-x-end: 133cqw;
+    --wave-duration: 4.5s;
+    --wave-opacity: 0.42;
+    z-index: 5;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-03-e {
+    --wave-top: -6%;
+    --wave-delay: -0.45s;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-03-f {
+    --wave-top: 28%;
+    --wave-duration: 4.6s;
+    --wave-delay: -2.2s;
+    --wave-opacity: 0.38;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-03-g {
+    --wave-top: 63%;
+    --wave-duration: 4.7s;
+    --wave-delay: -3.25s;
+    --wave-opacity: 0.46;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-03-h {
+    --wave-top: 108%;
+    --wave-boundary-reference: 57cqw;
+    --wave-duration: 4.8s;
+    --wave-delay: -1.55s;
+    --wave-opacity: 0.34;
+  }
+
   #home-stage .home-layered-background__wave--mobile-04-c,
   #home-stage .home-layered-background__wave--mobile-04-d {
-    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp');
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png');
     --wave-width: 176%;
     --wave-height: 23%;
     --wave-boundary-reference: 60cqw;
@@ -1092,6 +1134,49 @@
     --wave-duration: 4.75s;
     --wave-delay: -4.05s;
     --wave-opacity: 0.42;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-04-e,
+  #home-stage .home-layered-background__wave--mobile-04-f,
+  #home-stage .home-layered-background__wave--mobile-04-g,
+  #home-stage .home-layered-background__wave--mobile-04-h {
+    --wave-image: url('/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png');
+    --wave-width: 170%;
+    --wave-height: 18%;
+    --wave-boundary-reference: 59cqw;
+    --wave-hidden-spawn-inset: 7cqw;
+    --wave-x-end: 133cqw;
+    --wave-duration: 4.55s;
+    --wave-opacity: 0.4;
+    z-index: 5;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-04-e {
+    --wave-top: 4%;
+    --wave-delay: -0.65s;
+    --wave-opacity: 0.42;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-04-f {
+    --wave-top: 36%;
+    --wave-duration: 4.65s;
+    --wave-delay: -2.35s;
+    --wave-opacity: 0.36;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-04-g {
+    --wave-top: 70%;
+    --wave-duration: 4.75s;
+    --wave-delay: -3.45s;
+    --wave-opacity: 0.44;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-04-h {
+    --wave-top: 108%;
+    --wave-boundary-reference: 56cqw;
+    --wave-duration: 4.85s;
+    --wave-delay: -1.2s;
+    --wave-opacity: 0.3;
   }
 
   #home-stage .home-layered-background__wave--mobile-05-c,
@@ -1122,6 +1207,52 @@
     z-index: 7;
   }
 
+  #home-stage .home-layered-background__wave--mobile-05-e,
+  #home-stage .home-layered-background__wave--mobile-05-f,
+  #home-stage .home-layered-background__wave--mobile-05-g,
+  #home-stage .home-layered-background__wave--mobile-05-h {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp');
+    --wave-width: 165%;
+    --wave-height: 16%;
+    --wave-boundary-reference: 59cqw;
+    --wave-hidden-spawn-inset: 7cqw;
+    --wave-alpha-leading-edge: 94.278%;
+    --wave-x-end: 131cqw;
+    --wave-duration: 4.35s;
+    --wave-opacity: 0.46;
+    z-index: 6;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-05-e {
+    --wave-top: 3%;
+    --wave-delay: -0.55s;
+    --wave-opacity: 0.5;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-05-f {
+    --wave-top: 46%;
+    --wave-duration: 4.45s;
+    --wave-delay: -2.35s;
+    --wave-opacity: 0.42;
+    z-index: 7;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-05-g {
+    --wave-top: 68%;
+    --wave-duration: 4.55s;
+    --wave-delay: -3.4s;
+    --wave-opacity: 0.38;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-05-h {
+    --wave-top: 107%;
+    --wave-boundary-reference: 56cqw;
+    --wave-duration: 4.65s;
+    --wave-delay: -1.45s;
+    --wave-opacity: 0.32;
+    z-index: 7;
+  }
+
   #home-stage .home-layered-background__wave--mobile-06-c,
   #home-stage .home-layered-background__wave--mobile-06-d {
     --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp');
@@ -1147,6 +1278,52 @@
     --wave-duration: 4.65s;
     --wave-delay: -4.15s;
     --wave-opacity: 0.38;
+    z-index: 7;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-06-e,
+  #home-stage .home-layered-background__wave--mobile-06-f,
+  #home-stage .home-layered-background__wave--mobile-06-g,
+  #home-stage .home-layered-background__wave--mobile-06-h {
+    --wave-image: url('/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp');
+    --wave-width: 168%;
+    --wave-height: 16%;
+    --wave-boundary-reference: 58cqw;
+    --wave-hidden-spawn-inset: 6cqw;
+    --wave-alpha-leading-edge: 94.222%;
+    --wave-x-end: 132cqw;
+    --wave-duration: 4.5s;
+    --wave-opacity: 0.42;
+    z-index: 6;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-06-e {
+    --wave-top: 2%;
+    --wave-delay: -0.85s;
+    --wave-opacity: 0.46;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-06-f {
+    --wave-top: 44%;
+    --wave-duration: 4.6s;
+    --wave-delay: -2.55s;
+    --wave-opacity: 0.4;
+    z-index: 7;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-06-g {
+    --wave-top: 75%;
+    --wave-duration: 4.7s;
+    --wave-delay: -3.4s;
+    --wave-opacity: 0.36;
+  }
+
+  #home-stage .home-layered-background__wave--mobile-06-h {
+    --wave-top: 109%;
+    --wave-boundary-reference: 55cqw;
+    --wave-duration: 4.8s;
+    --wave-delay: -1.25s;
+    --wave-opacity: 0.3;
     z-index: 7;
   }
 

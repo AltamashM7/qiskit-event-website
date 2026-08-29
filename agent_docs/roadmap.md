@@ -29,10 +29,10 @@ Phase-split reveal:
 
 Mobile layered background:
 - portrait base and transparent foreground overlay supplied and verified by USER;
-- 28 responsive mobile wave instances reusing the eight shared wave deliveries, with doubled mobile speed;
-- mobile-only white, sky-blue, and sky-cyan variants for large/background wave families 01, 02, and 08;
+- 44 responsive mobile wave instances: the existing large/background and halftone presence plus a doubled thin/dashed small-wave population;
+- all active mobile wave visuals are white, using six mobile-only white variants plus the shared white dashed deliveries;
 - implementation is on `phase-3/home-mobile-layered-integration`;
-- USER QA accepts speed and concentration; the previous warm/yellow-adjacent tint direction reduced visibility, so final-head CI/preview and USER re-review of the color correction remain pending.
+- USER QA accepts speed and large-wave concentration; the previous warm direction and subsequent blue/cyan experiment were rejected, so final-head CI/preview and USER re-review of the all-white/denser-small-wave correction remain pending.
 
 If USER passes the mobile composition:
 - re-check exact PR head/CI;

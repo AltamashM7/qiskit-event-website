@@ -65,8 +65,8 @@ Superseded:
 Current:
 - the accepted desktop layered Home probability field, 640ms reveal, and two-endpoint box float are locked from merged PR #8;
 - the Phase 3 branch integrates the USER-created/verified portrait mobile base and transparent overlay;
-- mobile uses its own responsive 28-instance wave configuration while reusing the eight shared wave deliveries;
-- prior final-head CI/preview verification passed in run 33239168083; USER QA accepts speed and concentration, but the warm/yellow-adjacent variants reduced visibility against yellow. The current correction replaces them with white, sky-blue, and sky-cyan mobile-only variants for large/background families 01, 02, and 08 and awaits new final-head verification and USER re-review.
+- mobile uses its own responsive 44-instance wave configuration while reusing the eight shared wave deliveries and mobile-only white variants;
+- prior final-head CI/preview verification passed in run 33250823577; USER QA accepts speed and large-wave concentration, but the warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected. The current correction returns all active mobile wave visuals to white, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and awaits new final-head verification and USER re-review.
 
 ## Product intent
 
@@ -159,14 +159,15 @@ Mobile is separately art-directed from desktop and is now layered on the Phase 3
 Current behavior:
 - uses `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
 - uses the real-transparent `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`;
-- renders 28 responsive mobile instances from the existing shared wave deliveries, with mobile durations halved and corresponding negative delays phase-preserved;
-- uses mobile-only white, sky-blue, and sky-cyan variants for the large/background 01, 02, and 08 families; Wave 01 and Wave 02 relevant instances use full opacity, Wave 08 retains its lower-opacity atmospheric treatment, and thin/dashed/halftone foreground families retain their existing deliveries;
+- renders 44 responsive mobile instances from the existing wave deliveries, with mobile durations halved and corresponding negative delays phase-preserved;
+- uses all-white active mobile wave visuals: six mobile-only white variants for families 01, 02, 03, 04, 07, and 08 plus shared white dashed deliveries for 05 and 06; primary thick waves remain strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains atmospheric opacity, and thin/dashed families use graduated opacity;
+- doubles the thin/dashed small-wave families 03–06 from four to eight instances each with staggered portrait positions and delays;
 - does not request desktop base/overlay assets;
 - maintains accepted stacked Home composition;
 - box remains interactive via tap;
 - normal, compact, short, and tall mobile Playwright variants exist.
 
-USER mobile QA accepts speed and concentration; the previous warm tint direction reduced visibility against yellow, so the current large-wave palette correction remains pending final-head verification and USER re-review. Frame A is retained as historical fallback/provenance and is superseded for the active mobile background by this implementation once the phase is accepted.
+USER mobile QA accepts speed and large-wave concentration; the previous warm direction and subsequent blue/cyan experiment were rejected, so the current all-white/denser-small-wave correction remains pending final-head verification and USER re-review. Frame A is retained as historical fallback/provenance and is superseded for the active mobile background by this implementation once the phase is accepted.
 
 ## Schrödinger box — current implementation
 
@@ -339,7 +340,7 @@ Therefore deterministic screenshots can prove final closed/revealed composition 
 - normal-motion float feel;
 - perceived performance during the transition.
 
-The accepted desktop layered wave system, 640ms phase-split reveal, and two-endpoint idle float are locked. The current mobile large-wave palette correction remains pending final-head verification and USER re-review.
+The accepted desktop layered wave system, 640ms phase-split reveal, and two-endpoint idle float are locked. The current mobile all-white/denser-small-wave correction remains pending final-head verification and USER re-review.
 
 ## Immediate next action for Phase 3
 

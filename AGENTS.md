@@ -144,7 +144,7 @@ Exact budgets are still open and must be established before production acceptanc
 - Reusable Stage/layout/navigation boundaries, browser QA, accessibility baseline, and GitHub Actions are established.
 - Home Composition V1 is implemented and merged.
 - The desktop layered Home probability field, 640ms phase-split reveal, and simple two-endpoint alternate box float from merged PR #8 are USER accepted and locked.
-- The current Phase 3 branch implements a separate responsive mobile layered probability field using the USER-verified portrait base/overlay and shared wave masters. USER mobile QA accepts the current speed and 28-instance population; the current same-PR correction replaces the low-contrast warm variants with white, sky-blue, and sky-cyan large/background mobile waves, with final-head CI and USER visual re-review pending.
+- The current Phase 3 branch implements a separate responsive mobile layered probability field using the USER-verified portrait base/overlay and shared wave masters. USER mobile QA accepts the current speed and large-wave population; the current same-PR correction rejects the blue/cyan experiment, returns all active mobile wave visuals to white, and doubles the thin/dashed small-wave population from 16 to 32 (44 total mobile instances), with final-head CI and USER visual re-review pending.
 - Cloudflare Pages Direct Upload through GitHub Actions is established for PR previews. Production deployment is not established.
 - Codex Luna is the current repository-native Builder for bounded implementation phases; the Web ChatGPT Orchestrator independently verifies and owns acceptance gates.
 

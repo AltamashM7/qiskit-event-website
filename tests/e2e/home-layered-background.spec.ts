@@ -22,21 +22,35 @@ const wavePaths = [
   '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
   '/assets/home/background/layered/web/desktop/waves/wave-08-translucent-cream-ribbon.webp',
 ];
-const mobileTintedWavePaths = [
+const mobileWhiteWavePaths = [
+  '/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png',
+  wavePaths[4],
+  wavePaths[5],
+  '/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png',
+];
+const supersededMobileWavePaths = [
+  '/assets/home/background/layered/web/mobile/waves/wave-01-warm-ivory-v1.png',
   '/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-02-pale-butter-v1.png',
   '/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-08-soft-champagne-v1.png',
   '/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png',
 ];
-const mobileWaveAssetPaths = [
-  mobileTintedWavePaths[0],
-  mobileTintedWavePaths[1],
-  ...wavePaths.slice(2, 7),
-  mobileTintedWavePaths[2],
-];
+const mobileWaveAssetPaths = mobileWhiteWavePaths;
 const desktopLayeredPaths = [basePath, overlayPath, ...wavePaths];
 const mobileLayeredPaths = [mobileBasePath, mobileOverlayPath, ...mobileWaveAssetPaths];
 const renderedWaveCount = 20;
-const renderedMobileWaveCount = 28;
+const renderedMobileWaveCount = 44;
+const expectedMobileSmallWaveFamilyCounts = new Map([
+  ['wave-03', 8],
+  ['wave-04', 8],
+  ['wave-05', 8],
+  ['wave-06', 8],
+]);
 const expectedWaveFamilyCounts = new Map(
   wavePaths.map((path, index) => [path, index < 2 ? 1 : 3]),
 );
@@ -702,8 +716,23 @@ test('Mobile uses the portrait layered base, shared waves, and foreground overla
   expect(mobileState.baseObjectPosition).toBe('50% 50%');
   expect(mobileState.desktopWaveDisplay).toBe('none');
   expect(mobileState.mobileWaveCount).toBe(renderedMobileWaveCount);
-  expect(new Set(mobileState.mobileWaveAssets)).toEqual(new Set(mobileWaveAssetPaths));
-  expect(new Set(mobileState.mobileWaveFamilies)).toEqual(new Set(wavePaths.map((_, index) => `wave-0${index + 1}`)));
+  const activeMobileWaveAssets = mobileState.mobileWaveAssets.filter(
+    (path): path is string => path !== null,
+  );
+  const activeMobileWaveFamilies = mobileState.mobileWaveFamilies.filter(
+    (family): family is string => family !== null,
+  );
+  expect(new Set(activeMobileWaveAssets)).toEqual(new Set(mobileWaveAssetPaths));
+  expect(activeMobileWaveAssets.every((path) => path.includes('white'))).toBe(true);
+  expect(activeMobileWaveAssets.some((path) => supersededMobileWavePaths.includes(path))).toBe(false);
+  expect(new Set(activeMobileWaveFamilies)).toEqual(new Set(wavePaths.map((_, index) => `wave-0${index + 1}`)));
+  const mobileWaveFamilyCounts = new Map<string, number>();
+  for (const family of activeMobileWaveFamilies) {
+    mobileWaveFamilyCounts.set(family, (mobileWaveFamilyCounts.get(family) ?? 0) + 1);
+  }
+  for (const [family, count] of expectedMobileSmallWaveFamilyCounts) {
+    expect(mobileWaveFamilyCounts.get(family)).toBe(count);
+  }
   expect(mobileState.mobileWaveBackgrounds.every((background) =>
     mobileWaveAssetPaths.some((path) => background.includes(path)),
   )).toBe(true);
@@ -717,9 +746,9 @@ test('Mobile uses the portrait layered base, shared waves, and foreground overla
     mobileState.mobileWaveIds.map((id, index) => [id, mobileState.mobileWaveOpacities[index]]),
   );
   expect(mobileWaveOpacityById.get('mobile-wave-01-upper')).toBe('1');
-  expect(mobileWaveOpacityById.get('mobile-wave-01-middle')).toBe('1');
+  expect(mobileWaveOpacityById.get('mobile-wave-01-middle')).toBe('0.72');
   expect(mobileWaveOpacityById.get('mobile-wave-02-lower')).toBe('1');
-  expect(mobileWaveOpacityById.get('mobile-wave-02-middle')).toBe('1');
+  expect(mobileWaveOpacityById.get('mobile-wave-02-middle')).toBe('0.72');
   expect(mobileWaveOpacityById.get('mobile-wave-08-upper')).toBe('0.42');
   expect(mobileWaveOpacityById.get('mobile-wave-08-lower')).toBe('0.28');
   expect(mobileWaveOpacityById.get('mobile-wave-08-middle')).toBe('0.24');

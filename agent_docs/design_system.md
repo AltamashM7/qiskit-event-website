@@ -78,7 +78,7 @@ The accepted desktop architecture is:
 
 The USER has visually accepted the current desktop boundary illusion, speed, population, overlap, amplitude, vertical occupancy, broad ribbon, and performance. Do not casually retune this system during unrelated Home polish.
 
-Mobile remains separately art-directed. The current Phase 3 implementation uses a portrait base/overlay and 28 responsive instances of the shared wave assets; USER mobile QA accepts speed and concentration, while a correction replaces the low-contrast warm variants with white, sky-blue, and sky-cyan variants for large/background families 01, 02, and 08 pending final visual re-review.
+Mobile remains separately art-directed. The current Phase 3 implementation uses a portrait base/overlay and a responsive 44-instance wave field; USER mobile QA accepts speed and large-wave concentration, while the current correction rejects the blue/cyan experiment, returns all active mobile wave visuals to white, applies desktop-like opacity hierarchy, and doubles the thin/dashed small-wave families 03–06 pending final visual re-review.
 
 ## Home Stage composition
 

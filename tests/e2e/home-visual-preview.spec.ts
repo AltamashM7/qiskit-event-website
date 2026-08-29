@@ -26,14 +26,14 @@ const desktopLayeredBackgroundPaths = [
 const mobileLayeredBackgroundPaths = [
   '/assets/home/mobile-layered/home-mobile-layered-base-v1.png',
   '/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png',
-  '/assets/home/background/layered/web/mobile/waves/wave-01-white-v2.png',
-  '/assets/home/background/layered/web/mobile/waves/wave-02-sky-blue-v2.png',
-  '/assets/home/background/layered/web/desktop/waves/wave-03-thin-yellow.webp',
-  '/assets/home/background/layered/web/desktop/waves/wave-04-thin-ivory.webp',
+  '/assets/home/background/layered/web/mobile/waves/wave-01-white-v3.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-02-white-v3.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-03-white-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-04-white-v1.png',
   '/assets/home/background/layered/web/desktop/waves/wave-05-dashed-white-upper.webp',
   '/assets/home/background/layered/web/desktop/waves/wave-06-dashed-white-lower.webp',
-  '/assets/home/background/layered/web/desktop/waves/wave-07-halftone-yellow-band.webp',
-  '/assets/home/background/layered/web/mobile/waves/wave-08-sky-cyan-v2.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-07-white-v1.png',
+  '/assets/home/background/layered/web/mobile/waves/wave-08-white-v3.png',
 ];
 
 type CaptureInteraction = 'click' | 'tap';

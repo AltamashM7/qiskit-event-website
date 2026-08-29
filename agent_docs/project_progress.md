@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase: Phase 3 mobile layered Home background color correction; final-head verification and USER re-review pending**
+**Phase: Phase 3 mobile layered Home all-white/small-wave correction; final-head verification and USER re-review pending**
 
 Repository:
 
@@ -144,14 +144,16 @@ Current branch:
 Implementation:
 - portrait base `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
 - transparent foreground overlay `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`;
-- 28 mobile wave instances with all eight shared wave families represented;
+- 44 mobile wave instances with all eight wave families represented;
 - mobile durations halved with corresponding negative delays phase-preserved; approximately doubled speed;
-- mobile-only white, sky-blue, and sky-cyan variants for large/background wave families 01, 02, and 08; Wave 01 and Wave 02 use full opacity while Wave 08 retains its lower-opacity atmospheric treatment;
+- all active mobile wave visuals are white, using six mobile-only white variants plus shared white dashed deliveries;
+- primary thick waves remain strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains lower atmospheric opacity, and smaller families use graduated opacity;
+- thin/dashed small-wave families 03–06 are doubled from four to eight instances each, for 44 mobile instances total;
 - mobile-specific percentage/container-relative positioning and depth order;
-- only three purposeful mobile tint variants supplement the shared wave deliveries;
+- the previous warm direction and subsequent blue/cyan experiment are superseded; opacity, scale, depth, count, overlap, and motion now provide mobile hierarchy;
 - desktop layered wave behavior and accepted box idle/reveal behavior were not retuned.
 
-USER mobile QA accepts speed and concentration. The previous warm/yellow-adjacent tint direction reduced visibility against yellow; the current correction replaces it with white, sky-blue, and sky-cyan mobile-only variants for large/background wave families 01, 02, and 08. Final-head CI/preview verification and USER visual re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
+USER mobile QA accepts speed and large-wave concentration. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected; the current correction returns all active mobile waves to white and increases thin/dashed small-wave presence. Final-head CI/preview verification and USER visual re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
 
 ## Previous final-head verification
 
