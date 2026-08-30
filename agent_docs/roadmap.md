@@ -8,13 +8,13 @@ Use bounded gates:
 
 GitHub is authoritative.
 
-## Current gate — Phase 3 mobile layered-background visual acceptance
+## Current gate — Phase 4 persistent shared Master Navigator
 
-PR #8 has been accepted and squash-merged into `main`.
+PR #9 has been accepted and squash-merged into `main`.
 
 Current verified `main` baseline:
 
-`6f515d7ffd238519b9b44117942316874469142e`
+`003d58e7d328fb539a5690b9e4fa86232e7eab0c`
 
 Desktop layered background:
 - USER accepted.
@@ -28,25 +28,24 @@ Phase-split reveal:
 - USER accepted and locked.
 
 Mobile layered background:
-- portrait base and transparent foreground overlay supplied and verified by USER;
+- portrait base and transparent foreground overlay supplied, verified, accepted, and merged;
 - 44 responsive mobile wave instances: the existing large/background and halftone presence plus a doubled thin/dashed small-wave population;
 - the original yellow/orange Wave 03 small-wave family is restored; all other active mobile wave visuals are white, using five mobile-only white variants plus the shared white dashed deliveries;
-- implementation is on `phase-3/home-mobile-layered-integration`;
-- Broad phone and PC visual review passed. The previous warm direction and subsequent blue/cyan experiment were rejected; final-head CI/preview and USER re-review of the Wave 03 accent restoration and QISKIT title-readability correction remain pending.
+- the Phase 3 implementation was accepted and squash-merged from `phase-3/home-mobile-layered-integration`;
+- broad phone and PC visual review passed, and the final accent/title correction was accepted. The previous warm direction and blue/cyan experiment remain rejected.
 
-If USER passes the mobile composition:
-- re-check exact PR head/CI;
-- require explicit merge authorization;
-- squash merge the Phase 3 PR;
-- verify new main;
-- refresh docs.
+Phase 4 implementation:
+- one persistent site-level Master Navigator is rendered by `SiteLayout`;
+- Home, About Event, and About Quantum Mechanics no longer render duplicate Stage-owned Navigator instances;
+- the reviewed Navigator visual design and exact fixed desktop/mobile position are USER-approved;
+- Home reserves the former Navigator row height so the accepted initial composition footprint remains stable;
+- Phase 4 remains pending USER visual acceptance.
 
-## After Phase 3 — Home stabilization/polish
+## After Phase 4 — Home stabilization/polish
 
-New bounded phase after the mobile layered background is accepted and merged.
+New bounded work after the persistent Navigator is accepted and merged.
 
 Candidate work:
-- Master Navigator visual refinement;
 - Home identity typography/copy polish if needed;
 - decide whether the accepted phase-split transition becomes part of broader site transition grammar;
 - establish below-the-fold Home content requirements;

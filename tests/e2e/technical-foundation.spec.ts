@@ -29,6 +29,8 @@ for (const route of routes) {
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(route.heading);
 
     const navigation = page.getByRole('navigation', { name: 'Primary' });
+    await expect(page.locator('.site-master-navigation')).toHaveCount(1);
+    await expect(page.locator('.stage-shell__navigation .master-navigator')).toHaveCount(0);
     await expect(navigation).toBeVisible();
     await expect(navigation.getByRole('link')).toHaveCount(routes.length);
     await expect(navigation.locator('[aria-current="page"]')).toHaveText(route.label);
@@ -45,6 +47,43 @@ for (const route of routes) {
     expect(seriousViolations, JSON.stringify(seriousViolations, null, 2)).toEqual([]);
   });
 }
+
+test('Site-level Master Navigator stays fixed and stable through scrolling', async ({ page }) => {
+  for (const route of routes) {
+    await page.goto(route.path);
+
+    const navigation = page.locator('.site-master-navigation');
+    const before = await navigation.boundingBox();
+    expect(before).not.toBeNull();
+    await expect(navigation).toHaveCSS('position', 'fixed');
+
+    if (route.path === '/') {
+      const footprint = await page.evaluate(() => ({
+        navigatorHeight: document.querySelector('.site-master-navigation')?.getBoundingClientRect().height ?? 0,
+        reservedHeight: document.querySelector('#home-stage .stage-shell__navigation')?.getBoundingClientRect().height ?? 0,
+      }));
+      expect(footprint.reservedHeight).toBeCloseTo(footprint.navigatorHeight, 1);
+    }
+
+    await page.evaluate(() => {
+      document.body.style.minHeight = '200vh';
+      window.scrollTo(0, window.innerHeight);
+    });
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+
+    const after = await navigation.boundingBox();
+    expect(after).not.toBeNull();
+    expect(after!.x).toBeCloseTo(before!.x, 1);
+    expect(after!.y).toBeCloseTo(before!.y, 1);
+    expect(after!.width).toBeCloseTo(before!.width, 1);
+    expect(after!.height).toBeCloseTo(before!.height, 1);
+
+    await page.evaluate(() => {
+      document.body.style.minHeight = '';
+      window.scrollTo(0, 0);
+    });
+  }
+});
 
 test('Home navigation reaches the other route shells through real links', async ({ page }) => {
   await page.goto('/');

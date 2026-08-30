@@ -1,5 +1,4 @@
 ---
-import MasterNavigator from '../navigation/MasterNavigator.astro';
 import StageShell from '../stage/StageShell.astro';
 import HomeLayeredBackground from './HomeLayeredBackground.astro';
 import SchrodingerBox from './SchrodingerBox.astro';
@@ -7,8 +6,6 @@ import '../../styles/home.css';
 ---
 
 <StageShell id="home-stage" headingId="home-heading">
-  <MasterNavigator slot="navigation" currentPath={Astro.url.pathname} />
-
   <div slot="identity" class="home-stage__identity-content">
     <p class="home-stage__kicker">Quantum / Event</p>
     <h1 id="home-heading" class="home-stage__title">

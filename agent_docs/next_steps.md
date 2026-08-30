@@ -2,15 +2,15 @@
 
 ## Current gate
 
-PR #8 was accepted and squash-merged into `main` at:
+PR #9 was accepted and squash-merged into `main` at:
 
-`6f515d7ffd238519b9b44117942316874469142e`
+`003d58e7d328fb539a5690b9e4fa86232e7eab0c`
 
-The current bounded phase is `phase-3/home-mobile-layered-integration`. Broad phone and PC visual review passed; two final finishing corrections remain: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Speed, large-wave concentration, and the doubled 44-instance structure remain accepted. Final-head CI/preview verification and USER re-review remain pending.
+The current bounded phase is `phase-4/persistent-master-navigator`. The Phase 3 mobile layered composition, including the original yellow/orange Wave 03 small-wave family and QISKIT readability correction, is accepted and locked. Phase 4 makes the reviewed Master Navigator visual design persistent at site level with the USER-approved fixed desktop/mobile position; implementation remains pending USER visual acceptance.
 
-Do not begin Master Navigator refinement or another page until this mobile visual gate is complete.
+Do not begin About-page art direction or another unrelated phase until the Phase 4 visual gate is complete.
 
-## Mobile implementation under review
+## Accepted mobile implementation
 
 - Base: `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`
 - Foreground overlay: `public/assets/home/mobile-layered/home-mobile-layered-overlay-v1.png`
@@ -20,6 +20,14 @@ Do not begin Master Navigator refinement or another page until this mobile visua
 - the thin/dashed small-wave families 03–06 are doubled from four to eight instances each;
 - mobile base/overlay and wave configuration are isolated from desktop resources;
 - desktop layered waves and accepted Schrödinger box motion/reveal remain unchanged.
+
+## Phase 4 implementation under review
+
+- one site-level `MasterNavigator` is rendered by `SiteLayout` on all three routes;
+- Stage-owned Navigator copies are removed while the generic `StageShell` navigation slot remains available;
+- the existing Navigator appearance, labels, routes, active state, keyboard behavior, and reduced-motion behavior are preserved;
+- the Navigator is fixed near the existing desktop/mobile top gutter without scroll morphing or scroll listeners;
+- Home reserves the former Navigator row height to preserve its accepted initial composition footprint.
 
 ## USER visual QA checklist
 
@@ -35,16 +43,16 @@ Review the exact deployed preview on normal, compact, short, and tall portrait v
 - reduced motion leaves an intentional static layered composition;
 - performance remains appropriate for ordinary phones and weak college computers.
 
-## Verification and merge gate
+## Phase 4 verification and merge gate
 
-After the final implementation commit:
+After the final Phase 4 implementation commit:
 
 1. Run `npm run check`.
 2. Run `npm run verify`.
 3. Run `npm run build`.
-4. Push the same Phase 3 branch.
+4. Push the Phase 4 branch.
 5. Confirm the final-head GitHub Actions run tests the exact PR head.
-6. Inspect the immutable Cloudflare preview and PR alias.
-7. Require explicit USER acceptance and merge authorization before merging.
+6. Inspect the immutable Cloudflare preview and PR alias for desktop and portrait top/scrolled states.
+7. Require explicit USER visual acceptance and merge authorization before merging.
 
 Production deployment remains out of scope. A successful PR preview is not production readiness.

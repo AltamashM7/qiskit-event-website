@@ -6,7 +6,7 @@ This is the primary restart document for a fresh Web ChatGPT Orchestrator sessio
 
 The previous long Orchestrator conversation can be retired. A new Orchestrator should continue from live GitHub state plus these durable documents, not from assumed conversation memory.
 
-Always re-read GitHub before mutation. This file records the project state as of 2026-08-29.
+Always re-read GitHub before mutation. This file records the project state as of 2026-08-30.
 
 ## Mandatory read order
 
@@ -36,13 +36,13 @@ Default branch:
 
 Current verified main baseline:
 
-`6f515d7ffd238519b9b44117942316874469142e`
+`003d58e7d328fb539a5690b9e4fa86232e7eab0c`
 
 Current branch:
 
-`phase-3/home-mobile-layered-integration`
+`phase-4/persistent-master-navigator`
 
-[Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9) is open for the Phase 3 branch; re-read the live PR/head from GitHub.
+PR #9 was accepted and squash-merged into `main`. The current bounded phase is Phase 4: Persistent Shared Master Navigator; re-read the live Phase 4 PR/head from GitHub.
 
 PR #8 was accepted and squash-merged into `main`.
 
@@ -64,9 +64,10 @@ Superseded:
 
 Current:
 - the accepted desktop layered Home probability field, 640ms reveal, and two-endpoint box float are locked from merged PR #8;
-- the Phase 3 branch integrates the USER-created/verified portrait mobile base and transparent overlay;
+- PR #9 integrated the USER-created/verified portrait mobile base and transparent overlay and was accepted and squash-merged;
 - mobile uses its own responsive 44-instance wave configuration while reusing the eight shared wave deliveries and mobile-only white variants;
-- prior final-head CI/preview verification passed in run 33250823577; broad phone and PC visual review passed, but the warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected. The current correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and adds the matching QISKIT title backing; final visual re-review remains pending.
+- post-Phase-3 desktop and mobile visuals are accepted and locked; the warm/yellow-adjacent direction and subsequent blue/cyan experiment remain rejected. The accepted correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and adds the matching QISKIT title backing.
+- Phase 4 makes the reviewed/accepted Master Navigator visual design a single persistent site-level element with the USER-approved fixed desktop/mobile position. Phase 4 implementation remains pending USER visual acceptance.
 
 ## Product intent
 
@@ -154,7 +155,7 @@ See `agent_docs/current_scene.md` for exact wave mechanics.
 
 ## Home mobile
 
-Mobile is separately art-directed from desktop and is now layered on the Phase 3 branch.
+Mobile is separately art-directed from desktop and the accepted layered implementation is merged from Phase 3.
 
 Current behavior:
 - uses `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
@@ -167,7 +168,7 @@ Current behavior:
 - box remains interactive via tap;
 - normal, compact, short, and tall mobile Playwright variants exist.
 
-Broad phone and PC visual review passed, with two final finishing corrections remaining: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Speed, large-wave concentration, density structure, and desktop behavior remain accepted; final-head verification and USER visual re-review remain pending. Frame A is retained as historical fallback/provenance and is superseded for the active mobile background by this implementation once the phase is accepted.
+Broad phone and PC visual review passed, and the final yellow/orange Wave 03 accent and QISKIT readability corrections were accepted with Phase 3. Speed, large-wave concentration, density structure, and desktop behavior remain accepted. Frame A is retained as historical fallback/provenance and is superseded for the active mobile background.
 
 ## Schrödinger box — current implementation
 
@@ -340,32 +341,31 @@ Therefore deterministic screenshots can prove final closed/revealed composition 
 - normal-motion float feel;
 - perceived performance during the transition.
 
-The accepted desktop layered wave system, 640ms phase-split reveal, and two-endpoint idle float are locked. Broad phone and PC review passed; the two narrow mobile/title finishing corrections remain pending final-head verification and USER re-review.
+The accepted desktop layered wave system, 640ms phase-split reveal, two-endpoint idle float, and Phase 3 mobile layered composition are locked. Phase 4 now moves the reviewed Master Navigator to one persistent site-level instance while preserving its existing appearance and Home footprint.
 
-## Immediate next action for Phase 3
+## Immediate next action for Phase 4
 
-First re-read the live Phase 3 PR head, final-head CI, and immutable preview, then have the USER inspect the mobile composition across the existing portrait variants:
+First re-read the live Phase 4 PR head, final-head CI, and immutable preview, then have the USER inspect the persistent Navigator across the existing desktop and portrait variants:
 
 The final preview URL must be taken from the new exact-head Actions run.
 
 USER should judge:
-1. does mobile feel like the same probability-field system as desktop while remaining portrait-specific?
-2. do waves emerge from and disappear beneath the irregular boundary naturally?
-3. are density, depth, vertical coverage, speed, and reset concealment appropriate?
-4. do normal, compact, short, and tall portrait layouts remain readable and overflow-free?
-5. do hover/focus/click/tap and the accepted box alignment remain correct?
-6. does reduced motion leave an intentional static composition?
-7. are the accepted desktop waves and box motion unchanged?
+1. does the Navigator remain fixed at the reviewed desktop/mobile top position?
+2. does the Home identity/copy/box composition retain its prior footprint?
+3. do normal, compact, short, and tall portrait layouts remain readable and overflow-free?
+4. do all three routes expose exactly one Navigator with the correct active state?
+5. do keyboard focus, skip-link behavior, and reduced motion remain intentional?
+6. are the accepted desktop/mobile waves, title, and box behavior unchanged?
 
 If the USER finds a problem:
-- translate only that problem into one bounded correction on the same Phase 3 PR;
+- translate only that problem into one bounded correction on the same Phase 4 PR;
 - preserve the accepted desktop wave and box locks;
 - verify the new final head again.
 
 If all visual checks pass:
 - Orchestrator re-checks exact live PR head and final-head CI;
 - USER must explicitly approve/authorize merge;
-- squash-merge the Phase 3 PR only then;
+- squash-merge the Phase 4 PR only then;
 - verify new `main` SHA;
 - update durable docs for the merged state.
 

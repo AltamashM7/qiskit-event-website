@@ -14,7 +14,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Final page count/content is intentionally not finalized.
 - Major pages begin with a large visual Stage.
 - Detailed content appears below the Stage.
-- Every Stage contains a shared reusable Master Navigator.
+- Every major page participates in the shared reusable Master Navigator architecture.
 - Master Navigator V1 uses stylized horizontal buttons/links.
 - Filler content may be used during development if it reads like plausible student-academic event copy and is not presented as confirmed event fact.
 
@@ -50,7 +50,14 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Larger/broader wave families remain behind smaller/thinner/dashed waves.
 - The dominant translucent ribbon is intentionally vertically broad (currently about 220% width, 500% height, 0.5 opacity, z-index 0).
 - Desktop wave reset/spawn must remain hidden beneath the irregular neutral overlay and emerge through the boundary rather than appear inside the yellow region.
-- Mobile remains separately art-directed from desktop; Frame A is retained as historical fallback while the Phase 3 portrait layered implementation is reviewed.
+- Mobile remains separately art-directed from desktop; Frame A is retained as historical fallback while the accepted Phase 3 portrait layered implementation remains the active mobile background.
+
+### Phase 4 persistent shared Master Navigator
+
+- `SiteLayout` renders exactly one shared `MasterNavigator` per route; individual Stages do not render duplicate Navigator instances.
+- The reviewed Navigator visual design and exact fixed desktop/mobile position are USER-approved: near the existing desktop top-center gutter and near the existing one-rem mobile top gutter.
+- The Navigator keeps the current labels, routes, active state, three-column mobile presentation, keyboard behavior, and reduced-motion behavior.
+- Home reserves the former Navigator row height to preserve the accepted initial composition footprint.
 
 ### Animation / performance
 
@@ -102,7 +109,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Production hosting is likely to remain Cloudflare Pages, but the production release path/hostname is not established.
 - Codex Luna is the current preferred repository-native Builder for bounded implementation work.
 - PR #8’s restrained transform+opacity Schrödinger “phase split” and simple two-endpoint `ease-in-out` alternate transform-only idle float are accepted and locked by the USER.
-- Phase 3 mobile layering uses the USER-created/verified `home-mobile-layered-base-v1.png` and `home-mobile-layered-overlay-v1.png` with its own responsive portrait wave configuration. Broad phone and PC visual review passed; the previous warm direction and subsequent blue/cyan experiment were rejected, so the current correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave families 03–06 from four to eight instances each, and adds the matching QISKIT title backing, with final visual re-review pending.
+- Phase 3 mobile layering uses the USER-created/verified `home-mobile-layered-base-v1.png` and `home-mobile-layered-overlay-v1.png` with its own responsive portrait wave configuration. Broad phone and PC visual review passed; the previous warm direction and subsequent blue/cyan experiment were rejected, and the final correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave families 03–06 from four to eight instances each, and adds the matching QISKIT title backing. The Phase 3 mobile visual system is accepted and locked.
 - A single primary implementation owner should handle the first representative visual composition; specialist agents may review architecture, responsiveness, accessibility, testing, or performance.
 - About Event may use a stylized qubit as its primary Stage subject.
 - About Quantum Mechanics may use a Schrödinger's-cat wanted poster plus a lower qubit/measurement feature scene.
