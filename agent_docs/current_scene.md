@@ -2,15 +2,17 @@
 
 ## Status
 
-This file records the current Home Stage scene on the Phase 3 mobile layered-background branch.
+This file records the current accepted Home Stage scene and the Phase 4 shared Navigator boundary.
 
 Desktop layered-background visuals are USER accepted.
 
-PR #8 was accepted and squash-merged into `main` at:
+PR #9 was accepted and squash-merged into `main` at:
 
-`6f515d7ffd238519b9b44117942316874469142e`
+`003d58e7d328fb539a5690b9e4fa86232e7eab0c`
 
-Desktop layered background, the 640ms reveal, and the two-endpoint box float are USER accepted and locked. Broad phone and PC visual review passed; the previous warm direction and subsequent blue/cyan experiment were rejected, so this Phase 3 correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and improves QISKIT title readability, with final-head verification and USER visual re-review pending.
+Desktop layered background, the 640ms reveal, the two-endpoint box float, and the Phase 3 mobile layered composition are USER accepted and locked. The previous warm direction and subsequent blue/cyan experiment were rejected; the accepted Phase 3 correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and improves QISKIT title readability.
+
+Phase 4 moves the reviewed Master Navigator to one persistent site-level instance with the USER-approved fixed desktop/mobile position. The current Phase 4 implementation remains pending USER visual acceptance.
 
 ## Desktop Home composition
 
@@ -234,7 +236,7 @@ Mobile overlay:
 
 The base and overlay are the same `841 × 1870` portrait composition and use responsive `cover` sizing within the Stage.
 
-## Mobile layered probability field — Phase 3 / accent-and-title finishing correction pending
+## Mobile layered probability field — Phase 3 / accepted and locked
 
 - 44 mobile instances are configured independently from the accepted 20-instance desktop layout.
 - Mobile wave durations are halved and corresponding negative delays are phase-preserved; the current duration range is approximately `4.05–7.8s`.
@@ -404,4 +406,12 @@ USER accepted desktop background:
 
 The 640ms phase-split reveal, simple two-endpoint 3.1s alternate box float, and desktop layered waves are USER accepted and locked.
 
-The Phase 3 mobile layered composition is implemented. Broad phone and PC visual review passed, with two final finishing corrections remaining: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Speed, large-wave concentration, and desktop behavior remain accepted; the exact-head preview must be re-read from the Phase 3 GitHub Actions run before final USER review.
+The Phase 3 mobile layered composition is implemented and accepted. Broad phone and PC visual review passed, including the original yellow/orange Wave 03 small-wave family and QISKIT readability correction. Speed, large-wave concentration, and desktop behavior remain accepted. The exact Phase 3 result is merged into `main`.
+
+## Phase 4 persistent shared Master Navigator
+
+- `SiteLayout` renders exactly one `MasterNavigator` per route.
+- Home, About Event, and About Quantum Mechanics no longer render Stage-owned Navigator copies; `StageShell` retains its generic empty navigation slot for future flexibility.
+- The Navigator keeps its current paper/off-white rectangle, compact desktop strip, three-column mobile presentation, labels, routes, active state, keyboard behavior, and reduced-motion behavior.
+- It is fixed near the reviewed top-center desktop gutter and near the reviewed one-rem mobile gutter on portrait layouts, without scroll morphing or scroll listeners.
+- Home reserves the former Navigator row height so the accepted identity/copy/box composition does not shift.

@@ -335,7 +335,7 @@ test('Mobile flow keeps navigation, identity, copy, and subject separated', asyn
     };
 
     return {
-      nav: rect('#home-stage .stage-shell__navigation'),
+      nav: rect('.site-master-navigation'),
       kicker: rect('.home-stage__kicker'),
       title: rect('.home-stage__title'),
       lede: rect('.home-stage__lede'),

@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase: Phase 3 mobile layered Home accent/title finishing correction; final-head verification and USER re-review pending**
+**Phase: Phase 4 persistent shared Master Navigator; USER visual acceptance pending**
 
 Repository:
 
@@ -10,13 +10,13 @@ Repository:
 
 Current verified main baseline:
 
-`6f515d7ffd238519b9b44117942316874469142e`
+`003d58e7d328fb539a5690b9e4fa86232e7eab0c`
 
 Branch:
 
-`phase-3/home-mobile-layered-integration`
+`phase-4/persistent-master-navigator`
 
-PR: [Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9).
+PR #9 was accepted and squash-merged. The Phase 4 Draft PR is opened from the current branch after implementation.
 
 PR #8 was accepted and squash-merged into `main`.
 
@@ -136,9 +136,9 @@ Unchanged:
 - mobile tap;
 - ARIA.
 
-## Phase 3 mobile layered Home background
+## Phase 3 mobile layered Home background — accepted and merged
 
-Current branch:
+Source branch:
 `phase-3/home-mobile-layered-integration`
 
 Implementation:
@@ -153,7 +153,16 @@ Implementation:
 - the previous warm direction and subsequent blue/cyan experiment are superseded; opacity, scale, depth, count, overlap, and motion now provide mobile hierarchy;
 - desktop layered wave behavior and accepted box idle/reveal behavior were not retuned.
 
-Broad phone and PC visual review passed for speed, large-wave concentration, and the portrait composition. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected; two final finishing corrections remain: restore the original yellow/orange Wave 03 small-wave family and improve QISKIT readability with the existing EVENT-style backing. Final-head CI/preview verification and USER visual re-review remain pending across the existing portrait variants. Frame A remains historical fallback/provenance rather than the active mobile layered background on this branch.
+Broad phone and PC visual review passed for speed, large-wave concentration, and the portrait composition. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected; the final yellow/orange Wave 03 small-wave family and QISKIT readability corrections were accepted. Frame A remains historical fallback/provenance rather than the active mobile layered background.
+
+## Phase 4 persistent shared Master Navigator
+
+- The reviewed Master Navigator visual design is accepted, including its paper/off-white rectangle, compact desktop strip, and current three-column mobile presentation.
+- `SiteLayout` renders exactly one shared `MasterNavigator` per route at a fixed position near the existing desktop/mobile top gutter.
+- Home, About Event, and About Quantum Mechanics no longer render Stage-owned Navigator copies; `StageShell` retains its generic navigation slot for future flexibility.
+- Labels, routes, active state, keyboard behavior, skip-link behavior, and reduced-motion behavior remain unchanged.
+- Home reserves the former Navigator row height so the accepted identity/copy/box composition footprint is preserved.
+- Phase 4 implementation remains pending USER visual acceptance.
 
 ## Previous final-head verification
 
@@ -184,18 +193,18 @@ Immutable preview:
 
 No production deployment.
 
-## Remaining for Phase 3 acceptance
+## Remaining for Phase 4 acceptance
 
-Only the current Phase 3 accent/title correction verification and subjective mobile re-review remain:
-- mobile wave density, portrait balance, and boundary emergence;
-- normal/compact/short/tall portrait layout safety;
-- reduced-motion composition and performance;
-- desktop non-regression.
+Only the Phase 4 exact-head CI/preview verification and subjective persistent-Navigator re-review remain:
+- fixed desktop/mobile position and stable scroll behavior;
+- Home initial composition footprint and overflow safety;
+- exactly one Navigator with correct active state on all three routes;
+- skip-link, keyboard, reduced-motion, and accepted Home visual non-regression.
 
 Then:
 - final exact-head Orchestrator recheck;
-- explicit USER merge approval;
-- squash merge the Phase 3 PR;
+- explicit USER visual acceptance and merge approval;
+- squash merge the Phase 4 PR;
 - verify main;
 - docs refresh.
 

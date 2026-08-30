@@ -30,43 +30,7 @@
 
 #home-stage .stage-shell__navigation {
   grid-area: navigation;
-  z-index: 3;
-  justify-self: center;
-  width: fit-content;
-  max-width: 100%;
-  padding: 0.35rem;
-  border: 1px solid rgba(17, 24, 32, 0.22);
-  background: rgba(247, 247, 245, 0.88);
-  box-shadow: 0 0.35rem 0 rgba(17, 24, 32, 0.12);
-}
-
-#home-stage .master-navigator__list {
-  justify-content: center;
-  gap: 0.25rem;
-}
-
-#home-stage .master-navigator__link {
-  padding: 0.62rem 0.9rem 0.56rem;
-  color: var(--home-ink);
-  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
-  font-size: clamp(0.65rem, 0.72vw, 0.8rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition:
-    color var(--motion-duration-short) var(--motion-easing-standard),
-    background-color var(--motion-duration-short) var(--motion-easing-standard);
-}
-
-#home-stage .master-navigator__link:hover {
-  background: var(--home-yellow);
-}
-
-#home-stage .master-navigator__link[aria-current='page'] {
-  background: var(--home-ink);
-  color: var(--home-paper);
+  min-height: calc(0.7rem + 2px + 1.18rem + clamp(0.65rem, 0.72vw, 0.8rem));
 }
 
 #home-stage .stage-shell__identity {
@@ -626,27 +590,7 @@
   }
 
   #home-stage .stage-shell__navigation {
-    justify-self: stretch;
-    width: 100%;
-  }
-
-  #home-stage .master-navigator__list {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 0.2rem;
-  }
-
-  #home-stage .master-navigator__link {
-    display: flex;
-    min-height: 2.65rem;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0.35rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.03em;
-    line-height: 1.15;
-    text-align: center;
+    min-height: calc(0.7rem + 2px + 2.65rem);
   }
 
   #home-stage .stage-shell__identity {

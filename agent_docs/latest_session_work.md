@@ -14,21 +14,19 @@ Repository:
 
 `https://github.com/AltamashM7/qiskit-event-website`
 
-PR:
-
-[Draft PR #9](https://github.com/AltamashM7/qiskit-event-website/pull/9) for `phase-3/home-mobile-layered-integration`.
+PR #9 was accepted and squash-merged. The current bounded phase is Phase 4: Persistent Shared Master Navigator.
 
 Branch:
 
-`phase-3/home-mobile-layered-integration`
+`phase-4/persistent-master-navigator`
 
 Current verified main baseline:
 
-`6f515d7ffd238519b9b44117942316874469142e`
+`003d58e7d328fb539a5690b9e4fa86232e7eab0c`
 
 PR #8 was accepted and squash-merged into `main`.
 
-The Phase 3 mobile layered implementation passed broad phone and PC visual review for speed and large-wave concentration; the previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected, so the current same-PR correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, and improves QISKIT readability pending final USER re-review.
+The Phase 3 mobile layered implementation passed broad phone and PC visual review for speed and large-wave concentration; the previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected, and the final yellow/orange Wave 03 accent/title correction was accepted. The desktop and mobile visual systems are now locked after PR #9 merged.
 
 ## Desktop layered background result
 
@@ -47,7 +45,7 @@ Accepted:
 
 Wave system is locked.
 
-## Current Phase 3 mobile layered background
+## Accepted Phase 3 mobile layered background
 
 The current branch adds a separately art-directed portrait composition using:
 - `public/assets/home/mobile-layered/home-mobile-layered-base-v1.png`;
@@ -56,7 +54,16 @@ The current branch adds a separately art-directed portrait composition using:
 - The original yellow/orange Wave 03 small-wave family is restored; all other active mobile wave visuals are white, using five mobile-only white variants plus shared white dashed deliveries. Primary thick waves are strongest, secondary thick waves use reduced opacity, the broad Wave 08 family retains lower atmospheric opacity, and smaller families use graduated opacity.
 - Thin/dashed small-wave families 03–06 are doubled from four to eight instances each with staggered positions and delays.
 
-Desktop base/overlay assets are isolated from mobile, and the previous mobile color variants are superseded. Broad phone and PC review passed for speed and large-wave concentration, but the warm direction and subsequent blue/cyan experiment were rejected, so the Wave 03 accent restoration and QISKIT title-readability correction await final-head verification and USER re-review. Master Navigator refinement remains a later separate phase.
+Desktop base/overlay assets are isolated from mobile, and the previous mobile color variants are superseded. Broad phone and PC review passed for speed and large-wave concentration, and the Wave 03 accent restoration and QISKIT title-readability correction were accepted. Master Navigator persistence is the current separate Phase 4.
+
+## Current Phase 4 persistent shared Master Navigator
+
+- `SiteLayout` renders exactly one `MasterNavigator` per route.
+- Home, About Event, and About Quantum Mechanics no longer render Stage-owned Navigator copies; the generic `StageShell` navigation slot remains available.
+- The reviewed Navigator visual design, labels, routes, active state, keyboard behavior, and reduced-motion behavior are preserved.
+- The Navigator is fixed near the existing desktop/mobile top gutter with no scroll morphing or scroll listeners.
+- Home reserves the former Navigator row height to preserve its accepted initial composition footprint.
+- Phase 4 remains pending USER visual acceptance.
 
 Technical regression guards retain:
 - actual effective velocity measurement;
@@ -164,17 +171,17 @@ The USER found that the prior idle path visibly moved, paused, and changed direc
 - reveal starting at `translate3d(0.65%, -0.65%, 0) scale(1.006)`;
 - the existing reveal-image calibration and interaction state machine unchanged.
 
-The desktop layered wave system, box float, and reveal remain USER accepted and locked after PR #8 merged. The current Phase 3 mobile accent/title finishing correction requires its own final-head CI verification and USER re-review.
+The desktop layered wave system, box float, reveal, and Phase 3 mobile layered composition remain USER accepted and locked after PR #9 merged. The current Phase 4 persistent Navigator requires final-head CI/preview verification and USER visual re-review.
 
 ## Immediate continuation
 
-A fresh Orchestrator should first re-read the live Phase 3 PR head and final-head CI/preview.
+A fresh Orchestrator should first re-read the live Phase 4 PR head and final-head CI/preview.
 
 First:
-1. inspect the live Phase 3 PR;
+1. inspect the live Phase 4 PR;
 2. inspect exact current head;
 3. inspect the mobile layered preview across representative portrait variants;
-4. have USER judge the mobile composition, motion, and boundary emergence;
+4. have USER judge the persistent Navigator across desktop and portrait composition, motion, and boundary preservation;
 5. if USER finds an issue, one bounded same-PR correction;
 6. if USER passes all visual checks, re-check head/CI and require explicit merge approval;
 7. squash merge only after approval;

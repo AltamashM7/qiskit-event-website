@@ -87,11 +87,11 @@ Mobile may legitimately change:
 
 The Astro implementation architecture is established and Home Composition V1 is merged.
 
-The current bounded phase is the new Phase 3 mobile layered-background integration branch. PR #8 has been accepted and squash-merged into `main` at `6f515d7ffd238519b9b44117942316874469142e`. The accepted desktop layered Home probability field, 640ms phase split, and two-endpoint box float remain locked; broad phone and PC visual review passed for the separately art-directed mobile base/overlay, speed, and large-wave concentration. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment were rejected, so the current correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, and adds the matching QISKIT title backing pending final visual re-review.
+PR #9 has been accepted and squash-merged into `main` at `003d58e7d328fb539a5690b9e4fa86232e7eab0c`. The accepted desktop layered Home probability field, 640ms phase split, two-endpoint box float, and separately art-directed mobile base/overlay remain locked; broad phone and PC visual review passed for the mobile speed, large-wave concentration, final yellow/orange Wave 03 accent, and QISKIT title readability. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment remain rejected.
 
-Mobile now uses the Phase 3 portrait layered composition on this branch and does not load desktop base/overlay assets. Frame A remains historical fallback/provenance.
+The current bounded phase is Phase 4, `phase-4/persistent-master-navigator`: `SiteLayout` renders one persistent shared Master Navigator per route, while Home and the neutral route shells retain their existing accepted composition/content. The Navigator’s reviewed visual design and exact fixed desktop/mobile position are USER-approved; Phase 4 remains pending USER visual acceptance. Frame A remains historical fallback/provenance.
 
-After Phase 3 is accepted and merged, continue through separately bounded Home-polish, About-page, content/branding, performance, and production phases.
+After Phase 4 is accepted and merged, continue through separately bounded Home-polish, About-page, content/branding, performance, and production phases.
 
 Primary continuation docs:
 - `agent_docs/orchestrator_handoff.md`
