@@ -2,13 +2,13 @@
 
 ## Current status
 
-**Phase: requirements/content architecture reconciled; formal visual grammar discussion pending before implementation**
+**Phase: formal content architecture and formal visual grammar resolved; documentation merge pending before first formal implementation phase**
 
 Repository:
 `https://github.com/AltamashM7/qiskit-event-website`
 
-Current main before the documentation update:
-`2b62d90b127e5987f6c284373efde476d73b2a4a`
+Current authoritative `main` before this documentation PR:
+`80e392da520eb99d32a0fd7a2b1dedf44a8f8b1a`
 
 No active implementation phase.
 
@@ -21,30 +21,41 @@ No active implementation phase.
 - Mobile layered Home system.
 - Persistent shared Master Navigator.
 
-## Newly approved planning decisions
+## Approved planning state
 
 - Target site map: Home / Schedule / Speakers.
 - About Event and About Quantum Mechanics are no longer target tabs.
-- Dummy data will use the real intended content format for review.
+- Realistic dummy data will use the final intended content format for review.
 - Every route retains a unique hero/Stage.
 - Formal content beneath heroes is mostly static.
-- Formal sections will not require new generated visual assets.
-- Home formal architecture is approved at the structural level.
-- Shared formal grammar should be reusable on Schedule/Speakers where relevant.
+- Formal sections do not require newly generated visual assets.
+- Home formal architecture is approved.
+- Shared formal grammar will be reused on Schedule/Speakers where relevant.
+- The USER delegated remaining formal visual choices to the Orchestrator.
 
-## Current open gate
+## Formal visual grammar — resolved
 
-Lock the formal visual grammar:
+See:
+`agent_docs/formal_visual_system.md`
+
+Resolved:
 - Stage transition;
-- surface/background;
-- grid;
+- formal surface;
+- content grid;
+- typography hierarchy;
 - section headers/numbering;
 - borders/dividers;
 - accent usage;
-- CTAs;
+- CTA language;
 - micro-interactions;
-- spacing;
-- mobile collapse;
+- section rhythm;
+- mobile reflow;
+- Home formal section patterns;
 - footer.
 
-No Luna implementation prompt until USER approval.
+## Next
+
+After this documentation is merged:
+- define the first bounded Luna implementation phase for shared formal primitives + Home below-the-fold dummy-content architecture;
+- keep accepted Home Stage systems locked;
+- do not begin Schedule/Speakers hero art implementation in the same phase unless separately authorized.
