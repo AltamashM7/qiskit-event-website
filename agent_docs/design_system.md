@@ -184,6 +184,32 @@ Reduced motion:
 - remove phase displacement/scale;
 - keep interactions understandable and final states deterministic.
 
+## Formal information system — approved direction
+
+Below each page-specific hero/Stage, the site shifts into a calmer editorial information mode.
+
+Locked direction:
+- mostly static;
+- no new generated visual assets for formal sections;
+- use typography, spacing, borders/dividers, section numbering, CSS-only accent states, and layout to preserve identity;
+- retain off-white/ink foundations and restrained page accent usage;
+- avoid generic dashboard/card-grid styling where divided editorial rows communicate the information better;
+- avoid carrying the full moving Stage background through long-form information;
+- small transform/color hover and focus responses are acceptable when restrained;
+- Schedule and Speakers inherit the formal grammar but keep their own unique hero art direction.
+
+Still open:
+- exact Stage-to-formal transition;
+- exact formal surface/background treatment;
+- content grid/max width;
+- section numbering/header treatment;
+- border/divider language;
+- amount of yellow retained below Home;
+- CTA/button treatment;
+- spacing rhythm;
+- mobile formal-layout collapse;
+- footer treatment.
+
 ## Branding
 
 Assume eventual requirements for:
