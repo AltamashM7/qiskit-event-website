@@ -7,11 +7,15 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 ### Product / information architecture
 
 - The project is a new Qiskit event website.
-- Initial prototype pages:
+- The current approved target site map is:
   - Home
-  - About Event
-  - About Quantum Mechanics
-- Final page count/content is intentionally not finalized.
+  - Schedule
+  - Speakers
+- The previous About Event and About Quantum Mechanics prototype route shells are superseded as the target site map; they remain implemented only until a bounded route/content phase replaces them.
+- An additional informational/educational route remains optional and requires later USER discussion.
+- Review will use realistic dummy event data in the final intended content format before real event facts are inserted.
+- Avoid Lorem ipsum where realistic dummy review copy can show the intended finished content shape.
+- Dummy content must not fabricate corporate sponsorship, partnership, official IBM speakers, or other real-world brand relationships.
 - Major pages begin with a large visual Stage.
 - Detailed content appears below the Stage.
 - Every major page participates in the shared reusable Master Navigator architecture.
@@ -59,6 +63,17 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - The Navigator keeps the current labels, routes, active state, three-column mobile presentation, keyboard behavior, and reduced-motion behavior.
 - PR #10 was USER accepted and squash-merged into `main` at `5dcffb25ac7253ddacc0101e7b63212c30dd01ce`.
 - Home reserves the former Navigator row height to preserve the accepted initial composition footprint.
+
+### Formal content system
+
+- Every major route keeps a unique art-directed Stage/hero followed by calmer formal information.
+- Visual assets are reserved for hero/Stage systems; formal sections do not require newly generated visual assets.
+- Formal content is mostly static and prioritizes readability and weak-device performance.
+- Shared formal structure should be reusable across Home, Schedule, and Speakers where relevant without making the pages visual clones.
+- Home formal architecture is: Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers + Registration → Footer.
+- Schedule formal architecture is a readable program/timeline after its unique hero.
+- Speakers formal architecture is a readable speaker directory after its unique hero.
+- The formal visual grammar is not yet fully locked; Stage-to-content transition, grid, borders/dividers, accent usage, CTA styling, spacing, mobile collapse rules, and footer treatment remain to be discussed before implementation.
 
 ### Animation / performance
 
