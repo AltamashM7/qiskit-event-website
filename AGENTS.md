@@ -11,12 +11,14 @@ The site should feel closer to an expressive game menu / animated visual experie
 When deciding what is currently implemented or approved, use this order:
 
 1. Current repository code, configuration, committed assets, tests, and GitHub state.
-2. `agent_docs/decisions.md` for durable product/design decisions.
-3. `agent_docs/design_system.md` for the approved visual language.
-4. `ASSET_REGISTRY.md` for approved asset identities/status.
-5. `agent_docs/orchestrator_handoff.md`, `agent_docs/current_scene.md`, `agent_docs/next_steps.md`, and `agent_docs/roadmap.md` for restart/current-state context.
-6. `agent_docs/project_progress.md` and `agent_docs/latest_session_work.md` for milestone/session state.
-7. Conversation history only for information not yet captured in the repository.
+2. `agent_docs/official_requirements.md` for supplied Qiskit Fall Fest website/rules requirements and branding constraints.
+3. `agent_docs/decisions.md` for durable product/design decisions.
+4. `agent_docs/design_system.md` for the approved visual language.
+5. `agent_docs/content_architecture.md` for the approved target site map and formal-content structure.
+6. `ASSET_REGISTRY.md` for approved asset identities/status.
+7. `agent_docs/orchestrator_handoff.md`, `agent_docs/current_scene.md`, `agent_docs/next_steps.md`, and `agent_docs/roadmap.md` for restart/current-state context.
+8. `agent_docs/project_progress.md` and `agent_docs/latest_session_work.md` for milestone/session state.
+9. Conversation history only for information not yet captured in the repository.
 
 If conversation history conflicts with the repository or durable docs, prefer the repository and current durable docs.
 
@@ -25,11 +27,13 @@ If conversation history conflicts with the repository or durable docs, prefer th
 - Major pages begin with a large visual Stage, approximately viewport-sized.
 - Detailed information appears below the Stage.
 - Every major route participates in one persistent, reusable site-level Master Navigator.
-- Initial prototype pages/tabs:
+- Current approved target pages/tabs (not yet implemented):
   - Home
-  - About Event
-  - About Quantum Mechanics
-- Page count and final event content are not finalized; the architecture must support easy addition/removal/reordering.
+  - Schedule
+  - Speakers
+- The previously implemented About Event and About Quantum Mechanics route shells are superseded as the target site map and should be replaced only in a bounded implementation phase.
+- An informational/educational route may be added later only after USER discussion.
+- Page architecture must continue to support easy addition/removal/reordering.
 - Filler copy may be used during development, but it should read like plausible student-academic event copy and must not fabricate confirmed event facts.
 - Content structure may take inspiration from the 2025 Qiskit event site, but UI/UX must be original:
   - https://qiskit.cs.uwindsor.ca/
@@ -159,6 +163,8 @@ Before implementation:
    - `agent_docs/next_steps.md`
    - `agent_docs/roadmap.md`
    - `agent_docs/project_overview.md`
+   - `agent_docs/official_requirements.md`
+   - `agent_docs/content_architecture.md`
    - `agent_docs/design_system.md`
    - `agent_docs/decisions.md`
    - `agent_docs/project_progress.md`
