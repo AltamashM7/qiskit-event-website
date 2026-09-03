@@ -73,7 +73,9 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Home formal architecture is: Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers + Registration → Footer.
 - Schedule formal architecture is a readable program/timeline after its unique hero.
 - Speakers formal architecture is a readable speaker directory after its unique hero.
-- The formal visual grammar is not yet fully locked; Stage-to-content transition, grid, borders/dividers, accent usage, CTA styling, spacing, mobile collapse rules, and footer treatment remain to be discussed before implementation.
+- The formal visual grammar is locked by USER delegation to the Orchestrator; detailed implementation rules live in `agent_docs/formal_visual_system.md`.
+- Formal direction: research-editorial / technical-poster, continuous paper surface, ~1180px editorial grid, print-like rules, restrained accent use, square technical CTAs, mostly static behavior, responsive reflow, dark ink footer.
+- Formal sections do not use newly generated visual assets; dummy speaker presentation must not depend on portraits.
 
 ### Animation / performance
 
@@ -127,8 +129,6 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - PR #8’s restrained transform+opacity Schrödinger “phase split” and simple two-endpoint `ease-in-out` alternate transform-only idle float are accepted and locked by the USER.
 - Phase 3 mobile layering uses the USER-created/verified `home-mobile-layered-base-v1.png` and `home-mobile-layered-overlay-v1.png` with its own responsive portrait wave configuration. Broad phone and PC visual review passed; the previous warm direction and subsequent blue/cyan experiment were rejected, and the final correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave families 03–06 from four to eight instances each, and adds the matching QISKIT title backing. The Phase 3 mobile visual system is accepted and locked.
 - A single primary implementation owner should handle the first representative visual composition; specialist agents may review architecture, responsiveness, accessibility, testing, or performance.
-- About Event may use a stylized qubit as its primary Stage subject.
-- About Quantum Mechanics may use a Schrödinger's-cat wanted poster plus a lower qubit/measurement feature scene.
 - Page-specific accents other than Home remain to be chosen.
 
 ## OPEN
@@ -146,6 +146,8 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Exact Builder route/workflow.
 
 ## SUPERSEDED / DO NOT REVIVE WITHOUT DISCUSSION
+
+- About Event and About Quantum Mechanics as current target navigation destinations; the approved target is Home / Schedule / Speakers.
 
 - Explicit “Find Out” text/CTA for the Schrödinger interaction.
 - Hover-only interaction with no tap/click/focus fallback.
