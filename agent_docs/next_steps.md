@@ -4,28 +4,27 @@
 
 There is no active implementation phase.
 
-Current authoritative implementation baseline remains:
-`2b62d90b127e5987f6c284373efde476d73b2a4a`
+Current authoritative `main` before this documentation PR:
+`80e392da520eb99d32a0fd7a2b1dedf44a8f8b1a`
 
 The accepted Home Stage and persistent Master Navigator remain locked.
 
-## Newly approved planning direction
+## Approved target
 
-Target site map:
+Site map:
 - Home
 - Schedule
 - Speakers
 
-Content strategy:
-- realistic dummy data in the final intended format for review;
-- real event data inserted later;
-- do not fabricate corporate/sponsorship/partnership claims.
+Review content:
+- realistic dummy data in the final intended format;
+- real content later;
+- no fabricated corporate/sponsorship/partnership claims.
 
 Page model:
-- unique art-directed hero/Stage on every major route;
-- mostly-static formal content beneath;
-- no newly generated visual assets for formal sections;
-- reusable formal grammar across relevant parts of all three routes.
+- unique hero/Stage per route;
+- mostly-static formal content;
+- no newly generated formal-section visual assets.
 
 Home formal architecture:
 1. Event Snapshot
@@ -36,21 +35,39 @@ Home formal architecture:
 6. Organizers + Registration
 7. Footer
 
-## Next discussion — formal visual grammar
+## Formal visual system — resolved
 
-Before any Luna implementation prompt, decide with the USER:
-- Stage-to-formal transition;
-- formal surface/background treatment;
-- content max-width/grid;
-- section header + numbering treatment;
-- border/divider language;
-- Home yellow-accent usage below the Stage;
-- CTA/button treatment;
-- restrained hover/focus micro-interactions;
-- section spacing/rhythm;
-- mobile collapse rules;
-- footer treatment.
+The USER delegated the remaining formal visual decisions to the Orchestrator.
 
-After those are approved, define the first bounded implementation phase.
+The resolved system is authoritative in:
+`agent_docs/formal_visual_system.md`
 
-Do not begin Schedule/Speakers hero implementation yet unless the USER explicitly chooses that sequencing.
+Core direction:
+- research-editorial / technical-poster;
+- hard Stage→formal handoff;
+- paper/off-white continuous surface;
+- ~1180px 12-column desktop grid;
+- clean sans-serif + monospace metadata;
+- print-like 1px/2px divider hierarchy;
+- restrained page-accent usage;
+- square technical CTAs;
+- mostly static interactions;
+- responsive reflow;
+- dark ink footer.
+
+## Next bounded phase after this documentation is merged
+
+Prepare a Luna implementation brief for the **first formal-content implementation phase**.
+
+Recommended scope:
+- shared formal shell/primitives required by Home;
+- Home below-the-fold sections using realistic dummy data;
+- responsive/mobile behavior;
+- no Schedule/Speakers hero implementation yet;
+- no new generated visual assets;
+- preserve accepted Home Stage and current persistent Navigator behavior;
+- route migration to Home/Schedule/Speakers may either be included only if it remains safely bounded or kept as the immediately following phase.
+
+Before implementation, re-read live GitHub and the merged documentation head.
+
+Production remains out of scope.
