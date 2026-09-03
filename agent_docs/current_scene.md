@@ -2,17 +2,15 @@
 
 ## Status
 
-This file records the current accepted Home Stage scene and the Phase 4 shared Navigator boundary.
+This file records the current accepted Home Stage scene and persistent site-level Navigator boundary.
 
-Desktop layered-background visuals are USER accepted.
+Current verified `main` after the USER-approved Phase 4 squash merge:
 
-PR #9 was accepted and squash-merged into `main` at:
+`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
 
-`003d58e7d328fb539a5690b9e4fa86232e7eab0c`
+Desktop layered background, the 640ms reveal, the two-endpoint box float, the Phase 3 mobile layered composition, the restored Wave 03 accent, QISKIT readability backing, and the Phase 4 persistent shared Master Navigator are USER accepted and locked.
 
-Desktop layered background, the 640ms reveal, the two-endpoint box float, and the Phase 3 mobile layered composition are USER accepted and locked. The previous warm direction and subsequent blue/cyan experiment were rejected; the accepted Phase 3 correction restores the original yellow/orange Wave 03 small-wave family, retains white treatment for the other active mobile waves, applies desktop-like opacity hierarchy, doubles the thin/dashed small-wave population, and improves QISKIT title readability.
-
-Phase 4 moves the reviewed Master Navigator to one persistent site-level instance with the USER-approved fixed desktop/mobile position. The current Phase 4 implementation remains pending USER visual acceptance.
+PR #9 and PR #10 are merged. No visual acceptance gate is currently open. The next implementation phase must not be chosen until the USER's newly received official website content and rules/guidelines are ingested and reconciled against the current architecture.
 
 ## Desktop Home composition
 
@@ -408,7 +406,7 @@ The 640ms phase-split reveal, simple two-endpoint 3.1s alternate box float, and 
 
 The Phase 3 mobile layered composition is implemented and accepted. Broad phone and PC visual review passed, including the original yellow/orange Wave 03 small-wave family and QISKIT readability correction. Speed, large-wave concentration, and desktop behavior remain accepted. The exact Phase 3 result is merged into `main`.
 
-## Phase 4 persistent shared Master Navigator
+## Persistent shared Master Navigator — USER ACCEPTED / LOCKED
 
 - `SiteLayout` renders exactly one `MasterNavigator` per route.
 - Home, About Event, and About Quantum Mechanics no longer render Stage-owned Navigator copies; `StageShell` retains its generic empty navigation slot for future flexibility.

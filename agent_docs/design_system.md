@@ -94,15 +94,15 @@ Mobile:
 - likely stack: navigator → event identity/copy → box interaction.
 - do not attempt to preserve desktop side-by-side geometry literally.
 
-## Master Navigator
+## Master Navigator — USER ACCEPTED / LOCKED
 
-V1 presentation:
-- simple stylized horizontal buttons/links,
-- real accessible links/routes underneath,
-- active state visually distinct,
-- upgradeable later without changing route architecture.
+- One persistent site-level Navigator is rendered by `SiteLayout` on every major route.
+- It remains fixed at the approved top-center desktop position and corresponding near-full-width mobile top position while content scrolls.
+- Preserve the accepted paper/off-white rectangular container, subtle structural border, hard downward shadow, compact monospace uppercase labels, black active state, off-white active text, yellow hover treatment, and three-column mobile layout.
+- No scroll morphing, shrinking, hiding, hamburger conversion, or scroll-listener behavior.
+- Real accessible links/routes and route-specific `aria-current="page"` remain mandatory.
 
-Initial entries:
+Current entries:
 - Home
 - About Event
 - About Quantum Mechanics

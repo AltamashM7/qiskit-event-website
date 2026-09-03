@@ -24,7 +24,7 @@ If conversation history conflicts with the repository or durable docs, prefer th
 
 - Major pages begin with a large visual Stage, approximately viewport-sized.
 - Detailed information appears below the Stage.
-- Every major Stage contains a reusable Master Navigator.
+- Every major route participates in one persistent, reusable site-level Master Navigator.
 - Initial prototype pages/tabs:
   - Home
   - About Event
@@ -144,7 +144,8 @@ Exact budgets are still open and must be established before production acceptanc
 - Reusable Stage/layout/navigation boundaries, browser QA, accessibility baseline, and GitHub Actions are established.
 - Home Composition V1 is implemented and merged.
 - The desktop layered Home probability field, 640ms phase-split reveal, and simple two-endpoint alternate box float from merged PR #8 are USER accepted and locked.
-- The current Phase 3 branch implements a separate responsive mobile layered probability field using the USER-verified portrait base/overlay and shared wave masters. Broad phone and PC visual review passed; the current same-PR correction rejects the blue/cyan experiment, restores the original yellow/orange Wave 03 small-wave family while retaining white treatment for the other active mobile waves, and doubles the thin/dashed small-wave population from 16 to 32 (44 total mobile instances). Two final finishing corrections remain under re-review: that accent restoration and QISKIT title readability.
+- The separately art-directed mobile layered Home composition from merged PR #9 is USER accepted and locked: portrait base/overlay, 44 mobile wave instances, restored original yellow/orange Wave 03 accent family, white treatment for the other active mobile waves, desktop-like opacity hierarchy, doubled small-wave population, and QISKIT readability backing.
+- The persistent shared Master Navigator from merged PR #10 is USER accepted and locked: one site-level instance from `SiteLayout`, fixed at the approved desktop/mobile top position, with the existing visual design preserved across Home, About Event, and About Quantum Mechanics.
 - Cloudflare Pages Direct Upload through GitHub Actions is established for PR previews. Production deployment is not established.
 - Codex Luna is the current repository-native Builder for bounded implementation phases; the Web ChatGPT Orchestrator independently verifies and owns acceptance gates.
 

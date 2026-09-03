@@ -32,7 +32,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 
 - Desktop event typography lives on the left.
 - Schrödinger's Box lives on the right.
-- Master Navigator sits top-center in the Stage.
+- Master Navigator is a persistent site-level control fixed at the approved top-center desktop position and corresponding mobile top position; it is not Stage-owned.
 - No explicit “Find Out” or equivalent instructional prompt.
 - Closed box includes `SCHRÖDINGER'S BOX` as the discovery cue.
 - Box receives subtle smooth floating/tilt idle animation.
@@ -52,11 +52,12 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Desktop wave reset/spawn must remain hidden beneath the irregular neutral overlay and emerge through the boundary rather than appear inside the yellow region.
 - Mobile remains separately art-directed from desktop; Frame A is retained as historical fallback while the accepted Phase 3 portrait layered implementation remains the active mobile background.
 
-### Phase 4 persistent shared Master Navigator
+### Persistent shared Master Navigator — merged / locked
 
 - `SiteLayout` renders exactly one shared `MasterNavigator` per route; individual Stages do not render duplicate Navigator instances.
 - The reviewed Navigator visual design and exact fixed desktop/mobile position are USER-approved: near the existing desktop top-center gutter and near the existing one-rem mobile top gutter.
 - The Navigator keeps the current labels, routes, active state, three-column mobile presentation, keyboard behavior, and reduced-motion behavior.
+- PR #10 was USER accepted and squash-merged into `main` at `5dcffb25ac7253ddacc0101e7b63212c30dd01ce`.
 - Home reserves the former Navigator row height to preserve the accepted initial composition footprint.
 
 ### Animation / performance
