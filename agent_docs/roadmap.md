@@ -18,42 +18,63 @@ USER accepted and merged:
 - separately art-directed mobile layered Home composition;
 - persistent shared Master Navigator.
 
-Current verified `main`:
+Current implementation baseline before the next content phase:
+`2b62d90b127e5987f6c284373efde476d73b2a4a`
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
+## Requirements/content reconciliation — completed at planning level
 
-## Current gate — official content and rules reconciliation
+The official kickoff material and approved associate template have been reviewed.
 
-The USER has newly received the overall website content and governing rules/guidelines.
+USER-approved target:
+- Home;
+- Schedule;
+- Speakers;
+- realistic dummy data for review;
+- unique hero/Stage per route;
+- mostly-static formal content;
+- no newly generated visual assets for formal sections.
 
-Before choosing another implementation phase:
-- ingest those materials;
-- determine the authoritative final/required page and section structure;
-- identify confirmed event facts and required branding/content;
-- identify any constraints that supersede provisional roadmap ideas;
-- discuss the resulting architecture and visual implications with the USER.
+See:
+- `agent_docs/official_requirements.md`
+- `agent_docs/content_architecture.md`
 
-No Luna implementation prompt should be generated before that discussion.
+## Current gate — formal visual grammar
 
-## After reconciliation
+Discuss and lock:
+- Stage-to-formal transition;
+- formal surface/background;
+- grid/max-width;
+- section headings/numbering;
+- dividers/borders;
+- accent usage;
+- CTA treatment;
+- spacing/rhythm;
+- mobile collapse;
+- footer.
 
-Possible bounded work may include, depending on the new requirements:
-- Home lower-page information sections;
-- About Event Stage/content;
-- About Quantum Mechanics Stage/content;
-- additional required routes;
-- official branding;
-- schedule/speakers/registration/FAQ/venue/partner modules;
-- content metadata/SEO;
-- accessibility/performance hardening.
+No Luna prompt before USER approval of this grammar.
 
-Do not assume all of these are required.
+## Likely bounded implementation sequence after approval
+
+Exact sequencing still requires USER approval, but the current likely path is:
+
+1. shared formal-content primitives + Home below-the-fold dummy-content architecture;
+2. route/navigation migration from legacy About shells to Schedule/Speakers;
+3. Schedule hero + formal schedule page;
+4. Speakers hero + formal speaker page;
+5. branding/registration-content integration as permitted;
+6. content/SEO/accessibility/performance hardening;
+7. production hostname/release path and final launch QA.
+
+Do not treat this ordering as authorization to implement.
 
 ## Pre-production
 
 Still required before release:
-- authoritative final content;
-- required branding/assets;
+- approved final visual review;
+- real authoritative event content;
+- approved branding assets/usage;
+- real registration destination and required eligibility/photo-release handling;
 - explicit performance budgets/checks;
 - final accessibility and cross-device QA;
 - SEO/canonical/robots/sitemap as appropriate;
