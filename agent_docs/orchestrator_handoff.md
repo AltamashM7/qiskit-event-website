@@ -4,28 +4,24 @@
 
 Primary restart document for a fresh Web ChatGPT Orchestrator.
 
-Do not continue from assumptions about the retired conversation. Re-read live GitHub first, then use these durable docs.
+GitHub and durable docs are authoritative. Do not continue from assumptions about retired conversations.
 
 ## Repository / authoritative state
 
 Repository:
-
 `https://github.com/AltamashM7/qiskit-event-website`
 
 Default branch:
-
 `main`
 
-Current verified main after the Phase 4 squash merge:
+Current main before this documentation PR:
+`2b62d90b127e5987f6c284373efde476d73b2a4a`
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
-
-Recently merged:
-- PR #8 — desktop layered Home / accepted box motion and reveal.
-- PR #9 — mobile layered Home integration and final mobile visual tuning.
-- PR #10 — persistent shared Master Navigator.
-
-No implementation PR is currently active.
+Accepted implementation milestones:
+- PR #8 — desktop layered Home / accepted box motion and reveal;
+- PR #9 — mobile layered Home integration;
+- PR #10 — persistent shared Master Navigator;
+- PR #11 — post-Phase-4 documentation handoff.
 
 Production deployment is not established.
 
@@ -34,6 +30,8 @@ Production deployment is not established.
 1. Inspect live GitHub `main`.
 2. Read:
    - `AGENTS.md`
+   - `agent_docs/official_requirements.md`
+   - `agent_docs/content_architecture.md`
    - `agent_docs/orchestrator_handoff.md`
    - `agent_docs/current_scene.md`
    - `agent_docs/next_steps.md`
@@ -43,68 +41,63 @@ Production deployment is not established.
    - `agent_docs/project_overview.md`
    - `ASSET_REGISTRY.md`
    - `agent_docs/workflow/orchestrator_builder.md`
-3. Receive the USER's newly obtained official website content and rules/guidelines.
-4. Treat those new materials as the authoritative input for content/site requirements, subject to repository constraints and explicit USER decisions.
-5. Reconcile the prototype page model, open roadmap items, and any branding/content assumptions against those materials.
-6. Discuss the resulting information architecture and next phase with the USER.
-7. Do NOT generate a Luna implementation prompt until the USER has discussed and approved the next direction.
+3. Reconcile docs against current code.
+4. Do not generate a Luna implementation prompt until the USER has approved the current design gate.
 
 ## Accepted / locked Home state
 
-Desktop:
-- off-white + electric-yellow layered probability field;
-- 20 accepted wave instances over static base + foreground boundary overlay;
-- accepted density/speed/depth/reset concealment;
-- title/copy left, Schrödinger box right;
-- two-endpoint box float: 3.1s ease-in-out alternate;
-- accepted 640ms transform+opacity reveal;
-- reveal calibration remains `translate(0.993070%, 1.680001%) scale(0.953033, 0.951307)`.
+Desktop/mobile Home probability fields, Schrödinger box placement, idle motion, 640ms reveal, interaction state machine, title treatment, and persistent Navigator positioning remain accepted.
 
-Mobile:
-- separately art-directed portrait base/overlay;
-- 44 total wave instances;
-- small families 03–06 use 8 instances each;
-- Wave 03 retains the original yellow/orange accent;
-- other active mobile wave visuals use the accepted white/opacity hierarchy;
-- current mobile speed, density, boundary emergence, box placement, and QISKIT readability backing are accepted.
+Do not reopen those systems casually.
 
-Do not reopen these systems casually.
+## New USER-approved site/content direction
 
-## Persistent Master Navigator — accepted / locked
+Target major routes:
+- Home;
+- Schedule;
+- Speakers.
 
-- One `MasterNavigator` is rendered by `SiteLayout` on every major route.
-- Home/About Event/About Quantum Mechanics do not render duplicate Stage-owned copies.
-- Fixed viewport position is USER approved: current top-center desktop position and corresponding near-full-width mobile top position.
-- Existing visual design is accepted.
-- It remains visible during scroll with no morphing, resizing, hide/show, or scroll listeners.
-- Labels/routes remain:
-  - Home
-  - About Event
-  - About Quantum Mechanics
-- About routes are still neutral shells apart from the shared Navigator.
+The current About Event and About Quantum Mechanics shells are superseded as the target route model but remain in code until a bounded implementation phase changes them.
 
-## Technical architecture
+Review strategy:
+- use realistic dummy data in the final intended format;
+- replace it with real data after structural/visual approval;
+- do not fabricate corporate relationships or official IBM/Qiskit claims.
 
-- Astro static output + TypeScript + npm + Node 24.
-- Semantic HTML/CSS + minimal native JS.
-- No React/Vue/Svelte/Tailwind/GSAP/UI framework.
-- Playwright Chromium + Axe baseline.
-- GitHub Actions.
-- Cloudflare Pages Direct Upload for PR previews.
-- GitHub is authoritative; Builder reports are not proof.
+Every major page:
+- has its own unique art-directed hero/Stage;
+- transitions into mostly-static formal information;
+- uses no newly generated visual assets in the formal sections.
 
-## Critical next-context fact
+Home formal architecture:
+1. Event Snapshot
+2. About the Event
+3. What You'll Do
+4. Program Preview
+5. Speakers Preview
+6. Organizers + Registration
+7. Footer
 
-The USER now has the overall event website content and the governing website creation rules/guidelines.
+Schedule and Speakers reuse relevant formal grammar, not Home's exact content.
 
-They will provide those materials to the NEW Web Orchestrator.
+## Current decision gate
 
-Do not infer them from older prototype copy, the 2025 reference site, or prior provisional roadmap ideas. Do not begin About-page art direction, Home lower content, branding, or site-map changes before analyzing the new official material with the USER.
+Before implementation, discuss and approve:
+- Stage-to-formal transition;
+- formal background/surface;
+- content grid/max-width;
+- section numbering/header treatment;
+- divider/border system;
+- yellow-accent usage below Home Stage;
+- CTA/button styling;
+- micro-interaction strength;
+- section spacing/rhythm;
+- mobile collapse rules;
+- footer.
 
 ## Workflow
 
 Use:
-
 `bounded phase → Draft PR → CI/preview → Orchestrator independent audit → USER visual/manual QA → explicit merge authorization → squash merge`
 
 Never merge without explicit USER authorization.
