@@ -2,47 +2,49 @@
 
 ## Current status
 
-**Phase: durable handoff complete; awaiting USER-provided official website content and rules/guidelines before planning further implementation**
+**Phase: requirements/content architecture reconciled; formal visual grammar discussion pending before implementation**
 
 Repository:
-
 `https://github.com/AltamashM7/qiskit-event-website`
 
-Current verified `main`:
+Current main before the documentation update:
+`2b62d90b127e5987f6c284373efde476d73b2a4a`
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
+No active implementation phase.
 
-No active implementation PR.
+## Accepted / merged implementation milestones
 
-## Accepted / merged milestones
-
-- Phase 0A1 Astro/static scaffold.
-- Approved Home asset import.
-- Phase 0A2 reusable technical foundation.
+- Astro/static scaffold and reusable technical foundation.
 - Home Composition V1.
-- Layered background asset foundation.
-- PR #8: accepted desktop layered Home field + accepted box motion/reveal.
-- PR #9: accepted mobile layered Home system including final Wave 03 accent/QISKIT correction.
-- PR #10: accepted persistent shared Master Navigator.
+- Desktop layered Home field.
+- Accepted Schrödinger box motion/reveal.
+- Mobile layered Home system.
+- Persistent shared Master Navigator.
 
-## Locked current behavior
+## Newly approved planning decisions
 
-- Desktop Home layered field and wave tuning.
-- Mobile Home portrait composition, 44-wave field, speed/density/opacity hierarchy, Wave 03 accent.
-- Schrödinger box placement, two-endpoint float, 640ms reveal, calibration and interaction state machine.
-- QISKIT/EVENT title treatment.
-- Persistent site-level Master Navigator design and fixed desktop/mobile position.
+- Target site map: Home / Schedule / Speakers.
+- About Event and About Quantum Mechanics are no longer target tabs.
+- Dummy data will use the real intended content format for review.
+- Every route retains a unique hero/Stage.
+- Formal content beneath heroes is mostly static.
+- Formal sections will not require new generated visual assets.
+- Home formal architecture is approved at the structural level.
+- Shared formal grammar should be reusable on Schedule/Speakers where relevant.
 
-## Still open
+## Current open gate
 
-The previous prototype roadmap is now subordinate to the USER's newly obtained official content and website rules/guidelines.
+Lock the formal visual grammar:
+- Stage transition;
+- surface/background;
+- grid;
+- section headers/numbering;
+- borders/dividers;
+- accent usage;
+- CTAs;
+- micro-interactions;
+- spacing;
+- mobile collapse;
+- footer.
 
-The next Orchestrator must ingest those materials before deciding:
-- final page count/site map;
-- lower-page information architecture;
-- About-page roles and visuals;
-- official content;
-- branding;
-- release requirements.
-
-Production is not established.
+No Luna implementation prompt until USER approval.

@@ -2,39 +2,55 @@
 
 ## Current gate
 
-There is no active implementation gate.
+There is no active implementation phase.
 
-Phase 4 was USER visually accepted and PR #10 was squash-merged.
+Current authoritative implementation baseline remains:
+`2b62d90b127e5987f6c284373efde476d73b2a4a`
 
-Current verified `main`:
+The accepted Home Stage and persistent Master Navigator remain locked.
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
+## Newly approved planning direction
 
-Home desktop, Home mobile, Schrödinger interaction, title treatment, and the persistent shared Master Navigator are accepted/locked.
+Target site map:
+- Home
+- Schedule
+- Speakers
 
-## Next action — content/rules intake before implementation
+Content strategy:
+- realistic dummy data in the final intended format for review;
+- real event data inserted later;
+- do not fabricate corporate/sponsorship/partnership claims.
 
-The USER has received:
-- the overall content that must go into the website;
-- the rules/guidelines governing how the website should be created.
+Page model:
+- unique art-directed hero/Stage on every major route;
+- mostly-static formal content beneath;
+- no newly generated visual assets for formal sections;
+- reusable formal grammar across relevant parts of all three routes.
 
-These materials have NOT yet been added to the repository.
+Home formal architecture:
+1. Event Snapshot
+2. About the Event
+3. What You'll Do
+4. Program Preview
+5. Speakers Preview
+6. Organizers + Registration
+7. Footer
 
-The next Web Orchestrator must first:
-1. inspect current GitHub `main`;
-2. receive the new content + rules/guidelines from the USER;
-3. distinguish authoritative requirements from optional/provisional material;
-4. compare them against the current three-route prototype and existing design/technical decisions;
-5. identify required site-map/content/branding/compliance changes;
-6. discuss the revised plan with the USER;
-7. only after USER approval, define the next bounded implementation phase and Luna prompt.
+## Next discussion — formal visual grammar
 
-Do not default automatically to:
-- About Event art direction;
-- About Quantum Mechanics art direction;
-- Home below-the-fold sections;
-- old provisional content structure.
+Before any Luna implementation prompt, decide with the USER:
+- Stage-to-formal transition;
+- formal surface/background treatment;
+- content max-width/grid;
+- section header + numbering treatment;
+- border/divider language;
+- Home yellow-accent usage below the Stage;
+- CTA/button treatment;
+- restrained hover/focus micro-interactions;
+- section spacing/rhythm;
+- mobile collapse rules;
+- footer treatment.
 
-Those decisions must now be informed by the new official material.
+After those are approved, define the first bounded implementation phase.
 
-Production remains unestablished.
+Do not begin Schedule/Speakers hero implementation yet unless the USER explicitly chooses that sequencing.

@@ -2,105 +2,94 @@
 
 ## Project
 
-Frontend-first website for an upcoming Qiskit event.
+Frontend-first website for a Qiskit Fall Fest event.
 
-The exact upcoming event content, final page count, event details, sponsors, venue information, and production branding requirements are not yet finalized.
-
-The website should therefore establish a polished, modular visual/UX system that can accept final content later without requiring structural redesign.
+The website is being completed first with realistic dummy data in the final intended content format so its visual system and information architecture can be reviewed before real event logistics are inserted.
 
 ## Product intent
 
-The site should feel more like an expressive game menu or designed visual scene than a standard institutional event site.
+The site combines:
 
-The intended combination is:
+**game-menu energy + artistic scene composition + clear formal event information + carefully controlled performance**
 
-**game-menu energy + artistic scene composition + clear information design + carefully controlled performance**
+The Home visual foundation is already USER accepted.
 
-The 2025 Qiskit event website may be used as an information-architecture/content reference only:
-https://qiskit.cs.uwindsor.ca/
+The separately approved associate template `Vishwesh-Bhilare/fallfest` is used only as a reference for useful event-information types and formal content structure. Its placeholder facts and visual design are not authoritative for this project.
 
-Do not clone its UI or layout.
+## Current approved target site map
 
-## Initial page model
-
-Initial prototype pages:
 1. Home
-2. About Event
-3. About Quantum Mechanics
+2. Schedule
+3. Speakers
 
-These behave like major tabs/screens through the shared Master Navigator.
+The existing About Event and About Quantum Mechanics route shells are legacy prototype routes pending a bounded replacement phase.
 
-This is not the final site map. Future pages may include schedule/program, speakers, hackathon information, organizers, FAQ/resources, venue, registration, partners/sponsors, and contact information if confirmed later.
+An additional informational/educational route may be considered later only if the USER chooses to add one.
 
 ## Major page structure
 
-Each major page follows the conceptual structure:
+Each major page follows:
 
 ```text
 PAGE
-├── FULL-SCREEN STAGE
-│   ├── scenic/animated background
-│   ├── main visual subject
-│   ├── decorative layers
-│   └── page identity / brief copy
+├── UNIQUE ART-DIRECTED HERO / STAGE
 ├── PERSISTENT SITE-LEVEL MASTER NAVIGATOR
-└── PAGE CONTENT
-    ├── detailed information
-    └── page-specific feature sections
+└── MOSTLY-STATIC FORMAL CONTENT
+    └── SITE FOOTER
 ```
 
-The Stage provides consistency. Lower content may differ substantially page to page.
+Hero visual assets remain page-specific.
 
-Some pages may allow the Stage background/aesthetic to continue through the lower page.
+Formal sections use reusable layout/typography/divider/CTA patterns and do not require newly generated visual assets.
 
-## Tone
+## Home formal architecture
 
-Balanced between:
-- playful / experimental / curious,
-- credible / academic / event-oriented,
+1. Event Snapshot
+2. About the Event
+3. What You'll Do / What to Expect
+4. Program Preview
+5. Speakers Preview
+6. Organizers + Registration
+7. Footer
 
-with a modest lean toward playful/experimental.
+## Schedule formal architecture
 
-Information-heavy sections should be calmer than the Stage.
+After its unique hero:
+- concise program context;
+- day/date selection where needed;
+- full schedule/timeline;
+- participation CTA;
+- footer.
 
-Desired rhythm:
+## Speakers formal architecture
 
-**spectacle → clear information → visual accent → clear information**
+After its unique hero:
+- concise speakers introduction;
+- full speaker directory;
+- participation CTA;
+- footer.
 
 ## Responsive philosophy
 
-Desktop and mobile are equal first-class experiences.
+Desktop and mobile remain separately considered first-class experiences.
 
-Do not design desktop and merely shrink it.
-
-Mobile may legitimately change:
-- subject placement,
-- subject crop/scale,
-- artwork variant,
-- navigation placement,
-- title placement,
-- decorative density,
-- accent boundary,
-- content framing.
+The formal system should collapse predictably on mobile while preserving the shared editorial hierarchy and avoiding heavy effects.
 
 ## Current phase
 
-Home's representative visual system is stabilized and USER accepted.
+Home's representative visual system and persistent Master Navigator are stabilized and USER accepted.
 
-Merged milestones include:
-- PR #8: accepted desktop layered probability field, two-endpoint box float, and 640ms phase-split reveal;
-- PR #9: accepted separately art-directed mobile layered Home composition, 44-wave field, restored Wave 03 accent family, and QISKIT readability backing;
-- PR #10: accepted persistent shared Master Navigator rendered once by `SiteLayout` across Home, About Event, and About Quantum Mechanics.
+The official website/rules material has now been ingested. The revised three-route site map and formal content architecture are USER approved at the planning level.
 
-Current verified `main`:
+The remaining pre-implementation task is to decide the exact formal visual grammar: Stage-to-content transition, surface/background treatment, grid, headers/numbering, dividers, accent usage, CTAs, spacing, mobile collapse, and footer.
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
-
-The USER has now received the official website content plus website rules/guidelines. Those materials are intentionally NOT encoded here yet because they have not been supplied in this orchestrator conversation. The next Web Orchestrator must ingest them first, reconcile them with the current prototype page model/architecture, and only then propose the next bounded phase.
+No Luna implementation prompt should be created before that discussion is approved.
 
 Production remains unestablished.
 
 Primary continuation docs:
+- `agent_docs/official_requirements.md`
+- `agent_docs/content_architecture.md`
 - `agent_docs/orchestrator_handoff.md`
 - `agent_docs/current_scene.md`
 - `agent_docs/next_steps.md`
