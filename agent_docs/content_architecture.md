@@ -141,19 +141,24 @@ Locked direction:
 - no additional generated visual assets are required for formal sections;
 - reduced-motion behavior must remain intentional.
 
-## Remaining visual decisions before implementation
+## Formal visual grammar — LOCKED
 
-Still to decide with the USER:
-- exact Stage-to-formal transition;
-- formal background/surface treatment;
-- content max-width and grid proportions;
-- section header/numbering treatment;
-- border/divider language;
-- amount and placement of the Home yellow accent below the Stage;
-- CTA/button styling in the formal system;
-- hover/focus micro-interaction strength;
-- section spacing/rhythm;
-- mobile collapse rules for the formal grid;
-- exact footer treatment.
+The USER delegated the remaining formal visual decisions to the Orchestrator. The selected implementation-facing system is recorded in:
 
-No Luna implementation prompt should be written until this visual grammar is discussed and approved.
+`agent_docs/formal_visual_system.md`
+
+Summary:
+- research-editorial / technical-poster tone;
+- clean hard Stage handoff;
+- continuous paper/off-white formal canvas;
+- centered ~1180px / 12-column editorial grid;
+- small monospace indices + clean sans-serif section titles;
+- 1px/2px print-like divider hierarchy;
+- restrained page-accent usage;
+- square-cornered technical CTAs;
+- no scroll-reveal/continuous formal animation;
+- spacious editorial rhythm;
+- responsive reflow with no page-level horizontal scrolling;
+- dark ink footer with page-accent top rule.
+
+This grammar is now the baseline for the first formal-content implementation phase.
