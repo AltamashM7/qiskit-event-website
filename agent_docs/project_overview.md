@@ -42,8 +42,8 @@ PAGE
 │   ├── scenic/animated background
 │   ├── main visual subject
 │   ├── decorative layers
-│   ├── page identity / brief copy
-│   └── Master Navigator
+│   └── page identity / brief copy
+├── PERSISTENT SITE-LEVEL MASTER NAVIGATOR
 └── PAGE CONTENT
     ├── detailed information
     └── page-specific feature sections
@@ -85,13 +85,20 @@ Mobile may legitimately change:
 
 ## Current phase
 
-The Astro implementation architecture is established and Home Composition V1 is merged.
+Home's representative visual system is stabilized and USER accepted.
 
-PR #9 has been accepted and squash-merged into `main` at `003d58e7d328fb539a5690b9e4fa86232e7eab0c`. The accepted desktop layered Home probability field, 640ms phase split, two-endpoint box float, and separately art-directed mobile base/overlay remain locked; broad phone and PC visual review passed for the mobile speed, large-wave concentration, final yellow/orange Wave 03 accent, and QISKIT title readability. The previous warm/yellow-adjacent direction and subsequent blue/cyan experiment remain rejected.
+Merged milestones include:
+- PR #8: accepted desktop layered probability field, two-endpoint box float, and 640ms phase-split reveal;
+- PR #9: accepted separately art-directed mobile layered Home composition, 44-wave field, restored Wave 03 accent family, and QISKIT readability backing;
+- PR #10: accepted persistent shared Master Navigator rendered once by `SiteLayout` across Home, About Event, and About Quantum Mechanics.
 
-The current bounded phase is Phase 4, `phase-4/persistent-master-navigator`: `SiteLayout` renders one persistent shared Master Navigator per route, while Home and the neutral route shells retain their existing accepted composition/content. The Navigator’s reviewed visual design and exact fixed desktop/mobile position are USER-approved; Phase 4 remains pending USER visual acceptance. Frame A remains historical fallback/provenance.
+Current verified `main`:
 
-After Phase 4 is accepted and merged, continue through separately bounded Home-polish, About-page, content/branding, performance, and production phases.
+`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
+
+The USER has now received the official website content plus website rules/guidelines. Those materials are intentionally NOT encoded here yet because they have not been supplied in this orchestrator conversation. The next Web Orchestrator must ingest them first, reconcile them with the current prototype page model/architecture, and only then propose the next bounded phase.
+
+Production remains unestablished.
 
 Primary continuation docs:
 - `agent_docs/orchestrator_handoff.md`
