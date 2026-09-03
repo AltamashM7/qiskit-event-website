@@ -102,10 +102,15 @@ Mobile:
 - No scroll morphing, shrinking, hiding, hamburger conversion, or scroll-listener behavior.
 - Real accessible links/routes and route-specific `aria-current="page"` remain mandatory.
 
-Current entries:
+Current implemented entries (until the bounded route-migration phase):
 - Home
 - About Event
 - About Quantum Mechanics
+
+Approved target entries:
+- Home
+- Schedule
+- Speakers
 
 ## Schrödinger's Box interaction
 
@@ -198,17 +203,20 @@ Locked direction:
 - small transform/color hover and focus responses are acceptable when restrained;
 - Schedule and Speakers inherit the formal grammar but keep their own unique hero art direction.
 
-Still open:
-- exact Stage-to-formal transition;
-- exact formal surface/background treatment;
-- content grid/max width;
-- section numbering/header treatment;
-- border/divider language;
-- amount of yellow retained below Home;
-- CTA/button treatment;
-- spacing rhythm;
-- mobile formal-layout collapse;
-- footer treatment.
+Formal visual grammar is now locked by USER delegation to the Orchestrator. See `agent_docs/formal_visual_system.md` for the detailed implementation-facing specification.
+
+Key locked choices:
+- research-editorial / technical-poster tone;
+- hard editorial Stage→formal handoff with 2px ink rule + short page-accent marker;
+- continuous paper/off-white formal surface;
+- ~1180px centered 12-column desktop grid;
+- system sans body/section titles + monospace metadata/index labels; no new formal font dependency;
+- 1px ordinary and 2px major ink-rule hierarchy, square corners, no ordinary card shadows;
+- page accent used sparingly for active states/markers/primary CTA rather than large decorative fields;
+- square technical CTA language;
+- no scroll-triggered entrance animation or formal animation loops;
+- responsive stacking/reflow without page-level horizontal scrolling;
+- dark ink footer with paper text and thin page-accent top rule.
 
 ## Branding
 

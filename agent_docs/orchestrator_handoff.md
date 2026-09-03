@@ -32,6 +32,7 @@ Production deployment is not established.
    - `AGENTS.md`
    - `agent_docs/official_requirements.md`
    - `agent_docs/content_architecture.md`
+   - `agent_docs/formal_visual_system.md`
    - `agent_docs/orchestrator_handoff.md`
    - `agent_docs/current_scene.md`
    - `agent_docs/next_steps.md`
@@ -80,20 +81,25 @@ Home formal architecture:
 
 Schedule and Speakers reuse relevant formal grammar, not Home's exact content.
 
-## Current decision gate
+## Formal visual system — resolved
 
-Before implementation, discuss and approve:
-- Stage-to-formal transition;
-- formal background/surface;
-- content grid/max-width;
-- section numbering/header treatment;
-- divider/border system;
-- yellow-accent usage below Home Stage;
-- CTA/button styling;
-- micro-interaction strength;
-- section spacing/rhythm;
-- mobile collapse rules;
-- footer.
+The USER delegated the remaining formal visual decisions to the Orchestrator.
+
+The selected system is locked in `agent_docs/formal_visual_system.md`.
+
+High-level direction:
+- research-editorial / technical-poster tone;
+- hard non-overlapping Stage→formal transition;
+- paper/off-white formal canvas;
+- ~1180px / 12-column editorial grid;
+- clean sans-serif + monospace hierarchy;
+- restrained print-like rules and page accent;
+- square technical CTAs;
+- mostly static formal content;
+- responsive reflow;
+- dark ink footer.
+
+The next bounded phase may now be specified after this documentation is merged.
 
 ## Workflow
 

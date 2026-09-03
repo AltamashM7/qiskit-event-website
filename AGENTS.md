@@ -15,10 +15,11 @@ When deciding what is currently implemented or approved, use this order:
 3. `agent_docs/decisions.md` for durable product/design decisions.
 4. `agent_docs/design_system.md` for the approved visual language.
 5. `agent_docs/content_architecture.md` for the approved target site map and formal-content structure.
-6. `ASSET_REGISTRY.md` for approved asset identities/status.
-7. `agent_docs/orchestrator_handoff.md`, `agent_docs/current_scene.md`, `agent_docs/next_steps.md`, and `agent_docs/roadmap.md` for restart/current-state context.
-8. `agent_docs/project_progress.md` and `agent_docs/latest_session_work.md` for milestone/session state.
-9. Conversation history only for information not yet captured in the repository.
+6. `agent_docs/formal_visual_system.md` for the locked formal visual grammar and responsive behavior.
+7. `ASSET_REGISTRY.md` for approved asset identities/status.
+8. `agent_docs/orchestrator_handoff.md`, `agent_docs/current_scene.md`, `agent_docs/next_steps.md`, and `agent_docs/roadmap.md` for restart/current-state context.
+9. `agent_docs/project_progress.md` and `agent_docs/latest_session_work.md` for milestone/session state.
+10. Conversation history only for information not yet captured in the repository.
 
 If conversation history conflicts with the repository or durable docs, prefer the repository and current durable docs.
 
@@ -165,6 +166,7 @@ Before implementation:
    - `agent_docs/project_overview.md`
    - `agent_docs/official_requirements.md`
    - `agent_docs/content_architecture.md`
+   - `agent_docs/formal_visual_system.md`
    - `agent_docs/design_system.md`
    - `agent_docs/decisions.md`
    - `agent_docs/project_progress.md`
