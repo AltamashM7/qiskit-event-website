@@ -3,12 +3,8 @@ import AxeBuilder from '@axe-core/playwright';
 
 const routes = [
   { label: 'Home', path: '/', heading: 'Qiskit Event' },
-  { label: 'About Event', path: '/about-event/', heading: 'About Event' },
-  {
-    label: 'About Quantum Mechanics',
-    path: '/about-quantum-mechanics/',
-    heading: 'About Quantum Mechanics',
-  },
+  { label: 'Schedule', path: '/schedule/', heading: 'Schedule' },
+  { label: 'Speakers', path: '/speakers/', heading: 'Speakers' },
 ] as const;
 
 const assetPaths = [

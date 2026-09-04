@@ -14,8 +14,8 @@ Repository:
 Default branch:
 `main`
 
-Current main before this documentation PR:
-`2b62d90b127e5987f6c284373efde476d73b2a4a`
+Verified GitHub `main` at the start of Phase 5:
+`dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`
 
 Accepted implementation milestones:
 - PR #8 — desktop layered Home / accepted box motion and reveal;
@@ -68,7 +68,7 @@ Review strategy:
 Every major page:
 - has its own unique art-directed hero/Stage;
 - transitions into mostly-static formal information;
-- uses no newly generated visual assets in the formal sections.
+- uses no newly generated visual assets in the formal sections; explicitly approved supplied decorative assets may be used selectively with provenance.
 
 Home formal architecture:
 1. Event Snapshot
@@ -100,6 +100,27 @@ High-level direction:
 - dark ink footer.
 
 The next bounded phase may now be specified after this documentation is merged.
+
+## Phase 5 builder handoff and visual correction — pending audit
+
+Feature branch:
+`phase-5/home-formal-content-system`
+
+Phase 5 implements the target route migration to Home (`/`), Schedule (`/schedule/`), and Speakers (`/speakers/`). The legacy About Event and About Quantum Mechanics route files are removed, and Schedule/Speakers are intentionally minimal neutral technical shells.
+
+The Home formal layer is composed from typed static data in `src/data/event.ts`, reusable primitives in `src/components/formal/`, and `src/components/home/HomeFormalContent.astro`. Structural geometry is isolated in `src/styles/formal-system.css`; the replaceable Fall Fest editorial skin is isolated in `src/styles/formal-theme-fallfest-editorial.css` and selected with `data-formal-theme="fallfest-editorial"` plus the `--formal-accent` token.
+
+The exact Home order is Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Footer. It uses the brief's dummy data and centralized `https://example.com/registration` placeholder. The original formal visual execution was rejected by the USER and corrected on the same PR with exactly three supplied, licensed, non-logo decorative SVGs below the hero; the accepted Home hero/Navigator systems were not modified.
+
+The correction is implemented on Draft PR #14 at `f072c1fda2774e943f6f54d456fc4037caefb18f`. Actions run `33892600514` passed Technical verification and Cloudflare preview/visual QA. Immutable preview is `https://f72b712b.qiskit-event-website.pages.dev`, alias is `https://pr-14.qiskit-event-website.pages.dev`, and the nine-screenshot artifact is `home-visual-qa-pr-14` ID `9944558543` with digest `sha256:c72f948cbff3ff4c744db6750299534f238a15dc9548614951b75d42dfaf94fc`. No merge, production deployment, or USER acceptance is implied.
+
+## Phase 5 visual correction — pending acceptance
+
+- The rejected implementation proved the architecture but not the visual execution; the correction replaces the sparse repeated rule/row grammar with varied editorial compositions.
+- The required sequence is dossier snapshot → asymmetric illustrated About spread → dark 2×2 feature field → program timeline → typographic profile grid → credits strip → purple participation finale → compact ink footer.
+- Only `Sticker 04.svg`, `Sticker 08.svg`, and `Sticker 09.svg` from `materials-resources-main.zip` are imported, unchanged, into `public/assets/formal/fall-fest/`. The exact supplied MIT license is shipped at `public/licenses/qiskit-fall-fest-materials.txt` and recorded in `ASSET_REGISTRY.md`.
+- No logo, wordmark, badge, IBM, IBM Quantum, or Qiskit branding asset is used. No correction asset is added to HomeStage or its probability field.
+- The corrected visual result remains pending independent Web Orchestrator audit and explicit USER visual acceptance.
 
 ## Workflow
 

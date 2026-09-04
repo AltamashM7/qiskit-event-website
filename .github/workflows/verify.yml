@@ -67,20 +67,23 @@ jobs:
       - name: Build production preview
         run: npm run build
 
-      - name: Capture Home visual QA screenshots
+      - name: Capture Home and formal visual QA screenshots
         run: npx playwright test tests/e2e/home-visual-preview.spec.ts --project=desktop-chromium --project=mobile-chromium --project=mobile-compact-chromium
 
-      - name: Check Home visual QA artifacts
+      - name: Check Home and formal visual QA artifacts
         run: |
-          test "$(find dist/__qa -maxdepth 1 -type f -name '*.png' | wc -l)" -eq 6
+          test "$(find dist/__qa -maxdepth 1 -type f -name '*.png' | wc -l)" -eq 9
           test -f dist/__qa/home-desktop-closed.png
           test -f dist/__qa/home-desktop-reveal.png
           test -f dist/__qa/home-mobile-closed.png
           test -f dist/__qa/home-mobile-reveal.png
           test -f dist/__qa/home-mobile-compact-closed.png
           test -f dist/__qa/home-mobile-compact-reveal.png
+          test -f dist/__qa/home-formal-desktop.png
+          test -f dist/__qa/home-formal-mobile.png
+          test -f dist/__qa/home-formal-compact.png
 
-      - name: Upload Home visual QA screenshots
+      - name: Upload Home and formal visual QA screenshots
         uses: actions/upload-artifact@v7
         with:
           name: home-visual-qa-pr-${{ github.event.pull_request.number }}
@@ -91,6 +94,9 @@ jobs:
             dist/__qa/home-mobile-reveal.png
             dist/__qa/home-mobile-compact-closed.png
             dist/__qa/home-mobile-compact-reveal.png
+            dist/__qa/home-formal-desktop.png
+            dist/__qa/home-formal-mobile.png
+            dist/__qa/home-formal-compact.png
           if-no-files-found: error
           retention-days: 7
 

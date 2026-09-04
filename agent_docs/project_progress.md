@@ -2,15 +2,16 @@
 
 ## Current status
 
-**Phase: formal content architecture and formal visual grammar resolved; documentation merge pending before first formal implementation phase**
+**Phase 5 visual correction: modular formal content system retained, Fall Fest editorial overhaul implemented on a Draft PR branch; audit and USER acceptance pending**
 
 Repository:
 `https://github.com/AltamashM7/qiskit-event-website`
 
-Current authoritative `main` before this documentation PR:
-`80e392da520eb99d32a0fd7a2b1dedf44a8f8b1a`
+Verified GitHub `main` at phase start:
+`dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`
 
-No active implementation phase.
+Active feature branch:
+`phase-5/home-formal-content-system`
 
 ## Accepted / merged implementation milestones
 
@@ -28,7 +29,7 @@ No active implementation phase.
 - Realistic dummy data will use the final intended content format for review.
 - Every route retains a unique hero/Stage.
 - Formal content beneath heroes is mostly static.
-- Formal sections do not require newly generated visual assets.
+- Formal sections do not require newly generated visual assets; this correction selectively uses exactly three supplied, licensed, non-logo decorative SVGs.
 - Home formal architecture is approved.
 - Shared formal grammar will be reused on Schedule/Speakers where relevant.
 - The USER delegated remaining formal visual choices to the Orchestrator.
@@ -53,9 +54,23 @@ Resolved:
 - Home formal section patterns;
 - footer.
 
-## Next
+## Phase 5 implementation
 
-After this documentation is merged:
-- define the first bounded Luna implementation phase for shared formal primitives + Home below-the-fold dummy-content architecture;
-- keep accepted Home Stage systems locked;
-- do not begin Schedule/Speakers hero art implementation in the same phase unless separately authorized.
+Completed on the active branch:
+- migrated primary navigation to Home, Schedule, and Speakers;
+- removed the legacy About Event and About Quantum Mechanics route files;
+- added minimal neutral Schedule and Speakers technical shells;
+- added typed local event data and reusable formal primitives;
+- added Home formal content in the approved sequence;
+- separated formal layout CSS from the Fall Fest editorial theme CSS;
+- added responsive desktop/mobile formal layouts and no-image formal-content coverage;
+- added three full-page formal screenshots while preserving all six hero screenshots;
+- updated preview route checks, screenshot artifact validation, and durable documentation.
+
+## Phase 5 visual correction
+
+The USER rejected the original Phase 5 formal visual execution as sparse, repetitive, document-like, and insufficiently connected to Fall Fest. The typed data boundary, reusable formal components, Home composition boundary, focused tests, and preview infrastructure were retained.
+
+The correction introduces a dossier-style snapshot, asymmetric About spread with Sticker 04, a dark 2×2 What You'll Do field with Sticker 08, a program timeline with Sticker 09, an editorial speaker grid, a credits strip, and a purple registration finale. The supplied assets are unchanged and isolated below the Home hero. No logos, wordmarks, badges, IBM assets, or Qiskit branding assets are used.
+
+Dummy content remains intentionally provisional. The accepted hero and Navigator systems were not retuned. The corrected branch head is `f072c1fda2774e943f6f54d456fc4037caefb18f`; Actions run `33892600514` passed Technical verification and Cloudflare preview/visual QA. The corrected visual result is not USER accepted and remains pending independent audit plus explicit USER visual acceptance.

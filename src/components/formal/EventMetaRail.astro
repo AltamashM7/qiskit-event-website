@@ -1,0 +1,44 @@
+---
+import type { EventMetaItem, RegistrationConfig } from '../../data/event';
+
+interface Props {
+  items: readonly EventMetaItem[];
+  registration: RegistrationConfig;
+}
+
+const { items, registration } = Astro.props;
+const dateItem = items.find((item) => item.label === 'DATE');
+const detailItems = items.filter((item) => item.label !== 'DATE');
+const dateMatch = dateItem?.value.match(/^(\d+)[–-](\d+)\s+(\w+)\s+(\d+)$/);
+---
+
+<div class="formal-meta-rail" data-event-snapshot>
+  <div class="formal-snapshot__date-lockup">
+    <p class="formal-snapshot__eyebrow">Event dossier / 2026</p>
+    <div class="formal-snapshot__date-main">
+      <span>{dateMatch ? `${dateMatch[1]}—${dateMatch[2]}` : dateItem?.value}</span>
+      {dateMatch && (
+        <span class="formal-snapshot__date-meta">
+          <strong>{dateMatch[3].slice(0, 3).toUpperCase()}</strong>
+          <strong>{dateMatch[4]}</strong>
+        </span>
+      )}
+    </div>
+    <p class="formal-snapshot__date-caption">Qiskit Fall Fest / Pune edition</p>
+  </div>
+
+  <dl class="formal-meta-rail__items">
+    {detailItems.map((item) => (
+      <div class="formal-meta-rail__item">
+        <dt>{item.label}</dt>
+        <dd>{item.value}</dd>
+      </div>
+    ))}
+  </dl>
+
+  <a class="formal-button formal-meta-rail__action" href={registration.href}>
+    <span class="formal-meta-rail__action-kicker">Open registration</span>
+    <span>{registration.label}</span>
+    {registration.note && <small>{registration.note}</small>}
+  </a>
+</div>

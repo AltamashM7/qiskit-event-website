@@ -1,0 +1,22 @@
+---
+import type { RegistrationConfig } from '../../data/event';
+
+interface Props {
+  heading: string;
+  body: string;
+  registration: RegistrationConfig;
+}
+
+const { heading, body, registration } = Astro.props;
+---
+
+<div class="formal-action-banner" data-formal-action-banner>
+  <div class="formal-action-banner__copy">
+    <p class="formal-action-banner__eyebrow">Participation</p>
+    <h3>{heading}</h3>
+    <p>{body}</p>
+  </div>
+  <a class="formal-button formal-action-banner__action" href={registration.href}>
+    Register for the event
+  </a>
+</div>

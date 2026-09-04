@@ -1,0 +1,376 @@
+[data-formal-theme='fallfest-editorial'] {
+  --formal-paper: #f7f7f5;
+  --formal-ink: #111820;
+  --formal-muted: #56616a;
+  --formal-accent: #ffe51a;
+  --fallfest-light-blue: #dae5fc;
+  --fallfest-gray: #bac0c6;
+  --fallfest-purple: #31135e;
+  --fallfest-magenta: #f05da0;
+  --formal-snapshot-surface: var(--fallfest-light-blue);
+  --formal-about-surface: #e5e0f0;
+  --formal-speakers-surface: #e7eaed;
+  --formal-credits-surface: #edf0f2;
+  --formal-rule: rgba(17, 24, 32, 0.25);
+  --formal-rule-strong: var(--formal-ink);
+  --formal-feature-rule: rgba(247, 247, 245, 0.34);
+  --formal-speaker-accent: var(--fallfest-purple);
+  --formal-max-width: 1180px;
+  --formal-gutter: clamp(1rem, 4vw, 3rem);
+  --formal-column-gap: clamp(1.25rem, 2.5vw, 2rem);
+  --formal-handoff-border-width: 2px;
+  --formal-content-border-width: 2px;
+  --formal-footer-border-width: 2px;
+  --formal-font-body: system-ui, sans-serif;
+  --formal-font-mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-shell {
+  font-family: var(--formal-font-body);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-section-header__index,
+[data-formal-theme='fallfest-editorial'] .formal-section-header__note,
+[data-formal-theme='fallfest-editorial'] .formal-snapshot__eyebrow,
+[data-formal-theme='fallfest-editorial'] .formal-snapshot__date-caption,
+[data-formal-theme='fallfest-editorial'] .formal-meta-rail__item dt,
+[data-formal-theme='fallfest-editorial'] .formal-meta-rail__action-kicker,
+[data-formal-theme='fallfest-editorial'] .formal-meta-rail__action,
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__label,
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__visual-head,
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__visual figcaption,
+[data-formal-theme='fallfest-editorial'] .formal-feature-field__intro p,
+[data-formal-theme='fallfest-editorial'] .formal-feature-list__index,
+[data-formal-theme='fallfest-editorial'] .formal-program-aside,
+[data-formal-theme='fallfest-editorial'] .formal-schedule-entry__category,
+[data-formal-theme='fallfest-editorial'] .formal-schedule-entry__date,
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__ordinal,
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__session,
+[data-formal-theme='fallfest-editorial'] .formal-brand-strip small,
+[data-formal-theme='fallfest-editorial'] .formal-action-banner__eyebrow,
+[data-formal-theme='fallfest-editorial'] .formal-footer__eyebrow {
+  font-family: var(--formal-font-mono);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-section-header__index,
+[data-formal-theme='fallfest-editorial'] .formal-section-header__note,
+[data-formal-theme='fallfest-editorial'] .formal-snapshot__eyebrow,
+[data-formal-theme='fallfest-editorial'] .formal-snapshot__date-caption,
+[data-formal-theme='fallfest-editorial'] .formal-meta-rail__item dt,
+[data-formal-theme='fallfest-editorial'] .formal-meta-rail__action-kicker,
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__label,
+[data-formal-theme='fallfest-editorial'] .formal-feature-field__intro p,
+[data-formal-theme='fallfest-editorial'] .formal-program-aside,
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__ordinal,
+[data-formal-theme='fallfest-editorial'] .formal-brand-strip small,
+[data-formal-theme='fallfest-editorial'] .formal-footer__eyebrow {
+  color: var(--formal-muted);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-feature-field__intro p,
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-feature-list__index,
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-program-aside,
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-section-header__index,
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-section-header__note {
+  color: var(--fallfest-light-blue);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-section-header__title {
+  color: var(--formal-ink);
+  font-size: clamp(2.15rem, 4.5vw, 4rem);
+  font-weight: 760;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-section-header__title {
+  color: var(--formal-paper);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-section-header__note,
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__supporting-copy,
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__visual figcaption,
+[data-formal-theme='fallfest-editorial'] .formal-program-aside span,
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__identity p,
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__details,
+[data-formal-theme='fallfest-editorial'] .formal-schedule-entry__details,
+[data-formal-theme='fallfest-editorial'] .formal-schedule-entry__content > p:last-child:not(.formal-schedule-entry__details),
+[data-formal-theme='fallfest-editorial'] .formal-action-banner__copy > p:last-child {
+  color: var(--formal-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-snapshot__date-main {
+  color: var(--formal-ink);
+  font-size: clamp(4rem, 9.5vw, 8.5rem);
+  font-weight: 820;
+  letter-spacing: -0.09em;
+  line-height: 0.82;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-snapshot__date-meta {
+  color: var(--fallfest-purple);
+  font-size: clamp(1rem, 1.6vw, 1.55rem);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-snapshot__date-caption {
+  color: var(--formal-ink);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-meta-rail__item dd {
+  color: var(--formal-ink);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 750;
+  line-height: 1.15;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-meta-rail__action-kicker {
+  color: var(--formal-ink);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__statement {
+  color: var(--formal-ink);
+  font-size: clamp(2.1rem, 4.2vw, 4.4rem);
+  font-weight: 720;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__supporting-copy p {
+  color: var(--formal-ink);
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  line-height: 1.65;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__visual-head,
+[data-formal-theme='fallfest-editorial'] .formal-editorial-split__visual figcaption {
+  color: var(--fallfest-purple);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-feature-list__index {
+  color: var(--fallfest-light-blue);
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-weight: 760;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-feature-list__item:nth-child(2) .formal-feature-list__index {
+  color: var(--fallfest-magenta);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-feature-list__item:nth-child(3) .formal-feature-list__index {
+  color: var(--fallfest-gray);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-feature-list__item:nth-child(4) .formal-feature-list__index {
+  color: var(--formal-accent);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-feature-list__copy h3 {
+  color: var(--formal-paper);
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 760;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-feature-list__copy p {
+  color: rgba(247, 247, 245, 0.78);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-program-aside {
+  color: var(--fallfest-purple);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-schedule-entry__time {
+  color: var(--formal-ink);
+  font-family: var(--formal-font-mono);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-schedule-entry__category {
+  color: var(--fallfest-purple);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-schedule-entry__content h3 {
+  color: var(--formal-ink);
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
+  font-weight: 760;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-text-link,
+[data-formal-theme='fallfest-editorial'] .formal-footer a {
+  color: var(--formal-ink);
+  font-family: var(--formal-font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-transform: uppercase;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-text-link:hover,
+[data-formal-theme='fallfest-editorial'] .formal-text-link:focus-visible {
+  color: var(--fallfest-purple);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry:nth-child(1) {
+  --formal-speaker-accent: var(--fallfest-purple);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry:nth-child(2) {
+  --formal-speaker-accent: var(--fallfest-magenta);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry:nth-child(3) {
+  --formal-speaker-accent: var(--fallfest-gray);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__ordinal {
+  color: var(--fallfest-purple);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__identity h3 {
+  color: var(--formal-ink);
+  font-size: clamp(1.7rem, 3vw, 2.75rem);
+  font-weight: 760;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__identity p {
+  font-size: 0.93rem;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__details {
+  color: var(--formal-ink);
+  font-size: 0.92rem;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-speaker-entry__session {
+  color: var(--fallfest-purple);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-brand-strip small {
+  color: var(--fallfest-purple);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-brand-strip li > span {
+  color: var(--formal-ink);
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-action-banner {
+  background: var(--fallfest-purple);
+  color: var(--formal-paper);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-action-banner__eyebrow {
+  color: var(--formal-accent);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-action-banner__copy h3 {
+  color: var(--formal-paper);
+  font-size: clamp(2rem, 4vw, 4.25rem);
+  font-weight: 760;
+  letter-spacing: -0.06em;
+  line-height: 0.94;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-action-banner__copy > p:last-child {
+  color: rgba(247, 247, 245, 0.82);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--formal-ink);
+  border-radius: 0;
+  background: var(--formal-accent);
+  color: var(--formal-ink);
+  font-family: var(--formal-font-mono);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-button:hover,
+[data-formal-theme='fallfest-editorial'] .formal-button:focus-visible {
+  background: var(--formal-ink);
+  color: var(--formal-paper);
+  transform: translateY(-2px);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-footer {
+  background: var(--formal-ink);
+  color: var(--formal-paper);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-footer__name {
+  margin: 0.4rem 0 0;
+  color: var(--formal-paper);
+  font-size: 1.35rem;
+  font-weight: 760;
+  letter-spacing: -0.03em;
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-footer__eyebrow {
+  color: rgba(247, 247, 245, 0.58);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-footer a {
+  color: var(--formal-paper);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-footer a:hover,
+[data-formal-theme='fallfest-editorial'] .formal-footer a:focus-visible {
+  color: var(--formal-accent);
+}
+
+[data-formal-theme='fallfest-editorial'] .formal-shell :focus-visible {
+  outline-color: var(--formal-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-formal-theme='fallfest-editorial'] .formal-button {
+    transition-duration: 0ms;
+  }
+}

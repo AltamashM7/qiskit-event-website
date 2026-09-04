@@ -2,7 +2,7 @@
 
 ## Status
 
-**USER-DELEGATED / ORCHESTRATOR-SELECTED / APPROVED DIRECTION — not yet implemented.**
+**USER-DELEGATED / ORIGINAL PHASE 5 VISUAL EXECUTION REJECTED / CORRECTION IN PROGRESS ON DRAFT PR #14 — acceptance pending.**
 
 The USER explicitly delegated the remaining formal-content visual decisions to the Web Orchestrator, with the instruction to choose the best coherent result considering:
 - association with research/technical organizations;
@@ -48,7 +48,7 @@ Reason:
 
 ## 2. Formal surface/background
 
-Use one continuous **paper/off-white canvas**.
+Use a paper/off-white foundation with deliberate full-width editorial surface changes.
 
 Home baseline tokens should reuse the established visual family:
 - paper: `#f7f7f5`;
@@ -61,10 +61,11 @@ Locked:
 - no blurred surfaces;
 - no gradients;
 - no paper texture asset;
-- no generated visual asset;
+- no unapproved or generated visual asset;
+- the current correction may use only the three supplied, licensed Fall Fest decorative SVGs, selectively and without source modification;
 - no large decorative background illustration.
 
-Sections are separated primarily by whitespace and rules, not by large background-color changes.
+The corrected Home sequence deliberately uses a light-blue dossier surface for Snapshot, paper with a light-blue/lilac illustration zone for About, a dark ink feature field for What You'll Do, paper for Program, a light neutral profile surface for Speakers, a neutral credits strip, dark purple for Registration, and ink black for Footer. These are whole-section editorial surfaces, not dashboard cards.
 
 The formal system should expose a `--page-accent`-style concept so Schedule/Speakers can later reuse the grammar with their own approved hero accent without rewriting the structure.
 
@@ -145,10 +146,16 @@ Dividers should create hierarchy without making the page look like a spreadsheet
 
 ## 7. Accent usage
 
-Home formal sections use electric yellow sparingly.
+Home formal sections use electric yellow sparingly alongside the supplied Fall Fest editorial colors:
+
+- light blue: `#DAE5FC`;
+- gray: `#BAC0C6`;
+- purple: `#31135E`;
+- magenta: `#F05DA0`.
 
 Target:
-- page accent should usually occupy **well under 15%** of the formal visual field.
+- yellow remains a small custom-site continuity accent and primary CTA color;
+- the Fall Fest colors provide restrained section-level identity without becoming a rainbow;
 
 Use accent for:
 - Stage→formal marker;
@@ -285,7 +292,7 @@ Stack columns on mobile in semantic order.
 ## 12. Home formal-section specifics
 
 ### Event Snapshot
-Use a **divided information rail**, not cards.
+Use an art-directed **event dossier / cover sheet**, not a metadata table or cards.
 
 Fields:
 - Date
@@ -295,45 +302,39 @@ Fields:
 - Register
 
 Desktop:
-- four metadata cells + CTA cell with vertical dividers.
+- dominant `15—17` date lockup with `OCT / 2026` detail;
+- right-side stacked location, format, audience, and Register CTA;
+- meaningful rules and alignment within a light-blue surface.
 
 Mobile:
 - 2×2 metadata + full-width CTA.
 
 ### About the Event
-Use an editorial split:
-- large concise statement;
-- smaller supporting paragraphs.
-
-No visual asset.
+Use a true asymmetric editorial spread:
+- large concise statement and supporting paragraphs on the left;
+- one framed editorial illustration zone on the right using only the approved Sticker 04 source;
+- no recoloring, rotation, distortion, glow, or hero overlap.
 
 ### What You'll Do
-Use numbered rows:
-- index;
-- action/title;
-- explanation.
-
-Avoid card grid.
+Use a full-width dark feature field with a restrained 2×2 editorial grid. Keep the four numbered actions and descriptions, but give each item a large ordinal, clear action label, and substantial feature-field presence.
 
 Hover/focus may add a small page-accent rule/fill cue, but the section is readable without interaction.
 
 ### Program Preview
-Use a short formal schedule preview, approximately 3 highlighted rows.
+Use a short formal schedule preview, approximately 3 highlighted rows, with a dominant time rail and one supplied quantum-wave pictogram at section level.
 
 Do not duplicate the full Schedule page.
 
 End with a clear `View full schedule →` action.
 
 ### Speakers Preview
-Use approximately 3 representative typographic speaker entries.
-
-The preview must not require portraits.
+Use approximately 3 representative typographic speaker entries in an editorial profile grid with ordinal, large name, role, affiliation, and controlled colored top bands. Do not invent portraits.
 If real photographs are later supplied, the system may support them without changing the content model.
 
 End with `View all speakers →`.
 
 ### Organizers / branding
-Use a clean brand-safe strip/area.
+Use a clean brand-safe credits strip/area with small category labels, large placeholder names, and controlled rules.
 
 Until official marks are supplied/approved:
 - use text placeholders;
@@ -394,7 +395,7 @@ This is a shared **grammar**, not a shared template clone.
 ## 15. Performance/accessibility implications
 
 This direction intentionally requires:
-- no new formal-section image asset downloads;
+- only three small supplied formal-section SVG downloads, loaded as static/lazy editorial assets;
 - no formal-section animation loop;
 - minimal/no new client JavaScript for ordinary content;
 - semantic lists/tables/sections where appropriate;
@@ -402,5 +403,16 @@ This direction intentionally requires:
 - sufficient contrast;
 - responsive reflow rather than horizontal overflow;
 - touch targets suitable for phones.
+
+## 16. Phase 5 implementation mapping
+
+The first implementation keeps the three concerns replaceable:
+
+- Data/content: `src/data/event.ts` contains the typed static event metadata, registration configuration, schedule entries, speakers, organizers, and experience items.
+- Structural components: `src/components/formal/` contains the shell, section header, metadata rail, editorial split, indexed feature list, schedule and speaker previews/entries, brand strip, action banner, and footer.
+- Visual theme: `src/styles/formal-theme-fallfest-editorial.css` owns the Fall Fest editorial tokens and cosmetic skin. The shell selects it through `data-formal-theme="fallfest-editorial"` and sets the page-level `--formal-accent` token.
+- Stable geometry: `src/styles/formal-system.css` owns container width, grid relationships, responsive stacking, dividers' layout geometry, and touch-size behavior.
+
+Home-specific composition is limited to `src/components/home/HomeFormalContent.astro`; the accepted HomeStage remains outside this formal system. The corrected Home build uses realistic dummy review data and exactly three supplied decorative SVGs in formal sections. The original Phase 5 formal execution was visually rejected by the USER; the corrected result remains pending Web Orchestrator independent audit and USER visual acceptance.
 
 It therefore supports the project's weak-device performance requirement and the external-review requirement for a polished public-facing event site.

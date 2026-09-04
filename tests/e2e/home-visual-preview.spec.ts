@@ -151,6 +151,21 @@ async function captureHomeState(
   });
 }
 
+async function captureHomeFormalPage(page: Page, fileName: string) {
+  fs.mkdirSync(qaDirectory, { recursive: true });
+
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/', { waitUntil: 'load' });
+  await waitForHomeAssets(page);
+  await expect(page.locator('[data-formal-shell]')).toBeVisible();
+  await expect(page.locator('.formal-footer')).toBeVisible();
+
+  await page.screenshot({
+    path: path.join(qaDirectory, fileName),
+    fullPage: true,
+  });
+}
+
 test('captures desktop Home closed preview', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop-chromium', 'Desktop-only visual capture.');
   await captureHomeState(page, 'home-desktop-closed.png');
@@ -179,4 +194,19 @@ test('captures compact mobile Home closed preview', async ({ page }, testInfo) =
 test('captures compact mobile Home reveal preview', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile-compact-chromium', 'Compact mobile-only visual capture.');
   await captureHomeState(page, 'home-mobile-compact-reveal.png', 'tap');
+});
+
+test('captures desktop Home formal page preview', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop-chromium', 'Desktop-only formal-page visual capture.');
+  await captureHomeFormalPage(page, 'home-formal-desktop.png');
+});
+
+test('captures mobile Home formal page preview', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile-chromium', 'Mobile-only formal-page visual capture.');
+  await captureHomeFormalPage(page, 'home-formal-mobile.png');
+});
+
+test('captures compact mobile Home formal page preview', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile-compact-chromium', 'Compact mobile-only formal-page visual capture.');
+  await captureHomeFormalPage(page, 'home-formal-compact.png');
 });

@@ -1,53 +1,47 @@
 # Latest Session Work
 
-## Final state of this Orchestrator session
+## Phase 5 visual-correction snapshot
 
 Repository:
-
 `https://github.com/AltamashM7/qiskit-event-website`
 
-Current verified `main`:
+Verified GitHub `main` at phase start:
+`dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
+Feature branch:
+`phase-5/home-formal-content-system`
 
-PR #10 was USER visually accepted and squash-merged.
+Draft PR #14: `https://github.com/AltamashM7/qiskit-event-website/pull/14`
 
-## Phase 4 result
+Final corrected branch head:
+`f072c1fda2774e943f6f54d456fc4037caefb18f`
 
-The existing Master Navigator visual design was preserved and promoted from Stage ownership to one persistent site-level instance rendered by `SiteLayout`.
+The correction preserves the accepted desktop/mobile Home probability field, Schrödinger box motion/reveal, and persistent site-level Master Navigator. It keeps the Phase 5 formal architecture and replaces the rejected sparse visual execution below HomeStage with a branded Fall Fest editorial system.
 
-Accepted behavior:
-- one Navigator per route;
-- fixed at the same approved top position while scrolling;
-- same desktop design;
-- same near-full-width three-column mobile design;
-- correct route-specific active state;
-- no scroll listeners/morphing/resizing/hide-show;
-- Home composition footprint preserved;
-- About routes remain neutral shells.
+Implementation boundaries:
+- data: `src/data/event.ts` and `src/data/navigation.ts`;
+- shared formal structure: `src/components/formal/`;
+- Home composition: `src/components/home/HomeFormalContent.astro`;
+- stable formal geometry: `src/styles/formal-system.css`;
+- current cosmetic theme: `src/styles/formal-theme-fallfest-editorial.css`;
+- routes: `src/pages/index.astro`, `src/pages/schedule.astro`, and `src/pages/speakers.astro`.
 
-## Previously locked Home result
+The Home formal sequence is Event Snapshot, About the Event, What You'll Do, Program Preview, Speakers Preview, Organizers & Registration, and Site Footer. Dummy data is intentional, the registration URL is `https://example.com/registration`, and exactly three supplied decorative SVGs are used selectively below the hero with the shipped MIT notice.
 
-PR #8 and PR #9 remain the accepted basis for desktop/mobile Home:
-- desktop layered probability field;
-- mobile portrait layered field with 44 instances;
-- Wave 03 original accent;
-- accepted white/opacity hierarchy for other active mobile waves;
-- two-endpoint box float;
-- 640ms reveal;
-- QISKIT readability backing.
+Focused local checks:
+- `astro check`: 0 errors, warnings, and hints;
+- Home formal content: all 10 cases reached across desktop and mobile profiles with no reported failure;
+- technical foundation: all 45 cases reached across desktop and mobile profiles with no reported failure;
+- refreshed formal visual capture: all 9 cases reached and the three full-page formal PNGs were reviewed;
+- Windows Playwright teardown hangs after the final case, so local browser processes were stopped manually after the no-failure case output.
 
-## Why this conversation is ending
+Authoritative closeout results:
+- implementation commits: `5b1d845655512353209d7b80a71b7ec6922d1123` (`fix: overhaul Phase 5 formal visual system`) and `f072c1fda2774e943f6f54d456fc4037caefb18f` (`fix: restore formal theme contrast`);
+- `npm run check`: 0 errors, warnings, and hints;
+- `npm run build`: static build succeeded with three page entries;
+- Actions run `33892600514`: [Technical verification](https://github.com/AltamashM7/qiskit-event-website/actions/runs/33892600514/job/101087636057) passed; [Cloudflare preview and visual QA](https://github.com/AltamashM7/qiskit-event-website/actions/runs/33892600514/job/101088305520) passed;
+- immutable preview: `https://f72b712b.qiskit-event-website.pages.dev`;
+- PR alias: `https://pr-14.qiskit-event-website.pages.dev`;
+- artifact: `home-visual-qa-pr-14`, ID `9944558543`, digest `sha256:c72f948cbff3ff4c744db6750299534f238a15dc9548614951b75d42dfaf94fc`, nine expected screenshots: `home-desktop-closed.png`, `home-desktop-reveal.png`, `home-mobile-closed.png`, `home-mobile-reveal.png`, `home-mobile-compact-closed.png`, `home-mobile-compact-reveal.png`, `home-formal-desktop.png`, `home-formal-mobile.png`, `home-formal-compact.png`.
 
-The USER has now received the overall website content and the official rules/guidelines for creating the site.
-
-To avoid conversation-memory bloat, a fresh Web Orchestrator will take over.
-
-The new Orchestrator's first substantive task is NOT implementation. It must:
-1. inspect live GitHub and these durable docs;
-2. receive the new official content/rules from the USER;
-3. reconcile them against the existing prototype architecture;
-4. discuss the resulting site/content plan with the USER;
-5. only then create a bounded Luna implementation brief.
-
-Do not revive old provisional next-phase assumptions before that intake.
+The original Phase 5 formal visual execution was rejected by the USER. The corrected result remains pending independent audit and USER visual acceptance. The PR remains Draft; no merge or production deployment occurred.

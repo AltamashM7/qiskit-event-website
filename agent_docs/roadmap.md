@@ -38,7 +38,7 @@ See:
 - `agent_docs/official_requirements.md`
 - `agent_docs/content_architecture.md`
 
-## Current gate — formal visual grammar
+## Current gate — Phase 5 formal visual correction
 
 Discuss and lock:
 - Stage-to-formal transition;
@@ -52,19 +52,22 @@ Discuss and lock:
 - mobile collapse;
 - footer.
 
-No Luna prompt before USER approval of this grammar.
+The original Phase 5 formal visual execution was rejected by the USER. The architecture is retained and the branded Fall Fest editorial correction is implemented on the same bounded branch `phase-5/home-formal-content-system` and Draft PR #14 from verified main SHA `dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`. Final corrected head `f072c1fda2774e943f6f54d456fc4037caefb18f` passed Actions run `33892600514` for Technical verification and Cloudflare preview/visual QA. The corrected result remains pending independent Web Orchestrator audit and explicit USER visual acceptance.
 
 ## Likely bounded implementation sequence after approval
 
-Exact sequencing still requires USER approval, but the current likely path is:
+The current bounded phase is:
 
 1. shared formal-content primitives + Home below-the-fold dummy-content architecture;
 2. route/navigation migration from legacy About shells to Schedule/Speakers;
-3. Schedule hero + formal schedule page;
-4. Speakers hero + formal speaker page;
-5. branding/registration-content integration as permitted;
-6. content/SEO/accessibility/performance hardening;
-7. production hostname/release path and final launch QA.
+3. branded Fall Fest editorial correction with selectively licensed decorative assets;
+4. focused QA, full-page formal screenshots, and Draft PR preview;
+5. independent audit and USER visual acceptance;
+5. Schedule hero + formal schedule page;
+6. Speakers hero + formal speaker page;
+7. branding/registration-content integration as permitted;
+8. content/SEO/accessibility/performance hardening;
+9. production hostname/release path and final launch QA.
 
 Do not treat this ordering as authorization to implement.
 

@@ -12,10 +12,11 @@ Each major route uses:
 
 `unique art-directed hero Stage → mostly-static formal content → footer`
 
-Visual assets are reserved for the hero/Stage systems.
+Generated visual assets are reserved for the hero/Stage systems. Supplied, licensed, non-logo decorative assets may be used selectively in formal sections when explicitly approved for a bounded correction.
 
 Formal sections:
 - do not require newly generated visual assets;
+- when approved supplied decorative assets are used, they remain isolated, provenance-recorded, and separate from HomeStage;
 - remain mostly static;
 - use typography, spacing, CSS borders/dividers, restrained accent states, and layout for identity;
 - prioritize readability and weak-device performance.

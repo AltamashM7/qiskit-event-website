@@ -1,0 +1,33 @@
+---
+import '../../styles/formal-system.css';
+import '../../styles/formal-theme-fallfest-editorial.css';
+
+interface Props {
+  theme?: string;
+  accent?: string;
+}
+
+const {
+  theme = 'fallfest-editorial',
+  accent = '#ffe51a',
+} = Astro.props;
+---
+
+<div
+  class="formal-shell"
+  data-formal-shell
+  data-formal-theme={theme}
+  style={`--formal-accent: ${accent};`}
+>
+  <div class="formal-shell__handoff" aria-hidden="true">
+    <div class="formal-container">
+      <span class="formal-shell__accent-marker"></span>
+    </div>
+  </div>
+
+  <div class="formal-shell__content" data-formal-content>
+    <slot />
+  </div>
+
+  <slot name="footer" />
+</div>

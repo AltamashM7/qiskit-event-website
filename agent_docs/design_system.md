@@ -102,10 +102,10 @@ Mobile:
 - No scroll morphing, shrinking, hiding, hamburger conversion, or scroll-listener behavior.
 - Real accessible links/routes and route-specific `aria-current="page"` remain mandatory.
 
-Current implemented entries (until the bounded route-migration phase):
+Current implemented entries on the Phase 5 branch:
 - Home
-- About Event
-- About Quantum Mechanics
+- Schedule
+- Speakers
 
 Approved target entries:
 - Home
@@ -195,7 +195,7 @@ Below each page-specific hero/Stage, the site shifts into a calmer editorial inf
 
 Locked direction:
 - mostly static;
-- no new generated visual assets for formal sections;
+- no newly generated visual assets for formal sections; the Phase 5 correction selectively uses three supplied, licensed, non-logo Fall Fest decorative SVGs below the hero;
 - use typography, spacing, borders/dividers, section numbering, CSS-only accent states, and layout to preserve identity;
 - retain off-white/ink foundations and restrained page accent usage;
 - avoid generic dashboard/card-grid styling where divided editorial rows communicate the information better;
@@ -217,6 +217,12 @@ Key locked choices:
 - no scroll-triggered entrance animation or formal animation loops;
 - responsive stacking/reflow without page-level horizontal scrolling;
 - dark ink footer with paper text and thin page-accent top rule.
+
+## Phase 5 implementation boundary
+
+The formal layer now follows a replaceable three-part boundary: typed static content in `src/data/event.ts`, semantic/layout primitives in `src/components/formal/`, and the current Fall Fest editorial cosmetic skin in `src/styles/formal-theme-fallfest-editorial.css`. Shared geometry lives in `src/styles/formal-system.css`; Home composition is isolated in `src/components/home/HomeFormalContent.astro`.
+
+The original Phase 5 visual execution was rejected by the USER and is being corrected on the same Draft PR branch. The accepted Home hero and Navigator remain unchanged; the corrected formal result remains pending independent audit and USER visual acceptance.
 
 ## Branding
 

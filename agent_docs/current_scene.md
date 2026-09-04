@@ -4,13 +4,17 @@
 
 This file records the current accepted Home Stage scene and persistent site-level Navigator boundary.
 
-Current verified `main` after the USER-approved Phase 4 squash merge:
+Current verified GitHub `main` at the start of Phase 5:
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
+`dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`
+
+Phase 5 implementation branch:
+
+`phase-5/home-formal-content-system`
 
 Desktop layered background, the 640ms reveal, the two-endpoint box float, the Phase 3 mobile layered composition, the restored Wave 03 accent, QISKIT readability backing, and the Phase 4 persistent shared Master Navigator are USER accepted and locked.
 
-PR #9 and PR #10 are merged. No visual acceptance gate is currently open. The next implementation phase must not be chosen until the USER's newly received official website content and rules/guidelines are ingested and reconciled against the current architecture.
+PR #9 and PR #10 are merged. The original Phase 5 formal visual execution was rejected by the USER. A visual-correction acceptance gate is open on the same Draft PR #14; the accepted Home Stage and Navigator remain locked.
 
 ## Desktop Home composition
 
@@ -413,3 +417,21 @@ The Phase 3 mobile layered composition is implemented and accepted. Broad phone 
 - The Navigator keeps its current paper/off-white rectangle, compact desktop strip, three-column mobile presentation, labels, routes, active state, keyboard behavior, and reduced-motion behavior.
 - It is fixed near the reviewed top-center desktop gutter and near the reviewed one-rem mobile gutter on portrait layouts, without scroll morphing or scroll listeners.
 - Home reserves the former Navigator row height so the accepted identity/copy/box composition does not shift.
+
+## Phase 5 formal-content implementation and visual correction — acceptance pending
+
+The Phase 5 branch adds a reusable formal-content layer below HomeStage without changing the accepted Home Stage or Master Navigator visual systems.
+
+Implemented boundaries:
+- typed static event content lives in `src/data/event.ts`;
+- reusable structural primitives live in `src/components/formal/`;
+- Home-specific composition lives in `src/components/home/HomeFormalContent.astro`;
+- shared formal geometry lives in `src/styles/formal-system.css`;
+- the current Fall Fest editorial cosmetic theme lives in `src/styles/formal-theme-fallfest-editorial.css` and is selected with `data-formal-theme="fallfest-editorial"`;
+- Home uses the page accent token `--formal-accent: #ffe51a`.
+
+Home formal order is fixed as Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Site Footer. The review build uses the exact dummy content from the Phase 5 brief and the placeholder registration destination `https://example.com/registration`.
+
+The target navigation is Home (`/`), Schedule (`/schedule/`), and Speakers (`/speakers/`). The legacy About Event and About Quantum Mechanics route files are removed; Schedule and Speakers are neutral technical shells only.
+
+The original formal visual execution was visually rejected by the USER and is replaced by a branded Fall Fest editorial correction on the same Draft PR. Exactly three supplied decorative SVGs and the supplied MIT license notice are now shipped below the hero; no logo/wordmark asset is used. Existing accepted Home hero assets remain untouched. Final corrected head is `f072c1fda2774e943f6f54d456fc4037caefb18f`; Actions run `33892600514` passed Technical verification and Cloudflare preview/visual QA, with immutable preview `https://f72b712b.qiskit-event-website.pages.dev`, PR alias `https://pr-14.qiskit-event-website.pages.dev`, and artifact `home-visual-qa-pr-14` ID `9944558543`. Draft PR #14 remains pending Web Orchestrator audit and explicit USER visual acceptance.
