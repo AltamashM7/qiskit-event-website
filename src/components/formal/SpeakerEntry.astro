@@ -3,12 +3,14 @@ import type { Speaker } from '../../data/event';
 
 interface Props {
   speaker: Speaker;
+  index: number;
 }
 
-const { speaker } = Astro.props;
+const { speaker, index } = Astro.props;
 ---
 
 <li class="formal-speaker-entry" data-speaker-entry>
+  <span class="formal-speaker-entry__ordinal">{String(index).padStart(2, '0')}</span>
   {speaker.photo && (
     <img class="formal-speaker-entry__photo" src={speaker.photo} alt={speaker.name} loading="lazy" />
   )}

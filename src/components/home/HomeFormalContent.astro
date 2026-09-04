@@ -14,7 +14,7 @@ import SpeakerPreview from '../formal/SpeakerPreview.astro';
 ---
 
 <FormalShell>
-  <section class="formal-section" aria-labelledby="snapshot-heading">
+  <section class="formal-section formal-section--snapshot" aria-labelledby="snapshot-heading">
     <FormalSectionHeader
       index="01 / SNAPSHOT"
       title="Event Snapshot"
@@ -24,7 +24,7 @@ import SpeakerPreview from '../formal/SpeakerPreview.astro';
     <EventMetaRail items={homeEvent.snapshot} registration={homeEvent.registration} />
   </section>
 
-  <section class="formal-section" aria-labelledby="about-event-heading">
+  <section class="formal-section formal-section--about" aria-labelledby="about-event-heading">
     <FormalSectionHeader
       index="02 / EVENT"
       title="About the Event"
@@ -34,20 +34,24 @@ import SpeakerPreview from '../formal/SpeakerPreview.astro';
     <EditorialSplit
       statement={homeEvent.about.statement}
       paragraphs={homeEvent.about.paragraphs}
+      asset="/assets/formal/fall-fest/fall-fest-birds-v1.svg"
     />
   </section>
 
-  <section class="formal-section" aria-labelledby="experience-heading">
+  <section class="formal-section formal-section--feature" aria-labelledby="experience-heading">
     <FormalSectionHeader
       index="03 / EXPERIENCE"
       title="What You'll Do"
       headingId="experience-heading"
       note="A guided path through concepts, code, and collaboration."
     />
-    <IndexedFeatureList items={homeEvent.experience} />
+    <IndexedFeatureList
+      items={homeEvent.experience}
+      asset="/assets/formal/fall-fest/fall-fest-quantum-infinity-v1.svg"
+    />
   </section>
 
-  <section class="formal-section" aria-labelledby="program-heading">
+  <section class="formal-section formal-section--program" aria-labelledby="program-heading">
     <FormalSectionHeader
       index="04 / PROGRAM"
       title="Program Preview"
@@ -58,10 +62,11 @@ import SpeakerPreview from '../formal/SpeakerPreview.astro';
       entries={homeEvent.programPreview}
       href="/schedule/"
       linkLabel="View full schedule"
+      asset="/assets/formal/fall-fest/fall-fest-quantum-wave-v1.svg"
     />
   </section>
 
-  <section class="formal-section" aria-labelledby="speakers-heading">
+  <section class="formal-section formal-section--speakers" aria-labelledby="speakers-heading">
     <FormalSectionHeader
       index="05 / PEOPLE"
       title="Speakers Preview"

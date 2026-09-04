@@ -6,14 +6,24 @@ interface Props {
   entries: readonly ScheduleEntryData[];
   href: string;
   linkLabel: string;
+  asset?: string;
 }
 
-const { entries, href, linkLabel } = Astro.props;
+const { entries, href, linkLabel, asset } = Astro.props;
 ---
 
-<div class="formal-preview-block">
-  <ol class="formal-schedule-preview" data-formal-schedule-preview aria-label="Sample program">
-    {entries.map((entry) => <ScheduleEntry entry={entry} />)}
-  </ol>
-  <a class="formal-text-link" href={href}>{linkLabel} <span aria-hidden="true">→</span></a>
+<div class="formal-preview-block formal-preview-block--program">
+  {asset && (
+    <div class="formal-program-aside" aria-hidden="true">
+      <p>Program / field notes</p>
+      <img src={asset} alt="" loading="lazy" />
+      <span>Sessions in motion</span>
+    </div>
+  )}
+  <div class="formal-program-list">
+    <ol class="formal-schedule-preview" data-formal-schedule-preview aria-label="Sample program">
+      {entries.map((entry) => <ScheduleEntry entry={entry} />)}
+    </ol>
+    <a class="formal-text-link" href={href}>{linkLabel} <span aria-hidden="true">→</span></a>
+  </div>
 </div>

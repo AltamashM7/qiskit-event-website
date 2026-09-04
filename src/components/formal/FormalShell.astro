@@ -1,6 +1,6 @@
 ---
 import '../../styles/formal-system.css';
-import '../../styles/formal-theme-research.css';
+import '../../styles/formal-theme-fallfest-editorial.css';
 
 interface Props {
   theme?: string;
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const {
-  theme = 'research-editorial',
+  theme = 'fallfest-editorial',
   accent = '#ffe51a',
 } = Astro.props;
 ---
@@ -25,7 +25,7 @@ const {
     </div>
   </div>
 
-  <div class="formal-shell__content formal-container" data-formal-content>
+  <div class="formal-shell__content" data-formal-content>
     <slot />
   </div>
 

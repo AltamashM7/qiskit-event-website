@@ -9,8 +9,9 @@ const { organizers } = Astro.props;
 ---
 
 <ul class="formal-brand-strip" data-organizer-list>
-  {organizers.map((organizer) => (
+  {organizers.map((organizer, index) => (
     <li>
+      <small>{organizer.category ?? `Credit ${String(index + 1).padStart(2, '0')}`}</small>
       {organizer.logo ? (
         <img src={organizer.logo} alt={organizer.name} loading="lazy" />
       ) : (

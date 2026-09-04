@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Phase 5: modular formal content system + Home formal content + target route foundation implemented on a Draft PR branch; audit and USER acceptance pending**
+**Phase 5 visual correction: modular formal content system retained, Fall Fest editorial overhaul implemented on a Draft PR branch; audit and USER acceptance pending**
 
 Repository:
 `https://github.com/AltamashM7/qiskit-event-website`
@@ -29,7 +29,7 @@ Active feature branch:
 - Realistic dummy data will use the final intended content format for review.
 - Every route retains a unique hero/Stage.
 - Formal content beneath heroes is mostly static.
-- Formal sections do not require newly generated visual assets.
+- Formal sections do not require newly generated visual assets; this correction selectively uses exactly three supplied, licensed, non-logo decorative SVGs.
 - Home formal architecture is approved.
 - Shared formal grammar will be reused on Schedule/Speakers where relevant.
 - The USER delegated remaining formal visual choices to the Orchestrator.
@@ -62,9 +62,15 @@ Completed on the active branch:
 - added minimal neutral Schedule and Speakers technical shells;
 - added typed local event data and reusable formal primitives;
 - added Home formal content in the approved sequence;
-- separated formal layout CSS from the research-editorial theme CSS;
+- separated formal layout CSS from the Fall Fest editorial theme CSS;
 - added responsive desktop/mobile formal layouts and no-image formal-content coverage;
 - added three full-page formal screenshots while preserving all six hero screenshots;
 - updated preview route checks, screenshot artifact validation, and durable documentation.
 
-Dummy content remains intentionally provisional. The accepted hero and Navigator systems were not retuned. Phase 5 is not USER accepted.
+## Phase 5 visual correction
+
+The USER rejected the original Phase 5 formal visual execution as sparse, repetitive, document-like, and insufficiently connected to Fall Fest. The typed data boundary, reusable formal components, Home composition boundary, focused tests, and preview infrastructure were retained.
+
+The correction introduces a dossier-style snapshot, asymmetric About spread with Sticker 04, a dark 2×2 What You'll Do field with Sticker 08, a program timeline with Sticker 09, an editorial speaker grid, a credits strip, and a purple registration finale. The supplied assets are unchanged and isolated below the Home hero. No logos, wordmarks, badges, IBM assets, or Qiskit branding assets are used.
+
+Dummy content remains intentionally provisional. The accepted hero and Navigator systems were not retuned. The corrected visual result is not USER accepted and remains pending independent audit plus explicit USER visual acceptance.

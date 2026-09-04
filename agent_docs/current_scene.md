@@ -14,7 +14,7 @@ Phase 5 implementation branch:
 
 Desktop layered background, the 640ms reveal, the two-endpoint box float, the Phase 3 mobile layered composition, the restored Wave 03 accent, QISKIT readability backing, and the Phase 4 persistent shared Master Navigator are USER accepted and locked.
 
-PR #9 and PR #10 are merged. No visual acceptance gate is currently open. The next implementation phase must not be chosen until the USER's newly received official website content and rules/guidelines are ingested and reconciled against the current architecture.
+PR #9 and PR #10 are merged. The original Phase 5 formal visual execution was rejected by the USER. A visual-correction acceptance gate is open on the same Draft PR #14; the accepted Home Stage and Navigator remain locked.
 
 ## Desktop Home composition
 
@@ -418,7 +418,7 @@ The Phase 3 mobile layered composition is implemented and accepted. Broad phone 
 - It is fixed near the reviewed top-center desktop gutter and near the reviewed one-rem mobile gutter on portrait layouts, without scroll morphing or scroll listeners.
 - Home reserves the former Navigator row height so the accepted identity/copy/box composition does not shift.
 
-## Phase 5 formal-content implementation — acceptance pending
+## Phase 5 formal-content implementation and visual correction — acceptance pending
 
 The Phase 5 branch adds a reusable formal-content layer below HomeStage without changing the accepted Home Stage or Master Navigator visual systems.
 
@@ -427,11 +427,11 @@ Implemented boundaries:
 - reusable structural primitives live in `src/components/formal/`;
 - Home-specific composition lives in `src/components/home/HomeFormalContent.astro`;
 - shared formal geometry lives in `src/styles/formal-system.css`;
-- the current research-editorial cosmetic theme lives in `src/styles/formal-theme-research.css` and is selected with `data-formal-theme="research-editorial"`;
+- the current Fall Fest editorial cosmetic theme lives in `src/styles/formal-theme-fallfest-editorial.css` and is selected with `data-formal-theme="fallfest-editorial"`;
 - Home uses the page accent token `--formal-accent: #ffe51a`.
 
 Home formal order is fixed as Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Site Footer. The review build uses the exact dummy content from the Phase 5 brief and the placeholder registration destination `https://example.com/registration`.
 
 The target navigation is Home (`/`), Schedule (`/schedule/`), and Speakers (`/speakers/`). The legacy About Event and About Quantum Mechanics route files are removed; Schedule and Speakers are neutral technical shells only.
 
-No new formal visual assets were added, and existing accepted Home hero assets remain untouched. Draft PR #14 is open at `https://github.com/AltamashM7/qiskit-event-website/pull/14` with implementation head `d676deda2921d0ee4c72a31536c6d9c09a854ee4`. Actions run `33833826312` passed both Technical verification and Cloudflare preview/visual QA. The immutable preview is `https://85465dca.qiskit-event-website.pages.dev`, the PR alias is `https://pr-14.qiskit-event-website.pages.dev`, and artifact `home-visual-qa-pr-14` (ID `9922730351`, digest `sha256:5dc0f10c897d327e7bb0d59b49f63c0919d4de9d32a84317b5f5dfa05c876ead`) contains the nine expected screenshots. Phase 5 remains pending Web Orchestrator audit and USER visual acceptance.
+The original formal visual execution was visually rejected by the USER and is replaced by a branded Fall Fest editorial correction on the same Draft PR. Exactly three supplied decorative SVGs and the supplied MIT license notice are now shipped below the hero; no logo/wordmark asset is used. Existing accepted Home hero assets remain untouched. Draft PR #14 remains pending Web Orchestrator audit and USER visual acceptance; final corrected-head Actions, preview, and artifact metadata will be recorded at closeout.

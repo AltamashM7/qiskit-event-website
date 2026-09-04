@@ -67,7 +67,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 ### Formal content system
 
 - Every major route keeps a unique art-directed Stage/hero followed by calmer formal information.
-- Visual assets are reserved for hero/Stage systems; formal sections do not require newly generated visual assets.
+- Generated visual assets are reserved for hero/Stage systems; formal sections do not require generated art, but a bounded correction may use explicitly approved supplied decorative assets with provenance and license notices.
 - Formal content is mostly static and prioritizes readability and weak-device performance.
 - Shared formal structure should be reusable across Home, Schedule, and Speakers where relevant without making the pages visual clones.
 - Home formal architecture is: Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers + Registration → Footer.
@@ -75,7 +75,7 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Speakers formal architecture is a readable speaker directory after its unique hero.
 - The formal visual grammar is locked by USER delegation to the Orchestrator; detailed implementation rules live in `agent_docs/formal_visual_system.md`.
 - Formal direction: research-editorial / technical-poster, continuous paper surface, ~1180px editorial grid, print-like rules, restrained accent use, square technical CTAs, mostly static behavior, responsive reflow, dark ink footer.
-- Formal sections do not use newly generated visual assets; dummy speaker presentation must not depend on portraits.
+- Formal sections do not use newly generated visual assets; dummy speaker presentation must not depend on portraits. The Phase 5 correction uses exactly three supplied non-logo Fall Fest SVGs selectively below the Home hero.
 
 ### Animation / performance
 
@@ -149,10 +149,19 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 
 - Phase 5 starts from verified GitHub `main` SHA `dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb` on branch `phase-5/home-formal-content-system`.
 - The target route set is now Home (`/`), Schedule (`/schedule/`), and Speakers (`/speakers/`); the legacy About Event and About Quantum Mechanics route files are removed on the Phase 5 branch.
-- Formal content is separated into typed static data (`src/data/event.ts`), reusable Astro structural primitives (`src/components/formal/`), shared geometry (`src/styles/formal-system.css`), and a replaceable research-editorial theme (`src/styles/formal-theme-research.css`).
+- Formal content is separated into typed static data (`src/data/event.ts`), reusable Astro structural primitives (`src/components/formal/`), shared geometry (`src/styles/formal-system.css`), and a replaceable Fall Fest editorial theme (`src/styles/formal-theme-fallfest-editorial.css`).
 - Home formal content follows the approved Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Footer sequence.
-- The Phase 5 review build uses realistic dummy data and the centralized placeholder registration URL `https://example.com/registration`; no new formal visual assets are introduced.
+- The Phase 5 review build uses realistic dummy data and the centralized placeholder registration URL `https://example.com/registration`; the visual correction imports exactly three supplied decorative SVGs and the supplied MIT license notice.
 - Phase 5 is not USER accepted until the Draft PR is independently audited and the visual captures are reviewed.
+
+## PHASE 5 VISUAL CORRECTION — ACCEPTANCE PENDING
+
+- The original Phase 5 formal visual execution was explicitly rejected by the USER as too sparse, repetitive, document-like, and insufficiently art-directed.
+- The architecture remains useful and is retained: typed data → reusable structural components → separate layout/theme CSS → focused QA and preview infrastructure.
+- The correction is performed on the same Draft PR #14 and branch `phase-5/home-formal-content-system`; it does not modify HomeStage, the accepted probability fields, Schrödinger box, or Master Navigator.
+- The corrected direction is branded Fall Fest editorial: dossier snapshot, illustrated asymmetric About spread, dark feature field, program timeline, profile grid, credits strip, purple registration finale, and compact ink footer.
+- The supplied pack is used selectively: Sticker 04, Sticker 08, Sticker 09, plus the exact MIT license notice. No logo, wordmark, badge, IBM, IBM Quantum, or Qiskit branding asset is used.
+- The corrected result remains pending Web Orchestrator audit and explicit USER visual acceptance.
 
 ## SUPERSEDED / DO NOT REVIVE WITHOUT DISCUSSION
 

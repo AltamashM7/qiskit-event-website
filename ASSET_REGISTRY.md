@@ -306,3 +306,25 @@ Not yet production-approved:
 - About Event background,
 - About Quantum Mechanics wanted-poster subject,
 - About Quantum Mechanics wave/measurement interaction assets.
+
+## Phase 5 correction — supplied Fall Fest decorative pack
+
+Status: **SUPPLIED / LICENSE-VERIFIED / IMPORTED UNCHANGED / ACCEPTANCE PENDING**
+
+Source pack:
+- ZIP: `C:\Users\user\Downloads\Telegram Desktop\materials-resources-main.zip`
+- supplied by the event organizers/higher-ups;
+- license entry: `materials-resources-main/LICENSE`;
+- verified as the MIT License beginning with `MIT License` and `Copyright (c) 2026 Qiskit Fall Fest 2026`;
+- the normal MIT requirement to include the copyright and permission notices in copies or substantial portions is present;
+- exact notice shipped at `public/licenses/qiskit-fall-fest-materials.txt`.
+
+The following exact three SVG source entries were imported without changing file bytes, source content, colors, viewBox, aspect ratio, or artwork:
+
+| Stable repository filename | Original ZIP filename | SHA-256 | Phase 5 correction usage |
+| --- | --- | --- | --- |
+| `public/assets/formal/fall-fest/fall-fest-birds-v1.svg` | `materials-resources-main/00_Deliverables/Stickers/SVG/Sticker 04.svg` | `0054b204081f6e46fe1011354e456827c7ea70cb9f015c849c152f0760f79e04` | About the Event editorial illustration zone |
+| `public/assets/formal/fall-fest/fall-fest-quantum-infinity-v1.svg` | `materials-resources-main/00_Deliverables/Stickers/SVG/Sticker 08.svg` | `6a54c100efe2cfdfefcce4830bcd9f6acaa303d3dd8bf79005347f6c07935bef` | What You'll Do section-level accent |
+| `public/assets/formal/fall-fest/fall-fest-quantum-wave-v1.svg` | `materials-resources-main/00_Deliverables/Stickers/SVG/Sticker 09.svg` | `25893f44b70b7dd57bbbc18da6ae059a7e03dad08abe554dff408c30c5362d1e` | Program Preview section-level accent |
+
+No logo-like, wordmark-like, badge, IBM, IBM Quantum, Qiskit, or other Fall Fest branding asset was imported in this correction. No supplied pack asset is used in HomeStage, the probability field, Schrödinger's box, hero typography, or hero interaction. The three approved assets remain static, unanimated, and below the hero. The original Phase 5 formal visual execution was rejected by the USER; the corrected result remains pending audit and USER acceptance.

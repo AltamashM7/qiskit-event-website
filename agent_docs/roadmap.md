@@ -38,7 +38,7 @@ See:
 - `agent_docs/official_requirements.md`
 - `agent_docs/content_architecture.md`
 
-## Current gate — Phase 5 formal implementation
+## Current gate — Phase 5 formal visual correction
 
 Discuss and lock:
 - Stage-to-formal transition;
@@ -52,7 +52,7 @@ Discuss and lock:
 - mobile collapse;
 - footer.
 
-The grammar is implemented on the bounded branch `phase-5/home-formal-content-system` from verified main SHA `dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`. The branch is pending Draft PR, CI/preview, independent Web Orchestrator audit, and USER visual acceptance.
+The original Phase 5 formal visual execution was rejected by the USER. The architecture is retained and the branded Fall Fest editorial correction is implemented on the same bounded branch `phase-5/home-formal-content-system` and Draft PR #14 from verified main SHA `dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`. The corrected branch is pending final CI/preview, independent Web Orchestrator audit, and USER visual acceptance.
 
 ## Likely bounded implementation sequence after approval
 
@@ -60,8 +60,9 @@ The current bounded phase is:
 
 1. shared formal-content primitives + Home below-the-fold dummy-content architecture;
 2. route/navigation migration from legacy About shells to Schedule/Speakers;
-3. focused QA, full-page formal screenshots, and Draft PR preview;
-4. independent audit and USER visual acceptance;
+3. branded Fall Fest editorial correction with selectively licensed decorative assets;
+4. focused QA, full-page formal screenshots, and Draft PR preview;
+5. independent audit and USER visual acceptance;
 5. Schedule hero + formal schedule page;
 6. Speakers hero + formal speaker page;
 7. branding/registration-content integration as permitted;

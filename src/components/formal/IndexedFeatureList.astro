@@ -3,17 +3,26 @@ import type { ExperienceItem } from '../../data/event';
 
 interface Props {
   items: readonly ExperienceItem[];
+  asset?: string;
 }
 
-const { items } = Astro.props;
+const { items, asset } = Astro.props;
 ---
 
-<ol class="formal-feature-list" data-experience-list>
-  {items.map((item) => (
-    <li class="formal-feature-list__item">
-      <span class="formal-feature-list__index">{item.index}</span>
-      <h3>{item.label}</h3>
-      <p>{item.description}</p>
-    </li>
-  ))}
-</ol>
+<div class="formal-feature-field">
+  <div class="formal-feature-field__intro">
+    <p>Four modes of participation</p>
+    {asset && <img src={asset} alt="" aria-hidden="true" loading="lazy" />}
+  </div>
+  <ol class="formal-feature-list" data-experience-list>
+    {items.map((item) => (
+      <li class="formal-feature-list__item">
+        <span class="formal-feature-list__index">{item.index}</span>
+        <div class="formal-feature-list__copy">
+          <h3>{item.label}</h3>
+          <p>{item.description}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</div>

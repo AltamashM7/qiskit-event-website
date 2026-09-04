@@ -1,6 +1,11 @@
 import { expect, test } from '@playwright/test';
 
 const registrationHref = 'https://example.com/registration';
+const approvedFormalAssets = [
+  '/assets/formal/fall-fest/fall-fest-birds-v1.svg',
+  '/assets/formal/fall-fest/fall-fest-quantum-infinity-v1.svg',
+  '/assets/formal/fall-fest/fall-fest-quantum-wave-v1.svg',
+];
 
 test('Home formal content follows the approved static editorial contracts', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -23,10 +28,14 @@ test('Home formal content follows the approved static editorial contracts', asyn
   ]);
 
   await expect(formal.locator('[data-event-snapshot] dt')).toHaveText([
-    'DATE',
     'LOCATION',
     'FORMAT',
     'AUDIENCE',
+  ]);
+  await expect(formal.locator('[data-event-snapshot] .formal-snapshot__date-main')).toContainText('15—17');
+  await expect(formal.locator('[data-event-snapshot] .formal-snapshot__date-meta strong')).toHaveText([
+    'OCT',
+    '2026',
   ]);
   await expect(formal.locator(`a[href="${registrationHref}"]`)).toHaveCount(2);
   await expect(formal.locator('[data-formal-schedule-preview] [data-schedule-entry]')).toHaveCount(3);
@@ -39,7 +48,21 @@ test('Home formal content follows the approved static editorial contracts', asyn
     'href',
     '/speakers/',
   );
-  await expect(formal.locator('img')).toHaveCount(0);
+  const formalAssetUrls = await formal.locator('img').evaluateAll((images) =>
+    images.map((image) => image.getAttribute('src')).filter((src): src is string => Boolean(src)),
+  );
+  expect(formalAssetUrls.sort()).toEqual([...approvedFormalAssets].sort());
+  expect(formalAssetUrls.every((src) => !/(logo|wordmark|badge|hero|ibm|qiskit)/i.test(src))).toBe(true);
+  await expect(page.locator(`#home-stage img[src^="/assets/formal/"]`)).toHaveCount(0);
+
+  const formalAssetResponses = await Promise.all(approvedFormalAssets.map((asset) => page.request.get(asset)));
+  expect(formalAssetResponses.every((response) => response.ok())).toBe(true);
+
+  const licenseResponse = await page.request.get('/licenses/qiskit-fall-fest-materials.txt');
+  expect(licenseResponse.ok()).toBe(true);
+  const licenseText = await licenseResponse.text();
+  expect(licenseText).toContain('MIT License');
+  expect(licenseText).toContain('Copyright (c) 2026 Qiskit Fall Fest 2026');
 
   const dimensions = await page.evaluate(() => ({
     clientWidth: document.documentElement.clientWidth,
