@@ -102,10 +102,10 @@ Mobile:
 - No scroll morphing, shrinking, hiding, hamburger conversion, or scroll-listener behavior.
 - Real accessible links/routes and route-specific `aria-current="page"` remain mandatory.
 
-Current implemented entries (until the bounded route-migration phase):
+Current implemented entries on the Phase 5 branch:
 - Home
-- About Event
-- About Quantum Mechanics
+- Schedule
+- Speakers
 
 Approved target entries:
 - Home
@@ -217,6 +217,12 @@ Key locked choices:
 - no scroll-triggered entrance animation or formal animation loops;
 - responsive stacking/reflow without page-level horizontal scrolling;
 - dark ink footer with paper text and thin page-accent top rule.
+
+## Phase 5 implementation boundary
+
+The formal layer now follows a replaceable three-part boundary: typed static content in `src/data/event.ts`, semantic/layout primitives in `src/components/formal/`, and the current research-editorial cosmetic skin in `src/styles/formal-theme-research.css`. Shared geometry lives in `src/styles/formal-system.css`; Home composition is isolated in `src/components/home/HomeFormalContent.astro`.
+
+This implementation is on the Phase 5 Draft PR branch and remains pending independent audit and USER visual acceptance. The accepted Home hero and Navigator remain unchanged.
 
 ## Branding
 

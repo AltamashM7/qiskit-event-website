@@ -1,0 +1,26 @@
+---
+import type { Speaker } from '../../data/event';
+
+interface Props {
+  speaker: Speaker;
+}
+
+const { speaker } = Astro.props;
+---
+
+<li class="formal-speaker-entry" data-speaker-entry>
+  {speaker.photo && (
+    <img class="formal-speaker-entry__photo" src={speaker.photo} alt={speaker.name} loading="lazy" />
+  )}
+  <div class="formal-speaker-entry__identity">
+    <h3>{speaker.name}</h3>
+    <p>{speaker.role}</p>
+  </div>
+  <div class="formal-speaker-entry__details">
+    <p>{speaker.affiliation}</p>
+    {speaker.bio && <p>{speaker.bio}</p>}
+    {speaker.sessionAssociation && (
+      <p class="formal-speaker-entry__session">{speaker.sessionAssociation}</p>
+    )}
+  </div>
+</li>

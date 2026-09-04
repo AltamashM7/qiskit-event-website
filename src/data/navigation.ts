@@ -5,6 +5,6 @@ export interface NavigationItem {
 
 export const primaryNavigation: readonly NavigationItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'About Event', href: '/about-event/' },
-  { label: 'About Quantum Mechanics', href: '/about-quantum-mechanics/' },
+  { label: 'Schedule', href: '/schedule/' },
+  { label: 'Speakers', href: '/speakers/' },
 ];

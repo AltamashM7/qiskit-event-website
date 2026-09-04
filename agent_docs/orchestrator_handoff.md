@@ -14,8 +14,8 @@ Repository:
 Default branch:
 `main`
 
-Current main before this documentation PR:
-`2b62d90b127e5987f6c284373efde476d73b2a4a`
+Verified GitHub `main` at the start of Phase 5:
+`dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`
 
 Accepted implementation milestones:
 - PR #8 — desktop layered Home / accepted box motion and reveal;
@@ -100,6 +100,19 @@ High-level direction:
 - dark ink footer.
 
 The next bounded phase may now be specified after this documentation is merged.
+
+## Phase 5 builder handoff — pending audit
+
+Feature branch:
+`phase-5/home-formal-content-system`
+
+Phase 5 implements the target route migration to Home (`/`), Schedule (`/schedule/`), and Speakers (`/speakers/`). The legacy About Event and About Quantum Mechanics route files are removed, and Schedule/Speakers are intentionally minimal neutral technical shells.
+
+The Home formal layer is composed from typed static data in `src/data/event.ts`, reusable primitives in `src/components/formal/`, and `src/components/home/HomeFormalContent.astro`. Structural geometry is isolated in `src/styles/formal-system.css`; the replaceable research-editorial skin is isolated in `src/styles/formal-theme-research.css` and selected with `data-formal-theme="research-editorial"` plus the `--formal-accent` token.
+
+The exact Home order is Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Footer. It uses the brief's dummy data and centralized `https://example.com/registration` placeholder. No formal visual assets were added and the accepted Home hero/Navigator systems were not modified.
+
+Focused local checks and nine screenshot captures pass. Draft PR, final head, Actions, Cloudflare preview, and artifact metadata are added at closeout. No merge, production deployment, or USER acceptance is implied.
 
 ## Workflow
 

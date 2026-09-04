@@ -1,0 +1,19 @@
+---
+import type { ExperienceItem } from '../../data/event';
+
+interface Props {
+  items: readonly ExperienceItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<ol class="formal-feature-list" data-experience-list>
+  {items.map((item) => (
+    <li class="formal-feature-list__item">
+      <span class="formal-feature-list__index">{item.index}</span>
+      <h3>{item.label}</h3>
+      <p>{item.description}</p>
+    </li>
+  ))}
+</ol>

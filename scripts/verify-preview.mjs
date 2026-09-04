@@ -17,8 +17,11 @@ const checks = [
   { path: '/__qa/home-mobile-reveal.png', kind: 'image' },
   { path: '/__qa/home-mobile-compact-closed.png', kind: 'image' },
   { path: '/__qa/home-mobile-compact-reveal.png', kind: 'image' },
-  { path: '/about-event/', kind: 'page' },
-  { path: '/about-quantum-mechanics/', kind: 'page' },
+  { path: '/__qa/home-formal-desktop.png', kind: 'image' },
+  { path: '/__qa/home-formal-mobile.png', kind: 'image' },
+  { path: '/__qa/home-formal-compact.png', kind: 'image' },
+  { path: '/schedule/', kind: 'page' },
+  { path: '/speakers/', kind: 'page' },
 ];
 
 const pngSignature = Uint8Array.from([137, 80, 78, 71, 13, 10, 26, 10]);

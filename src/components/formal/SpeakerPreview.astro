@@ -1,0 +1,19 @@
+---
+import type { Speaker } from '../../data/event';
+import SpeakerEntry from './SpeakerEntry.astro';
+
+interface Props {
+  speakers: readonly Speaker[];
+  href: string;
+  linkLabel: string;
+}
+
+const { speakers, href, linkLabel } = Astro.props;
+---
+
+<div class="formal-preview-block">
+  <ul class="formal-speaker-list" data-formal-speaker-preview aria-label="Featured speakers">
+    {speakers.map((speaker) => <SpeakerEntry speaker={speaker} />)}
+  </ul>
+  <a class="formal-text-link" href={href}>{linkLabel} <span aria-hidden="true">→</span></a>
+</div>

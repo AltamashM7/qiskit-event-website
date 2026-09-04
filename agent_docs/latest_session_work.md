@@ -1,53 +1,34 @@
 # Latest Session Work
 
-## Final state of this Orchestrator session
+## Phase 5 implementation snapshot
 
 Repository:
-
 `https://github.com/AltamashM7/qiskit-event-website`
 
-Current verified `main`:
+Verified GitHub `main` at phase start:
+`dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
+Feature branch:
+`phase-5/home-formal-content-system`
 
-PR #10 was USER visually accepted and squash-merged.
+Draft PR: to be recorded after push.
 
-## Phase 4 result
+The implementation preserves the accepted desktop/mobile Home probability field, Schrödinger box motion/reveal, and persistent site-level Master Navigator. It adds the first real formal layer below HomeStage and migrates the target route set to Home / Schedule / Speakers.
 
-The existing Master Navigator visual design was preserved and promoted from Stage ownership to one persistent site-level instance rendered by `SiteLayout`.
+Implementation boundaries:
+- data: `src/data/event.ts` and `src/data/navigation.ts`;
+- shared formal structure: `src/components/formal/`;
+- Home composition: `src/components/home/HomeFormalContent.astro`;
+- stable formal geometry: `src/styles/formal-system.css`;
+- current cosmetic theme: `src/styles/formal-theme-research.css`;
+- routes: `src/pages/index.astro`, `src/pages/schedule.astro`, and `src/pages/speakers.astro`.
 
-Accepted behavior:
-- one Navigator per route;
-- fixed at the same approved top position while scrolling;
-- same desktop design;
-- same near-full-width three-column mobile design;
-- correct route-specific active state;
-- no scroll listeners/morphing/resizing/hide-show;
-- Home composition footprint preserved;
-- About routes remain neutral shells.
+The Home formal sequence is Event Snapshot, About the Event, What You'll Do, Program Preview, Speakers Preview, Organizers & Registration, and Site Footer. Dummy data is intentional, the registration URL is `https://example.com/registration`, and no new formal visual assets were added.
 
-## Previously locked Home result
+Focused local checks currently pass:
+- `astro check`: 0 errors, warnings, and hints;
+- Home formal content: 6 passed across desktop/mobile/compact mobile;
+- updated technical foundation: 27 passed across desktop/mobile/compact mobile;
+- Home visual capture: 9 passed and 18 device skips, producing the exact nine-file set.
 
-PR #8 and PR #9 remain the accepted basis for desktop/mobile Home:
-- desktop layered probability field;
-- mobile portrait layered field with 44 instances;
-- Wave 03 original accent;
-- accepted white/opacity hierarchy for other active mobile waves;
-- two-endpoint box float;
-- 640ms reveal;
-- QISKIT readability backing.
-
-## Why this conversation is ending
-
-The USER has now received the overall website content and the official rules/guidelines for creating the site.
-
-To avoid conversation-memory bloat, a fresh Web Orchestrator will take over.
-
-The new Orchestrator's first substantive task is NOT implementation. It must:
-1. inspect live GitHub and these durable docs;
-2. receive the new official content/rules from the USER;
-3. reconcile them against the existing prototype architecture;
-4. discuss the resulting site/content plan with the USER;
-5. only then create a bounded Luna implementation brief.
-
-Do not revive old provisional next-phase assumptions before that intake.
+Final `npm run check`, `npm run verify`, and `npm run build` results, PR metadata, Actions, preview URLs, final head, and artifact identity will be added after the authoritative closeout sequence. Phase 5 remains pending independent audit and USER visual acceptance.

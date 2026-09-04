@@ -1,0 +1,26 @@
+---
+import type { EventMetaItem, RegistrationConfig } from '../../data/event';
+
+interface Props {
+  items: readonly EventMetaItem[];
+  registration: RegistrationConfig;
+}
+
+const { items, registration } = Astro.props;
+---
+
+<div class="formal-meta-rail" data-event-snapshot>
+  <dl class="formal-meta-rail__items">
+    {items.map((item) => (
+      <div class="formal-meta-rail__item">
+        <dt>{item.label}</dt>
+        <dd>{item.value}</dd>
+      </div>
+    ))}
+  </dl>
+
+  <a class="formal-button formal-meta-rail__action" href={registration.href}>
+    <span>{registration.label}</span>
+    {registration.note && <small>{registration.note}</small>}
+  </a>
+</div>

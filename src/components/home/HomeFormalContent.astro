@@ -1,0 +1,100 @@
+---
+import { homeEvent } from '../../data/event';
+import { primaryNavigation } from '../../data/navigation';
+import ActionBanner from '../formal/ActionBanner.astro';
+import BrandStrip from '../formal/BrandStrip.astro';
+import EditorialSplit from '../formal/EditorialSplit.astro';
+import EventMetaRail from '../formal/EventMetaRail.astro';
+import FormalSectionHeader from '../formal/FormalSectionHeader.astro';
+import FormalShell from '../formal/FormalShell.astro';
+import IndexedFeatureList from '../formal/IndexedFeatureList.astro';
+import SchedulePreview from '../formal/SchedulePreview.astro';
+import SiteFooter from '../formal/SiteFooter.astro';
+import SpeakerPreview from '../formal/SpeakerPreview.astro';
+---
+
+<FormalShell>
+  <section class="formal-section" aria-labelledby="snapshot-heading">
+    <FormalSectionHeader
+      index="01 / SNAPSHOT"
+      title="Event Snapshot"
+      headingId="snapshot-heading"
+      note="A sample event profile for the review build."
+    />
+    <EventMetaRail items={homeEvent.snapshot} registration={homeEvent.registration} />
+  </section>
+
+  <section class="formal-section" aria-labelledby="about-event-heading">
+    <FormalSectionHeader
+      index="02 / EVENT"
+      title="About the Event"
+      headingId="about-event-heading"
+      note="From first principles to practical quantum work."
+    />
+    <EditorialSplit
+      statement={homeEvent.about.statement}
+      paragraphs={homeEvent.about.paragraphs}
+    />
+  </section>
+
+  <section class="formal-section" aria-labelledby="experience-heading">
+    <FormalSectionHeader
+      index="03 / EXPERIENCE"
+      title="What You'll Do"
+      headingId="experience-heading"
+      note="A guided path through concepts, code, and collaboration."
+    />
+    <IndexedFeatureList items={homeEvent.experience} />
+  </section>
+
+  <section class="formal-section" aria-labelledby="program-heading">
+    <FormalSectionHeader
+      index="04 / PROGRAM"
+      title="Program Preview"
+      headingId="program-heading"
+      note="A sample review program; final timings will be added later."
+    />
+    <SchedulePreview
+      entries={homeEvent.programPreview}
+      href="/schedule/"
+      linkLabel="View full schedule"
+    />
+  </section>
+
+  <section class="formal-section" aria-labelledby="speakers-heading">
+    <FormalSectionHeader
+      index="05 / PEOPLE"
+      title="Speakers Preview"
+      headingId="speakers-heading"
+      note="A typographic preview that does not depend on portraits."
+    />
+    <SpeakerPreview
+      speakers={homeEvent.speakersPreview}
+      href="/speakers/"
+      linkLabel="View all speakers"
+    />
+  </section>
+
+  <section class="formal-section formal-section--participate" aria-labelledby="participate-heading">
+    <FormalSectionHeader
+      index="06 / PARTICIPATE"
+      title="Organizers & Registration"
+      headingId="participate-heading"
+      note="Brand-safe placeholders keep the review build ready for final details."
+    />
+    <BrandStrip organizers={homeEvent.organizers} />
+    <ActionBanner
+      heading="Ready to take part?"
+      body="Registration details shown in this review build are placeholders. Final eligibility and participation information will be added before publication."
+      registration={homeEvent.registration}
+    />
+  </section>
+
+  <SiteFooter
+    slot="footer"
+    eventName="Qiskit Fall Fest"
+    navigation={primaryNavigation}
+    registration={homeEvent.registration}
+    contact={homeEvent.contact}
+  />
+</FormalShell>

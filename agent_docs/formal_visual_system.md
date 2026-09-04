@@ -2,7 +2,7 @@
 
 ## Status
 
-**USER-DELEGATED / ORCHESTRATOR-SELECTED / APPROVED DIRECTION — not yet implemented.**
+**USER-DELEGATED / ORCHESTRATOR-SELECTED / IMPLEMENTED ON PHASE 5 DRAFT BRANCH — acceptance pending.**
 
 The USER explicitly delegated the remaining formal-content visual decisions to the Web Orchestrator, with the instruction to choose the best coherent result considering:
 - association with research/technical organizations;
@@ -402,5 +402,16 @@ This direction intentionally requires:
 - sufficient contrast;
 - responsive reflow rather than horizontal overflow;
 - touch targets suitable for phones.
+
+## 16. Phase 5 implementation mapping
+
+The first implementation keeps the three concerns replaceable:
+
+- Data/content: `src/data/event.ts` contains the typed static event metadata, registration configuration, schedule entries, speakers, organizers, and experience items.
+- Structural components: `src/components/formal/` contains the shell, section header, metadata rail, editorial split, indexed feature list, schedule and speaker previews/entries, brand strip, action banner, and footer.
+- Visual theme: `src/styles/formal-theme-research.css` owns the research-editorial tokens and cosmetic skin. The shell selects it through `data-formal-theme="research-editorial"` and sets the page-level `--formal-accent` token.
+- Stable geometry: `src/styles/formal-system.css` owns container width, grid relationships, responsive stacking, dividers' layout geometry, and touch-size behavior.
+
+Home-specific composition is limited to `src/components/home/HomeFormalContent.astro`; the accepted HomeStage remains outside this formal system. The current Home build adds no formal image assets and uses realistic dummy review data. Phase 5 remains pending Web Orchestrator independent audit and USER visual acceptance.
 
 It therefore supports the project's weak-device performance requirement and the external-review requirement for a polished public-facing event site.

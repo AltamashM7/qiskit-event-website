@@ -1,0 +1,22 @@
+---
+import type { Organizer } from '../../data/event';
+
+interface Props {
+  organizers: readonly Organizer[];
+}
+
+const { organizers } = Astro.props;
+---
+
+<ul class="formal-brand-strip" data-organizer-list>
+  {organizers.map((organizer) => (
+    <li>
+      {organizer.logo ? (
+        <img src={organizer.logo} alt={organizer.name} loading="lazy" />
+      ) : (
+        <span>{organizer.name}</span>
+      )}
+      {organizer.category && <small>{organizer.category}</small>}
+    </li>
+  ))}
+</ul>

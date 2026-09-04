@@ -1,0 +1,41 @@
+---
+import type { NavigationItem } from '../../data/navigation';
+import type { RegistrationConfig } from '../../data/event';
+
+interface Props {
+  eventName: string;
+  navigation: readonly NavigationItem[];
+  registration: RegistrationConfig;
+  contact: string;
+}
+
+const { eventName, navigation, registration, contact } = Astro.props;
+---
+
+<footer class="formal-footer">
+  <div class="formal-footer__inner formal-container">
+    <div class="formal-footer__identity">
+      <p class="formal-footer__eyebrow">Event identity</p>
+      <p class="formal-footer__name">{eventName}</p>
+    </div>
+
+    <nav class="formal-footer__navigation" aria-label="Footer">
+      <p class="formal-footer__eyebrow">Navigation</p>
+      <ul>
+        {navigation.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="formal-footer__participation">
+      <p class="formal-footer__eyebrow">Participation</p>
+      <a href={registration.href}>{registration.label}</a>
+    </div>
+
+    <div class="formal-footer__contact">
+      <p class="formal-footer__eyebrow">Contact</p>
+      <a href={`mailto:${contact}`}>{contact}</a>
+    </div>
+  </div>
+</footer>

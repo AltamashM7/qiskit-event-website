@@ -1,0 +1,19 @@
+---
+import type { ScheduleEntry as ScheduleEntryData } from '../../data/event';
+import ScheduleEntry from './ScheduleEntry.astro';
+
+interface Props {
+  entries: readonly ScheduleEntryData[];
+  href: string;
+  linkLabel: string;
+}
+
+const { entries, href, linkLabel } = Astro.props;
+---
+
+<div class="formal-preview-block">
+  <ol class="formal-schedule-preview" data-formal-schedule-preview aria-label="Sample program">
+    {entries.map((entry) => <ScheduleEntry entry={entry} />)}
+  </ol>
+  <a class="formal-text-link" href={href}>{linkLabel} <span aria-hidden="true">→</span></a>
+</div>

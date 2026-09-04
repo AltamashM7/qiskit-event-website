@@ -1,0 +1,15 @@
+---
+interface Props {
+  statement: string;
+  paragraphs: readonly string[];
+}
+
+const { statement, paragraphs } = Astro.props;
+---
+
+<div class="formal-editorial-split">
+  <p class="formal-editorial-split__statement">{statement}</p>
+  <div class="formal-editorial-split__supporting-copy">
+    {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+</div>

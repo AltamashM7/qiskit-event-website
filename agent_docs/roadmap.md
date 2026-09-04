@@ -38,7 +38,7 @@ See:
 - `agent_docs/official_requirements.md`
 - `agent_docs/content_architecture.md`
 
-## Current gate — formal visual grammar
+## Current gate — Phase 5 formal implementation
 
 Discuss and lock:
 - Stage-to-formal transition;
@@ -52,19 +52,21 @@ Discuss and lock:
 - mobile collapse;
 - footer.
 
-No Luna prompt before USER approval of this grammar.
+The grammar is implemented on the bounded branch `phase-5/home-formal-content-system` from verified main SHA `dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`. The branch is pending Draft PR, CI/preview, independent Web Orchestrator audit, and USER visual acceptance.
 
 ## Likely bounded implementation sequence after approval
 
-Exact sequencing still requires USER approval, but the current likely path is:
+The current bounded phase is:
 
 1. shared formal-content primitives + Home below-the-fold dummy-content architecture;
 2. route/navigation migration from legacy About shells to Schedule/Speakers;
-3. Schedule hero + formal schedule page;
-4. Speakers hero + formal speaker page;
-5. branding/registration-content integration as permitted;
-6. content/SEO/accessibility/performance hardening;
-7. production hostname/release path and final launch QA.
+3. focused QA, full-page formal screenshots, and Draft PR preview;
+4. independent audit and USER visual acceptance;
+5. Schedule hero + formal schedule page;
+6. Speakers hero + formal speaker page;
+7. branding/registration-content integration as permitted;
+8. content/SEO/accessibility/performance hardening;
+9. production hostname/release path and final launch QA.
 
 Do not treat this ordering as authorization to implement.
 

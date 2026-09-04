@@ -145,6 +145,15 @@ This file distinguishes durable decisions from provisional ideas and superseded 
 - Production release process.
 - Exact Builder route/workflow.
 
+## PHASE 5 IMPLEMENTATION — PENDING ACCEPTANCE
+
+- Phase 5 starts from verified GitHub `main` SHA `dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb` on branch `phase-5/home-formal-content-system`.
+- The target route set is now Home (`/`), Schedule (`/schedule/`), and Speakers (`/speakers/`); the legacy About Event and About Quantum Mechanics route files are removed on the Phase 5 branch.
+- Formal content is separated into typed static data (`src/data/event.ts`), reusable Astro structural primitives (`src/components/formal/`), shared geometry (`src/styles/formal-system.css`), and a replaceable research-editorial theme (`src/styles/formal-theme-research.css`).
+- Home formal content follows the approved Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Footer sequence.
+- The Phase 5 review build uses realistic dummy data and the centralized placeholder registration URL `https://example.com/registration`; no new formal visual assets are introduced.
+- Phase 5 is not USER accepted until the Draft PR is independently audited and the visual captures are reviewed.
+
 ## SUPERSEDED / DO NOT REVIVE WITHOUT DISCUSSION
 
 - About Event and About Quantum Mechanics as current target navigation destinations; the approved target is Home / Schedule / Speakers.

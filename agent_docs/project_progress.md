@@ -2,15 +2,16 @@
 
 ## Current status
 
-**Phase: formal content architecture and formal visual grammar resolved; documentation merge pending before first formal implementation phase**
+**Phase 5: modular formal content system + Home formal content + target route foundation implemented on a Draft PR branch; audit and USER acceptance pending**
 
 Repository:
 `https://github.com/AltamashM7/qiskit-event-website`
 
-Current authoritative `main` before this documentation PR:
-`80e392da520eb99d32a0fd7a2b1dedf44a8f8b1a`
+Verified GitHub `main` at phase start:
+`dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`
 
-No active implementation phase.
+Active feature branch:
+`phase-5/home-formal-content-system`
 
 ## Accepted / merged implementation milestones
 
@@ -53,9 +54,17 @@ Resolved:
 - Home formal section patterns;
 - footer.
 
-## Next
+## Phase 5 implementation
 
-After this documentation is merged:
-- define the first bounded Luna implementation phase for shared formal primitives + Home below-the-fold dummy-content architecture;
-- keep accepted Home Stage systems locked;
-- do not begin Schedule/Speakers hero art implementation in the same phase unless separately authorized.
+Completed on the active branch:
+- migrated primary navigation to Home, Schedule, and Speakers;
+- removed the legacy About Event and About Quantum Mechanics route files;
+- added minimal neutral Schedule and Speakers technical shells;
+- added typed local event data and reusable formal primitives;
+- added Home formal content in the approved sequence;
+- separated formal layout CSS from the research-editorial theme CSS;
+- added responsive desktop/mobile formal layouts and no-image formal-content coverage;
+- added three full-page formal screenshots while preserving all six hero screenshots;
+- updated preview route checks, screenshot artifact validation, and durable documentation.
+
+Dummy content remains intentionally provisional. The accepted hero and Navigator systems were not retuned. Phase 5 is not USER accepted.

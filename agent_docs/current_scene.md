@@ -4,9 +4,13 @@
 
 This file records the current accepted Home Stage scene and persistent site-level Navigator boundary.
 
-Current verified `main` after the USER-approved Phase 4 squash merge:
+Current verified GitHub `main` at the start of Phase 5:
 
-`5dcffb25ac7253ddacc0101e7b63212c30dd01ce`
+`dc9ccd5dc7cd8f940d40d35f578ae52d904b20bb`
+
+Phase 5 implementation branch:
+
+`phase-5/home-formal-content-system`
 
 Desktop layered background, the 640ms reveal, the two-endpoint box float, the Phase 3 mobile layered composition, the restored Wave 03 accent, QISKIT readability backing, and the Phase 4 persistent shared Master Navigator are USER accepted and locked.
 
@@ -413,3 +417,21 @@ The Phase 3 mobile layered composition is implemented and accepted. Broad phone 
 - The Navigator keeps its current paper/off-white rectangle, compact desktop strip, three-column mobile presentation, labels, routes, active state, keyboard behavior, and reduced-motion behavior.
 - It is fixed near the reviewed top-center desktop gutter and near the reviewed one-rem mobile gutter on portrait layouts, without scroll morphing or scroll listeners.
 - Home reserves the former Navigator row height so the accepted identity/copy/box composition does not shift.
+
+## Phase 5 formal-content implementation — acceptance pending
+
+The Phase 5 branch adds a reusable formal-content layer below HomeStage without changing the accepted Home Stage or Master Navigator visual systems.
+
+Implemented boundaries:
+- typed static event content lives in `src/data/event.ts`;
+- reusable structural primitives live in `src/components/formal/`;
+- Home-specific composition lives in `src/components/home/HomeFormalContent.astro`;
+- shared formal geometry lives in `src/styles/formal-system.css`;
+- the current research-editorial cosmetic theme lives in `src/styles/formal-theme-research.css` and is selected with `data-formal-theme="research-editorial"`;
+- Home uses the page accent token `--formal-accent: #ffe51a`.
+
+Home formal order is fixed as Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Site Footer. The review build uses the exact dummy content from the Phase 5 brief and the placeholder registration destination `https://example.com/registration`.
+
+The target navigation is Home (`/`), Schedule (`/schedule/`), and Speakers (`/speakers/`). The legacy About Event and About Quantum Mechanics route files are removed; Schedule and Speakers are neutral technical shells only.
+
+No new formal visual assets were added, and existing accepted Home hero assets remain untouched. Focused formal, route/accessibility, and visual QA checks pass locally; the Draft PR, Actions run, preview URLs, and final head are recorded after push. Phase 5 remains pending Web Orchestrator audit and USER visual acceptance.

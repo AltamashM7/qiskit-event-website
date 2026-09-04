@@ -1,0 +1,224 @@
+[data-formal-theme='research-editorial'] {
+  --formal-paper: #f7f7f5;
+  --formal-ink: #111820;
+  --formal-muted: #56616a;
+  --formal-accent: #ffe51a;
+  --formal-rule: rgba(17, 24, 32, 0.25);
+  --formal-rule-strong: #111820;
+  --formal-max-width: 1180px;
+  --formal-gutter: clamp(1rem, 4vw, 3rem);
+  --formal-section-space: clamp(5.5rem, 8vw, 6.5rem);
+  --formal-column-gap: clamp(1.5rem, 2.5vw, 2rem);
+  --formal-handoff-border-width: 2px;
+  --formal-content-border-width: 1px;
+  --formal-footer-border-width: 2px;
+  --formal-font-body: system-ui, sans-serif;
+  --formal-font-mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+}
+
+[data-formal-theme='research-editorial'] .formal-shell {
+  font-family: var(--formal-font-body);
+}
+
+[data-formal-theme='research-editorial'] .formal-section-header__index,
+[data-formal-theme='research-editorial'] .formal-meta-rail__item dt,
+[data-formal-theme='research-editorial'] .formal-meta-rail__action,
+[data-formal-theme='research-editorial'] .formal-schedule-entry__category,
+[data-formal-theme='research-editorial'] .formal-schedule-entry__date,
+[data-formal-theme='research-editorial'] .formal-speaker-entry__session,
+[data-formal-theme='research-editorial'] .formal-action-banner__eyebrow,
+[data-formal-theme='research-editorial'] .formal-footer__eyebrow,
+[data-formal-theme='research-editorial'] .formal-brand-strip small {
+  color: var(--formal-muted);
+  font-family: var(--formal-font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+[data-formal-theme='research-editorial'] .formal-section-header__title {
+  color: var(--formal-ink);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+[data-formal-theme='research-editorial'] .formal-section-header__note,
+[data-formal-theme='research-editorial'] .formal-editorial-split__supporting-copy,
+[data-formal-theme='research-editorial'] .formal-speaker-entry__identity p,
+[data-formal-theme='research-editorial'] .formal-speaker-entry__details,
+[data-formal-theme='research-editorial'] .formal-schedule-entry__details,
+[data-formal-theme='research-editorial'] .formal-schedule-entry__content > p:last-child:not(.formal-schedule-entry__details) {
+  color: var(--formal-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+[data-formal-theme='research-editorial'] .formal-meta-rail__item dd {
+  color: var(--formal-ink);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+[data-formal-theme='research-editorial'] .formal-editorial-split__statement {
+  color: var(--formal-ink);
+  font-size: clamp(1.55rem, 2.5vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+[data-formal-theme='research-editorial'] .formal-editorial-split__supporting-copy p {
+  color: var(--formal-ink);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+[data-formal-theme='research-editorial'] .formal-feature-list__index {
+  color: var(--formal-muted);
+  font-family: var(--formal-font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+[data-formal-theme='research-editorial'] .formal-feature-list__item h3,
+[data-formal-theme='research-editorial'] .formal-schedule-entry__content h3,
+[data-formal-theme='research-editorial'] .formal-speaker-entry__identity h3,
+[data-formal-theme='research-editorial'] .formal-action-banner h3 {
+  color: var(--formal-ink);
+  font-size: 1.1rem;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+[data-formal-theme='research-editorial'] .formal-feature-list__item p {
+  color: var(--formal-ink);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+[data-formal-theme='research-editorial'] .formal-schedule-entry__time {
+  color: var(--formal-ink);
+  font-family: var(--formal-font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+[data-formal-theme='research-editorial'] .formal-schedule-entry__category {
+  color: var(--formal-ink);
+}
+
+[data-formal-theme='research-editorial'] .formal-text-link,
+[data-formal-theme='research-editorial'] .formal-footer a {
+  color: var(--formal-ink);
+  font-family: var(--formal-font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-transform: uppercase;
+}
+
+[data-formal-theme='research-editorial'] .formal-text-link:hover,
+[data-formal-theme='research-editorial'] .formal-text-link:focus-visible,
+[data-formal-theme='research-editorial'] .formal-footer a:hover,
+[data-formal-theme='research-editorial'] .formal-footer a:focus-visible {
+  color: var(--formal-muted);
+}
+
+[data-formal-theme='research-editorial'] .formal-button {
+  display: inline-flex;
+  min-height: 2.9rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--formal-ink);
+  border-radius: 0;
+  background: var(--formal-accent);
+  color: var(--formal-ink);
+  font-family: var(--formal-font-mono);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+[data-formal-theme='research-editorial'] .formal-button:hover,
+[data-formal-theme='research-editorial'] .formal-button:focus-visible {
+  background: var(--formal-ink);
+  color: var(--formal-paper);
+  transform: translateY(-2px);
+}
+
+[data-formal-theme='research-editorial'] .formal-action-banner {
+  background: var(--formal-ink);
+  color: var(--formal-paper);
+}
+
+[data-formal-theme='research-editorial'] .formal-action-banner__copy h3 {
+  color: var(--formal-paper);
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+[data-formal-theme='research-editorial'] .formal-action-banner__copy > p:last-child {
+  color: rgba(247, 247, 245, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+[data-formal-theme='research-editorial'] .formal-action-banner__eyebrow {
+  color: var(--formal-accent);
+}
+
+[data-formal-theme='research-editorial'] .formal-footer {
+  background: var(--formal-ink);
+  color: var(--formal-paper);
+}
+
+[data-formal-theme='research-editorial'] .formal-footer__name {
+  margin: 0.4rem 0 0;
+  color: var(--formal-paper);
+  font-size: 1.4rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+[data-formal-theme='research-editorial'] .formal-footer__eyebrow {
+  color: rgba(247, 247, 245, 0.62);
+}
+
+[data-formal-theme='research-editorial'] .formal-footer a {
+  color: var(--formal-paper);
+}
+
+[data-formal-theme='research-editorial'] .formal-footer a:hover,
+[data-formal-theme='research-editorial'] .formal-footer a:focus-visible {
+  color: var(--formal-accent);
+}
+
+[data-formal-theme='research-editorial'] .formal-shell :focus-visible {
+  outline-color: var(--formal-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-formal-theme='research-editorial'] .formal-button {
+    transition-duration: 0ms;
+  }
+}

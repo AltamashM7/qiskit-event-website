@@ -1,0 +1,36 @@
+---
+import type { ScheduleEntry as ScheduleEntryData } from '../../data/event';
+
+interface Props {
+  entry: ScheduleEntryData;
+}
+
+const { entry } = Astro.props;
+---
+
+<li class="formal-schedule-entry" data-schedule-entry>
+  <div class="formal-schedule-entry__time">
+    {(entry.day || entry.date) && (
+      <span class="formal-schedule-entry__date">
+        {entry.day}{entry.day && entry.date && ', '}{entry.date}
+      </span>
+    )}
+    <span>
+      <time datetime={entry.startTime}>{entry.startTime}</time>
+      <span aria-hidden="true">–</span>
+      <time datetime={entry.endTime}>{entry.endTime}</time>
+    </span>
+  </div>
+  <p class="formal-schedule-entry__category">{entry.category}</p>
+  <div class="formal-schedule-entry__content">
+    <h3>{entry.title}</h3>
+    {(entry.speaker || entry.facilitator || entry.venue) && (
+      <p class="formal-schedule-entry__details">
+        {entry.speaker && <span>{entry.speaker}</span>}
+        {entry.facilitator && <span>{entry.facilitator}</span>}
+        {entry.venue && <span>{entry.venue}</span>}
+      </p>
+    )}
+    {entry.description && <p>{entry.description}</p>}
+  </div>
+</li>
