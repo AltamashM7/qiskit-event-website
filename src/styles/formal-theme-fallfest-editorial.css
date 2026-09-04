@@ -74,7 +74,9 @@
 
 [data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-feature-field__intro p,
 [data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-feature-list__index,
-[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-program-aside {
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-program-aside,
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-section-header__index,
+[data-formal-theme='fallfest-editorial'] .formal-section--feature .formal-section-header__note {
   color: var(--fallfest-light-blue);
 }
 
@@ -207,7 +209,7 @@
 }
 
 [data-formal-theme='fallfest-editorial'] .formal-schedule-entry__category {
-  color: var(--fallfest-magenta);
+  color: var(--fallfest-purple);
 }
 
 [data-formal-theme='fallfest-editorial'] .formal-schedule-entry__content h3 {
@@ -291,7 +293,7 @@
 }
 
 [data-formal-theme='fallfest-editorial'] .formal-action-banner__eyebrow {
-  color: var(--fallfest-magenta);
+  color: var(--formal-accent);
 }
 
 [data-formal-theme='fallfest-editorial'] .formal-action-banner__copy h3 {
