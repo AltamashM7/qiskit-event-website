@@ -112,7 +112,7 @@ The Home formal layer is composed from typed static data in `src/data/event.ts`,
 
 The exact Home order is Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Footer. It uses the brief's dummy data and centralized `https://example.com/registration` placeholder. No formal visual assets were added and the accepted Home hero/Navigator systems were not modified.
 
-Focused local checks and nine screenshot captures pass. Draft PR, final head, Actions, Cloudflare preview, and artifact metadata are added at closeout. No merge, production deployment, or USER acceptance is implied.
+Focused local checks and nine screenshot captures pass. Draft PR #14 is open at `https://github.com/AltamashM7/qiskit-event-website/pull/14` and remains Draft. The implementation head is `d676deda2921d0ee4c72a31536c6d9c09a854ee4`. Actions run `33833826312` passed Technical verification and Cloudflare preview/visual QA. The immutable preview is `https://85465dca.qiskit-event-website.pages.dev`; the PR alias is `https://pr-14.qiskit-event-website.pages.dev`; artifact `home-visual-qa-pr-14` (ID `9922730351`, digest `sha256:5dc0f10c897d327e7bb0d59b49f63c0919d4de9d32a84317b5f5dfa05c876ead`) contains the exact nine screenshot files. No merge, production deployment, or USER acceptance is implied.
 
 ## Workflow
 

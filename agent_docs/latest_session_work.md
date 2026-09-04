@@ -11,7 +11,10 @@ Verified GitHub `main` at phase start:
 Feature branch:
 `phase-5/home-formal-content-system`
 
-Draft PR: to be recorded after push.
+Draft PR #14: `https://github.com/AltamashM7/qiskit-event-website/pull/14`
+
+Implementation head:
+`d676deda2921d0ee4c72a31536c6d9c09a854ee4`
 
 The implementation preserves the accepted desktop/mobile Home probability field, Schrödinger box motion/reveal, and persistent site-level Master Navigator. It adds the first real formal layer below HomeStage and migrates the target route set to Home / Schedule / Speakers.
 
@@ -31,4 +34,13 @@ Focused local checks currently pass:
 - updated technical foundation: 27 passed across desktop/mobile/compact mobile;
 - Home visual capture: 9 passed and 18 device skips, producing the exact nine-file set.
 
-Final `npm run check`, `npm run verify`, and `npm run build` results, PR metadata, Actions, preview URLs, final head, and artifact identity will be added after the authoritative closeout sequence. Phase 5 remains pending independent audit and USER visual acceptance.
+Authoritative closeout results:
+- `npm run check`: 0 errors, warnings, and hints;
+- `npm run verify`: 122 passed, 63 device skips;
+- `npm run build`: static build succeeded with three page entries;
+- Actions run `33833826312`: Technical verification passed in 4m03s; Cloudflare preview and visual QA passed in 5m40s;
+- immutable preview: `https://85465dca.qiskit-event-website.pages.dev`;
+- PR alias: `https://pr-14.qiskit-event-website.pages.dev`;
+- artifact: `home-visual-qa-pr-14`, ID `9922730351`, digest `sha256:5dc0f10c897d327e7bb0d59b49f63c0919d4de9d32a84317b5f5dfa05c876ead`, nine expected screenshots.
+
+The PR remains Draft. No merge or production deployment occurred. Phase 5 remains pending independent audit and USER visual acceptance.

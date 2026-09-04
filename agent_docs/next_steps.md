@@ -26,9 +26,8 @@ The branch delivers:
 
 The review build uses realistic dummy data only. The registration destination is the centralized placeholder `https://example.com/registration`. No formal visual assets were added.
 
-## Required handoff
+## Handoff complete
 
-Run the final required local sequence after documentation stabilizes:
-`npm run check`, `npm run verify`, `npm run build`.
+The final local sequence passed: `npm run check`, `npm run verify`, and `npm run build`. Draft PR #14 is open against `main` and remains Draft. Its implementation head is `d676deda2921d0ee4c72a31536c6d9c09a854ee4`; Actions run `33833826312` passed Technical verification and Cloudflare preview/visual QA. Preview URLs are `https://85465dca.qiskit-event-website.pages.dev` and `https://pr-14.qiskit-event-website.pages.dev`. Artifact `home-visual-qa-pr-14` is ID `9922730351` with digest `sha256:5dc0f10c897d327e7bb0d59b49f63c0919d4de9d32a84317b5f5dfa05c876ead` and contains nine screenshots.
 
-Then commit, push, open one Draft PR against `main`, and leave it Draft. Do not merge or deploy production. Record the final head, PR, Actions run, Cloudflare preview, and nine-file artifact in the durable handoff/session docs after they exist.
+Do not merge or deploy production. Phase 5 remains pending independent audit and USER visual acceptance.
