@@ -28,6 +28,6 @@ The review build uses realistic dummy data only. The registration destination is
 
 ## Correction gate
 
-The correction is in progress on Draft PR #14. Final corrected-head local verification, Actions run, preview URLs, artifact digest, and final correction commits will be recorded after the visual QA gate.
+The correction is implemented on Draft PR #14 at `f072c1fda2774e943f6f54d456fc4037caefb18f`. Local type/build checks and focused browser cases completed without reported failures; Actions run `33892600514` passed both Technical verification and Cloudflare preview/visual QA. The nine-screenshot artifact is `home-visual-qa-pr-14` ID `9944558543` with digest `sha256:c72f948cbff3ff4c744db6750299534f238a15dc9548614951b75d42dfaf94fc`.
 
 Do not merge or deploy production. Phase 5 remains pending independent audit and USER visual acceptance.

@@ -112,7 +112,7 @@ The Home formal layer is composed from typed static data in `src/data/event.ts`,
 
 The exact Home order is Event Snapshot → About the Event → What You'll Do → Program Preview → Speakers Preview → Organizers & Registration → Footer. It uses the brief's dummy data and centralized `https://example.com/registration` placeholder. The original formal visual execution was rejected by the USER and corrected on the same PR with exactly three supplied, licensed, non-logo decorative SVGs below the hero; the accepted Home hero/Navigator systems were not modified.
 
-The correction remains in progress on Draft PR #14. Final corrected-head local checks, Actions, preview, artifact, and commit metadata will be recorded at closeout. No merge, production deployment, or USER acceptance is implied.
+The correction is implemented on Draft PR #14 at `f072c1fda2774e943f6f54d456fc4037caefb18f`. Actions run `33892600514` passed Technical verification and Cloudflare preview/visual QA. Immutable preview is `https://f72b712b.qiskit-event-website.pages.dev`, alias is `https://pr-14.qiskit-event-website.pages.dev`, and the nine-screenshot artifact is `home-visual-qa-pr-14` ID `9944558543` with digest `sha256:c72f948cbff3ff4c744db6750299534f238a15dc9548614951b75d42dfaf94fc`. No merge, production deployment, or USER acceptance is implied.
 
 ## Phase 5 visual correction — pending acceptance
 

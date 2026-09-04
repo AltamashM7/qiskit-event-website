@@ -73,4 +73,4 @@ The USER rejected the original Phase 5 formal visual execution as sparse, repeti
 
 The correction introduces a dossier-style snapshot, asymmetric About spread with Sticker 04, a dark 2×2 What You'll Do field with Sticker 08, a program timeline with Sticker 09, an editorial speaker grid, a credits strip, and a purple registration finale. The supplied assets are unchanged and isolated below the Home hero. No logos, wordmarks, badges, IBM assets, or Qiskit branding assets are used.
 
-Dummy content remains intentionally provisional. The accepted hero and Navigator systems were not retuned. The corrected visual result is not USER accepted and remains pending independent audit plus explicit USER visual acceptance.
+Dummy content remains intentionally provisional. The accepted hero and Navigator systems were not retuned. The corrected branch head is `f072c1fda2774e943f6f54d456fc4037caefb18f`; Actions run `33892600514` passed Technical verification and Cloudflare preview/visual QA. The corrected visual result is not USER accepted and remains pending independent audit plus explicit USER visual acceptance.
